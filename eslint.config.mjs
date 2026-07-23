@@ -7,7 +7,7 @@ const eslintConfig = defineConfig([
   ...nextTs,
   // Override default ignores of eslint-config-next.
   globalIgnores([
-    // Ignore generated output across both apps in this repository.
+    // Ignore generated output.
     "**/.next/**",
     "**/node_modules/**",
     "**/out/**",

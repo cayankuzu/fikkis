@@ -1,34 +1,19 @@
-# fikkis + MeMoDe
+# fikkis
 
-İki yüzü olan kişisel proje vitrini:
+Etkileşimli web deneyimlerini ve mobil ürünleri doğrudan açılan listelerle sunan deneysel proje vitrini.
 
-- `fikkis`: Etkileşimli web deneyimlerini ve mobil ürünleri doğrudan açılan listelerle sunan deneysel site.
-- `MeMoDe/`: Aynı işleri amaçları ve kısa özetleriyle anlatan resmî portföy sitesi.
-
-İki uygulama birbirine animasyonlu portal bağlantılarıyla bağlıdır ve Vercel'de ayrı projeler olarak yayınlanır.
+Resmî portföy olan [MeMoDe](https://memode.vercel.app) ile animasyonlu bir portal üzerinden bağlıdır. İki site ayrı klasörlerde, ayrı GitHub depolarında ve ayrı Vercel projelerinde tutulur.
 
 ## Yerel geliştirme
-
-Fikkis:
 
 ```bash
 npm install
 npm run dev
 ```
 
-MeMoDe:
-
-```bash
-cd MeMoDe
-npm install
-npm run dev -- -p 3001
-```
-
-Portal hedefleri için `.env.example` dosyalarını `.env.local` olarak kopyalayıp canlı veya yerel adresleri kullanın.
+MeMoDe portal hedefi `NEXT_PUBLIC_MEMODE_URL` ile ayarlanır.
 
 ## Kontroller
-
-Her iki uygulama klasöründe:
 
 ```bash
 npm run lint

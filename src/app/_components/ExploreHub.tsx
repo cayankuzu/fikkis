@@ -101,7 +101,7 @@ export function ExploreHub() {
                     <a href={project.href} target="_blank" rel="noreferrer">
                       {project.hrefLabel} <span aria-hidden="true">↗</span>
                     </a>
-                    <a href={project.github} target="_blank" rel="noreferrer" title="Private GitHub deposu">
+                    <a href={project.github} target="_blank" rel="noreferrer">
                       GitHub <span aria-hidden="true">↗</span>
                     </a>
                   </div>
