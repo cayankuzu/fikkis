@@ -17,7 +17,8 @@ const mono = DM_Mono({
 
 export const metadata: Metadata = {
   title: "fikkis — web deneyleri ve başka şeyler",
-  description: "Çayan Kuzu tarafından geliştirilen etkileşimli web deneyimleri, yaratıcı araçlar ve mobil ürünler.",
+  description:
+    "Çayan Kuzu tarafından geliştirilen etkileşimli web deneyimleri, yaratıcı araçlar ve mobil ürünler.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

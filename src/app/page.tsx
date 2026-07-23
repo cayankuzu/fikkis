@@ -2,7 +2,8 @@ import Image from "next/image";
 import { FloatingPortal } from "./_components/FloatingPortal";
 import { projects } from "./projects";
 
-const officialSiteUrl = process.env.NEXT_PUBLIC_MEMODE_URL ?? "http://localhost:3001";
+const instagramUrl =
+  "https://www.instagram.com/memode333?igsh=aWZkZDM3dXR1azBk";
 
 export default function Home() {
   return (
@@ -12,57 +13,103 @@ export default function Home() {
           <a className="fikkisMark" href="#top" aria-label="Fikkis ana sayfa">
             fikkis<span>●</span>
           </a>
-          <p>web deneyleri ve başka şeyler<br />Çayan tarafından yapıldı</p>
+          <p>
+            web deneyleri ve başka şeyler
+            <br />
+            Çayan tarafından yapıldı
+          </p>
         </header>
 
         <section className="projectGallery" aria-labelledby="gallery-title">
-          <h1 id="gallery-title" className="srOnly">Fikkis projeleri</h1>
+          <h1 id="gallery-title" className="srOnly">
+            Fikkis projeleri
+          </h1>
           {projects.map((project) => (
-            <article className={`projectCard tone-${project.tone}`} key={project.id}>
-              <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.title} projesini aç`}>
-                <span className="projectPreview">
+            <article
+              className={`projectCard tone-${project.tone}`}
+              data-kind={project.kind}
+              key={project.id}
+            >
+              <div className={`liveWindow liveWindow-${project.kind}`}>
+                <div className="windowBar">
+                  <span className="windowDots" aria-hidden="true">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                  <strong>{project.title}</strong>
+                  <a
+                    href={project.openUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} projesini tam ekranda aç`}
+                  >
+                    tam ekran ↗
+                  </a>
+                </div>
+                <div className="liveStage">
                   <Image
+                    className="projectPoster"
                     src={project.preview}
-                    alt={`${project.title} gerçek proje önizlemesi`}
+                    alt={`${project.title} gerçek proje ekranı`}
                     fill
-                    priority={project.id === "remember" || project.id === "desain" || project.id === "audioroom"}
-                    sizes="(max-width: 680px) calc(100vw - 34px), (max-width: 980px) 46vw, 360px"
+                    priority={project.kind === "web"}
+                    sizes={
+                      project.kind === "web"
+                        ? "(max-width: 900px) calc(100vw - 34px), 590px"
+                        : "(max-width: 700px) 360px, 28vw"
+                    }
                     style={{ objectPosition: project.previewPosition ?? "center" }}
                   />
-                  <span className="projectOpen" aria-hidden="true">aç ↗</span>
-                </span>
-                <span className="projectCaption">
-                  <span>
-                    <strong>{project.title}</strong>
-                    <small>{project.category}</small>
+                  {project.liveUrl ? (
+                    <iframe
+                      src={project.liveUrl}
+                      title={`${project.title} canlı proje penceresi`}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-read; clipboard-write; fullscreen; gyroscope; pointer-lock"
+                      allowFullScreen
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+                  ) : (
+                    <a
+                      className="prototypeLauncher"
+                      href={project.openUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${project.title} mobil prototipini Figma'da aç`}
+                    >
+                      <span>mobil prototipi aç ↗</span>
+                    </a>
+                  )}
+                  <span className="liveBadge">
+                    {project.kind === "web" ? "canlı · burada dene" : "Figma · tam ekranda dene"}
                   </span>
-                  <p>{project.description}</p>
+                </div>
+              </div>
+
+              <div className="projectCaption">
+                <span>
+                  <strong>{project.title}</strong>
+                  <small>{project.category}</small>
                 </span>
-              </a>
-              <a className="repoLink" href={project.github} target="_blank" rel="noreferrer">
-                kod deposu ↗
-              </a>
+                <p>{project.description}</p>
+              </div>
             </article>
           ))}
         </section>
 
         <footer className="fikkisFooter">
-          <p>Merhaba, ben Çayan. İnternette çalışan, oynanan ve keşfedilen şeyler yapıyorum.</p>
-          <div>
-            <a href="https://github.com/cayankuzu" target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href="mailto:memodee333@gmail.com">E-posta ↗</a>
-            <a href={officialSiteUrl}>MeMoDe portföy ↗</a>
-          </div>
+          <p>İnternette çalışan, oynanan ve keşfedilen küçük dünyalar.</p>
           <small>fikkis / 2026</small>
         </footer>
       </main>
 
       <FloatingPortal
-        href={officialSiteUrl}
-        destination="MeMoDe"
-        eyebrow="CV / portföy"
-        previewSrc="/portal-memode.png"
-        storageKey="fikkis-portal-v2"
+        href={instagramUrl}
+        destination="@memode333"
+        eyebrow="Instagram"
+        previewSrc="/portal-instagram.png"
+        storageKey="fikkis-instagram-portal-v1"
       />
     </>
   );
