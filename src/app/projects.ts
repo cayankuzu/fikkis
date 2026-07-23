@@ -11,7 +11,8 @@ export type Project = {
     | "old-maid"
     | "tictactoe"
     | "monster-wrangler"
-    | "sprite-clash"
+    | "catch-the-clown"
+    | "snake"
     | "burger-dog"
     | "feed-the-dragon"
     | "atkafasi";
@@ -19,6 +20,9 @@ export type Project = {
   hook: string;
   description: string;
   href?: string;
+  downloadUrl?: string;
+  downloadStatus?: string;
+  secondaryHref?: string;
   category: "web" | "game" | "mobile" | "content";
   desktopOnly?: boolean;
   preview: string;
@@ -83,8 +87,9 @@ export const projects: Project[] = [
     title: "UniVerse",
     hook: "Üniversite hayatının tamamı tek bir dijital evrende.",
     description:
-      "Öğrencileri kampüs akışı, topluluklar, etkinlikler ve ortak ilgi alanları çevresinde buluşturan bir sosyal ağ. Üniversite deneyimini daha görünür ve bağlantılı hâle getirir.",
+      "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. Öğrencileri kampüs akışı, topluluklar, etkinlikler ve ortak ilgi alanları çevresinde buluşturarak üniversite deneyimini daha görünür ve bağlantılı hâle getirir.",
     href: "https://www.figma.com/make/PifHMriFM6plYxEBFp0ziW/%C3%96%C4%9Frenci-Sosyal-A%C4%9F%C4%B1?fullscreen=1&t=z4tqXaqRw3iPsSzE-1&code-node-id=0-9",
+    downloadUrl: "https://cayankuzu.github.io/uniVerse_web/download/",
     preview: "/project-previews/universe-1.png",
     previews: [
       "/project-previews/universe-1.png",
@@ -100,8 +105,9 @@ export const projects: Project[] = [
     title: "SoRita",
     hook: "Şehir artık yalnızca bir harita değil, birlikte yazılan sosyal bir hikâye.",
     description:
-      "Mekânları, anıları ve insanları aynı haritada buluşturan sosyal keşif uygulaması. Kullanıcılar rotalar oluşturur, yerleri listeler ve şehir deneyimlerini arkadaşlarıyla paylaşır.",
+      "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. Mekânları, anıları ve insanları aynı haritada buluşturur; kullanıcılar rotalar oluşturur, yerleri listeler ve şehir deneyimlerini arkadaşlarıyla paylaşır.",
     href: "https://www.figma.com/make/xFI0Mxo8e6GdMVNfWu0eSm/SoRita?fullscreen=1&t=a9Aa6ncfv0vyOC9N-1&code-node-id=0-9",
+    downloadUrl: "https://cayankuzu.github.io/SoRita_web/download/",
     preview: "/project-previews/sorita-1.png",
     previews: [
       "/project-previews/sorita-1.png",
@@ -117,8 +123,9 @@ export const projects: Project[] = [
     title: "WMatch",
     hook: "Ne izlediğin, kiminle eşleşeceğini söylesin.",
     description:
-      "İzlediğin film ve dizilerden bir zevk profili çıkaran sosyal eşleşme fikri. Ortak yapımlar, türler ve izleme alışkanlıkları yeni sohbetlerin başlangıç noktasına dönüşür.",
+      "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. İzlediğin film ve dizilerden bir zevk profili çıkarır; ortak yapımlar, türler ve izleme alışkanlıkları yeni sohbetlerin başlangıç noktasına dönüşür.",
     href: "https://www.figma.com/make/NCkE1gjOXWA78mtbYdgz7z/WMatch?fullscreen=1&t=O3uk8ynWSDA7YVm7-1&code-node-id=0-9",
+    downloadStatus: "İndirme bağlantısı çok yakında",
     preview: "/project-previews/wmatch-1.png",
     previews: [
       "/project-previews/wmatch-1.png",
@@ -186,15 +193,26 @@ export const projects: Project[] = [
     tone: "violet",
   },
   {
-    id: "sprite-clash",
+    id: "catch-the-clown",
     category: "game",
-    title: "Sprite Clash",
-    hook: "Beş koridor, sınırlı enerji ve kaleye doğru ilerleyen durmaksızın bir dalga.",
+    title: "Catch the Clown",
+    hook: "Palyaçoyu yakaladıkça hız artar; her ıskada bir can gider.",
     description:
-      "Pygame sınıf, sprite group ve çarpışma derslerini oynanabilir bir savunma oyununda birleştirir. Doğru koridora zamanında şövalye gönder; enerji yönet, hızlanan canavarları durdur ve kaleyi ayakta tut.",
-    href: "https://sprite-clash.vercel.app/",
-    preview: "/project-previews/sprite-clash-gameplay.png",
+      "Orijinal Pygame mekaniğini tarayıcıya taşıyan hızlı bir hedef yakalama oyunu. Hareket eden palyaçoya tıkla veya dokun, seri yaptıkça yükselen tempoya ayak uydur ve beş canın bitmeden en yüksek skora ulaş.",
+    href: "https://catch-the-clown.vercel.app/",
+    preview: "/project-previews/catch-the-clown-gameplay.png",
     tone: "blue",
+  },
+  {
+    id: "snake",
+    category: "game",
+    title: "Snake",
+    hook: "Her elma seni büyütür; daralan alan bir sonraki dönüşünü belirler.",
+    description:
+      "Klasik yılan oyununu klavye, dokunmatik yön tuşları ve kaydırma hareketleriyle yeniden kuran web sürümü. Elmalarla uzarken duvarlara ve kendi gövdene çarpmadan ritmini koru.",
+    href: "https://snake-game-seven-gray.vercel.app/",
+    preview: "/project-previews/snake-gameplay.png",
+    tone: "green",
   },
   {
     id: "burger-dog",
@@ -225,8 +243,9 @@ export const projects: Project[] = [
     title: "AtKafası Fanzin",
     hook: "Düşüncelerin birbirine çarptığı bağımsız bir fanzin alanı.",
     description:
-      "Yazı, görsel ve ortak üretimi bir araya getiren bağımsız yayın denemesi. AtKafası'nın yayımlanan sayılarına Gumroad üzerinden ücretsiz ya da destek olarak belirlediğin bir ücretle ulaşabilirsin.",
-    href: "https://atkafasifanzin.gumroad.com/",
+      "Yazı, görsel ve ortak üretimi bir araya getiren bağımsız yayın denemesi. Dergiyi daha az komisyon kesildiği için öncelikle Shopier'den alabilir; dilersen Gumroad üzerinden de satın alıp yorum bırakabilirsin.",
+    href: "https://www.shopier.com/atkafasifanzin",
+    secondaryHref: "https://atkafasifanzin.gumroad.com/",
     preview: "/project-previews/atkafasi.png",
     tone: "orange",
   },

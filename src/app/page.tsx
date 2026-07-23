@@ -4,6 +4,8 @@ import { projects } from "./projects";
 const instagramUrl =
   "https://www.instagram.com/memode333?igsh=aWZkZDM3dXR1azBk";
 const contactEmail = "memodee333@gmail.com";
+const shopierUrl = "https://www.shopier.com/atkafasifanzin";
+const gumroadUrl = "https://atkafasifanzin.gumroad.com/";
 
 export default function Home() {
   return (
@@ -19,20 +21,44 @@ export default function Home() {
 
       <footer className="fikkisFooter">
         <div className="footerSignature">
-          <strong>Powered by MeMoDe</strong>
+          <strong>MeMoDe tarafından</strong>
+          <p className="footerContactLead">
+            Soru ve önerileriniz için e-posta veya Instagram&apos;dan
+            ulaşabilirsiniz.
+          </p>
           <p>© 2026 Çayan Kuzu — Tüm hakları saklıdır.</p>
         </div>
 
-        <nav aria-label="Bağlantılar ve iletişim">
-          <a href={instagramUrl} target="_blank" rel="noreferrer">
-            <span>Instagram</span>
-            <small>@memode333</small>
-          </a>
-          <a href={`mailto:${contactEmail}`}>
-            <span>İletişim</span>
-            <small>{contactEmail}</small>
-          </a>
-        </nav>
+        <div className="footerDetails">
+          <section className="footerSupport" aria-labelledby="support-title">
+            <p id="support-title">AtKafası&apos;na destek</p>
+            <strong>
+              Daha az komisyon için dergiyi Shopier&apos;den alabilirsin.
+            </strong>
+            <span>
+              Dilersen Gumroad üzerinden de satın alıp yorum bırakabilirsin.
+            </span>
+            <div>
+              <a href={shopierUrl} target="_blank" rel="noreferrer">
+                Shopier&apos;den al
+              </a>
+              <a href={gumroadUrl} target="_blank" rel="noreferrer">
+                Gumroad
+              </a>
+            </div>
+          </section>
+
+          <nav aria-label="Bağlantılar ve iletişim">
+            <a href={instagramUrl} target="_blank" rel="noreferrer">
+              <span>Instagram</span>
+              <small>@memode333</small>
+            </a>
+            <a href={`mailto:${contactEmail}`}>
+              <span>E-posta</span>
+              <small>{contactEmail}</small>
+            </a>
+          </nav>
+        </div>
       </footer>
     </main>
   );

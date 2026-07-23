@@ -9,6 +9,13 @@ type ProjectSlideshowProps = {
   priority?: boolean;
 };
 
+const categoryLabels: Record<Project["category"], string> = {
+  web: "Web sitesi",
+  game: "Oyun",
+  mobile: "Mobil uygulama",
+  content: "İçerik",
+};
+
 export function ProjectSlideshow({
   project,
   priority = false,
@@ -32,6 +39,10 @@ export function ProjectSlideshow({
       className={`projectCover projectCover-${project.previewFit ?? "cover"}`}
       aria-label={`${project.title} proje görüntüsü`}
     >
+      <span className="projectBadge">{categoryLabels[project.category]}</span>
+      {project.category === "mobile" ? (
+        <span className="projectBadge projectBadgeSecondary">UI/UX mockup</span>
+      ) : null}
       {project.previewFit === "contain" ? (
         <span
           className="projectCoverBackdrop"
