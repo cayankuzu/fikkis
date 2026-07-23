@@ -107,8 +107,11 @@ img { display: block; }
 .filterBar::-webkit-scrollbar { display: none; }
 
 .filterBar button {
+  display: inline-flex;
   min-height: 42px;
   padding: 0 17px;
+  align-items: center;
+  gap: 7px;
   border: 0;
   border-radius: 999px;
   color: #5d5d5d;
@@ -131,6 +134,27 @@ img { display: block; }
 .filterBar button.is-active {
   color: #fff;
   background: #111;
+}
+
+.filterCount {
+  display: inline-grid;
+  min-width: 23px;
+  height: 23px;
+  padding: 0 6px;
+  place-items: center;
+  border-radius: 999px;
+  color: #444;
+  background: #e5e5e5;
+  font-family: var(--font-mono), monospace;
+  font-size: .61rem;
+  font-weight: 780;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.filterBar button.is-active .filterCount {
+  color: #fff;
+  background: rgba(255, 255, 255, .2);
 }
 
 .projectGallery {

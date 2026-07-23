@@ -223,6 +223,14 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     getLimitedDeviceSnapshot,
     getServerDeviceSnapshot,
   );
+  const filterCounts = projects.reduce<Record<FilterValue, number>>(
+    (counts, project) => {
+      counts.all += 1;
+      counts[project.category] += 1;
+      return counts;
+    },
+    { all: 0, web: 0, game: 0, mobile: 0, content: 0 },
+  );
 
   const visibleProjects =
     activeFilter === "all"
@@ -328,9 +336,13 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               key={filter.value}
               type="button"
               aria-pressed={activeFilter === filter.value}
+              aria-label={`${filter.label}, ${filterCounts[filter.value]} içerik`}
               onClick={() => setActiveFilter(filter.value)}
             >
               {filter.label}
+              <span className="filterCount" aria-hidden="true">
+                {filterCounts[filter.value]}
+              </span>
             </button>
           ))}
         </div>
