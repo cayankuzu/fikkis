@@ -165,7 +165,7 @@ export const projects: Project[] = [
     title: "Papaz Kaçtı",
     hook: "Sağındaki elden kapalı bir kart seç; eşsiz papaz sende kalmasın.",
     description:
-      "Gerçek masa düzeninde üç bilgisayar rakibine karşı oynanan dört kişilik kart oyunu. Her elde deste yeniden karıştırılır; çiftler ortaya açılır, rakipler rastgele seçim yapar ve senden çekilen ya da senin çektiğin kart masada görünür.",
+      "Gerçek masa düzeninde üç bilgisayar rakibine karşı oynanan dört kişilik kart oyunu. Her elde deste yeniden karıştırılır; çiftler ortaya açılır, senin seçtiğin kart iki saniye gösterilir ve rakiplerin senden aldığı kart gizli kalır.",
     href: "https://old-maid-card-game.vercel.app/",
     preview: "/project-previews/old-maid.png",
     tone: "cream",

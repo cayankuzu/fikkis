@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import type { MouseEvent } from "react";
 import type { Project } from "../projects";
 import { ProjectSlideshow } from "./ProjectSlideshow";
@@ -47,7 +41,7 @@ function getServerDeviceSnapshot() {
   return false;
 }
 
-function openRedirectTab(projectTitle: string) {
+function openRedirectTab(projectTitle: string, destinationUrl: string) {
   const redirectTab = window.open("", "_blank");
 
   if (!redirectTab) return null;
@@ -126,6 +120,27 @@ function openRedirectTab(projectTitle: string) {
         font-weight: 700;
         text-decoration: none;
       }
+      #continue {
+        width: 100%;
+        min-height: 48px;
+        margin-top: 18px;
+        border: 0;
+        border-radius: 999px;
+        color: #fff;
+        background: #181818;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: opacity .2s ease, transform .2s ease;
+      }
+      #continue:disabled {
+        cursor: wait;
+        opacity: .36;
+      }
+      #continue:not(:disabled):hover {
+        transform: translateY(-2px);
+      }
       .progress {
         display: block;
         width: 100%;
@@ -155,23 +170,42 @@ function openRedirectTab(projectTitle: string) {
       <h1>Siteye yönlendiriliyorsunuz</h1>
       <strong id="destination"></strong>
       <p class="copy">
-        AtKafası fanzinini istediğin platformdan alabilirsin. Shopier daha az
-        komisyon keser; Gumroad alternatif satın alma ve yorum alanıdır.
+        AtKafası fanzinini istediğin platformdan satın alabilirsin. Shopier daha
+        az komisyon keser; Gumroad alternatif satın alma ve yorum alanıdır.
+        Aldıktan sonra yorumunu bırakmayı unutma.
       </p>
       <nav aria-label="Destek bağlantıları">
         <a href="https://www.shopier.com/atkafasifanzin" target="_blank" rel="noreferrer">Shopier</a>
         <a href="https://atkafasifanzin.gumroad.com/" target="_blank" rel="noreferrer">Gumroad</a>
       </nav>
+      <button id="continue" type="button" disabled>3 saniye bekle</button>
       <span class="progress" aria-hidden="true"></span>
     </main>
+    <script>
+      (() => {
+        const continueButton = document.getElementById("continue");
+
+        window.setTimeout(() => {
+          continueButton.disabled = false;
+          continueButton.textContent = "Siteye git";
+        }, 3000);
+
+        continueButton.addEventListener("click", () => {
+          const destination = continueButton.dataset.destination;
+          if (destination) window.location.replace(destination);
+        });
+      })();
+    </script>
   </body>
 </html>`);
     redirectTab.document.close();
 
     const destination = redirectTab.document.getElementById("destination");
     if (destination) destination.textContent = projectTitle;
+    const continueButton = redirectTab.document.getElementById("continue");
+    if (continueButton) continueButton.dataset.destination = destinationUrl;
   } catch {
-    // Sekme yine ayrılmıştır; yönlendirme zamanlayıcısı çalışmaya devam eder.
+    // Sekme ayrılmıştır; tarayıcı yine de kullanıcıya boş sekmeyi gösterebilir.
   }
 
   return redirectTab;
@@ -181,10 +215,9 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
   const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
   const [blockedProject, setBlockedProject] = useState<Project | null>(null);
   const [redirectProject, setRedirectProject] = useState<Project | null>(null);
-  const [hasRedirectTab, setHasRedirectTab] = useState(false);
+  const [redirectReady, setRedirectReady] = useState(false);
   const [noticeVisible, setNoticeVisible] = useState(true);
   const [noticeRestart, setNoticeRestart] = useState(0);
-  const redirectTabRef = useRef<Window | null>(null);
   const isLimitedDevice = useSyncExternalStore(
     subscribeToDeviceChanges,
     getLimitedDeviceSnapshot,
@@ -196,15 +229,10 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       ? projects
       : projects.filter((project) => project.category === activeFilter);
 
-  const cancelRedirect = useCallback(() => {
-    const redirectTab = redirectTabRef.current;
-
-    if (redirectTab && !redirectTab.closed) redirectTab.close();
-
-    redirectTabRef.current = null;
-    setHasRedirectTab(false);
+  const cancelRedirect = () => {
+    setRedirectReady(false);
     setRedirectProject(null);
-  }, []);
+  };
 
   useEffect(() => {
     if (!isLimitedDevice) return;
@@ -236,7 +264,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setBlockedProject(null);
-        cancelRedirect();
+        setRedirectReady(false);
+        setRedirectProject(null);
       }
     };
 
@@ -247,23 +276,13 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [blockedProject, redirectProject, cancelRedirect]);
+  }, [blockedProject, redirectProject]);
 
   useEffect(() => {
     if (!redirectProject?.href) return;
 
     const timer = window.setTimeout(() => {
-      const redirectTab = redirectTabRef.current;
-
-      if (!redirectTab || redirectTab.closed) {
-        setHasRedirectTab(false);
-        return;
-      }
-
-      redirectTab.location.replace(redirectProject.href!);
-      redirectTabRef.current = null;
-      setHasRedirectTab(false);
-      setRedirectProject(null);
+      setRedirectReady(true);
     }, 3000);
 
     return () => window.clearTimeout(timer);
@@ -283,15 +302,11 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     if (!destination) return;
     event.preventDefault();
 
-    const previousRedirectTab = redirectTabRef.current;
-    if (previousRedirectTab && !previousRedirectTab.closed) {
-      previousRedirectTab.close();
+    const redirectTab = openRedirectTab(project.title, destination);
+    if (!redirectTab) {
+      setRedirectReady(false);
+      setRedirectProject({ ...project, href: destination });
     }
-
-    const redirectTab = openRedirectTab(project.title);
-    redirectTabRef.current = redirectTab;
-    setHasRedirectTab(Boolean(redirectTab));
-    setRedirectProject({ ...project, href: destination });
   };
 
   const dismissNotice = () => {
@@ -474,16 +489,22 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 Gumroad
               </a>
             </div>
-            {!hasRedirectTab && redirectProject.href ? (
-              <a
-                className="redirectManualOpen"
-                href={redirectProject.href}
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setRedirectProject(null)}
+            {redirectProject.href ? (
+              <button
+                className="redirectContinue"
+                type="button"
+                disabled={!redirectReady}
+                onClick={() => {
+                  window.open(
+                    redirectProject.href,
+                    "_blank",
+                    "noopener,noreferrer",
+                  );
+                  cancelRedirect();
+                }}
               >
-                Yeni sekmede aç
-              </a>
+                {redirectReady ? "Siteye git" : "3 saniye bekle"}
+              </button>
             ) : null}
             <button type="button" onClick={cancelRedirect}>
               Fikkis&apos;te kal

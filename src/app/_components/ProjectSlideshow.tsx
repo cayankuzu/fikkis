@@ -41,7 +41,9 @@ export function ProjectSlideshow({
     >
       <span className="projectBadge">{categoryLabels[project.category]}</span>
       {project.category === "mobile" ? (
-        <span className="projectBadge projectBadgeSecondary">UI/UX mockup</span>
+        <span className="projectBadge projectBadgeSecondary">
+          Mobil app mockup
+        </span>
       ) : null}
       {project.previewFit === "contain" ? (
         <span

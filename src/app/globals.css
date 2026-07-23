@@ -717,26 +717,26 @@ img { display: block; }
   background: transparent;
 }
 
-.redirectManualOpen {
-  display: flex;
+.redirectContinue {
   width: 100%;
   min-height: 44px;
   margin-top: 10px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  color: #111;
-  background: #fff;
-  font-size: .7rem;
-  font-weight: 760;
+  color: #111 !important;
+  background: #fff !important;
 }
 
 .redirectChoices a:hover,
 .redirectChoices a:focus-visible,
-.redirectManualOpen:hover,
-.redirectManualOpen:focus-visible {
+.redirectContinue:not(:disabled):hover,
+.redirectContinue:not(:disabled):focus-visible {
   color: #fff;
   background: #1769ff;
+}
+
+.redirectContinue:disabled {
+  color: #777 !important;
+  background: #2c2c2c !important;
+  cursor: wait;
 }
 
 .contentRedirect button:hover {
