@@ -163,9 +163,9 @@ export const projects: Project[] = [
     id: "old-maid",
     category: "game",
     title: "Papaz Kaçtı",
-    hook: "Çiftler kaybolurken son papazın kimin elinde kalacağını izle.",
+    hook: "Sağındaki elden kapalı bir kart seç; eşsiz papaz sende kalmasın.",
     description:
-      "Özgün Python mantığını tarayıcıya taşıyan dört kişilik kart oyunu. Kapalı kartlardan seçimini yap; çiftler otomatik elensin, üç bilgisayar rakibi sırasını oynasın ve son papaz sende kalmasın.",
+      "Gerçek masa düzeninde üç bilgisayar rakibine karşı oynanan dört kişilik kart oyunu. Her elde deste yeniden karıştırılır; çiftler ortaya açılır, rakipler rastgele seçim yapar ve senden çekilen ya da senin çektiğin kart masada görünür.",
     href: "https://old-maid-card-game.vercel.app/",
     preview: "/project-previews/old-maid.png",
     tone: "cream",
@@ -174,9 +174,9 @@ export const projects: Project[] = [
     id: "tictactoe",
     category: "game",
     title: "Tic Tac Toe",
-    hook: "Üç hamlede bir çizgi; dokuz karede bitmeyen bir rekabet.",
+    hook: "Tahtanı seç; üçlüden beşli çizgiye uzanan rekabeti kazan.",
     description:
-      "NumPy ile yazılan satır, sütun ve çapraz kontrol mantığının iki oyunculu web sürümü. Aynı ekranda sırayla X ve O yerleştir, tur skorunu tut ve yeni raunda tek dokunuşla geç.",
+      "NumPy ile yazılan satır, sütun ve çapraz kontrol mantığının iki oyunculu web sürümü. 3×3, 4×4, 5×5 veya 6×6 tahtayı seç; moda göre üç, dört ya da beş işareti hizala ve seri skorunu koru.",
     href: "https://tic-tac-toe-game-delta-jade.vercel.app/",
     preview: "/project-previews/tictactoe.png",
     tone: "coral",

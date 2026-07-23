@@ -114,16 +114,17 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
   const handleProjectClick = (
     event: MouseEvent<HTMLAnchorElement>,
     project: Project,
+    destination = project.href,
   ) => {
-    if (project.category === "content") {
+    if (project.desktopOnly && isLimitedDevice) {
       event.preventDefault();
-      setRedirectProject(project);
+      setBlockedProject(project);
       return;
     }
 
-    if (!project.desktopOnly || !isLimitedDevice) return;
+    if (!destination) return;
     event.preventDefault();
-    setBlockedProject(project);
+    setRedirectProject({ ...project, href: destination });
   };
 
   const dismissNotice = () => {
@@ -185,6 +186,9 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                         href={project.downloadUrl}
                         target="_blank"
                         rel="noreferrer"
+                        onClick={(event) =>
+                          handleProjectClick(event, project, project.downloadUrl)
+                        }
                       >
                         Uygulamayı indir ve dene
                       </a>
@@ -192,7 +196,14 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                       <span>{project.downloadStatus}</span>
                     )}
                     {project.href ? (
-                      <a href={project.href} target="_blank" rel="noreferrer">
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(event) =>
+                          handleProjectClick(event, project, project.href)
+                        }
+                      >
                         Etkileşimli mockup&apos;ı aç
                       </a>
                     ) : null}
@@ -210,7 +221,10 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
         </div>
       </section>
 
-      {isLimitedDevice && noticeVisible && !blockedProject ? (
+      {isLimitedDevice &&
+      noticeVisible &&
+      !blockedProject &&
+      !redirectProject ? (
         <aside className="mobileExperienceNotice" role="status">
           <div>
             <strong>Daha iyi bir deneyim için bilgisayar kullan</strong>
@@ -267,17 +281,31 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             aria-labelledby="content-redirect-title"
           >
             <span className="redirectSpinner" aria-hidden="true" />
-            <p className="redirectEyebrow">AtKafası Fanzin</p>
-            <h2 id="content-redirect-title">Sayfaya yönlendiriliyorsunuz</h2>
+            <p className="redirectEyebrow">Bana destek ol</p>
+            <h2 id="content-redirect-title">Siteye yönlendiriliyorsunuz</h2>
+            <strong className="redirectDestination">
+              {redirectProject.title}
+            </strong>
             <p>
-              Daha az komisyon için Shopier&apos;i tercih edebilir; dilersen
-              Gumroad&apos;dan da satın alıp yorum bırakabilirsin.
+              AtKafası fanzinini istediğin platformdan alabilirsin. Shopier daha
+              az komisyon keser; Gumroad ise alternatif satın alma ve yorum
+              alanıdır. Aldıktan sonra yorumunu bırakmayı unutma.
             </p>
             <div className="redirectChoices">
-              <a href={redirectProject.href}>Shopier</a>
-              {redirectProject.secondaryHref ? (
-                <a href={redirectProject.secondaryHref}>Gumroad</a>
-              ) : null}
+              <a
+                href="https://www.shopier.com/atkafasifanzin"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Shopier
+              </a>
+              <a
+                href="https://atkafasifanzin.gumroad.com/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Gumroad
+              </a>
             </div>
             <button type="button" onClick={() => setRedirectProject(null)}>
               Fikkis&apos;te kal

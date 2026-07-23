@@ -31,12 +31,13 @@ export default function Home() {
 
         <div className="footerDetails">
           <section className="footerSupport" aria-labelledby="support-title">
-            <p id="support-title">AtKafası&apos;na destek</p>
+            <p id="support-title">Bana destek ol</p>
             <strong>
-              Daha az komisyon için dergiyi Shopier&apos;den alabilirsin.
+              AtKafası fanzinini istediğin platformdan satın alabilirsin.
             </strong>
             <span>
-              Dilersen Gumroad üzerinden de satın alıp yorum bırakabilirsin.
+              Shopier daha az komisyon keser; Gumroad alternatif satın alma ve
+              yorum alanıdır. Aldıktan sonra yorumunu bırakmayı unutma.
             </span>
             <div>
               <a href={shopierUrl} target="_blank" rel="noreferrer">
