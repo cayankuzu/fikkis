@@ -111,9 +111,52 @@ img { display: block; }
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.projectCover img {
+.projectCoverImage {
   object-fit: cover;
+  animation: preview-in 360ms ease both;
   transition: transform 350ms cubic-bezier(.2, .8, .2, 1), filter 250ms ease;
+}
+
+.projectCover-contain {
+  background: #111;
+}
+
+.projectCover-contain .projectCoverImage {
+  z-index: 1;
+  object-fit: contain;
+}
+
+.projectCoverBackdrop {
+  position: absolute;
+  inset: -22px;
+  background-position: center;
+  background-size: cover;
+  filter: blur(22px) brightness(.45) saturate(.85);
+  opacity: .72;
+  transform: scale(1.08);
+}
+
+.slideshowProgress {
+  position: absolute;
+  z-index: 2;
+  right: 12px;
+  bottom: 10px;
+  left: 12px;
+  display: flex;
+  gap: 5px;
+  pointer-events: none;
+}
+
+.slideshowProgress span {
+  height: 3px;
+  flex: 1;
+  border-radius: 999px;
+  background: rgba(255,255,255,.3);
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+
+.slideshowProgress .is-active {
+  background: #fff;
 }
 
 .projectLink:hover .projectCover,
@@ -136,6 +179,8 @@ img { display: block; }
 .tone-lime .projectCover { border-color: #398510; color: #398510; }
 .tone-navy .projectCover { border-color: #174b79; color: #174b79; }
 .tone-cream .projectCover { border-color: #39372e; color: #39372e; }
+.tone-coral .projectCover { border-color: #b9382a; color: #b9382a; }
+.tone-orange .projectCover { border-color: #bb5c13; color: #bb5c13; }
 
 .projectCaption {
   display: flex;
@@ -227,6 +272,10 @@ img { display: block; }
   font-family: var(--font-mono), monospace;
   font-size: .58rem;
   text-align: right;
+}
+
+@keyframes preview-in {
+  from { opacity: .35; }
 }
 
 @media (max-width: 980px) {
