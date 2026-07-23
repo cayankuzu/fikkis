@@ -10,11 +10,17 @@ export type Project = {
     | "battleship"
     | "old-maid"
     | "tictactoe"
+    | "monster-wrangler"
+    | "sprite-clash"
+    | "burger-dog"
+    | "feed-the-dragon"
     | "atkafasi";
   title: string;
   hook: string;
   description: string;
   href?: string;
+  category: "web" | "game" | "mobile" | "content";
+  desktopOnly?: boolean;
   preview: string;
   previews?: string[];
   previewFit?: "cover" | "contain";
@@ -36,6 +42,8 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "remember",
+    category: "web",
+    desktopOnly: true,
     title: "Remember You Must Die",
     hook: "Ölümü hatırlatan bir dünyanın içinde yürümeye cesaret et.",
     description:
@@ -46,6 +54,8 @@ export const projects: Project[] = [
   },
   {
     id: "desain",
+    category: "web",
+    desktopOnly: true,
     title: "desAIn",
     hook: "Bir odayı ölç; birkaç dokunuşla üç boyutlu bir tasarıma dönüştür.",
     description:
@@ -57,6 +67,8 @@ export const projects: Project[] = [
   },
   {
     id: "audioroom",
+    category: "web",
+    desktopOnly: true,
     title: "AudioRoom",
     hook: "Bir albümü yalnızca dinleme; onun dünyasının içinde dolaş.",
     description:
@@ -67,6 +79,7 @@ export const projects: Project[] = [
   },
   {
     id: "universe",
+    category: "mobile",
     title: "UniVerse",
     hook: "Üniversite hayatının tamamı tek bir dijital evrende.",
     description:
@@ -83,6 +96,7 @@ export const projects: Project[] = [
   },
   {
     id: "sorita",
+    category: "mobile",
     title: "SoRita",
     hook: "Şehir artık yalnızca bir harita değil, birlikte yazılan sosyal bir hikâye.",
     description:
@@ -99,6 +113,7 @@ export const projects: Project[] = [
   },
   {
     id: "wmatch",
+    category: "mobile",
     title: "WMatch",
     hook: "Ne izlediğin, kiminle eşleşeceğini söylesin.",
     description:
@@ -116,6 +131,7 @@ export const projects: Project[] = [
   },
   {
     id: "card-race",
+    category: "game",
     title: "Card Race Game",
     hook: "Dört as, dört şerit ve her kart çekiminde değişen bir yarış.",
     description:
@@ -126,6 +142,7 @@ export const projects: Project[] = [
   },
   {
     id: "battleship",
+    category: "game",
     title: "Battleship",
     hook: "Klasik deniz savaşını müzik, ses ve sürükle-bırak kontrolüyle yeniden oyna.",
     description:
@@ -137,6 +154,7 @@ export const projects: Project[] = [
   },
   {
     id: "old-maid",
+    category: "game",
     title: "Papaz Kaçtı",
     hook: "Çiftler kaybolurken son papazın kimin elinde kalacağını izle.",
     description:
@@ -147,6 +165,7 @@ export const projects: Project[] = [
   },
   {
     id: "tictactoe",
+    category: "game",
     title: "Tic Tac Toe",
     hook: "Üç hamlede bir çizgi; dokuz karede bitmeyen bir rekabet.",
     description:
@@ -156,7 +175,52 @@ export const projects: Project[] = [
     tone: "coral",
   },
   {
+    id: "monster-wrangler",
+    category: "game",
+    title: "Monster Wrangler",
+    hook: "Hedefteki rengi yakala; yanlış canavar bir canına mal olsun.",
+    description:
+      "Hareketli canavarlar arasından ekranda gösterilen hedefi bulduğun hızlı bir yakalama oyunu. Turlar ilerledikçe kalabalık büyür; skor, süre, can ve sınırlı ışınlanma hakkı her kararı önemli hâle getirir.",
+    href: "https://monster-wrangler.vercel.app/",
+    preview: "/project-previews/monster-wrangler.png",
+    tone: "violet",
+  },
+  {
+    id: "sprite-clash",
+    category: "game",
+    title: "Sprite Clash",
+    hook: "Beş koridor, sınırlı enerji ve kaleye doğru ilerleyen durmaksızın bir dalga.",
+    description:
+      "Pygame sınıf, sprite group ve çarpışma derslerini oynanabilir bir savunma oyununda birleştirir. Doğru koridora zamanında şövalye gönder; enerji yönet, hızlanan canavarları durdur ve kaleyi ayakta tut.",
+    href: "https://sprite-clash.vercel.app/",
+    preview: "/project-previews/sprite-clash.png",
+    tone: "blue",
+  },
+  {
+    id: "burger-dog",
+    category: "game",
+    title: "Burger Dog",
+    hook: "Burger hızlanıyor, köpek acıkıyor; kaçırdığın her lokma bir can götürüyor.",
+    description:
+      "Düşen burgerleri yere değmeden yakalamaya dayanan refleks oyunu. Her başarılı yakalayış skoru ve düşüş hızını artırır; yenilenen hız desteğini doğru anda kullanmak daha uzun serilerin anahtarıdır.",
+    href: "https://burger-dog.vercel.app/",
+    preview: "/project-previews/burger-dog.png",
+    tone: "orange",
+  },
+  {
+    id: "feed-the-dragon",
+    category: "game",
+    title: "Feed the Dragon",
+    hook: "Her altın ejderhayı besler, oyunu hızlandırır ve bir sonraki hamleyi zorlaştırır.",
+    description:
+      "Ejderhayı yukarı ve aşağı yönlendirerek yaklaşan altınları yakaladığın tempolu bir arcade oyunu. Kaçırılan altınlar can eksiltir; artan hız, ritim ve konumlamayı giderek daha önemli hâle getirir.",
+    href: "https://feed-the-dragon.vercel.app/",
+    preview: "/project-previews/feed-the-dragon.png",
+    tone: "green",
+  },
+  {
     id: "atkafasi",
+    category: "content",
     title: "AtKafası Fanzin",
     hook: "Düşüncelerin birbirine çarptığı bağımsız bir fanzin alanı.",
     description:

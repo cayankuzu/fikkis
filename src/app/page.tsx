@@ -1,4 +1,4 @@
-import { ProjectSlideshow } from "./_components/ProjectSlideshow";
+import { ProjectGallery } from "./_components/ProjectGallery";
 import { projects } from "./projects";
 
 const instagramUrl =
@@ -15,35 +15,7 @@ export default function Home() {
         <p>bir şeyler deniyorum</p>
       </header>
 
-      <section className="projectGallery" aria-labelledby="gallery-title">
-        <h1 id="gallery-title" className="srOnly">
-          Fikkis projeleri
-        </h1>
-
-        {projects.map((project, index) => (
-          <article className={`projectCard tone-${project.tone}`} key={project.id}>
-            {project.href ? (
-              <a
-                className="projectLink"
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`${project.title} projesini aç`}
-              >
-                <ProjectSlideshow project={project} priority={index < 3} />
-              </a>
-            ) : (
-              <ProjectSlideshow project={project} priority={index < 3} />
-            )}
-
-            <div className="projectCaption">
-              <h2>{project.title}</h2>
-              <p className="projectHook">{project.hook}</p>
-              <p className="projectDescription">{project.description}</p>
-            </div>
-          </article>
-        ))}
-      </section>
+      <ProjectGallery projects={projects} />
 
       <footer className="fikkisFooter">
         <div className="footerSignature">
