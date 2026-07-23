@@ -3,7 +3,7 @@ import { Bricolage_Grotesque, DM_Mono } from "next/font/google";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({
-  variable: "--font-display",
+  variable: "--font-sans",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
@@ -16,8 +16,8 @@ const mono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "fikkis — dijital şeyler ve küçük evrenler",
-  description: "MeMoDe tarafından geliştirilen etkileşimli web deneyimleri, araçlar ve mobil ürünler.",
+  title: "fikkis — web deneyleri ve başka şeyler",
+  description: "Çayan Kuzu tarafından geliştirilen etkileşimli web deneyimleri, yaratıcı araçlar ve mobil ürünler.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
