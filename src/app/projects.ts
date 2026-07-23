@@ -193,7 +193,7 @@ export const projects: Project[] = [
     description:
       "Pygame sınıf, sprite group ve çarpışma derslerini oynanabilir bir savunma oyununda birleştirir. Doğru koridora zamanında şövalye gönder; enerji yönet, hızlanan canavarları durdur ve kaleyi ayakta tut.",
     href: "https://sprite-clash.vercel.app/",
-    preview: "/project-previews/sprite-clash.png",
+    preview: "/project-previews/sprite-clash-gameplay.png",
     tone: "blue",
   },
   {
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     description:
       "Düşen burgerleri yere değmeden yakalamaya dayanan refleks oyunu. Her başarılı yakalayış skoru ve düşüş hızını artırır; yenilenen hız desteğini doğru anda kullanmak daha uzun serilerin anahtarıdır.",
     href: "https://burger-dog.vercel.app/",
-    preview: "/project-previews/burger-dog.png",
+    preview: "/project-previews/burger-dog-gameplay.png",
     tone: "orange",
   },
   {
@@ -215,7 +215,8 @@ export const projects: Project[] = [
     description:
       "Ejderhayı yukarı ve aşağı yönlendirerek yaklaşan altınları yakaladığın tempolu bir arcade oyunu. Kaçırılan altınlar can eksiltir; artan hız, ritim ve konumlamayı giderek daha önemli hâle getirir.",
     href: "https://feed-the-dragon.vercel.app/",
-    preview: "/project-previews/feed-the-dragon.png",
+    preview: "/project-previews/feed-the-dragon-gameplay.png",
+    previewPosition: "left center",
     tone: "green",
   },
   {
