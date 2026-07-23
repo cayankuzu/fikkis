@@ -717,8 +717,24 @@ img { display: block; }
   background: transparent;
 }
 
+.redirectManualOpen {
+  display: flex;
+  width: 100%;
+  min-height: 44px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  color: #111;
+  background: #fff;
+  font-size: .7rem;
+  font-weight: 760;
+}
+
 .redirectChoices a:hover,
-.redirectChoices a:focus-visible {
+.redirectChoices a:focus-visible,
+.redirectManualOpen:hover,
+.redirectManualOpen:focus-visible {
   color: #fff;
   background: #1769ff;
 }

@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import type { MouseEvent } from "react";
 import type { Project } from "../projects";
 import { ProjectSlideshow } from "./ProjectSlideshow";
@@ -41,12 +47,144 @@ function getServerDeviceSnapshot() {
   return false;
 }
 
+function openRedirectTab(projectTitle: string) {
+  const redirectTab = window.open("", "_blank");
+
+  if (!redirectTab) return null;
+
+  try {
+    redirectTab.opener = null;
+    redirectTab.document.open();
+    redirectTab.document.write(`<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fikkis · Yönlendiriliyor</title>
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        min-height: 100vh;
+        margin: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        color: #181818;
+        background: #f7f6f2;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      main {
+        width: min(100%, 520px);
+        padding: 36px;
+        border: 2px solid #181818;
+        border-radius: 24px;
+        background: #fff;
+        box-shadow: 10px 10px 0 #181818;
+        text-align: center;
+      }
+      .spinner {
+        width: 42px;
+        height: 42px;
+        margin: 0 auto 22px;
+        border: 4px solid #d8d8d8;
+        border-top-color: #181818;
+        border-radius: 50%;
+        animation: spin .8s linear infinite;
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: #707070;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+      }
+      h1 { margin: 0; font-size: clamp(25px, 6vw, 38px); }
+      #destination {
+        display: block;
+        margin-top: 10px;
+        font-size: 18px;
+      }
+      .copy {
+        margin: 22px auto 0;
+        color: #565656;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      a {
+        padding: 10px 15px;
+        border: 1px solid #181818;
+        border-radius: 999px;
+        color: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .progress {
+        display: block;
+        width: 100%;
+        height: 4px;
+        margin-top: 26px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #e7e7e7;
+      }
+      .progress::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #181818;
+        transform-origin: left;
+        animation: progress 3s linear forwards;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="spinner" aria-hidden="true"></div>
+      <p class="eyebrow">Bana destek ol</p>
+      <h1>Siteye yönlendiriliyorsunuz</h1>
+      <strong id="destination"></strong>
+      <p class="copy">
+        AtKafası fanzinini istediğin platformdan alabilirsin. Shopier daha az
+        komisyon keser; Gumroad alternatif satın alma ve yorum alanıdır.
+      </p>
+      <nav aria-label="Destek bağlantıları">
+        <a href="https://www.shopier.com/atkafasifanzin" target="_blank" rel="noreferrer">Shopier</a>
+        <a href="https://atkafasifanzin.gumroad.com/" target="_blank" rel="noreferrer">Gumroad</a>
+      </nav>
+      <span class="progress" aria-hidden="true"></span>
+    </main>
+  </body>
+</html>`);
+    redirectTab.document.close();
+
+    const destination = redirectTab.document.getElementById("destination");
+    if (destination) destination.textContent = projectTitle;
+  } catch {
+    // Sekme yine ayrılmıştır; yönlendirme zamanlayıcısı çalışmaya devam eder.
+  }
+
+  return redirectTab;
+}
+
 export function ProjectGallery({ projects }: { projects: Project[] }) {
   const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
   const [blockedProject, setBlockedProject] = useState<Project | null>(null);
   const [redirectProject, setRedirectProject] = useState<Project | null>(null);
+  const [hasRedirectTab, setHasRedirectTab] = useState(false);
   const [noticeVisible, setNoticeVisible] = useState(true);
   const [noticeRestart, setNoticeRestart] = useState(0);
+  const redirectTabRef = useRef<Window | null>(null);
   const isLimitedDevice = useSyncExternalStore(
     subscribeToDeviceChanges,
     getLimitedDeviceSnapshot,
@@ -57,6 +195,16 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     activeFilter === "all"
       ? projects
       : projects.filter((project) => project.category === activeFilter);
+
+  const cancelRedirect = useCallback(() => {
+    const redirectTab = redirectTabRef.current;
+
+    if (redirectTab && !redirectTab.closed) redirectTab.close();
+
+    redirectTabRef.current = null;
+    setHasRedirectTab(false);
+    setRedirectProject(null);
+  }, []);
 
   useEffect(() => {
     if (!isLimitedDevice) return;
@@ -88,7 +236,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setBlockedProject(null);
-        setRedirectProject(null);
+        cancelRedirect();
       }
     };
 
@@ -99,13 +247,23 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [blockedProject, redirectProject]);
+  }, [blockedProject, redirectProject, cancelRedirect]);
 
   useEffect(() => {
     if (!redirectProject?.href) return;
 
     const timer = window.setTimeout(() => {
-      window.location.assign(redirectProject.href!);
+      const redirectTab = redirectTabRef.current;
+
+      if (!redirectTab || redirectTab.closed) {
+        setHasRedirectTab(false);
+        return;
+      }
+
+      redirectTab.location.replace(redirectProject.href!);
+      redirectTabRef.current = null;
+      setHasRedirectTab(false);
+      setRedirectProject(null);
     }, 3000);
 
     return () => window.clearTimeout(timer);
@@ -124,6 +282,15 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
 
     if (!destination) return;
     event.preventDefault();
+
+    const previousRedirectTab = redirectTabRef.current;
+    if (previousRedirectTab && !previousRedirectTab.closed) {
+      previousRedirectTab.close();
+    }
+
+    const redirectTab = openRedirectTab(project.title);
+    redirectTabRef.current = redirectTab;
+    setHasRedirectTab(Boolean(redirectTab));
     setRedirectProject({ ...project, href: destination });
   };
 
@@ -307,7 +474,18 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 Gumroad
               </a>
             </div>
-            <button type="button" onClick={() => setRedirectProject(null)}>
+            {!hasRedirectTab && redirectProject.href ? (
+              <a
+                className="redirectManualOpen"
+                href={redirectProject.href}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setRedirectProject(null)}
+              >
+                Yeni sekmede aç
+              </a>
+            ) : null}
+            <button type="button" onClick={cancelRedirect}>
               Fikkis&apos;te kal
             </button>
             <span className="redirectProgress" aria-hidden="true" />
