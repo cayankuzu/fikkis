@@ -10,6 +10,7 @@ export type Project = {
     | "battleship"
     | "old-maid"
     | "tictactoe"
+    | "son-33-saniye"
     | "monster-wrangler"
     | "catch-the-clown"
     | "snake"
@@ -180,6 +181,17 @@ export const projects: Project[] = [
     href: "https://tic-tac-toe-game-delta-jade.vercel.app/",
     preview: "/project-previews/tictactoe.png",
     tone: "coral",
+  },
+  {
+    id: "son-33-saniye",
+    category: "game",
+    title: "Son 33 Saniye",
+    hook: "Öleceğin kesin; itibarını kurtarmak için yalnızca 33 saniyen var.",
+    description:
+      "Topluluk havuzundan her tur yeniden kurulan 66 arama kaydını incele: masum olanları koru, riskli olanları sola sürükleyip sil. Kararların 0–1000 arası itibar puanını, unvanını ve liderlik sıralamanı belirler; oyun telefon, tablet ve bilgisayarda çalışır.",
+    href: "https://google-history-clear-game.vercel.app/",
+    preview: "/project-previews/son-33-saniye.png",
+    tone: "red",
   },
   {
     id: "monster-wrangler",
