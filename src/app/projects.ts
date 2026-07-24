@@ -11,6 +11,7 @@ export type Project = {
     | "old-maid"
     | "tictactoe"
     | "son-33-saniye"
+    | "son-hukum"
     | "monster-wrangler"
     | "catch-the-clown"
     | "snake"
@@ -192,6 +193,17 @@ export const projects: Project[] = [
     href: "https://google-history-clear-game.vercel.app/",
     preview: "/project-previews/son-33-saniye.png",
     tone: "red",
+  },
+  {
+    id: "son-hukum",
+    category: "game",
+    title: "Son Hüküm",
+    hook: "Bilgi kaderi belirler; verdiğin her cevap sahnedeki hükmü değiştirir.",
+    description:
+      "Kaynaklı bilgi sorularını sinematik bir 3B adam asmaca düzeniyle birleştiren Türkçe ve İngilizce web oyunu. Klasik, AS ve KURTAR modlarında altı karakterin üç zorluk seviyesindeki soru havuzlarını çöz; cevapların beden, ipler, kapak ve sonucu gerçek zamanlı olarak değiştirsin.",
+    href: "https://final-verdict-game.vercel.app/",
+    preview: "/project-previews/son-hukum.png",
+    tone: "amber",
   },
   {
     id: "monster-wrangler",
