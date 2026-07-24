@@ -10,6 +10,7 @@
 - `battleship.png`: live capture from `battleship-pygame.vercel.app`
 - `old-maid.png`: live capture from `old-maid-card-game.vercel.app`
 - `tictactoe.png`: live capture from `tic-tac-toe-game-delta-jade.vercel.app`
+- `son-40-saniye.png`: live capture from `google-history-clear-game.vercel.app`
 - `atkafasi.png`: live capture from `atkafasifanzin.gumroad.com`
 
 These files are captures or original assets from the projects themselves, not generated mockups.

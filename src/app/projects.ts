@@ -10,7 +10,7 @@ export type Project = {
     | "battleship"
     | "old-maid"
     | "tictactoe"
-    | "son-33-saniye"
+    | "son-40-saniye"
     | "asmaca"
     | "monster-wrangler"
     | "catch-the-clown"
@@ -184,14 +184,14 @@ export const projects: Project[] = [
     tone: "coral",
   },
   {
-    id: "son-33-saniye",
+    id: "son-40-saniye",
     category: "game",
-    title: "Son 33 Saniye",
-    hook: "Öleceğin kesin; itibarını kurtarmak için yalnızca 33 saniyen var.",
+    title: "Son 40 Saniye",
+    hook: "Öleceğin kesin; 33 kaydı ayıklayıp itibarını korumak için 40 saniyen var.",
     description:
-      "Topluluk havuzundan her tur yeniden kurulan 66 arama kaydını incele: masum olanları koru, riskli olanları sola sürükleyip sil. Kararların 0–1000 arası itibar puanını, unvanını ve liderlik sıralamanı belirler; oyun telefon, tablet ve bilgisayarda çalışır.",
+      "Tek ortak havuzdan rastgele seçilen 33 arama kaydını incele: masum olanları koru, riskli olanları sola sürükleyip sil. Kullanıcıların eklediği aramalar kategoriye ayrılmadan havuza katılır; kararların 0–1000 arası itibar puanını, unvanını ve liderlik sıralamanı belirler.",
     href: "https://google-history-clear-game.vercel.app/",
-    preview: "/project-previews/son-33-saniye.png",
+    preview: "/project-previews/son-40-saniye.png",
     tone: "red",
   },
   {
