@@ -11,7 +11,7 @@ export type Project = {
     | "old-maid"
     | "tictactoe"
     | "son-33-saniye"
-    | "son-hukum"
+    | "asmaca"
     | "monster-wrangler"
     | "catch-the-clown"
     | "snake"
@@ -195,14 +195,14 @@ export const projects: Project[] = [
     tone: "red",
   },
   {
-    id: "son-hukum",
+    id: "asmaca",
     category: "game",
-    title: "Son Hüküm",
+    title: "Asmaca",
     hook: "Bilgi kaderi belirler; verdiğin her cevap sahnedeki hükmü değiştirir.",
     description:
-      "Kaynaklı bilgi sorularını sinematik bir 3B adam asmaca düzeniyle birleştiren Türkçe ve İngilizce web oyunu. Klasik, AS ve KURTAR modlarında altı karakterin üç zorluk seviyesindeki soru havuzlarını çöz; cevapların beden, ipler, kapak ve sonucu gerçek zamanlı olarak değiştirsin.",
-    href: "https://final-verdict-game.vercel.app/",
-    preview: "/project-previews/son-hukum.png",
+      "Kaynaklı bilgi sorularını sinematik bir 3B adam asmaca düzeniyle birleştiren web oyunu. Klasik, AS ve KURTAR modlarında altı karakterin üç zorluk seviyesindeki soru havuzlarını çöz; cevapların beden, ipler, kapak ve sonucu gerçek zamanlı olarak değiştirsin.",
+    href: "https://hangman.vercel.app/",
+    preview: "/project-previews/asmaca.png",
     tone: "amber",
   },
   {
