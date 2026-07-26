@@ -28,6 +28,7 @@ export type Project = {
   category: "web" | "game" | "mobile" | "content";
   desktopOnly?: boolean;
   preview: string;
+  videoPreview?: string;
   previews?: string[];
   previewFit?: "cover" | "contain";
   previewPosition?: string;
@@ -56,6 +57,7 @@ export const projects: Project[] = [
       "Müzik, ışık ve mekânı bir araya getiren etkileşimli bir memento mori deneyimi. Her oda zamanı, hafızayı ve faniliği başka bir atmosferle yeniden kurar.",
     href: "https://remember-you-must-die-web.vercel.app/",
     preview: "/project-previews/remember-ouroboros.png",
+    videoPreview: "/project-videos/remember.webm",
     tone: "amber",
   },
   {
@@ -68,6 +70,7 @@ export const projects: Project[] = [
       "İç mekânları tarayıcıda planlamayı ve görselleştirmeyi kolaylaştıran yaratıcı bir 3B araç. Ölçüler, yerleşim ve sahne önizlemesi aynı çalışma alanında buluşur.",
     href: "https://des-ai-n.vercel.app/",
     preview: "/project-previews/desain.png",
+    videoPreview: "/project-videos/desain.webm",
     previewPosition: "35% center",
     tone: "blue",
   },
@@ -81,6 +84,7 @@ export const projects: Project[] = [
       "Albüm arşivini keşfedilebilir dijital odalara dönüştüren bir müzik deneyimi. Redd'in Mükemmel Boşluk evreni, ses ile görsel hikâye anlatımını aynı sahnede birleştirir.",
     href: "https://audio-room-ecru.vercel.app/",
     preview: "/project-previews/audioroom-mukemmel-bosluk.png",
+    videoPreview: "/project-videos/audioroom.webm",
     tone: "red",
   },
   {
@@ -147,6 +151,7 @@ export const projects: Project[] = [
       "İskambil destesini olasılık tabanlı bir yarış pistine dönüştüren Python oyunu. Aslar kendi sembollerinde ilerler; açılan ceza kartları dengeleri bozar ve son çekiliş kazananı belirler.",
     href: "https://card-race-game.vercel.app/",
     preview: "/project-previews/card-race.png",
+    videoPreview: "/project-videos/card-race.webm",
     tone: "lime",
   },
   {
@@ -158,6 +163,7 @@ export const projects: Project[] = [
       "Pygame ile geliştirilen 10×10 deniz savaşı; gemi yerleşimi, bilgisayar rakibi, isabet animasyonları, skor takibi ve bağımsız müzik/SFX kontrolleri içerir.",
     href: "https://battleship-pygame.vercel.app/",
     preview: "/project-previews/battleship.png",
+    videoPreview: "/project-videos/battleship.webm",
     previewFit: "contain",
     tone: "navy",
   },
@@ -170,6 +176,7 @@ export const projects: Project[] = [
       "Gerçek masa düzeninde üç bilgisayar rakibine karşı oynanan dört kişilik kart oyunu. Her elde deste yeniden karıştırılır; çiftler ortaya açılır, senin seçtiğin kart iki saniye gösterilir ve rakiplerin senden aldığı kart gizli kalır.",
     href: "https://old-maid-card-game.vercel.app/",
     preview: "/project-previews/old-maid.png",
+    videoPreview: "/project-videos/old-maid.webm",
     tone: "cream",
   },
   {
@@ -181,6 +188,7 @@ export const projects: Project[] = [
       "NumPy ile yazılan satır, sütun ve çapraz kontrol mantığının iki oyunculu web sürümü. 3×3, 4×4, 5×5 veya 6×6 tahtayı seç; moda göre üç, dört ya da beş işareti hizala ve seri skorunu koru.",
     href: "https://tic-tac-toe-game-delta-jade.vercel.app/",
     preview: "/project-previews/tictactoe.png",
+    videoPreview: "/project-videos/tictactoe.webm",
     tone: "coral",
   },
   {
@@ -192,6 +200,7 @@ export const projects: Project[] = [
       "Tek ortak havuzdan rastgele seçilen 33 arama kaydını incele: masum olanları koru, riskli olanları sola sürükleyip sil. Kullanıcıların eklediği aramalar kategoriye ayrılmadan havuza katılır; kararların 0–1000 arası itibar puanını, unvanını ve liderlik sıralamanı belirler.",
     href: "https://google-history-clear-game.vercel.app/",
     preview: "/project-previews/son-40-saniye.png",
+    videoPreview: "/project-videos/son-40-saniye.webm",
     tone: "red",
   },
   {
@@ -203,6 +212,7 @@ export const projects: Project[] = [
       "Kaynaklı bilgi sorularını sinematik bir 3B adam asmaca düzeniyle birleştiren web oyunu. Klasik, AS ve KURTAR modlarında altı karakterin üç zorluk seviyesindeki soru havuzlarını çöz; cevapların beden, ipler, kapak ve sonucu gerçek zamanlı olarak değiştirsin.",
     href: "https://hangman.vercel.app/",
     preview: "/project-previews/asmaca.png",
+    videoPreview: "/project-videos/asmaca.webm",
     tone: "amber",
   },
   {
@@ -214,6 +224,7 @@ export const projects: Project[] = [
       "Hareketli canavarlar arasından ekranda gösterilen hedefi bulduğun hızlı bir yakalama oyunu. Turlar ilerledikçe kalabalık büyür; skor, süre, can ve sınırlı ışınlanma hakkı her kararı önemli hâle getirir.",
     href: "https://monster-wrangler.vercel.app/",
     preview: "/project-previews/monster-wrangler.png",
+    videoPreview: "/project-videos/monster-wrangler.webm",
     tone: "violet",
   },
   {
@@ -225,6 +236,7 @@ export const projects: Project[] = [
       "Orijinal Pygame mekaniğini tarayıcıya taşıyan hızlı bir hedef yakalama oyunu. Hareket eden palyaçoya tıkla veya dokun, seri yaptıkça yükselen tempoya ayak uydur ve beş canın bitmeden en yüksek skora ulaş.",
     href: "https://catch-the-clown.vercel.app/",
     preview: "/project-previews/catch-the-clown-gameplay.png",
+    videoPreview: "/project-videos/catch-the-clown.webm",
     tone: "blue",
   },
   {
@@ -236,6 +248,7 @@ export const projects: Project[] = [
       "Klasik yılan oyununu klavye, dokunmatik yön tuşları ve kaydırma hareketleriyle yeniden kuran web sürümü. Elmalarla uzarken duvarlara ve kendi gövdene çarpmadan ritmini koru.",
     href: "https://snake-game-seven-gray.vercel.app/",
     preview: "/project-previews/snake-gameplay.png",
+    videoPreview: "/project-videos/snake.webm",
     tone: "green",
   },
   {
@@ -247,6 +260,7 @@ export const projects: Project[] = [
       "Düşen burgerleri yere değmeden yakalamaya dayanan refleks oyunu. Her başarılı yakalayış skoru ve düşüş hızını artırır; yenilenen hız desteğini doğru anda kullanmak daha uzun serilerin anahtarıdır.",
     href: "https://burger-dog.vercel.app/",
     preview: "/project-previews/burger-dog-gameplay.png",
+    videoPreview: "/project-videos/burger-dog.webm",
     tone: "orange",
   },
   {
@@ -258,6 +272,7 @@ export const projects: Project[] = [
       "Ejderhayı yukarı ve aşağı yönlendirerek yaklaşan altınları yakaladığın tempolu bir arcade oyunu. Kaçırılan altınlar can eksiltir; artan hız, ritim ve konumlamayı giderek daha önemli hâle getirir.",
     href: "https://feed-the-dragon.vercel.app/",
     preview: "/project-previews/feed-the-dragon-gameplay.png",
+    videoPreview: "/project-videos/feed-the-dragon.webm",
     previewPosition: "left center",
     tone: "green",
   },
@@ -271,6 +286,7 @@ export const projects: Project[] = [
     href: "https://www.shopier.com/atkafasifanzin",
     secondaryHref: "https://atkafasifanzin.gumroad.com/",
     preview: "/project-previews/atkafasi.png",
+    videoPreview: "/project-videos/atkafasi.webm",
     tone: "orange",
   },
 ];
