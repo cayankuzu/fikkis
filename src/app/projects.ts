@@ -202,7 +202,7 @@ export const projects: Project[] = [
     description:
       "Kaynaklı bilgi sorularını sinematik bir 3B adam asmaca düzeniyle birleştiren web oyunu. Klasik, AS ve KURTAR modlarında altı karakterin üç zorluk seviyesindeki soru havuzlarını çöz; cevapların beden, ipler, kapak ve sonucu gerçek zamanlı olarak değiştirsin.",
     href: "https://hangman.vercel.app/",
-    preview: "/project-previews/asmaca.png",
+    preview: "/project-previews/asmaca-idle.png",
     tone: "amber",
   },
   {
