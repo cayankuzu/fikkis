@@ -1,5 +1,6 @@
 export type Project = {
   id:
+    | "merbut"
     | "remember"
     | "desain"
     | "audioroom"
@@ -46,6 +47,18 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "merbut",
+    category: "game",
+    desktopOnly: true,
+    title: "Merbut",
+    hook: "İki kahraman, yedi biyom ve Aku’ya uzanan tek bir karanlık kader.",
+    description:
+      "Hz. Ali ve Samuray Jack’i aynı klavyede buluşturan yerel iki oyunculu 3B aksiyon oyunu. Biyom kapılarını aç, Aku’nun lejyonunu yen, değişken boss saldırılarına karşı birlikte savaş ve hareketli zaman portalına ulaş.",
+    href: "https://merbut.vercel.app/",
+    preview: "/project-previews/merbut.png",
+    tone: "red",
+  },
   {
     id: "remember",
     category: "web",
