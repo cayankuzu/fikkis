@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import type { MouseEvent } from "react";
 import type { Project } from "../projects";
@@ -45,6 +46,8 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
   const redirectTab = window.open("", "_blank");
 
   if (!redirectTab) return null;
+
+  const coverUrl = new URL("/atkafasi-cover.webp", window.location.origin).href;
 
   try {
     redirectTab.opener = null;
@@ -337,45 +340,121 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
       }
+
+      /* Sade destek ekranı */
+      :root {
+        --ink: #171512;
+        --paper: #fbf8f2;
+        --accent: #d85b36;
+        --muted: #6f675e;
+        --line: #d8d1c7;
+      }
+      body {
+        padding: clamp(14px, 4vw, 36px);
+        background: radial-gradient(circle at 50% 0, #f2d8cb 0, #e9e4dc 44%, #ddd8d0 100%);
+      }
+      body::before, main::after { display: none; }
+      main {
+        width: min(100%, 620px);
+        padding: clamp(22px, 5vw, 38px);
+        border: 1px solid rgba(23, 21, 18, .18);
+        border-radius: 28px;
+        background: var(--paper);
+        box-shadow: 0 24px 70px rgba(23, 21, 18, .17);
+      }
+      header { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+      .brand { font-size: clamp(25px, 5vw, 33px); letter-spacing: -.055em; }
+      .brand small { display: none; }
+      .issue {
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        background: transparent;
+        font-size: 9px;
+        letter-spacing: .12em;
+        transform: none;
+      }
+      .hero {
+        grid-template-columns: minmax(118px, 148px) 1fr;
+        gap: clamp(20px, 5vw, 34px);
+        padding: clamp(24px, 5vw, 36px) 0 26px;
+      }
+      .cover {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 725 / 1011;
+        object-fit: cover;
+        border: 1px solid rgba(23, 21, 18, .35);
+        border-radius: 12px;
+        background: #d3d1d0;
+        box-shadow: 7px 8px 0 rgba(23, 21, 18, .92);
+        transform: rotate(-2deg);
+        animation: none;
+      }
+      .eyebrow { margin-bottom: 9px; color: var(--accent); font-size: 10px; }
+      h1 {
+        font-size: clamp(34px, 7vw, 51px);
+        line-height: .96;
+        letter-spacing: -.055em;
+      }
+      h1 em { color: inherit; }
+      .copy { margin-top: 14px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+      nav { margin-top: 0; }
+      a, #continue {
+        min-height: 49px;
+        border: 1px solid var(--ink);
+        border-radius: 12px;
+        font-size: 12px;
+        box-shadow: none;
+      }
+      nav a:first-child { color: #fff; background: var(--accent); box-shadow: none; }
+      nav a:last-child { color: var(--ink); background: transparent; }
+      a:hover, a:focus-visible, #continue:not(:disabled):hover, #continue:not(:disabled):focus-visible {
+        color: #fff;
+        background: var(--ink);
+        box-shadow: none;
+        transform: translateY(-2px);
+      }
+      #continue { margin-top: 10px; background: var(--ink); }
+      #continue:disabled { color: #746e66; background: #ded9d1; }
+      .progress { display: block; margin-top: 13px; }
+      .progress i { display: block; height: 3px; background: var(--line); }
+      .progress i::after { background: var(--accent); }
+      @media (max-width: 480px) {
+        main { padding: 20px; border-radius: 22px; box-shadow: 0 18px 50px rgba(23, 21, 18, .16); }
+        .hero {
+          display: grid;
+          grid-template-columns: 92px 1fr;
+          gap: 18px;
+          padding: 22px 0;
+        }
+        .cover { float: none; width: 100%; margin: 0; box-shadow: 5px 6px 0 var(--ink); }
+        .copy { clear: none; padding-top: 0; }
+        nav { grid-template-columns: 1fr 1fr; }
+      }
     </style>
   </head>
   <body>
     <main>
       <header>
-        <div class="brand">fikkis<small>bir şeyler deniyorum</small></div>
-        <div class="issue">ATKAFASI<br />FANZİN</div>
+        <div class="brand">fikkis</div>
+        <div class="issue">ATKAFASI FANZİN</div>
       </header>
       <section class="hero">
-        <div class="cover" aria-hidden="true"></div>
+        <img class="cover" src="${coverUrl}" alt="AtKafası Fanzin kapak görseli" width="725" height="1011" />
         <div>
-          <p class="eyebrow">Bağımsız üretime omuz ver</p>
-          <h1>Yeni fikirler <em>canlı kalsın.</em></h1>
-          <strong id="destination"></strong>
-          <p class="copy">
-            Fikkis'teki oyunları, uygulamaları ve deneysel dünyaları bağımsız
-            olarak tasarlıyor ve geliştiriyorum. AtKafası'ndan bir sayı almak,
-            sıradaki fikrin ekrana gelmesine doğrudan katkı sağlar.
-          </p>
-          <div class="impact" aria-label="Desteğin etkisi">
-            <span>Yeni prototipler</span>
-            <span>Bağımsız yayın</span>
-            <span>Daha çok deney</span>
-          </div>
+          <p class="eyebrow">Bağımsız üretime destek</p>
+          <h1>Bir sayı,<br /><em>yeni bir proje.</em></h1>
+          <p class="copy">AtKafası’nı alarak yeni işlerin devamına katkı sağla.</p>
         </div>
       </section>
-      <p class="support-note">
-        <strong>Bir sayı, bir sonraki deneye yakıt olur.</strong><br />
-        Shopier daha az komisyon keser; Gumroad ise alternatif satın alma ve yorum alanıdır.
-      </p>
       <nav aria-label="Destek bağlantıları">
-        <a href="https://www.shopier.com/atkafasifanzin" target="_blank" rel="noreferrer">Shopier'den bir sayı edin</a>
-        <a href="https://atkafasifanzin.gumroad.com/" target="_blank" rel="noreferrer">Gumroad'da destekle</a>
+        <a href="https://www.shopier.com/atkafasifanzin" target="_blank" rel="noreferrer">Shopier’den al</a>
+        <a href="https://atkafasifanzin.gumroad.com/" target="_blank" rel="noreferrer">Gumroad</a>
       </nav>
       <button id="continue" type="button" disabled>3 saniye · sonra devam</button>
-      <div class="progress" aria-hidden="true">
-        <span>Kısa bir destek molası</span>
-        <i></i>
-      </div>
+      <div class="progress" aria-hidden="true"><i></i></div>
     </main>
     <script>
       (() => {
@@ -397,8 +476,6 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
 </html>`);
     redirectTab.document.close();
 
-    const destination = redirectTab.document.getElementById("destination");
-    if (destination) destination.textContent = projectTitle;
     const continueButton = redirectTab.document.getElementById("continue");
     if (continueButton) {
       continueButton.dataset.destination = destinationUrl;
@@ -680,45 +757,38 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               <span>AtKafası Fanzin</span>
             </div>
             <div className="redirectHero">
-              <span className="redirectMagazine" aria-hidden="true">AT<br />KAFASI</span>
+              <Image
+                className="redirectCover"
+                src="/atkafasi-cover.webp"
+                alt="AtKafası Fanzin kapak görseli"
+                width={725}
+                height={1011}
+                sizes="(max-width: 520px) 92px, 148px"
+              />
               <div>
-                <p className="redirectEyebrow">Bağımsız üretime omuz ver</p>
+                <p className="redirectEyebrow">Bağımsız üretime destek</p>
                 <h2 id="content-redirect-title">
-                  Yeni fikirler <em>canlı kalsın.</em>
+                  Bir sayı,<br /><em>yeni bir proje.</em>
                 </h2>
-                <strong className="redirectDestination">
-                  {redirectProject.title}
-                </strong>
+                <p className="redirectCopy">
+                  AtKafası’nı alarak yeni işlerin devamına katkı sağla.
+                </p>
               </div>
             </div>
-            <p className="redirectCopy">
-              Fikkis&apos;teki oyunları, uygulamaları ve deneysel dünyaları
-              bağımsız olarak geliştiriyorum. AtKafası&apos;ndan bir sayı almak,
-              sıradaki fikrin ekrana gelmesine doğrudan katkı sağlar.
-            </p>
-            <div className="redirectImpact" aria-label="Desteğin etkisi">
-              <span>Yeni prototipler</span>
-              <span>Bağımsız yayın</span>
-              <span>Daha çok deney</span>
-            </div>
-            <p className="redirectSupportNote">
-              <strong>Bir sayı, bir sonraki deneye yakıt olur.</strong>
-              Shopier daha az komisyon keser; Gumroad alternatif destek ve yorum alanıdır.
-            </p>
             <div className="redirectChoices">
               <a
                 href="https://www.shopier.com/atkafasifanzin"
                 target="_blank"
                 rel="noreferrer"
               >
-                Shopier&apos;den bir sayı edin
+                Shopier&apos;den al
               </a>
               <a
                 href="https://atkafasifanzin.gumroad.com/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Gumroad&apos;da destekle
+                Gumroad
               </a>
             </div>
             {redirectProject.href ? (
