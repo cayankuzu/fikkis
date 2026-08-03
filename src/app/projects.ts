@@ -87,7 +87,6 @@ export const projects: Project[] = [
   {
     id: "audioroom",
     category: "web",
-    desktopOnly: true,
     title: "AudioRoom",
     hook: "Bir albümü yalnızca dinleme; onun dünyasının içinde dolaş.",
     description:
