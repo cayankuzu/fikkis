@@ -399,11 +399,35 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
         justify-content: center;
         padding: 7px 2px;
       }
-      .cover {
-        display: block;
+      .coverCard {
         position: relative;
         flex: 0 0 68%;
         width: 68%;
+        margin: 0;
+        padding: 0 0 22px;
+        border: 0;
+        color: var(--ink);
+        background: transparent;
+        font-family: inherit;
+        cursor: zoom-in;
+        transition: transform .22s ease, filter .22s ease;
+      }
+      .coverCard:first-child {
+        z-index: 1;
+        margin-right: -30%;
+        transform: rotate(-5deg);
+      }
+      .coverCard:last-child { z-index: 2; transform: rotate(4deg); }
+      .coverCard:hover,
+      .coverCard:focus-visible {
+        z-index: 4;
+        outline: none;
+        filter: drop-shadow(0 16px 18px rgba(23, 21, 18, .22));
+        transform: rotate(0) translateY(-7px) scale(1.18);
+      }
+      .cover {
+        display: block;
+        width: 100%;
         height: auto;
         object-fit: cover;
         border: 1px solid rgba(23, 21, 18, .35);
@@ -412,12 +436,29 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
         box-shadow: 7px 8px 0 rgba(23, 21, 18, .92);
         animation: none;
       }
-      .cover:first-child {
-        z-index: 1;
-        margin-right: -30%;
-        transform: rotate(-5deg);
+      .coverCard:hover .cover,
+      .coverCard:focus-visible .cover { border-color: var(--accent); }
+      .coverLabel {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 62px;
+        padding: 5px 6px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        font-size: 8px;
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-align: center;
+        text-transform: uppercase;
+        transform: translateX(-50%);
+        transition: transform .22s ease;
       }
-      .cover:last-child { z-index: 2; transform: rotate(4deg); }
+      .coverCard:hover .coverLabel,
+      .coverCard:focus-visible .coverLabel { transform: translateX(-50%) scale(.85); }
+      .coverCard:first-child .coverLabel { left: 40%; }
+      .coverCard:last-child .coverLabel { left: 60%; }
       .eyebrow { margin-bottom: 9px; color: var(--accent); font-size: 10px; }
       h1 {
         font-size: clamp(28px, 5.2vw, 39px);
@@ -451,14 +492,33 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
         main { padding: 20px; border-radius: 22px; box-shadow: 0 18px 50px rgba(23, 21, 18, .16); }
         .hero {
           display: grid;
-          grid-template-columns: 112px 1fr;
-          gap: 18px;
+          grid-template-columns: 1fr;
+          gap: 16px;
           padding: 22px 0;
         }
-        .covers { padding: 5px 0; }
-        .cover { float: none; flex-basis: 72%; width: 72%; box-shadow: 4px 5px 0 var(--ink); }
-        .cover:first-child { margin-right: -34%; }
+        .covers {
+          width: min(100%, 230px);
+          margin: 0 auto;
+          padding: 5px 0;
+          gap: 12px;
+        }
+        .coverCard,
+        .coverCard:first-child,
+        .coverCard:last-child {
+          flex: 1 1 0;
+          width: calc(50% - 6px);
+          margin: 0;
+          transform: none;
+        }
+        .coverCard:hover,
+        .coverCard:focus-visible { transform: translateY(-4px) scale(1.05); }
+        .coverCard:first-child .coverLabel,
+        .coverCard:last-child .coverLabel { left: 50%; }
+        .cover { float: none; width: 100%; box-shadow: 4px 5px 0 var(--ink); }
         nav { grid-template-columns: 1fr 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .coverCard { transition: none; }
       }
     </style>
   </head>
@@ -470,8 +530,14 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
       </header>
       <section class="hero">
         <div class="covers" aria-label="AtKafası Fanzin kapakları">
-          <img class="cover" src="${firstIssueUrl}" alt="AtKafası Fanzin 1. sayı kapağı" width="725" height="1011" />
-          <img class="cover" src="${secondIssueUrl}" alt="AtKafası Fanzin 2. sayı kapağı" width="515" height="726" />
+          <button class="coverCard" type="button" aria-label="1. sayı kapağını büyüt">
+            <img class="cover" src="${firstIssueUrl}" alt="AtKafası Fanzin 1. sayı kapağı" width="725" height="1011" />
+            <span class="coverLabel">1. sayı</span>
+          </button>
+          <button class="coverCard" type="button" aria-label="2. sayı kapağını büyüt">
+            <img class="cover" src="${secondIssueUrl}" alt="AtKafası Fanzin 2. sayı kapağı" width="515" height="726" />
+            <span class="coverLabel">2. sayı</span>
+          </button>
         </div>
         <div>
           <p class="eyebrow">Bağımsız üretime destek</p>
@@ -790,22 +856,36 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             </div>
             <div className="redirectHero">
               <div className="redirectCovers" aria-label="AtKafası Fanzin kapakları">
-                <Image
-                  className="redirectCover"
-                  src="/atkafasi-sayi-1.webp"
-                  alt="AtKafası Fanzin 1. sayı kapağı"
-                  width={725}
-                  height={1011}
-                  sizes="(max-width: 520px) 80px, 118px"
-                />
-                <Image
-                  className="redirectCover"
-                  src="/atkafasi-sayi-2.png"
-                  alt="AtKafası Fanzin 2. sayı kapağı"
-                  width={515}
-                  height={726}
-                  sizes="(max-width: 520px) 80px, 118px"
-                />
+                <button
+                  className="redirectCoverCard"
+                  type="button"
+                  aria-label="1. sayı kapağını büyüt"
+                >
+                  <Image
+                    className="redirectCover"
+                    src="/atkafasi-sayi-1.webp"
+                    alt="AtKafası Fanzin 1. sayı kapağı"
+                    width={725}
+                    height={1011}
+                    sizes="(max-width: 520px) 104px, 118px"
+                  />
+                  <span className="redirectCoverLabel">1. sayı</span>
+                </button>
+                <button
+                  className="redirectCoverCard"
+                  type="button"
+                  aria-label="2. sayı kapağını büyüt"
+                >
+                  <Image
+                    className="redirectCover"
+                    src="/atkafasi-sayi-2.png"
+                    alt="AtKafası Fanzin 2. sayı kapağı"
+                    width={515}
+                    height={726}
+                    sizes="(max-width: 520px) 104px, 118px"
+                  />
+                  <span className="redirectCoverLabel">2. sayı</span>
+                </button>
               </div>
               <div>
                 <p className="redirectEyebrow">Bağımsız üretime destek</p>
