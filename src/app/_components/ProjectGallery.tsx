@@ -54,132 +54,328 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fikkis · Yönlendiriliyor</title>
+    <title>Fikkis · Bağımsız üretime destek</title>
     <style>
+      :root {
+        color-scheme: light;
+        --ink: #17140f;
+        --paper: #fff8e9;
+        --orange: #ff5c22;
+        --pink: #ff3f82;
+        --blue: #245dff;
+        --lime: #dfff45;
+      }
       * { box-sizing: border-box; }
       body {
         min-height: 100vh;
         margin: 0;
         display: grid;
         place-items: center;
-        padding: 24px;
-        color: #181818;
-        background: #f7f6f2;
+        overflow-x: hidden;
+        padding: clamp(18px, 4vw, 44px);
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 9% 12%, rgba(223, 255, 69, .9) 0 8%, transparent 23%),
+          radial-gradient(circle at 91% 9%, rgba(255, 63, 130, .72) 0 9%, transparent 27%),
+          radial-gradient(circle at 87% 91%, rgba(36, 93, 255, .65) 0 8%, transparent 29%),
+          #ff7849;
         font-family: Arial, Helvetica, sans-serif;
       }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: .14;
+        background-image: radial-gradient(#17140f 1px, transparent 1px);
+        background-size: 18px 18px;
+      }
       main {
-        width: min(100%, 520px);
-        padding: 36px;
-        border: 2px solid #181818;
-        border-radius: 24px;
-        background: #fff;
-        box-shadow: 10px 10px 0 #181818;
-        text-align: center;
+        position: relative;
+        isolation: isolate;
+        width: min(100%, 690px);
+        overflow: hidden;
+        padding: clamp(24px, 5vw, 44px);
+        border: 3px solid var(--ink);
+        border-radius: clamp(24px, 5vw, 38px);
+        background: var(--paper);
+        box-shadow: 14px 14px 0 var(--ink), 0 30px 90px rgba(66, 19, 3, .28);
       }
-      .spinner {
-        width: 42px;
-        height: 42px;
-        margin: 0 auto 22px;
-        border: 4px solid #d8d8d8;
-        border-top-color: #181818;
-        border-radius: 50%;
-        animation: spin .8s linear infinite;
-      }
-      .eyebrow {
-        margin: 0 0 8px;
-        color: #707070;
-        font-size: 12px;
-        font-weight: 800;
+      main::after {
+        content: "YENİ FİKİRLER • YENİ DÜNYALAR •";
+        position: absolute;
+        z-index: -1;
+        right: -72px;
+        top: 92px;
+        padding: 8px 90px;
+        color: #fff;
+        background: var(--blue);
+        font-size: 10px;
+        font-weight: 900;
         letter-spacing: .14em;
+        transform: rotate(37deg);
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid var(--ink);
+      }
+      .brand {
+        font-size: clamp(25px, 6vw, 38px);
+        font-weight: 950;
+        letter-spacing: -.07em;
+      }
+      .brand small {
+        display: block;
+        margin-top: 2px;
+        font-size: 9px;
+        letter-spacing: .18em;
         text-transform: uppercase;
       }
-      h1 { margin: 0; font-size: clamp(25px, 6vw, 38px); }
+      .issue {
+        padding: 8px 12px;
+        border: 2px solid var(--ink);
+        border-radius: 999px;
+        background: var(--lime);
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: .11em;
+        text-align: center;
+        transform: rotate(3deg);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(128px, .68fr) 1.5fr;
+        align-items: center;
+        gap: clamp(22px, 5vw, 42px);
+        padding: clamp(28px, 6vw, 48px) 0 28px;
+      }
+      .cover {
+        position: relative;
+        aspect-ratio: .72;
+        border: 3px solid var(--ink);
+        border-radius: 8px 18px 8px 8px;
+        background: var(--pink);
+        box-shadow: 8px 8px 0 var(--ink);
+        transform: rotate(-5deg);
+        animation: float 3.4s ease-in-out infinite;
+      }
+      .cover::before {
+        content: "AT\\A KAFASI";
+        position: absolute;
+        inset: 13px;
+        display: grid;
+        place-items: center;
+        white-space: pre;
+        border: 2px solid var(--ink);
+        color: var(--paper);
+        background:
+          radial-gradient(circle at 50% 46%, var(--orange) 0 13%, transparent 14%),
+          repeating-radial-gradient(circle at 50% 46%, transparent 0 12px, var(--ink) 13px 15px),
+          var(--blue);
+        font-size: clamp(19px, 4vw, 30px);
+        font-weight: 950;
+        line-height: .82;
+        letter-spacing: -.06em;
+        text-align: center;
+      }
+      .cover::after {
+        content: "BAĞIMSIZ FANZİN";
+        position: absolute;
+        right: -18px;
+        bottom: 20px;
+        padding: 6px 9px;
+        border: 2px solid var(--ink);
+        background: var(--lime);
+        font-size: 8px;
+        font-weight: 950;
+        letter-spacing: .09em;
+        transform: rotate(-7deg);
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--orange);
+        font-size: 11px;
+        font-weight: 950;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 480px;
+        margin: 0;
+        font-size: clamp(32px, 7vw, 57px);
+        line-height: .9;
+        letter-spacing: -.065em;
+      }
+      h1 em {
+        display: inline;
+        color: var(--blue);
+        font-style: normal;
+      }
       #destination {
-        display: block;
-        margin-top: 10px;
-        font-size: 18px;
+        display: inline-flex;
+        margin-top: 17px;
+        padding: 8px 12px;
+        border: 2px solid var(--ink);
+        border-radius: 999px;
+        background: #fff;
+        font-size: 12px;
+        letter-spacing: .04em;
       }
       .copy {
-        margin: 22px auto 0;
-        color: #565656;
+        margin: 16px 0 0;
+        color: #52493d;
         font-size: 14px;
         line-height: 1.55;
       }
-      nav {
+      .impact {
         display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 18px;
       }
-      a {
-        padding: 10px 15px;
-        border: 1px solid #181818;
+      .impact span {
+        padding: 7px 9px;
+        border: 1.5px solid var(--ink);
         border-radius: 999px;
+        background: #fff;
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+      .impact span:nth-child(2) { background: var(--lime); }
+      .impact span:nth-child(3) { color: #fff; background: var(--pink); }
+      .support-note {
+        margin: 0;
+        padding: 15px 18px;
+        border: 2px solid var(--ink);
+        border-radius: 16px;
+        background: #fff;
+        font-size: 13px;
+        line-height: 1.5;
+        text-align: center;
+      }
+      nav {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      a, #continue {
+        display: flex;
+        min-height: 52px;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--ink);
+        border-radius: 15px;
         color: inherit;
         font-size: 13px;
-        font-weight: 700;
+        font-weight: 900;
         text-decoration: none;
+        transition: transform .18s ease, box-shadow .18s ease;
+      }
+      nav a:first-child { background: var(--lime); box-shadow: 4px 4px 0 var(--ink); }
+      nav a:last-child { color: #fff; background: var(--blue); }
+      a:hover, a:focus-visible, #continue:not(:disabled):hover, #continue:not(:disabled):focus-visible {
+        outline: none;
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 var(--ink);
       }
       #continue {
         width: 100%;
-        min-height: 48px;
-        margin-top: 18px;
-        border: 0;
-        border-radius: 999px;
+        margin-top: 12px;
         color: #fff;
-        background: #181818;
-        font: inherit;
-        font-size: 14px;
-        font-weight: 800;
+        background: var(--ink);
+        font-family: inherit;
         cursor: pointer;
-        transition: opacity .2s ease, transform .2s ease;
       }
-      #continue:disabled {
-        cursor: wait;
-        opacity: .36;
-      }
-      #continue:not(:disabled):hover {
-        transform: translateY(-2px);
-      }
+      #continue:disabled { color: #6d655c; background: #ddd4c7; cursor: wait; }
       .progress {
-        display: block;
-        width: 100%;
-        height: 4px;
-        margin-top: 26px;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: 12px;
+        margin-top: 14px;
+        color: #756b60;
+        font-size: 9px;
+        font-weight: 900;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+      }
+      .progress i {
+        height: 5px;
         overflow: hidden;
         border-radius: 999px;
-        background: #e7e7e7;
+        background: #ded5c8;
       }
-      .progress::after {
+      .progress i::after {
         content: "";
         display: block;
         width: 100%;
         height: 100%;
-        background: #181818;
+        background: linear-gradient(90deg, var(--orange), var(--pink), var(--blue));
         transform-origin: left;
         animation: progress 3s linear forwards;
       }
-      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes float { 50% { transform: rotate(-2deg) translateY(-7px); } }
       @keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+      @media (max-width: 580px) {
+        main { padding: 22px; box-shadow: 8px 8px 0 var(--ink); }
+        main::after { display: none; }
+        .hero { display: block; padding: 25px 0 22px; }
+        .hero::after { content: ""; display: table; clear: both; }
+        .cover { float: left; width: 88px; margin: 0 20px 14px 0; }
+        .cover::after { display: none; }
+        .copy { clear: both; padding-top: 17px; }
+        .impact { clear: both; }
+        nav { grid-template-columns: 1fr; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+      }
     </style>
   </head>
   <body>
     <main>
-      <div class="spinner" aria-hidden="true"></div>
-      <p class="eyebrow">Bana destek ol</p>
-      <h1>Siteye yönlendiriliyorsunuz</h1>
-      <strong id="destination"></strong>
-      <p class="copy">
-        AtKafası fanzinini istediğin platformdan satın alabilirsin. Shopier daha
-        az komisyon keser; Gumroad alternatif satın alma ve yorum alanıdır.
-        Aldıktan sonra yorumunu bırakmayı unutma.
+      <header>
+        <div class="brand">fikkis<small>bir şeyler deniyorum</small></div>
+        <div class="issue">ATKAFASI<br />FANZİN</div>
+      </header>
+      <section class="hero">
+        <div class="cover" aria-hidden="true"></div>
+        <div>
+          <p class="eyebrow">Bağımsız üretime omuz ver</p>
+          <h1>Yeni fikirler <em>canlı kalsın.</em></h1>
+          <strong id="destination"></strong>
+          <p class="copy">
+            Fikkis'teki oyunları, uygulamaları ve deneysel dünyaları bağımsız
+            olarak tasarlıyor ve geliştiriyorum. AtKafası'ndan bir sayı almak,
+            sıradaki fikrin ekrana gelmesine doğrudan katkı sağlar.
+          </p>
+          <div class="impact" aria-label="Desteğin etkisi">
+            <span>Yeni prototipler</span>
+            <span>Bağımsız yayın</span>
+            <span>Daha çok deney</span>
+          </div>
+        </div>
+      </section>
+      <p class="support-note">
+        <strong>Bir sayı, bir sonraki deneye yakıt olur.</strong><br />
+        Shopier daha az komisyon keser; Gumroad ise alternatif satın alma ve yorum alanıdır.
       </p>
       <nav aria-label="Destek bağlantıları">
-        <a href="https://www.shopier.com/atkafasifanzin" target="_blank" rel="noreferrer">Shopier</a>
-        <a href="https://atkafasifanzin.gumroad.com/" target="_blank" rel="noreferrer">Gumroad</a>
+        <a href="https://www.shopier.com/atkafasifanzin" target="_blank" rel="noreferrer">Shopier'den bir sayı edin</a>
+        <a href="https://atkafasifanzin.gumroad.com/" target="_blank" rel="noreferrer">Gumroad'da destekle</a>
       </nav>
-      <button id="continue" type="button" disabled>3 saniye bekle</button>
-      <span class="progress" aria-hidden="true"></span>
+      <button id="continue" type="button" disabled>3 saniye · sonra devam</button>
+      <div class="progress" aria-hidden="true">
+        <span>Kısa bir destek molası</span>
+        <i></i>
+      </div>
     </main>
     <script>
       (() => {
@@ -187,7 +383,8 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
 
         window.setTimeout(() => {
           continueButton.disabled = false;
-          continueButton.textContent = "Siteye git";
+          const projectTitle = continueButton.dataset.projectTitle || "Projeye";
+          continueButton.textContent = projectTitle + " projesine devam et";
         }, 3000);
 
         continueButton.addEventListener("click", () => {
@@ -203,7 +400,10 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
     const destination = redirectTab.document.getElementById("destination");
     if (destination) destination.textContent = projectTitle;
     const continueButton = redirectTab.document.getElementById("continue");
-    if (continueButton) continueButton.dataset.destination = destinationUrl;
+    if (continueButton) {
+      continueButton.dataset.destination = destinationUrl;
+      continueButton.dataset.projectTitle = projectTitle;
+    }
   } catch {
     // Sekme ayrılmıştır; tarayıcı yine de kullanıcıya boş sekmeyi gösterebilir.
   }
@@ -475,16 +675,35 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             aria-modal="true"
             aria-labelledby="content-redirect-title"
           >
-            <span className="redirectSpinner" aria-hidden="true" />
-            <p className="redirectEyebrow">Bana destek ol</p>
-            <h2 id="content-redirect-title">Siteye yönlendiriliyorsunuz</h2>
-            <strong className="redirectDestination">
-              {redirectProject.title}
-            </strong>
-            <p>
-              AtKafası fanzinini istediğin platformdan alabilirsin. Shopier daha
-              az komisyon keser; Gumroad ise alternatif satın alma ve yorum
-              alanıdır. Aldıktan sonra yorumunu bırakmayı unutma.
+            <div className="redirectTopline">
+              <strong>fikkis</strong>
+              <span>AtKafası Fanzin</span>
+            </div>
+            <div className="redirectHero">
+              <span className="redirectMagazine" aria-hidden="true">AT<br />KAFASI</span>
+              <div>
+                <p className="redirectEyebrow">Bağımsız üretime omuz ver</p>
+                <h2 id="content-redirect-title">
+                  Yeni fikirler <em>canlı kalsın.</em>
+                </h2>
+                <strong className="redirectDestination">
+                  {redirectProject.title}
+                </strong>
+              </div>
+            </div>
+            <p className="redirectCopy">
+              Fikkis&apos;teki oyunları, uygulamaları ve deneysel dünyaları
+              bağımsız olarak geliştiriyorum. AtKafası&apos;ndan bir sayı almak,
+              sıradaki fikrin ekrana gelmesine doğrudan katkı sağlar.
+            </p>
+            <div className="redirectImpact" aria-label="Desteğin etkisi">
+              <span>Yeni prototipler</span>
+              <span>Bağımsız yayın</span>
+              <span>Daha çok deney</span>
+            </div>
+            <p className="redirectSupportNote">
+              <strong>Bir sayı, bir sonraki deneye yakıt olur.</strong>
+              Shopier daha az komisyon keser; Gumroad alternatif destek ve yorum alanıdır.
             </p>
             <div className="redirectChoices">
               <a
@@ -492,14 +711,14 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 target="_blank"
                 rel="noreferrer"
               >
-                Shopier
+                Shopier&apos;den bir sayı edin
               </a>
               <a
                 href="https://atkafasifanzin.gumroad.com/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Gumroad
+                Gumroad&apos;da destekle
               </a>
             </div>
             {redirectProject.href ? (
@@ -516,10 +735,12 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                   cancelRedirect();
                 }}
               >
-                {redirectReady ? "Siteye git" : "3 saniye bekle"}
+                {redirectReady
+                  ? `${redirectProject.title} projesine devam et`
+                  : "3 saniye · sonra devam"}
               </button>
             ) : null}
-            <button type="button" onClick={cancelRedirect}>
+            <button className="redirectStay" type="button" onClick={cancelRedirect}>
               Fikkis&apos;te kal
             </button>
             <span className="redirectProgress" aria-hidden="true" />
