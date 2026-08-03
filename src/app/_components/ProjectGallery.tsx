@@ -47,7 +47,14 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
 
   if (!redirectTab) return null;
 
-  const coverUrl = new URL("/atkafasi-cover.webp", window.location.origin).href;
+  const firstIssueUrl = new URL(
+    "/atkafasi-sayi-1.webp",
+    window.location.origin,
+  ).href;
+  const secondIssueUrl = new URL(
+    "/atkafasi-sayi-2.png",
+    window.location.origin,
+  ).href;
 
   try {
     redirectTab.opener = null;
@@ -364,7 +371,13 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
       }
       header { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
       .brand { font-size: clamp(25px, 5vw, 33px); letter-spacing: -.055em; }
-      .brand small { display: none; }
+      .brand small {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 8px;
+        letter-spacing: .16em;
+      }
       .issue {
         padding: 7px 10px;
         border: 1px solid var(--line);
@@ -375,27 +388,40 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
         transform: none;
       }
       .hero {
-        grid-template-columns: minmax(118px, 148px) 1fr;
+        grid-template-columns: minmax(148px, 174px) 1fr;
         gap: clamp(20px, 5vw, 34px);
         padding: clamp(24px, 5vw, 36px) 0 26px;
       }
+      .covers {
+        display: flex;
+        min-width: 0;
+        align-items: center;
+        justify-content: center;
+        padding: 7px 2px;
+      }
       .cover {
         display: block;
-        width: 100%;
+        position: relative;
+        flex: 0 0 68%;
+        width: 68%;
         height: auto;
-        aspect-ratio: 725 / 1011;
         object-fit: cover;
         border: 1px solid rgba(23, 21, 18, .35);
         border-radius: 12px;
         background: #d3d1d0;
         box-shadow: 7px 8px 0 rgba(23, 21, 18, .92);
-        transform: rotate(-2deg);
         animation: none;
       }
+      .cover:first-child {
+        z-index: 1;
+        margin-right: -30%;
+        transform: rotate(-5deg);
+      }
+      .cover:last-child { z-index: 2; transform: rotate(4deg); }
       .eyebrow { margin-bottom: 9px; color: var(--accent); font-size: 10px; }
       h1 {
-        font-size: clamp(34px, 7vw, 51px);
-        line-height: .96;
+        font-size: clamp(28px, 5.2vw, 39px);
+        line-height: 1;
         letter-spacing: -.055em;
       }
       h1 em { color: inherit; }
@@ -425,12 +451,13 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
         main { padding: 20px; border-radius: 22px; box-shadow: 0 18px 50px rgba(23, 21, 18, .16); }
         .hero {
           display: grid;
-          grid-template-columns: 92px 1fr;
+          grid-template-columns: 112px 1fr;
           gap: 18px;
           padding: 22px 0;
         }
-        .cover { float: none; width: 100%; margin: 0; box-shadow: 5px 6px 0 var(--ink); }
-        .copy { clear: none; padding-top: 0; }
+        .covers { padding: 5px 0; }
+        .cover { float: none; flex-basis: 72%; width: 72%; box-shadow: 4px 5px 0 var(--ink); }
+        .cover:first-child { margin-right: -34%; }
         nav { grid-template-columns: 1fr 1fr; }
       }
     </style>
@@ -438,15 +465,17 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
   <body>
     <main>
       <header>
-        <div class="brand">fikkis</div>
+        <div class="brand">fikkis<small>bir şeyler deniyorum</small></div>
         <div class="issue">ATKAFASI FANZİN</div>
       </header>
       <section class="hero">
-        <img class="cover" src="${coverUrl}" alt="AtKafası Fanzin kapak görseli" width="725" height="1011" />
+        <div class="covers" aria-label="AtKafası Fanzin kapakları">
+          <img class="cover" src="${firstIssueUrl}" alt="AtKafası Fanzin 1. sayı kapağı" width="725" height="1011" />
+          <img class="cover" src="${secondIssueUrl}" alt="AtKafası Fanzin 2. sayı kapağı" width="515" height="726" />
+        </div>
         <div>
           <p class="eyebrow">Bağımsız üretime destek</p>
-          <h1>Bir sayı,<br /><em>yeni bir proje.</em></h1>
-          <p class="copy">AtKafası’nı alarak yeni işlerin devamına katkı sağla.</p>
+          <h1>Bana destek olmak için AtKafası Fanzin’i satın alabilirsiniz.</h1>
         </div>
       </section>
       <nav aria-label="Destek bağlantıları">
@@ -463,7 +492,7 @@ function openRedirectTab(projectTitle: string, destinationUrl: string) {
         window.setTimeout(() => {
           continueButton.disabled = false;
           const projectTitle = continueButton.dataset.projectTitle || "Projeye";
-          continueButton.textContent = projectTitle + " projesine devam et";
+          continueButton.textContent = projectTitle + " projesini aç";
         }, 3000);
 
         continueButton.addEventListener("click", () => {
@@ -753,26 +782,36 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             aria-labelledby="content-redirect-title"
           >
             <div className="redirectTopline">
-              <strong>fikkis</strong>
+              <div className="redirectBrand">
+                <strong>fikkis</strong>
+                <small>bir şeyler deniyorum</small>
+              </div>
               <span>AtKafası Fanzin</span>
             </div>
             <div className="redirectHero">
-              <Image
-                className="redirectCover"
-                src="/atkafasi-cover.webp"
-                alt="AtKafası Fanzin kapak görseli"
-                width={725}
-                height={1011}
-                sizes="(max-width: 520px) 92px, 148px"
-              />
+              <div className="redirectCovers" aria-label="AtKafası Fanzin kapakları">
+                <Image
+                  className="redirectCover"
+                  src="/atkafasi-sayi-1.webp"
+                  alt="AtKafası Fanzin 1. sayı kapağı"
+                  width={725}
+                  height={1011}
+                  sizes="(max-width: 520px) 80px, 118px"
+                />
+                <Image
+                  className="redirectCover"
+                  src="/atkafasi-sayi-2.png"
+                  alt="AtKafası Fanzin 2. sayı kapağı"
+                  width={515}
+                  height={726}
+                  sizes="(max-width: 520px) 80px, 118px"
+                />
+              </div>
               <div>
                 <p className="redirectEyebrow">Bağımsız üretime destek</p>
                 <h2 id="content-redirect-title">
-                  Bir sayı,<br /><em>yeni bir proje.</em>
+                  Bana destek olmak için AtKafası Fanzin’i satın alabilirsiniz.
                 </h2>
-                <p className="redirectCopy">
-                  AtKafası’nı alarak yeni işlerin devamına katkı sağla.
-                </p>
               </div>
             </div>
             <div className="redirectChoices">
@@ -806,7 +845,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 }}
               >
                 {redirectReady
-                  ? `${redirectProject.title} projesine devam et`
+                  ? `${redirectProject.title} projesini aç`
                   : "3 saniye · sonra devam"}
               </button>
             ) : null}

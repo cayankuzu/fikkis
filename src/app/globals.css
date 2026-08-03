@@ -900,8 +900,20 @@ img { display: block; }
 }
 
 .redirectTopline strong {
+  display: block;
   font-size: clamp(1.55rem, 5vw, 2rem);
   letter-spacing: -.055em;
+}
+
+.redirectBrand small {
+  display: block;
+  margin-top: 3px;
+  color: #6f675e;
+  font-family: var(--font-mono), monospace;
+  font-size: .48rem;
+  font-weight: 760;
+  letter-spacing: .15em;
+  text-transform: uppercase;
 }
 
 .redirectTopline span {
@@ -913,21 +925,38 @@ img { display: block; }
 }
 
 .redirectHero {
-  grid-template-columns: minmax(118px, 148px) 1fr;
+  grid-template-columns: minmax(148px, 174px) 1fr;
   gap: clamp(20px, 5vw, 34px);
   padding: clamp(24px, 5vw, 36px) 0 26px;
 }
 
+.redirectCovers {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 2px;
+}
+
 .redirectCover {
   display: block;
-  width: 100%;
+  position: relative;
+  flex: 0 0 68%;
+  width: 68%;
   height: auto;
   border: 1px solid rgba(23, 21, 18, .35);
   border-radius: 12px;
   background: #d3d1d0;
   box-shadow: 7px 8px 0 rgba(23, 21, 18, .92);
-  transform: rotate(-2deg);
 }
+
+.redirectCover:first-child {
+  z-index: 1;
+  margin-right: -30%;
+  transform: rotate(-5deg);
+}
+
+.redirectCover:last-child { z-index: 2; transform: rotate(4deg); }
 
 .redirectEyebrow {
   color: #d85b36;
@@ -936,8 +965,8 @@ img { display: block; }
 
 .contentRedirect h2 {
   margin-top: 9px;
-  font-size: clamp(2.1rem, 7vw, 3.2rem);
-  line-height: .96;
+  font-size: clamp(1.75rem, 5.2vw, 2.45rem);
+  line-height: 1;
   letter-spacing: -.055em;
 }
 
@@ -1008,12 +1037,20 @@ img { display: block; }
   }
 
   .redirectHero {
-    grid-template-columns: 92px 1fr;
+    grid-template-columns: 112px 1fr;
     gap: 18px;
     padding: 22px 0;
   }
 
-  .redirectCover { box-shadow: 5px 6px 0 #171512; }
+  .redirectCovers { padding: 5px 0; }
+
+  .redirectCover {
+    flex-basis: 72%;
+    width: 72%;
+    box-shadow: 4px 5px 0 #171512;
+  }
+
+  .redirectCover:first-child { margin-right: -34%; }
 }
 
 @keyframes preview-in {
