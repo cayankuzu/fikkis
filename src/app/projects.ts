@@ -153,6 +153,7 @@ export const projects: Project[] = [
   {
     id: "card-race",
     category: "game",
+    desktopOnly: true,
     title: "Card Race Game",
     hook: "Dört as, dört şerit ve her kart çekiminde değişen bir yarış.",
     description:
@@ -164,6 +165,7 @@ export const projects: Project[] = [
   {
     id: "battleship",
     category: "game",
+    desktopOnly: true,
     title: "Battleship",
     hook: "Klasik deniz savaşını müzik, ses ve sürükle-bırak kontrolüyle yeniden oyna.",
     description:
@@ -176,6 +178,7 @@ export const projects: Project[] = [
   {
     id: "old-maid",
     category: "game",
+    desktopOnly: true,
     title: "Papaz Kaçtı",
     hook: "Sağındaki elden kapalı bir kart seç; eşsiz papaz sende kalmasın.",
     description:
@@ -187,6 +190,7 @@ export const projects: Project[] = [
   {
     id: "tictactoe",
     category: "game",
+    desktopOnly: true,
     title: "Tic Tac Toe",
     hook: "Tahtanı seç; üçlüden beşli çizgiye uzanan rekabeti kazan.",
     description:
@@ -198,6 +202,7 @@ export const projects: Project[] = [
   {
     id: "son-40-saniye",
     category: "game",
+    desktopOnly: true,
     title: "Son 40 Saniye",
     hook: "Öleceğin kesin; 33 kaydı ayıklayıp itibarını korumak için 40 saniyen var.",
     description:
@@ -209,6 +214,7 @@ export const projects: Project[] = [
   {
     id: "asmaca",
     category: "game",
+    desktopOnly: true,
     title: "Asmaca",
     hook: "Bilgi kaderi belirler; verdiğin her cevap sahnedeki hükmü değiştirir.",
     description:
@@ -220,6 +226,7 @@ export const projects: Project[] = [
   {
     id: "monster-wrangler",
     category: "game",
+    desktopOnly: true,
     title: "Monster Wrangler",
     hook: "Hedefteki rengi yakala; yanlış canavar bir canına mal olsun.",
     description:
@@ -231,6 +238,7 @@ export const projects: Project[] = [
   {
     id: "catch-the-clown",
     category: "game",
+    desktopOnly: true,
     title: "Catch the Clown",
     hook: "Palyaçoyu yakaladıkça hız artar; her ıskada bir can gider.",
     description:
@@ -242,6 +250,7 @@ export const projects: Project[] = [
   {
     id: "snake",
     category: "game",
+    desktopOnly: true,
     title: "Snake",
     hook: "Her elma seni büyütür; daralan alan bir sonraki dönüşünü belirler.",
     description:
@@ -253,6 +262,7 @@ export const projects: Project[] = [
   {
     id: "burger-dog",
     category: "game",
+    desktopOnly: true,
     title: "Burger Dog",
     hook: "Burger hızlanıyor, köpek acıkıyor; kaçırdığın her lokma bir can götürüyor.",
     description:
@@ -264,6 +274,7 @@ export const projects: Project[] = [
   {
     id: "feed-the-dragon",
     category: "game",
+    desktopOnly: true,
     title: "Feed the Dragon",
     hook: "Her altın ejderhayı besler, oyunu hızlandırır ve bir sonraki hamleyi zorlaştırır.",
     description:

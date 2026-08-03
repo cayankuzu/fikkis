@@ -423,8 +423,9 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
           <div>
             <strong>Daha iyi bir deneyim için bilgisayar kullan</strong>
             <p>
-              Oyunlar ve mobil uygulamalar burada çalışır. Üç boyutlu web
-              deneyimleri klavye, fare ve geniş ekran gerektirir.
+              Mobil uygulamalar, AtKafası Fanzin ve AudioRoom içindeki Mükemmel
+              Boşluk telefonda açılır. Oyunlar ve diğer web deneyimleri klavye,
+              fare ve geniş ekran gerektirir.
             </p>
           </div>
           <button type="button" onClick={dismissNotice}>
