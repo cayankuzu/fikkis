@@ -4,6 +4,7 @@ export type Project = {
     | "remember"
     | "desain"
     | "audioroom"
+    | "etkinlink"
     | "universe"
     | "sorita"
     | "wmatch"
@@ -94,6 +95,25 @@ export const projects: Project[] = [
     href: "https://audio-room-ecru.vercel.app/",
     preview: "/project-previews/audioroom-mukemmel-bosluk.png",
     tone: "red",
+  },
+  {
+    id: "etkinlink",
+    category: "mobile",
+    title: "EtkinLink",
+    hook: "Bir etkinlik keşfet; aynı heyecanı paylaşacağın insanlarla tanış.",
+    description:
+      "Etkinlik keşfi, katılımcı odaları ve ilgi temelli eşleşmeyi tek mobil deneyimde buluşturan UI/UX mockup ve etkileşimli prototip. Kullanıcılar şehirlerindeki etkinlikleri bulur, etkinlik sohbetlerine katılır ve karşılıklı beğeniyle özel sohbete geçer.",
+    href: "https://www.figma.com/proto/RLPPToWydcFxLtnlvTr0mi/EtkinLink?node-id=32-1772&viewport=-607%2C-758%2C0.69&t=BmlrdaiaacIsarlK-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=97%3A386&show-proto-sidebar=1&page-id=12%3A8",
+    downloadStatus: "İndirme bağlantısı çok yakında",
+    preview: "/project-previews/etkinlink-1.png",
+    previews: [
+      "/project-previews/etkinlink-1.png",
+      "/project-previews/etkinlink-2.png",
+      "/project-previews/etkinlink-3.png",
+      "/project-previews/etkinlink-4.png",
+    ],
+    previewFit: "contain",
+    tone: "blue",
   },
   {
     id: "universe",

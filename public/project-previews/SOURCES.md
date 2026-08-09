@@ -3,6 +3,7 @@
 - `remember-ouroboros.png`: owner-supplied capture from `remember-you-must-die-web.vercel.app`
 - `desain.png`: live project at `des-ai-n.vercel.app`
 - `audioroom-mukemmel-bosluk.png`: owner-supplied Mükemmel Boşluk capture from `audio-room-ecru.vercel.app`
+- `etkinlink-1.png` through `etkinlink-4.png`: exported from the owner-supplied EtkinLink Figma prototype (Discover, Rooms, Match, and Direct Chat frames)
 - `wmatch-1.png` through `wmatch-4.png`: owner-supplied WMatch demo-account captures
 - `sorita-1.png` through `sorita-3.png`: owner-supplied SoRita demo-account captures
 - `universe-1.png` through `universe-3.png`: owner-supplied UniVerse demo-account captures
