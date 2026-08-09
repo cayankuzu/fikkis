@@ -1,3 +1,4 @@
+import packageJson from "../../package.json";
 import { ProjectGallery } from "./_components/ProjectGallery";
 import { projects } from "./projects";
 
@@ -26,7 +27,10 @@ export default function Home() {
             Soru ve önerileriniz için e-posta veya Instagram&apos;dan
             ulaşabilirsiniz.
           </p>
-          <p>© 2026 Çayan Kuzu — Tüm hakları saklıdır.</p>
+          <div className="footerLegal">
+            <p>© 2026 Çayan Kuzu — Tüm hakları saklıdır.</p>
+            <p className="footerVersion">Versiyon {packageJson.version}</p>
+          </div>
         </div>
 
         <div className="footerDetails">

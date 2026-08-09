@@ -420,6 +420,16 @@ img { display: block; }
   text-transform: none;
 }
 
+.footerLegal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footerSignature .footerVersion {
+  opacity: .65;
+}
+
 .footerSupport {
   padding: 20px;
   border: 1px solid #c9c9c9;
