@@ -1,5 +1,6 @@
 export type Project = {
   id:
+    | "bibish"
     | "merbut"
     | "remember"
     | "desain"
@@ -48,6 +49,18 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "bibish",
+    category: "game",
+    desktopOnly: true,
+    title: "Bibish",
+    hook: "İki ordudan birine katıl; kaleleri ele geçir, araziyi boya ve açık alan savaşına yön ver.",
+    description:
+      "Kırmızı ve mavi orduları geniş bir adada karşı karşıya getiren birinci şahıs web oyunu. Keskin nişancı tüfeği, kılıç, kalkan, takım kaleleri, biyomlar, alan boyama ve büyük NPC ordularıyla tarayıcıda yoğun bir savaş alanı kurar.",
+    href: "https://bibish-iota.vercel.app/",
+    preview: "/project-previews/bibish.png",
+    tone: "lime",
+  },
   {
     id: "merbut",
     category: "game",
