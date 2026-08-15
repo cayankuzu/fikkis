@@ -40,6 +40,11 @@ export function ProjectSlideshow({
       aria-label={`${project.title} proje görüntüsü`}
     >
       <span className="projectBadge">{categoryLabels[project.category]}</span>
+      {project.tags?.map((tag) => (
+        <span className="projectBadge projectBadgeSecondary" key={tag}>
+          {tag}
+        </span>
+      ))}
       {project.category === "mobile" ? (
         <span className="projectBadge projectBadgeSecondary">
           Mobil app mockup

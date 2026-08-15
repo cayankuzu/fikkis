@@ -20,7 +20,8 @@ export type Project = {
     | "snake"
     | "burger-dog"
     | "feed-the-dragon"
-    | "atkafasi";
+    | "atkafasi"
+    | "cayan-kuzu-cv";
   title: string;
   hook: string;
   description: string;
@@ -29,6 +30,7 @@ export type Project = {
   downloadStatus?: string;
   secondaryHref?: string;
   category: "web" | "game" | "mobile" | "content";
+  tags?: string[];
   desktopOnly?: boolean;
   preview: string;
   previews?: string[];
@@ -108,6 +110,17 @@ export const projects: Project[] = [
     href: "https://audio-room-ecru.vercel.app/",
     preview: "/project-previews/audioroom-mukemmel-bosluk.png",
     tone: "red",
+  },
+  {
+    id: "cayan-kuzu-cv",
+    category: "web",
+    tags: ["CV"],
+    title: "Çayan Kuzu CV",
+    hook: "Ürün tasarımı, UI/UX, oyun tasarımı ve fiziği tek bir etkileşimli CV deneyiminde buluşturur.",
+    description:
+      "Marmara Üniversitesi Fizik Bölümü öğrencisi Çayan Kuzu'nun ürün tasarımı, UI/UX, oyun tasarımı ve yapay zekâ destekli prototipleme çalışmalarını bir araya getiren kişisel CV sitesi.",
+    preview: "/project-previews/cayankuzu-cv.png",
+    tone: "ink",
   },
   {
     id: "etkinlink",
