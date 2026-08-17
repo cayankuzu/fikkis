@@ -119,6 +119,7 @@ export const projects: Project[] = [
     hook: "Ürün tasarımı, UI/UX, oyun tasarımı ve fiziği tek bir etkileşimli CV deneyiminde buluşturur.",
     description:
       "Marmara Üniversitesi Fizik Bölümü öğrencisi Çayan Kuzu'nun ürün tasarımı, UI/UX, oyun tasarımı ve yapay zekâ destekli prototipleme çalışmalarını bir araya getiren kişisel CV sitesi.",
+    href: "https://cayankuzucv.vercel.app/",
     preview: "/project-previews/cayankuzu-cv.png",
     tone: "ink",
   },
