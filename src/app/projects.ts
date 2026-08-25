@@ -1,5 +1,6 @@
 export type Project = {
   id:
+    | "trai"
     | "bibish"
     | "merbut"
     | "remember"
@@ -51,6 +52,18 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "trai",
+    category: "web",
+    tags: ["Yapay zekâ"],
+    title: "trAI",
+    hook: "Bir ürünü satın almadan önce kendi fotoğrafında ve farklı bedenlerde gör.",
+    description:
+      "Kullanıcının fotoğrafını, vücut ölçülerini ve seçtiği ürün bedenini birleştiren yapay zekâ destekli sanal prova MVP'si. Ürün kataloğu, ön ve arka görünüm, beden karşılaştırması, beden önerisi ve kombin kaydetme akışlarını tek deneyimde buluşturur.",
+    href: "https://trai-theta.vercel.app/",
+    preview: "/project-previews/trai.png",
+    tone: "red",
+  },
   {
     id: "bibish",
     category: "game",
