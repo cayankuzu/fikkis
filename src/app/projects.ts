@@ -27,6 +27,7 @@ export type Project = {
   hook: string;
   description: string;
   href?: string;
+  websiteUrl?: string;
   downloadUrl?: string;
   downloadStatus?: string;
   secondaryHref?: string;
@@ -144,6 +145,7 @@ export const projects: Project[] = [
     description:
       "Etkinlik keşfi, katılımcı odaları ve ilgi temelli eşleşmeyi tek mobil deneyimde buluşturan UI/UX mockup ve etkileşimli prototip. Kullanıcılar şehirlerindeki etkinlikleri bulur, etkinlik sohbetlerine katılır ve karşılıklı beğeniyle özel sohbete geçer.",
     href: "https://www.figma.com/proto/RLPPToWydcFxLtnlvTr0mi/EtkinLink?node-id=32-1772&viewport=-607%2C-758%2C0.69&t=BmlrdaiaacIsarlK-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=97%3A386&show-proto-sidebar=1&page-id=12%3A8",
+    websiteUrl: "https://cayankuzu.github.io/EtkinLink_web/",
     downloadStatus: "İndirme bağlantısı çok yakında",
     preview: "/project-previews/etkinlink-1.png",
     previews: [
@@ -163,6 +165,7 @@ export const projects: Project[] = [
     description:
       "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. Öğrencileri kampüs akışı, topluluklar, etkinlikler ve ortak ilgi alanları çevresinde buluşturarak üniversite deneyimini daha görünür ve bağlantılı hâle getirir.",
     href: "https://www.figma.com/make/PifHMriFM6plYxEBFp0ziW/%C3%96%C4%9Frenci-Sosyal-A%C4%9F%C4%B1?fullscreen=1&t=z4tqXaqRw3iPsSzE-1&code-node-id=0-9",
+    websiteUrl: "https://cayankuzu.github.io/uniVerse_web/",
     downloadUrl: "https://cayankuzu.github.io/uniVerse_web/download/",
     preview: "/project-previews/universe-1.png",
     previews: [
@@ -181,6 +184,7 @@ export const projects: Project[] = [
     description:
       "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. Mekânları, anıları ve insanları aynı haritada buluşturur; kullanıcılar rotalar oluşturur, yerleri listeler ve şehir deneyimlerini arkadaşlarıyla paylaşır.",
     href: "https://www.figma.com/make/xFI0Mxo8e6GdMVNfWu0eSm/SoRita?fullscreen=1&t=a9Aa6ncfv0vyOC9N-1&code-node-id=0-9",
+    websiteUrl: "https://cayankuzu.github.io/SoRita_web/",
     downloadUrl: "https://cayankuzu.github.io/SoRita_web/download/",
     preview: "/project-previews/sorita-1.png",
     previews: [
@@ -199,6 +203,7 @@ export const projects: Project[] = [
     description:
       "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. İzlediğin film ve dizilerden bir zevk profili çıkarır; ortak yapımlar, türler ve izleme alışkanlıkları yeni sohbetlerin başlangıç noktasına dönüşür.",
     href: "https://www.figma.com/make/NCkE1gjOXWA78mtbYdgz7z/WMatch?fullscreen=1&t=O3uk8ynWSDA7YVm7-1&code-node-id=0-9",
+    websiteUrl: "https://cayankuzu.github.io/WMatch_web/",
     downloadStatus: "İndirme bağlantısı çok yakında",
     preview: "/project-previews/wmatch-1.png",
     previews: [

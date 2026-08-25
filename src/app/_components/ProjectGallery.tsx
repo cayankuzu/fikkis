@@ -773,6 +773,18 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                         Etkileşimli mockup&apos;ı aç
                       </a>
                     ) : null}
+                    {project.websiteUrl ? (
+                      <a
+                        href={project.websiteUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(event) =>
+                          handleProjectClick(event, project, project.websiteUrl)
+                        }
+                      >
+                        Web sitesine git
+                      </a>
+                    ) : null}
                   </div>
                 ) : null}
               </div>
