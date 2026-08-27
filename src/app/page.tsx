@@ -7,6 +7,12 @@ const instagramUrl =
 const contactEmail = "memodee333@gmail.com";
 const shopierUrl = "https://www.shopier.com/atkafasifanzin";
 const gumroadUrl = "https://atkafasifanzin.gumroad.com/";
+const archiveStats = [
+  { label: "mobil ürün", value: projects.filter((project) => project.category === "mobile").length },
+  { label: "oyun", value: projects.filter((project) => project.category === "game").length },
+  { label: "web ürünü", value: projects.filter((project) => project.category === "web").length },
+  { label: "bağımsız yayın", value: projects.filter((project) => project.category === "content").length },
+];
 
 export default function Home() {
   return (
@@ -15,7 +21,20 @@ export default function Home() {
         <a className="fikkisMark" href="#top" aria-label="Fikkis ana sayfa">
           fikkis<span>●</span>
         </a>
-        <p>bir şeyler deniyorum</p>
+        <p className="fikkisTagline">bir şeyler deniyorum</p>
+        <p className="fikkisIntro">
+          Mobil ürünleri, oyunları, web deneyimlerini ve bağımsız yayınları;
+          doğrulanmış bağlantılar ve kısa üretim notlarıyla bir araya getiren
+          kişisel proje arşivi.
+        </p>
+        <ul className="archiveStats" aria-label={`${projects.length} projelik arşiv özeti`}>
+          {archiveStats.map((item) => (
+            <li key={item.label}>
+              <strong>{item.value}</strong>
+              <span>{item.label}</span>
+            </li>
+          ))}
+        </ul>
       </header>
 
       <ProjectGallery projects={projects} />

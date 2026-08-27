@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { MouseEvent } from "react";
 import type { Project } from "../projects";
 import { ProjectSlideshow } from "./ProjectSlideshow";
@@ -10,10 +10,10 @@ type FilterValue = "all" | Project["category"];
 
 const filters: { value: FilterValue; label: string }[] = [
   { value: "all", label: "Hepsi" },
-  { value: "web", label: "Web sitesi" },
-  { value: "game", label: "Oyun" },
-  { value: "mobile", label: "Mobil uygulama" },
-  { value: "content", label: "İçerik" },
+  { value: "web", label: "Web" },
+  { value: "game", label: "Oyunlar" },
+  { value: "mobile", label: "Mobil" },
+  { value: "content", label: "Yayın" },
 ];
 
 function getLimitedDeviceSnapshot() {
@@ -590,6 +590,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
   const [redirectReady, setRedirectReady] = useState(false);
   const [noticeVisible, setNoticeVisible] = useState(true);
   const [noticeRestart, setNoticeRestart] = useState(0);
+  const modalRef = useRef<HTMLElement>(null);
+  const modalTriggerRef = useRef<HTMLAnchorElement | null>(null);
   const isLimitedDevice = useSyncExternalStore(
     subscribeToDeviceChanges,
     getLimitedDeviceSnapshot,
@@ -641,20 +643,80 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     if (!blockedProject && !redirectProject) return;
 
     const previousOverflow = document.body.style.overflow;
-    const closeOnEscape = (event: KeyboardEvent) => {
+    const backgroundElements = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        ".fikkisHeader, .projectSection, .fikkisFooter, .mobileExperienceNotice",
+      ),
+    );
+    const previousBackgroundState = backgroundElements.map((element) => ({
+      element,
+      inert: element.inert,
+      ariaHidden: element.getAttribute("aria-hidden"),
+    }));
+    const focusDialog = window.requestAnimationFrame(() => {
+      const dialog = modalRef.current;
+      const firstFocusable = dialog?.querySelector<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+
+      (firstFocusable ?? dialog)?.focus();
+    });
+    const handleDialogKeys = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        event.preventDefault();
         setBlockedProject(null);
         setRedirectReady(false);
         setRedirectProject(null);
+        return;
+      }
+
+      if (event.key !== "Tab" || !modalRef.current) return;
+
+      const focusableElements = Array.from(
+        modalRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      ).filter((element) => element.getClientRects().length > 0);
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        modalRef.current.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      const activeElement = document.activeElement;
+
+      if (event.shiftKey && activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      } else if (!modalRef.current.contains(activeElement)) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", closeOnEscape);
+    previousBackgroundState.forEach(({ element }) => {
+      element.inert = true;
+      element.setAttribute("aria-hidden", "true");
+    });
+    document.addEventListener("keydown", handleDialogKeys);
 
     return () => {
+      window.cancelAnimationFrame(focusDialog);
       document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", closeOnEscape);
+      previousBackgroundState.forEach(({ element, inert, ariaHidden }) => {
+        element.inert = inert;
+        if (ariaHidden === null) element.removeAttribute("aria-hidden");
+        else element.setAttribute("aria-hidden", ariaHidden);
+      });
+      document.removeEventListener("keydown", handleDialogKeys);
+      modalTriggerRef.current?.focus();
     };
   }, [blockedProject, redirectProject]);
 
@@ -673,6 +735,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     project: Project,
     destination = project.href,
   ) => {
+    modalTriggerRef.current = event.currentTarget;
+
     if (project.desktopOnly && isLimitedDevice) {
       event.preventDefault();
       setBlockedProject(project);
@@ -701,7 +765,11 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
           Fikkis projeleri
         </h1>
 
-        <div className="filterBar" aria-label="Projeleri kategoriye göre filtrele">
+        <div
+          className="filterBar"
+          role="group"
+          aria-label="Projeleri kategoriye göre filtrele"
+        >
           {filters.map((filter) => (
             <button
               className={activeFilter === filter.value ? "is-active" : ""}
@@ -730,6 +798,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               key={project.id}
             >
               <div className="projectMedia">
+                <ProjectSlideshow project={project} priority={index < 6} />
                 {project.href ? (
                   <a
                     className="projectLink"
@@ -739,25 +808,26 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                     aria-label={`${project.title} projesini aç`}
                     onClick={(event) => handleProjectClick(event, project)}
                   >
-                    <ProjectSlideshow project={project} priority={index < 3} />
+                    <span className="srOnly">{project.title} projesini aç</span>
                   </a>
-                ) : (
-                  <ProjectSlideshow project={project} priority={index < 3} />
-                )}
+                ) : null}
 
                 {project.category === "mobile" ? (
                   <div className="mobileProjectActions">
-                    {project.downloadUrl ? (
-                      <a
-                        href={project.downloadUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(event) =>
-                          handleProjectClick(event, project, project.downloadUrl)
-                        }
-                      >
-                        Uygulamayı indir ve dene
-                      </a>
+                    {project.storeLinks?.length ? (
+                      project.storeLinks.map((storeLink) => (
+                        <a
+                          href={storeLink.href}
+                          key={storeLink.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          onClick={(event) =>
+                            handleProjectClick(event, project, storeLink.href)
+                          }
+                        >
+                          {storeLink.label}
+                        </a>
+                      ))
                     ) : (
                       <span>{project.downloadStatus}</span>
                     )}
@@ -770,7 +840,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                           handleProjectClick(event, project, project.href)
                         }
                       >
-                        Etkileşimli mockup&apos;ı aç
+                        Figma tasarımını aç
                       </a>
                     ) : null}
                     {project.websiteUrl ? (
@@ -790,9 +860,44 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               </div>
 
               <div className="projectCaption">
-                <h2>{project.title}</h2>
+                <div className="projectTitleRow">
+                  <h2>{project.title}</h2>
+                  <span className="projectStatus">{project.status}</span>
+                </div>
                 <p className="projectHook">{project.hook}</p>
                 <p className="projectDescription">{project.description}</p>
+                <dl className="projectMeta">
+                  <div>
+                    <dt>Platform</dt>
+                    <dd>{project.platform}</dd>
+                  </div>
+                  <div>
+                    <dt>Rol</dt>
+                    <dd>{project.role}</dd>
+                  </div>
+                  <div>
+                    <dt>Araçlar</dt>
+                    <dd>{project.tools.join(" · ")}</dd>
+                  </div>
+                </dl>
+                <div className="projectHighlights">
+                  <strong>Öne çıkanlar</strong>
+                  <ul>
+                    {project.highlights.map((highlight) => (
+                      <li key={highlight}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+                {project.secondaryHref ? (
+                  <a
+                    className="projectSecondaryLink"
+                    href={project.secondaryHref}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Gumroad&apos;da incele
+                  </a>
+                ) : null}
               </div>
             </article>
           ))}
@@ -807,8 +912,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
           <div>
             <strong>Daha iyi bir deneyim için bilgisayar kullan</strong>
             <p>
-              Mobil uygulamalar, AtKafası Fanzin ve AudioRoom içindeki Mükemmel
-              Boşluk telefonda açılır. Oyunlar ve diğer web deneyimleri klavye,
+              Mobil ürünler, AtKafası Fanzin ve mobil uyumlu web/oyun
+              deneyimleri telefonda açılır. Masaüstü öncelikli projeler klavye,
               fare ve geniş ekran gerektirir.
             </p>
           </div>
@@ -833,6 +938,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             aria-modal="true"
             aria-labelledby="desktop-gate-title"
             aria-describedby="desktop-gate-description"
+            ref={modalRef}
+            tabIndex={-1}
           >
             <span>Masaüstü deneyimi</span>
             <h2 id="desktop-gate-title">{blockedProject.title}</h2>
@@ -852,12 +959,20 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       ) : null}
 
       {redirectProject ? (
-        <div className="contentRedirectBackdrop" role="presentation">
+        <div
+          className="contentRedirectBackdrop"
+          role="presentation"
+          onMouseDown={(event) => {
+            if (event.currentTarget === event.target) cancelRedirect();
+          }}
+        >
           <section
             className="contentRedirect"
             role="dialog"
             aria-modal="true"
             aria-labelledby="content-redirect-title"
+            ref={modalRef}
+            tabIndex={-1}
           >
             <div className="redirectTopline">
               <div className="redirectBrand">

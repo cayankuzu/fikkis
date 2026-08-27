@@ -26,9 +26,14 @@ export type Project = {
   title: string;
   hook: string;
   description: string;
+  platform: string;
+  status: string;
+  role: string;
+  tools: string[];
+  highlights: string[];
   href?: string;
   websiteUrl?: string;
-  downloadUrl?: string;
+  storeLinks?: { label: string; href: string }[];
   downloadStatus?: string;
   secondaryHref?: string;
   category: "web" | "game" | "mobile" | "content";
@@ -60,7 +65,23 @@ export const projects: Project[] = [
     title: "trAI",
     hook: "Bir ürünü satın almadan önce kendi fotoğrafında ve farklı bedenlerde gör.",
     description:
-      "Kullanıcının fotoğrafını, vücut ölçülerini ve seçtiği ürün bedenini birleştiren yapay zekâ destekli sanal prova MVP'si. Ürün kataloğu, ön ve arka görünüm, beden karşılaştırması, beden önerisi ve kombin kaydetme akışlarını tek deneyimde buluşturur.",
+      "Kontrollü katalogdan seçilen kıyafeti kullanıcının ön/arka fotoğraflarında yapay zekâyla görselleştiren mobile-first sanal prova MVP'si. Beden önerisi karar desteği sunar; sonuçlar isimli ve gruplu kombinlere kaydedilebilir.",
+    platform: "Mobil öncelikli responsive web",
+    status: "Kontrollü MVP · Canlı demo",
+    role: "Ürün ve UI/UX tasarımı · Full-stack geliştirme · AI entegrasyonu",
+    tools: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "fal.ai",
+      "Zod",
+      "Vercel",
+    ],
+    highlights: [
+      "Kontrollü katalog, ön/arka referanslar ve private Storage'a imzalı yükleme",
+      "Ürün sadakati modu, çoklu beden Beta ve deterministik beden önerisi",
+    ],
     href: "https://trai-theta.vercel.app/",
     preview: "/project-previews/trai.png",
     tone: "red",
@@ -72,7 +93,23 @@ export const projects: Project[] = [
     title: "Bibish",
     hook: "İki ordudan birine katıl; kaleleri ele geçir, araziyi boya ve açık alan savaşına yön ver.",
     description:
-      "Kırmızı ve mavi orduları geniş bir adada karşı karşıya getiren birinci şahıs web oyunu. Keskin nişancı tüfeği, kılıç, kalkan, takım kaleleri, biyomlar, alan boyama ve büyük NPC ordularıyla tarayıcıda yoğun bir savaş alanı kurar.",
+      "Kırmızı ve mavi takımların Bibish Adası'ndaki 10 karakol için savaştığı çevrimiçi WebGL FPS. Oyuncular ateşli ve yakın dövüş silahlarıyla çatışırken araziyi doğrudan takım renklerine boyar.",
+    platform: "Web · Masaüstü",
+    status: "Canlı",
+    role: "Bağımsız oyun tasarımı · 3B istemci · Gerçek zamanlı backend",
+    tools: [
+      "JavaScript",
+      "Three.js/WebGL",
+      "Vite",
+      "WebSocket",
+      "Cloudflare Workers/Durable Objects",
+      "Playwright",
+      "Vercel",
+    ],
+    highlights: [
+      "Tek global odada 10 ele geçirilebilir karakol ve takım rengine boyanan arazi",
+      "Mekânsal ilgi yönetimi ve 2.000 bağlantı senaryosu için yük testi altyapısı",
+    ],
     href: "https://bibish-iota.vercel.app/",
     preview: "/project-previews/bibish.png",
     tone: "lime",
@@ -84,7 +121,24 @@ export const projects: Project[] = [
     title: "Merbut",
     hook: "İki kahraman, yedi biyom ve Aku’ya uzanan tek bir karanlık kader.",
     description:
-      "Hz. Ali ve Samuray Jack’i aynı klavyede buluşturan yerel iki oyunculu 3B aksiyon oyunu. Biyom kapılarını aç, Aku’nun lejyonunu yen, değişken boss saldırılarına karşı birlikte savaş ve hareketli zaman portalına ulaş.",
+      "Hz. Ali ve Samuray Jack'in aynı klavyede yönetildiği yerel iki oyunculu 2.5D aksiyon oyunu. Yedi biyom boyunca yaratık dalgaları, Aku'nun Gölgesi ve iki forma geçen Aku ile mücadele edilir.",
+    platform: "Web · Masaüstü · Yerel iki oyunculu",
+    status: "Canlı · v1.2.7",
+    role: "Bağımsız oyun tasarımı · Savaş, ilerleme ve boss sistemleri",
+    tools: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "React Three Fiber",
+      "Three.js",
+      "Zustand",
+      "Playwright",
+      "Vercel",
+    ],
+    highlights: [
+      "Dört zorluk modu, yedi biyom ve 14 oynanabilir panel",
+      "Aku boss aşamaları, 360° karakter arşivi ve zaman portalıyla tamamlanan final",
+    ],
     href: "https://merbut.vercel.app/",
     preview: "/project-previews/merbut.png",
     tone: "red",
@@ -96,7 +150,15 @@ export const projects: Project[] = [
     title: "Remember You Must Die",
     hook: "Ölümü hatırlatan bir dünyanın içinde yürümeye cesaret et.",
     description:
-      "Müzik, ışık ve mekânı bir araya getiren etkileşimli bir memento mori deneyimi. Her oda zamanı, hafızayı ve faniliği başka bir atmosferle yeniden kurar.",
+      "SUICIDE SILENCE – You Must Die parçasını memento mori temalı tek bir etkileşimli 3B sahneye dönüştüren deneysel web çalışması. Ouroboros, kurukafa, DNA, kum saati ve galaksi müzik ve ışıkla keşfedilir.",
+    platform: "Web · Masaüstü öncelikli",
+    status: "Canlı · Deneysel",
+    role: "Bağımsız konsept · 3B deneyim/UI tasarımı · Frontend",
+    tools: ["HTML", "CSS", "JavaScript", "Three.js", "GSAP", "GLTF/OrbitControls", "Canvas", "Vercel"],
+    highlights: [
+      "Sinematik kamera, OrbitControls ve nesne/genel ışık ayarları",
+      "TR/EN içerik, müzik ve şarkı sözü arayüzü; sürüklenebilir pencereler",
+    ],
     href: "https://remember-you-must-die-web.vercel.app/",
     preview: "/project-previews/remember-ouroboros.png",
     tone: "amber",
@@ -106,9 +168,27 @@ export const projects: Project[] = [
     category: "web",
     desktopOnly: true,
     title: "desAIn",
-    hook: "Bir odayı ölç; birkaç dokunuşla üç boyutlu bir tasarıma dönüştür.",
+    hook: "Odanın ölçülerini gir; birkaç dokunuşla üç boyutlu bir tasarıma dönüştür.",
     description:
-      "İç mekânları tarayıcıda planlamayı ve görselleştirmeyi kolaylaştıran yaratıcı bir 3B araç. Ölçüler, yerleşim ve sahne önizlemesi aynı çalışma alanında buluşur.",
+      "Kullanıcının oda biçimini ve gerçek ölçülerini tanımlayıp parametrik mobilyaları sürükleyerek yerleştirdiği masaüstü odaklı low-poly 3B iç mekân editörü.",
+    platform: "Web · Masaüstü",
+    status: "Canlı MVP",
+    role: "Bağımsız ürün/UI-UX · Full-stack · 3B editör geliştirme",
+    tools: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "React Three Fiber/Drei",
+      "Three.js",
+      "Zustand",
+      "Tailwind CSS",
+      "sql.js/SQLite",
+      "Vercel Blob",
+    ],
+    highlights: [
+      "Dikdörtgen, kare, L ve özel oda biçimleri; parametrik mobilya envanteri",
+      "Çakışma/geçiş doğrulaması, rastgele düzenler ve hesap bazlı proje kaydı",
+    ],
     href: "https://des-ai-n.vercel.app/",
     preview: "/project-previews/desain.png",
     previewPosition: "35% center",
@@ -120,7 +200,22 @@ export const projects: Project[] = [
     title: "AudioRoom",
     hook: "Bir albümü yalnızca dinleme; onun dünyasının içinde dolaş.",
     description:
-      "Albüm arşivini keşfedilebilir dijital odalara dönüştüren bir müzik deneyimi. Redd'in Mükemmel Boşluk evreni, ses ile görsel hikâye anlatımını aynı sahnede birleştirir.",
+      "Albüm ve single'ları gezilebilir, oynanabilir 3B dünyalara dönüştüren müzik deneyimleri kütüphanesi. Dört dünya yayında; iki yeni albüm dünyası katalogda yakında olarak yer alıyor.",
+    platform: "Responsive web hub · 3B dünyalar",
+    status: "Canlı · Gelişiyor · 4 yayında / 2 yakında",
+    role: "Konsept ve deneyim tasarımı · Ürün/UI-UX · Yaratıcı frontend geliştirme",
+    tools: [
+      "TypeScript",
+      "Vite",
+      "Three.js/WebGL",
+      "troika-three-text",
+      "YouTube IFrame API",
+      "Vercel",
+    ],
+    highlights: [
+      "Hayko Cepkin, Henry the Lee ve Redd için dört oynanabilir müzik dünyası",
+      "Redd 21 ve Pink Floyd / The Dark Side of the Moon dünyaları yakında",
+    ],
     href: "https://audio-room-ecru.vercel.app/",
     preview: "/project-previews/audioroom-mukemmel-bosluk.png",
     tone: "red",
@@ -132,7 +227,15 @@ export const projects: Project[] = [
     title: "Çayan Kuzu CV",
     hook: "Ürün tasarımı, UI/UX, oyun tasarımı ve fiziği tek bir etkileşimli CV deneyiminde buluşturur.",
     description:
-      "Marmara Üniversitesi Fizik Bölümü öğrencisi Çayan Kuzu'nun ürün tasarımı, UI/UX, oyun tasarımı ve yapay zekâ destekli prototipleme çalışmalarını bir araya getiren kişisel CV sitesi.",
+      "Çayan Kuzu'nun ürün/UI-UX, oyun ve etkileşimli web çalışmalarını tek sayfalı editorial CV'de birleştiren iki dilli kişisel portfolyo. Responsive web deneyimi ve bağlantıları çalışan TR/EN PDF sürümleri sunar.",
+    platform: "Responsive web · Print/PDF",
+    status: "Canlı · Güncel tutuluyor",
+    role: "Bilgi mimarisi · İçerik · UI/UX · Frontend geliştirme",
+    tools: ["Next.js 16", "React 19", "TypeScript", "Lucide", "CSS print styles", "Vercel"],
+    highlights: [
+      "TR/EN içerik, kompakt mobil sidebar ve erişilebilir accordion sistemi",
+      "Editorial A4 görünüm ile yazdırmada eksiksiz açılan indirilebilir PDF'ler",
+    ],
     href: "https://cayankuzucv.vercel.app/",
     preview: "/project-previews/cayankuzu-cv.png",
     tone: "ink",
@@ -143,7 +246,24 @@ export const projects: Project[] = [
     title: "EtkinLink",
     hook: "Bir etkinlik keşfet; aynı heyecanı paylaşacağın insanlarla tanış.",
     description:
-      "Etkinlik keşfi, katılımcı odaları ve ilgi temelli eşleşmeyi tek mobil deneyimde buluşturan UI/UX mockup ve etkileşimli prototip. Kullanıcılar şehirlerindeki etkinlikleri bulur, etkinlik sohbetlerine katılır ve karşılıklı beğeniyle özel sohbete geçer.",
+      "Gerçek etkinlikleri keşfetme, filtreleme ve kaydetme akışlarını; etkinliğe özel sohbet odaları ve yalnız aynı etkinliğe katılan kullanıcılar arasındaki eşleşme deneyimiyle birleştiren sosyal etkinlik uygulaması.",
+    platform: "iOS · Android",
+    status: "Geliştiriliyor · Mağaza öncesi",
+    role: "Ürün ve UI/UX tasarımı · Mobil ve backend geliştirme",
+    tools: [
+      "Figma",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Supabase",
+      "TanStack Query",
+      "Zustand",
+      "Sentry",
+    ],
+    highlights: [
+      "etkinlik.io verisiyle şehir, arama ve filtre odaklı etkinlik keşfi",
+      "Etkinlik odaları, katılım temelli eşleşme ve karşılıklı beğeni sonrası sohbet",
+    ],
     href: "https://www.figma.com/proto/RLPPToWydcFxLtnlvTr0mi/EtkinLink?node-id=32-1772&viewport=-607%2C-758%2C0.69&t=BmlrdaiaacIsarlK-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=97%3A386&show-proto-sidebar=1&page-id=12%3A8",
     websiteUrl: "https://cayankuzu.github.io/EtkinLink_web/",
     downloadStatus: "İndirme bağlantısı çok yakında",
@@ -163,10 +283,36 @@ export const projects: Project[] = [
     title: "UniVerse",
     hook: "Üniversite hayatının tamamı tek bir dijital evrende.",
     description:
-      "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. Öğrencileri kampüs akışı, topluluklar, etkinlikler ve ortak ilgi alanları çevresinde buluşturarak üniversite deneyimini daha görünür ve bağlantılı hâle getirir.",
+      "Öğrenci ve üniversite kulübü hesaplarını aynı sosyal kampüs akışında buluşturan mobil ürün. Öğrenciler kulüpleri ve etkinlikleri keşfedip takip eder; kulüpler etkinlik yayınlar ve katılımcılar albümlerde deneyimi sürdürür.",
+    platform: "iOS · Android",
+    status: "iOS ve Android'de yayında",
+    role: "Ürün ve UI/UX tasarımı · Mobil ve Supabase geliştirme",
+    tools: [
+      "Figma Make",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Supabase",
+      "TanStack Query",
+      "Zustand",
+      "Sentry",
+    ],
+    highlights: [
+      "Öğrenci ve kulüpler için ayrı hesap, profil, arama ve takip akışları",
+      "Etkinlik oluşturma; fotoğraf/video albümleri, beğeni ve yorum sistemi",
+    ],
     href: "https://www.figma.com/make/PifHMriFM6plYxEBFp0ziW/%C3%96%C4%9Frenci-Sosyal-A%C4%9F%C4%B1?fullscreen=1&t=z4tqXaqRw3iPsSzE-1&code-node-id=0-9",
     websiteUrl: "https://cayankuzu.github.io/uniVerse_web/",
-    downloadUrl: "https://cayankuzu.github.io/uniVerse_web/download/",
+    storeLinks: [
+      {
+        label: "App Store'dan indir",
+        href: "https://apps.apple.com/tr/app/universe-app/id6761912452",
+      },
+      {
+        label: "Google Play'den indir",
+        href: "https://play.google.com/store/apps/details?id=com.ogrencisosyalagi.app",
+      },
+    ],
     preview: "/project-previews/universe-1.png",
     previews: [
       "/project-previews/universe-1.png",
@@ -182,10 +328,36 @@ export const projects: Project[] = [
     title: "SoRita",
     hook: "Şehir artık yalnızca bir harita değil, birlikte yazılan sosyal bir hikâye.",
     description:
-      "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. Mekânları, anıları ve insanları aynı haritada buluşturur; kullanıcılar rotalar oluşturur, yerleri listeler ve şehir deneyimlerini arkadaşlarıyla paylaşır.",
+      "Kullanıcıların harita üzerinde fotoğraf, video ve kişisel not içeren mekân kartları oluşturduğu; bu kartları tematik listelerde toplayıp sosyal akışta paylaşabildiği sosyal harita ürünü.",
+    platform: "iOS · Android",
+    status: "iOS ve Android'de yayında",
+    role: "Ürün ve UI/UX tasarımı · Mobil ve backend geliştirme",
+    tools: [
+      "Figma Make",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Supabase",
+      "TanStack Query",
+      "React Native Maps",
+      "Sentry",
+    ],
+    highlights: [
+      "Mekân kartlarında fotoğraf, video, başlık ve kişisel deneyim notu",
+      "Herkese açık/özel listeler; takip, beğeni, yorum, engelleme ve raporlama",
+    ],
     href: "https://www.figma.com/make/xFI0Mxo8e6GdMVNfWu0eSm/SoRita?fullscreen=1&t=a9Aa6ncfv0vyOC9N-1&code-node-id=0-9",
     websiteUrl: "https://cayankuzu.github.io/SoRita_web/",
-    downloadUrl: "https://cayankuzu.github.io/SoRita_web/download/",
+    storeLinks: [
+      {
+        label: "App Store'dan indir",
+        href: "https://apps.apple.com/tr/app/sorita-app/id6762198781",
+      },
+      {
+        label: "Google Play'den indir",
+        href: "https://play.google.com/store/apps/details?id=com.cayan.sorita.socialmap",
+      },
+    ],
     preview: "/project-previews/sorita-1.png",
     previews: [
       "/project-previews/sorita-1.png",
@@ -201,10 +373,32 @@ export const projects: Project[] = [
     title: "WMatch",
     hook: "Ne izlediğin, kiminle eşleşeceğini söylesin.",
     description:
-      "Ürün fikrinin mobil UI/UX mockup ve etkileşimli prototipi. İzlediğin film ve dizilerden bir zevk profili çıkarır; ortak yapımlar, türler ve izleme alışkanlıkları yeni sohbetlerin başlangıç noktasına dönüşür.",
+      "Film ve dizi zevkini sosyal eşleşmeye dönüştüren 18+ mobil ürün. Kullanıcılar TMDB kataloğunda içerik keşfeder, favori ve izleme geçmişi oluşturur, uyum puanıyla profilleri inceler, eşleşir ve sohbet eder.",
+    platform: "iOS · Android",
+    status: "iOS'ta yayında · Android hazırlanıyor",
+    role: "Ürün ve UI/UX tasarımı · Mobil ve backend geliştirme",
+    tools: [
+      "Figma Make",
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Supabase",
+      "TMDB API",
+      "Hono",
+      "Sentry",
+    ],
+    highlights: [
+      "Ortak favoriler ve izlenenlerden hesaplanan uyum puanı; karşılıklı beğeni sonrası eşleşme",
+      "Gerçek zamanlı sohbet, çevrim içi/yazıyor durumu, okundu bilgisi ve push bildirimleri",
+    ],
     href: "https://www.figma.com/make/NCkE1gjOXWA78mtbYdgz7z/WMatch?fullscreen=1&t=O3uk8ynWSDA7YVm7-1&code-node-id=0-9",
     websiteUrl: "https://cayankuzu.github.io/WMatch_web/",
-    downloadStatus: "İndirme bağlantısı çok yakında",
+    storeLinks: [
+      {
+        label: "App Store'dan indir",
+        href: "https://apps.apple.com/tr/app/wmatch/id6779453259",
+      },
+    ],
     preview: "/project-previews/wmatch-1.png",
     previews: [
       "/project-previews/wmatch-1.png",
@@ -218,11 +412,18 @@ export const projects: Project[] = [
   {
     id: "card-race",
     category: "game",
-    desktopOnly: true,
     title: "Card Race Game",
     hook: "Dört as, dört şerit ve her kart çekiminde değişen bir yarış.",
     description:
-      "İskambil destesini olasılık tabanlı bir yarış pistine dönüştüren Python oyunu. Aslar kendi sembollerinde ilerler; açılan ceza kartları dengeleri bozar ve son çekiliş kazananı belirler.",
+      "Dört asın sekiz adımlı sembol şeritlerinde yarıştığı iskambil oyunu. Çekilen kart ilgili ası ilerletir; tüm aslar eşiği geçtiğinde açılan ceza kartı kendi sembolünü geri iter.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Oyun mekaniği · Python prototipi · Tarayıcı uyarlaması",
+    tools: ["Python", "Jupyter/Colab", "HTML", "CSS", "JavaScript", "Vercel"],
+    highlights: [
+      "Dört bağımsız şerit ve sekiz ceza kartına dayalı olasılık döngüsü",
+      "Deste bittiğinde en öndeki asın kazandığı responsive ve dokunmatik oyun",
+    ],
     href: "https://card-race-game.vercel.app/",
     preview: "/project-previews/card-race.png",
     tone: "lime",
@@ -230,11 +431,18 @@ export const projects: Project[] = [
   {
     id: "battleship",
     category: "game",
-    desktopOnly: true,
     title: "Battleship",
     hook: "Klasik deniz savaşını müzik, ses ve sürükle-bırak kontrolüyle yeniden oyna.",
     description:
-      "Pygame ile geliştirilen 10×10 deniz savaşı; gemi yerleşimi, bilgisayar rakibi, isabet animasyonları, skor takibi ve bağımsız müzik/SFX kontrolleri içerir.",
+      "Yedi gemili 10×10 Deniz Savaşı oyunu. Oyuncu gemilerini sürükleyip döndürür veya rastgele yerleştirir; ardından bilgisayar rakibiyle dönüşümlü atış yapar.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Oyun geliştirme · UI ve etkileşim tasarımı · Web uyarlaması",
+    tools: ["Python", "Pygame", "HTML5 Canvas", "JavaScript", "CSS", "Vercel"],
+    highlights: [
+      "Dokunmada basılı tutma ve çift dokunmayla gemi döndürme",
+      "İsabet istatistikleri ile birbirinden bağımsız müzik ve SFX kontrolleri",
+    ],
     href: "https://battleship-pygame.vercel.app/",
     preview: "/project-previews/battleship.png",
     previewFit: "contain",
@@ -243,11 +451,18 @@ export const projects: Project[] = [
   {
     id: "old-maid",
     category: "game",
-    desktopOnly: true,
     title: "Papaz Kaçtı",
     hook: "Sağındaki elden kapalı bir kart seç; eşsiz papaz sende kalmasın.",
     description:
-      "Gerçek masa düzeninde üç bilgisayar rakibine karşı oynanan dört kişilik kart oyunu. Her elde deste yeniden karıştırılır; çiftler ortaya açılır, senin seçtiğin kart iki saniye gösterilir ve rakiplerin senden aldığı kart gizli kalır.",
+      "Bir insan ve üç bilgisayar oyuncusuyla oynanan dört kişilik kart oyunu. Aynı değerdeki çiftler elenir; elinde eşsiz papazla kalan son oyuncu kaybeder.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Oyun mantığı · Nesne yönelimli Python · Web uyarlaması",
+    tools: ["Python", "HTML", "CSS", "JavaScript", "Vercel"],
+    highlights: [
+      "Her elde yeniden karıştırılan deste ve masa üzerinde izlenen açılmış çiftler",
+      "Seçilen kartı iki saniye gösteren, mobilde de oynanabilen etkileşim",
+    ],
     href: "https://old-maid-card-game.vercel.app/",
     preview: "/project-previews/old-maid.png",
     tone: "cream",
@@ -255,11 +470,18 @@ export const projects: Project[] = [
   {
     id: "tictactoe",
     category: "game",
-    desktopOnly: true,
     title: "Tic Tac Toe",
     hook: "Tahtanı seç; üçlüden beşli çizgiye uzanan rekabeti kazan.",
     description:
-      "NumPy ile yazılan satır, sütun ve çapraz kontrol mantığının iki oyunculu web sürümü. 3×3, 4×4, 5×5 veya 6×6 tahtayı seç; moda göre üç, dört ya da beş işareti hizala ve seri skorunu koru.",
+      "Aynı cihazdaki iki oyuncunun 3×3, 4×4, 5×5 veya 6×6 tahtalarda yarıştığı genişletilmiş Tic Tac Toe oyunu.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Oyun mantığı · Python/NumPy prototipi · Web arayüzü",
+    tools: ["Python", "NumPy", "Jupyter/Colab", "HTML", "CSS", "JavaScript", "Vercel"],
+    highlights: [
+      "Tahta boyutuna göre üçlü, dörtlü veya beşli kazanma koşulu",
+      "Kazanan hücre vurgusu ve oturumluk X/O/beraberlik skoru",
+    ],
     href: "https://tic-tac-toe-game-delta-jade.vercel.app/",
     preview: "/project-previews/tictactoe.png",
     tone: "coral",
@@ -267,11 +489,25 @@ export const projects: Project[] = [
   {
     id: "son-40-saniye",
     category: "game",
-    desktopOnly: true,
     title: "Son 40 Saniye",
     hook: "Öleceğin kesin; 33 kaydı ayıklayıp itibarını korumak için 40 saniyen var.",
     description:
-      "Tek ortak havuzdan rastgele seçilen 33 arama kaydını incele: masum olanları koru, riskli olanları sola sürükleyip sil. Kullanıcıların eklediği aramalar kategoriye ayrılmadan havuza katılır; kararların 0–1000 arası itibar puanını, unvanını ve liderlik sıralamanı belirler.",
+      "Trafik kazasının ardından 40 saniyede 33 arama kaydını yönetmeye dayanan kara mizah ve itibar oyunu. Masum kayıtları koruma, riskli olanları silme kararları 0–1000 arası sonucu belirler.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Konsept ve oyun tasarımı · Ürün/UI-UX · Frontend ve API geliştirme",
+    tools: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Framer Motion",
+      "Vercel Functions",
+      "Vercel Blob",
+    ],
+    highlights: [
+      "Kullanıcı katkılı ortak arama havuzu, liderlik tablosu ve 20 itibar unvanı",
+      "İçerik/skor yönetimi, IP-cihaz engelleme ve audit kayıtları",
+    ],
     href: "https://google-history-clear-game.vercel.app/",
     preview: "/project-previews/son-40-saniye.png",
     tone: "red",
@@ -279,11 +515,28 @@ export const projects: Project[] = [
   {
     id: "asmaca",
     category: "game",
-    desktopOnly: true,
     title: "Asmaca",
     hook: "Bilgi kaderi belirler; verdiğin her cevap sahnedeki hükmü değiştirir.",
     description:
-      "Kaynaklı bilgi sorularını sinematik bir 3B adam asmaca düzeniyle birleştiren web oyunu. Klasik, AS ve KURTAR modlarında altı karakterin üç zorluk seviyesindeki soru havuzlarını çöz; cevapların beden, ipler, kapak ve sonucu gerçek zamanlı olarak değiştirsin.",
+      "Kaynaklı bilgi sorularını sinematik bir 3B adam asmaca sahnesiyle birleştiren, Türkçe ve İngilizce oynanabilen web oyunu.",
+    platform: "Responsive web · Masaüstü ve mobil",
+    status: "Canlı",
+    role: "Oyun ve deneyim tasarımı · 3B frontend · UI/UX ve içerik sistemi",
+    tools: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Three.js",
+      "React Three Fiber/Drei",
+      "Zustand",
+      "Framer Motion",
+      "Web Audio API",
+      "Playwright",
+    ],
+    highlights: [
+      "Klasik, AS ve KURTAR modları ile üç zorluk düzeyi",
+      "Altı karakter; her zorluk düzeyinde 99'ar soru ve tıklanabilir kaynaklar",
+    ],
     href: "https://hangman.vercel.app/",
     preview: "/project-previews/asmaca-idle.png",
     tone: "amber",
@@ -291,11 +544,18 @@ export const projects: Project[] = [
   {
     id: "monster-wrangler",
     category: "game",
-    desktopOnly: true,
     title: "Monster Wrangler",
     hook: "Hedefteki rengi yakala; yanlış canavar bir canına mal olsun.",
     description:
-      "Hareketli canavarlar arasından ekranda gösterilen hedefi bulduğun hızlı bir yakalama oyunu. Turlar ilerledikçe kalabalık büyür; skor, süre, can ve sınırlı ışınlanma hakkı her kararı önemli hâle getirir.",
+      "Ekrandaki hedef renkle eşleşen hareketli canavarları yakaladığın arcade oyunu. Doğru hedef skor kazandırır, yanlış hedef bir can götürür.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Pygame geliştirme · Web uyarlaması · Responsive kontrol tasarımı",
+    tools: ["Python", "Pygame", "HTML5 Canvas", "JavaScript", "CSS", "Vercel"],
+    highlights: [
+      "Beş can, başlangıçta iki ışınlanma ve her turda bir ek hak",
+      "Tur ilerledikçe büyüyen canavar kalabalığı ve dokunmatik kontrol",
+    ],
     href: "https://monster-wrangler.vercel.app/",
     preview: "/project-previews/monster-wrangler.png",
     tone: "violet",
@@ -303,11 +563,18 @@ export const projects: Project[] = [
   {
     id: "catch-the-clown",
     category: "game",
-    desktopOnly: true,
     title: "Catch the Clown",
     hook: "Palyaçoyu yakaladıkça hız artar; her ıskada bir can gider.",
     description:
-      "Orijinal Pygame mekaniğini tarayıcıya taşıyan hızlı bir hedef yakalama oyunu. Hareket eden palyaçoya tıkla veya dokun, seri yaptıkça yükselen tempoya ayak uydur ve beş canın bitmeden en yüksek skora ulaş.",
+      "Hareket eden palyaçoya her isabette skorun ve hızın arttığı refleks oyunu. Her ıska beş candan birini götürür.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Pygame geliştirme · Tarayıcı uyarlaması · Dokunmatik etkileşim",
+    tools: ["Python", "Pygame", "HTML5 Canvas", "JavaScript", "CSS", "Vercel"],
+    highlights: [
+      "Her isabette değişen yön ve yükselen hareket hızı",
+      "Pointer/touch kontrolü ile özgün ses ve müzik",
+    ],
     href: "https://catch-the-clown.vercel.app/",
     preview: "/project-previews/catch-the-clown-gameplay.png",
     tone: "blue",
@@ -315,11 +582,18 @@ export const projects: Project[] = [
   {
     id: "snake",
     category: "game",
-    desktopOnly: true,
     title: "Snake",
-    hook: "Her elma seni büyütür; daralan alan bir sonraki dönüşünü belirler.",
+    hook: "Her elma seni büyütür; kendi gövden bir sonraki dönüşünü zorlaştırır.",
     description:
-      "Klasik yılan oyununu klavye, dokunmatik yön tuşları ve kaydırma hareketleriyle yeniden kuran web sürümü. Elmalarla uzarken duvarlara ve kendi gövdene çarpmadan ritmini koru.",
+      "Elmalarla uzayan yılanı duvarlara ve kendi gövdesine çarpmadan yönettiğin klasik arcade oyununun web uyarlaması.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Pygame geliştirme · Web uyarlaması · Mobil kontrol tasarımı",
+    tools: ["Python", "Pygame", "HTML5 Canvas", "JavaScript", "CSS", "Vercel"],
+    highlights: [
+      "Klavye, ekran yön tuşları ve kaydırma hareketleriyle kontrol",
+      "Boş hücreye güvenli elma üretimi ve bağımsız ses kontrolü",
+    ],
     href: "https://snake-game-seven-gray.vercel.app/",
     preview: "/project-previews/snake-gameplay.png",
     tone: "green",
@@ -327,11 +601,18 @@ export const projects: Project[] = [
   {
     id: "burger-dog",
     category: "game",
-    desktopOnly: true,
     title: "Burger Dog",
     hook: "Burger hızlanıyor, köpek acıkıyor; kaçırdığın her lokma bir can götürüyor.",
     description:
-      "Düşen burgerleri yere değmeden yakalamaya dayanan refleks oyunu. Her başarılı yakalayış skoru ve düşüş hızını artırır; yenilenen hız desteğini doğru anda kullanmak daha uzun serilerin anahtarıdır.",
+      "Köpeği yönlendirerek düşen burgerleri yakaladığın refleks oyunu. Her yakalama burgerin düşüş hızını ve skoru artırır; kaçan burger bir can götürür.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Pygame geliştirme · Responsive web uyarlaması · Kontrol tasarımı",
+    tools: ["Python", "Pygame", "HTML5 Canvas", "JavaScript", "CSS", "Vercel"],
+    highlights: [
+      "Üç can ve harcandıkça yeniden dolan hız desteği",
+      "Hız ile yakalama mesafesine göre hesaplanan dinamik puan",
+    ],
     href: "https://burger-dog.vercel.app/",
     preview: "/project-previews/burger-dog-gameplay.png",
     tone: "orange",
@@ -339,11 +620,18 @@ export const projects: Project[] = [
   {
     id: "feed-the-dragon",
     category: "game",
-    desktopOnly: true,
     title: "Feed the Dragon",
     hook: "Her altın ejderhayı besler, oyunu hızlandırır ve bir sonraki hamleyi zorlaştırır.",
     description:
-      "Ejderhayı yukarı ve aşağı yönlendirerek yaklaşan altınları yakaladığın tempolu bir arcade oyunu. Kaçırılan altınlar can eksiltir; artan hız, ritim ve konumlamayı giderek daha önemli hâle getirir.",
+      "Ejderhayı dikey eksende yönlendirip sağdan gelen altınları yakaladığın arcade oyunu. Her altın skoru ve akış hızını artırır; kaçırılan altın bir can götürür.",
+    platform: "Responsive web · Masaüstü ve mobil tarayıcı",
+    status: "Canlı",
+    role: "Pygame geliştirme · Web uyarlaması · Mobil etkileşim tasarımı",
+    tools: ["Python", "Pygame", "HTML5 Canvas", "JavaScript", "CSS", "Vercel"],
+    highlights: [
+      "Beş can ve giderek hızlanan kesintisiz oyun döngüsü",
+      "Klavye, ekran tuşları ve sürükleme kontrolü",
+    ],
     href: "https://feed-the-dragon.vercel.app/",
     preview: "/project-previews/feed-the-dragon-gameplay.png",
     previewPosition: "left center",
@@ -355,7 +643,15 @@ export const projects: Project[] = [
     title: "AtKafası Fanzin",
     hook: "Düşüncelerin birbirine çarptığı bağımsız bir fanzin alanı.",
     description:
-      "Yazı, görsel ve ortak üretimi bir araya getiren bağımsız yayın denemesi. Dergiyi daha az komisyon kesildiği için öncelikle Shopier'den alabilir; dilersen Gumroad üzerinden de satın alıp yorum bırakabilirsin.",
+      "Yazı, görsel dil ve ortak üretimi bir araya getiren bağımsız fanzin. Yayımlanan iki sayı Shopier ve Gumroad üzerinden erişilebilir; proje görsel kimlik, yayınlama ve dijital satış/destek akışını da kapsar.",
+    platform: "Bağımsız yayın · Dijital dağıtım/satış",
+    status: "2 sayı yayımlandı · Satışta",
+    role: "İçerik · Editoryal/görsel kimlik · Yayınlama · Satış akışı",
+    tools: ["Shopier", "Gumroad"],
+    highlights: [
+      "İki yayımlanmış sayı ve bağımsız yazı/görsel üretim",
+      "Shopier mağazası ile Gumroad'da dijital ürün ve destek akışı",
+    ],
     href: "https://www.shopier.com/atkafasifanzin",
     secondaryHref: "https://atkafasifanzin.gumroad.com/",
     preview: "/project-previews/atkafasi.png",

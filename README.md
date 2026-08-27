@@ -1,8 +1,16 @@
 # fikkis
 
-Etkileşimli web deneyimlerini ve mobil ürünleri doğrudan açılan listelerle sunan deneysel proje vitrini.
+Fikkis, Çayan Kuzu'nun 23 bağımsız üretimini tek yerde toplayan filtrelenebilir proje arşividir: 4 mobil ürün, 13 oyun, 5 web ürünü ve 1 bağımsız yayın.
 
-Resmî portföy olan [MeMoDe](https://memode.vercel.app) ile animasyonlu bir portal üzerinden bağlıdır. İki site ayrı klasörlerde, ayrı GitHub depolarında ve ayrı Vercel projelerinde tutulur.
+Her proje kartı kısa bir ürün özetiyle birlikte platform, güncel durum, üstlenilen rol, kullanılan araçlar ve doğrulanmış öne çıkan bilgileri gösterir. Slayt önizlemeleri, canlı/prototip/mağaza bağlantıları ve cihaz uygunluğu uyarıları ilgili çıktıya ulaşmayı kolaylaştırır.
+
+## Fikkis'in üretim kapsamı
+
+- Platform: Responsive web vitrini
+- Durum: Canlı ve güncel tutuluyor
+- Rol: Ürün kürasyonu, bilgi mimarisi, içerik/UI-UX ve frontend geliştirme
+- Araçlar: Next.js 16, React 19, TypeScript, CSS, Next/Image ve Vercel
+- Öne çıkanlar: Dört kategori filtresi, proje slideshow'ları, masaüstü deneyimleri için cihaz kapısı ve AtKafası destek/satış akışı
 
 ## Yerel geliştirme
 
@@ -10,8 +18,6 @@ Resmî portföy olan [MeMoDe](https://memode.vercel.app) ile animasyonlu bir por
 npm install
 npm run dev
 ```
-
-MeMoDe portal hedefi `NEXT_PUBLIC_MEMODE_URL` ile ayarlanır.
 
 ## Kontroller
 

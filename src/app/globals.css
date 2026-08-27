@@ -50,7 +50,7 @@ img { display: block; }
 
 .fikkisHeader {
   display: flex;
-  min-height: 225px;
+  min-height: 315px;
   padding: 54px 0 42px;
   align-items: center;
   justify-content: center;
@@ -75,10 +75,48 @@ img { display: block; }
   letter-spacing: 0;
 }
 
-.fikkisHeader p {
+.fikkisTagline {
   margin-top: 25px;
   font-size: 1rem;
   line-height: 1.35;
+}
+
+.fikkisIntro {
+  max-width: 650px;
+  margin-top: 12px;
+  color: #555;
+  font-size: .86rem;
+  line-height: 1.55;
+}
+
+.archiveStats {
+  display: flex;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.archiveStats li {
+  display: inline-flex;
+  min-height: 34px;
+  padding: 6px 11px;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #d8d8d8;
+  border-radius: 999px;
+  background: #fafafa;
+}
+
+.archiveStats strong {
+  font-family: var(--font-mono), monospace;
+  font-size: .72rem;
+}
+
+.archiveStats span {
+  color: #5b5b5b;
+  font-size: .66rem;
 }
 
 .projectSection {
@@ -161,14 +199,16 @@ img { display: block; }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 34px 24px;
-  align-items: start;
+  align-items: stretch;
 }
 
 .projectCard {
   display: flex;
   min-width: 0;
-  height: 470px;
+  height: 100%;
   flex-direction: column;
+  padding-bottom: 26px;
+  border-bottom: 1px solid #d8d8d8;
   animation: card-in 300ms ease both;
 }
 
@@ -176,10 +216,22 @@ img { display: block; }
   position: relative;
 }
 
-.projectLink { display: block; }
+.projectLink {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: block;
+  border-radius: 16px;
+}
+
+.projectLink:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 4px;
+}
 
 .projectCover {
   position: relative;
+  z-index: 4;
   display: block;
   overflow: hidden;
   width: 100%;
@@ -190,6 +242,7 @@ img { display: block; }
   background: #ececec;
   box-shadow: 0 3px 0 #111;
   transition: transform 180ms ease, box-shadow 180ms ease;
+  pointer-events: none;
 }
 
 .projectCoverImage {
@@ -218,6 +271,7 @@ img { display: block; }
   font-weight: 760;
   letter-spacing: .06em;
   text-transform: uppercase;
+  pointer-events: none;
 }
 
 .projectBadgeSecondary {
@@ -269,14 +323,38 @@ img { display: block; }
   background: #fff;
 }
 
-.projectLink:hover .projectCover,
-.projectLink:focus-visible .projectCover {
+.slideshowToggle {
+  position: absolute;
+  z-index: 6;
+  top: 11px;
+  right: 11px;
+  min-height: 30px;
+  padding: 0 10px;
+  border: 1px solid rgba(255, 255, 255, .65);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(17, 17, 17, .72);
+  font: inherit;
+  font-size: .57rem;
+  font-weight: 760;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+
+.slideshowToggle:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.projectMedia:hover .projectCover,
+.projectMedia:focus-within .projectCover {
   transform: translateY(-4px);
   box-shadow: 0 8px 0 currentColor;
 }
 
-.projectLink:hover .projectCover img,
-.projectLink:focus-visible .projectCover img {
+.projectMedia:hover .projectCover img,
+.projectMedia:focus-within .projectCover img {
   transform: scale(1.025);
 }
 
@@ -287,6 +365,7 @@ img { display: block; }
   bottom: 3px;
   left: 3px;
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   padding: 12px;
   gap: 7px;
   border-radius: 0 0 12px 12px;
@@ -332,6 +411,7 @@ img { display: block; }
 }
 
 .mobileProjectActions span {
+  grid-column: 1 / -1;
   color: #d5d5d5;
   background: rgba(34, 34, 34, .82);
 }
@@ -356,10 +436,37 @@ img { display: block; }
   flex-direction: column;
 }
 
+.projectTitleRow {
+  display: flex;
+  min-width: 0;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
 .projectCaption h2 {
+  min-width: 0;
   font-size: 1.25rem;
   line-height: 1.05;
   letter-spacing: -.04em;
+}
+
+.projectStatus {
+  display: inline-flex;
+  max-width: 48%;
+  min-height: 26px;
+  padding: 5px 9px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cfcfcf;
+  border-radius: 999px;
+  color: #343434;
+  background: #f7f7f7;
+  font-family: var(--font-mono), monospace;
+  font-size: .55rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
 }
 
 .projectHook {
@@ -374,6 +481,79 @@ img { display: block; }
   color: #4f4f4f;
   font-size: .78rem;
   line-height: 1.5;
+}
+
+.projectMeta {
+  display: grid;
+  margin-top: 15px;
+  padding-top: 13px;
+  gap: 8px;
+  border-top: 1px solid #dedede;
+}
+
+.projectMeta > div {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 68px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.projectMeta dt,
+.projectHighlights > strong {
+  color: #656565;
+  font-family: var(--font-mono), monospace;
+  font-size: .57rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.projectMeta dd {
+  min-width: 0;
+  color: #262626;
+  font-size: .69rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.projectHighlights {
+  margin-top: auto;
+  padding-top: 15px;
+}
+
+.projectHighlights ul {
+  display: grid;
+  margin-top: 7px;
+  padding-left: 16px;
+  gap: 5px;
+  color: #4f4f4f;
+}
+
+.projectHighlights li {
+  padding-left: 2px;
+  font-size: .69rem;
+  line-height: 1.45;
+}
+
+.projectSecondaryLink {
+  display: inline-flex;
+  width: fit-content;
+  min-height: 36px;
+  margin-top: 14px;
+  padding: 0 13px;
+  align-items: center;
+  border: 1px solid #bfbfbf;
+  border-radius: 999px;
+  font-size: .66rem;
+  font-weight: 720;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.projectSecondaryLink:hover,
+.projectSecondaryLink:focus-visible {
+  border-color: #111;
+  background: #f1f1f1;
 }
 
 .fikkisFooter {
@@ -427,7 +607,7 @@ img { display: block; }
 }
 
 .footerSignature .footerVersion {
-  opacity: .65;
+  color: #626262;
 }
 
 .footerSupport {
@@ -1168,13 +1348,15 @@ img { display: block; }
 
 @media (max-width: 980px) {
   .projectGallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .projectCard { height: 500px; }
+  .projectCard { height: auto; }
 }
 
 @media (max-width: 650px) {
   .fikkisPage { width: calc(100% - 34px); }
-  .fikkisHeader { min-height: 195px; padding-top: 43px; }
+  .fikkisHeader { min-height: 295px; padding-top: 43px; }
   .fikkisMark { font-size: 4.5rem; }
+  .fikkisIntro { max-width: 470px; font-size: .8rem; }
+  .archiveStats { max-width: 360px; }
   .filterBar {
     top: 8px;
     width: 100%;
@@ -1186,9 +1368,11 @@ img { display: block; }
   }
   .filterBar button { min-height: 44px; padding: 0 15px; }
   .projectGallery { grid-template-columns: 1fr; gap: 26px; }
-  .projectCard { height: 445px; }
+  .projectCard { height: auto; }
   .projectHook { font-size: .9rem; }
   .projectDescription { font-size: .76rem; }
+  .projectMeta dd,
+  .projectHighlights li { font-size: .72rem; }
   .fikkisFooter {
     min-height: 330px;
     margin-top: 48px;
