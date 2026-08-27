@@ -50,7 +50,7 @@ img { display: block; }
 
 .fikkisHeader {
   display: flex;
-  min-height: 315px;
+  min-height: 260px;
   padding: 54px 0 42px;
   align-items: center;
   justify-content: center;
@@ -87,36 +87,6 @@ img { display: block; }
   color: #555;
   font-size: .86rem;
   line-height: 1.55;
-}
-
-.archiveStats {
-  display: flex;
-  margin-top: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  list-style: none;
-}
-
-.archiveStats li {
-  display: inline-flex;
-  min-height: 34px;
-  padding: 6px 11px;
-  align-items: center;
-  gap: 7px;
-  border: 1px solid #d8d8d8;
-  border-radius: 999px;
-  background: #fafafa;
-}
-
-.archiveStats strong {
-  font-family: var(--font-mono), monospace;
-  font-size: .72rem;
-}
-
-.archiveStats span {
-  color: #5b5b5b;
-  font-size: .66rem;
 }
 
 .projectSection {
@@ -1353,10 +1323,9 @@ img { display: block; }
 
 @media (max-width: 650px) {
   .fikkisPage { width: calc(100% - 34px); }
-  .fikkisHeader { min-height: 295px; padding-top: 43px; }
+  .fikkisHeader { min-height: 245px; padding-top: 43px; }
   .fikkisMark { font-size: 4.5rem; }
   .fikkisIntro { max-width: 470px; font-size: .8rem; }
-  .archiveStats { max-width: 360px; }
   .filterBar {
     top: 8px;
     width: 100%;
