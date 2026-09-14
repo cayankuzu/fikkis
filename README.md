@@ -1,6 +1,6 @@
 # fikkis
 
-Fikkis, Çayan Kuzu'nun 23 bağımsız üretimini tek yerde toplayan filtrelenebilir proje arşividir: 4 mobil ürün, 13 oyun, 5 web ürünü ve 1 bağımsız yayın.
+Fikkis, Çayan Kuzu'nun 24 bağımsız üretimini tek yerde toplayan filtrelenebilir proje arşividir: 4 mobil ürün, 13 oyun, 6 web ürünü ve 1 bağımsız yayın.
 
 Her proje kartı kısa bir ürün özetiyle birlikte platform, güncel durum, üstlenilen rol, kullanılan araçlar ve doğrulanmış öne çıkan bilgileri gösterir. Slayt önizlemeleri, canlı/prototip/mağaza bağlantıları ve cihaz uygunluğu uyarıları ilgili çıktıya ulaşmayı kolaylaştırır.
 

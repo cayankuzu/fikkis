@@ -1,6 +1,7 @@
 # Project preview sources
 
 - `trai.png`: live capture from `trai-theta.vercel.app`
+- `mrap.png`: local verified demo capture from `mrap.vercel.app`
 - `bibish.png`: owner-supplied local gameplay capture from Bibish
 - `remember-ouroboros.png`: owner-supplied capture from `remember-you-must-die-web.vercel.app`
 - `desain.png`: live project at `des-ai-n.vercel.app`

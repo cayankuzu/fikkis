@@ -1,6 +1,7 @@
 export type Project = {
   id:
     | "trai"
+    | "mrap"
     | "bibish"
     | "merbut"
     | "remember"
@@ -85,6 +86,37 @@ export const projects: Project[] = [
     href: "https://trai-theta.vercel.app/",
     preview: "/project-previews/trai.png",
     tone: "red",
+  },
+  {
+    id: "mrap",
+    category: "web",
+    tags: ["Harita"],
+    title: "MRAP",
+    hook: "Şehrin sokaklarında rota çiz; kapattığın alanlar haritada sana ait olsun.",
+    description:
+      "Gerçek dünya haritasında rota kapatma, benzersiz alan sahipliği ve sosyal harita akışını birleştiren responsive web MVP'si. Demo modunda sanal konumla alan boyama, keşif akışı, sıralama ve profil deneyimleri denenebilir.",
+    platform: "Responsive web · Harita tabanlı sosyal oyun",
+    status: "MVP · Canlı demo",
+    role: "Ürün ve oyun tasarımı · Full-stack geliştirme · Harita/konum sistemi",
+    tools: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Supabase",
+      "MapLibre GL",
+      "Turf.js",
+      "SQLite",
+      "Playwright",
+      "Vercel",
+    ],
+    highlights: [
+      "Rota segmentleriyle alan kapatma, tekil sahiplik skoru ve tekrar boyamayı ayıran oyun kuralı",
+      "Demo sanal konum sağlayıcısı, sosyal keşif akışı ve Supabase/PostGIS üretim mimarisi hazırlığı",
+    ],
+    href: "https://mrap.vercel.app/",
+    preview: "/project-previews/mrap.png",
+    previewPosition: "center top",
+    tone: "green",
   },
   {
     id: "bibish",
