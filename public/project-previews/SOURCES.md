@@ -25,19 +25,19 @@
   gravitational lensing/twin quasar diagram)
 - `dyson-ring-tubitak-logo.jpg`: real TÜBİTAK letterhead image extracted directly from the
   `SCIENNNNNTIFIC.docx` (Dyson Ring) research proposal
+- `jump-height-ml-presentation.jpg`: real headless-browser screenshot of the Canva presentation
+  at `canva.link/9uou0pjp4wumn1g` (the "Presentation Overview" slide)
+- `uniforumhub-flyer.jpg`: real headless-browser screenshot of the Canva flyer at
+  `canva.link/qx0tf07ri8ul5t1` (page 1 hero art)
+- `sorita-promo.jpg`: real headless-browser screenshot of the Canva video design at
+  `canva.link/57hgko0vw2x3g0r`
+- `universe-app-promo.jpg`: real headless-browser screenshot of the Canva design at
+  `canva.link/2v5p2m45n4c8nda`
+- `audioroom-info-poster.jpg`: real headless-browser screenshot of the Canva design at
+  `canva.link/vvz204q9oy7b53y`
 
 These files are captures or original assets from the projects themselves, not generated mockups.
-
-## Custom cover graphics (not screenshots)
-
-The following are hand-authored SVG cover cards, not real captures — the underlying Canva
-share links only render via client-side JS, and fetching the raw share URL directly (bypassing
-JS) returns Canva's generic loading shell with no image data, so there is currently no way in
-this environment to capture the real artwork:
-
-- `sicrama-analizi.svg`, `broshur.svg`, `mobil-lansman.svg`, `universe-poster.svg`,
-  `audio-room-poster.svg`: cover cards for the linked Canva designs, styled from each design's
-  own title since the artwork itself couldn't be fetched
-
-If real exports/screenshots of these five designs become available, swap these files for the
-real captures and update this list.
+The five Canva screenshots were captured by loading each design's public `/view` URL in headless
+Chrome (the JS-rendered page can't be read via a plain HTTP fetch, but a real browser renders it
+normally) and cropping to the relevant frame with Pillow — same idea as the other live captures
+in this file, just automated instead of done by hand.
