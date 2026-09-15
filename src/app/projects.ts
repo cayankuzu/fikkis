@@ -714,7 +714,13 @@ export const projects: Project[] = [
       "EPR paradoksundan 2022 Nobel Fizik Ödülü deneylerine kronolojik anlatım",
     ],
     href: "/documents/kuantum-dolaniklik.pdf",
-    preview: "/project-previews/kuantum.svg",
+    preview: "/project-previews/quantum-nobel-2022.jpg",
+    previews: [
+      "/project-previews/quantum-nobel-2022.jpg",
+      "/project-previews/quantum-schrodingers-cat.jpg",
+      "/project-previews/quantum-einstein-bohr.jpg",
+    ],
+    previewFit: "contain",
     tone: "violet",
   },
   {
@@ -734,7 +740,13 @@ export const projects: Project[] = [
       "Merkür yörünge sapması ve ikiz kuasar gibi gözlemsel kanıtlar",
     ],
     href: "/documents/genel-gorelilik.pptx",
-    preview: "/project-previews/genel-gorelilik.svg",
+    preview: "/project-previews/general-relativity-light-bending.jpg",
+    previews: [
+      "/project-previews/general-relativity-light-bending.jpg",
+      "/project-previews/general-relativity-spacetime-grid.jpg",
+      "/project-previews/general-relativity-gravitational-lensing.jpg",
+    ],
+    previewFit: "contain",
     tone: "navy",
   },
   {
@@ -754,7 +766,8 @@ export const projects: Project[] = [
       "Danışman: Caner Değer · Marmara Üniversitesi",
     ],
     href: "/documents/dyson-ring-tubitak.docx",
-    preview: "/project-previews/dyson-ring.svg",
+    preview: "/project-previews/dyson-ring-tubitak-logo.jpg",
+    previewFit: "contain",
     tone: "amber",
   },
   {
