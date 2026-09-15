@@ -766,7 +766,12 @@ export const projects: Project[] = [
       "Danışman: Caner Değer · Marmara Üniversitesi",
     ],
     href: "/dokuman/dyson-ring",
-    preview: "/project-previews/dyson-ring-tubitak-logo.jpg",
+    preview: "/project-previews/dyson-ring-cover.jpg",
+    previews: [
+      "/project-previews/dyson-ring-cover.jpg",
+      "/project-previews/dyson-ring-aims.jpg",
+      "/project-previews/dyson-ring-risk-table.jpg",
+    ],
     previewFit: "contain",
     tone: "amber",
   },
@@ -788,6 +793,11 @@ export const projects: Project[] = [
     ],
     href: "https://canva.link/9uou0pjp4wumn1g",
     preview: "/project-previews/jump-height-ml-presentation.jpg",
+    previews: [
+      "/project-previews/jump-height-ml-presentation.jpg",
+      "/project-previews/jump-height-correlation-heatmap.jpg",
+      "/project-previews/jump-height-feature-engineering.jpg",
+    ],
     tone: "lime",
   },
   {
@@ -808,6 +818,12 @@ export const projects: Project[] = [
     ],
     href: "https://canva.link/qx0tf07ri8ul5t1",
     preview: "/project-previews/uniforumhub-flyer.jpg",
+    previews: [
+      "/project-previews/uniforumhub-flyer.jpg",
+      "/project-previews/uniforumhub-flyer-page2.jpg",
+      "/project-previews/uniforumhub-flyer-page3.jpg",
+    ],
+    previewFit: "contain",
     tone: "orange",
   },
   {
@@ -824,9 +840,15 @@ export const projects: Project[] = [
     tools: ["Canva"],
     highlights: [
       "SoRita'nın mekân kaydetme ve arkadaş takibi özelliklerini öne çıkaran tanıtım kurgusu",
+      "Gerçek SoRita uygulama ekranlarıyla desteklenen tanıtım görselleri",
     ],
     href: "https://canva.link/57hgko0vw2x3g0r",
     preview: "/project-previews/sorita-promo.jpg",
+    previews: [
+      "/project-previews/sorita-promo.jpg",
+      "/project-previews/sorita-1.png",
+      "/project-previews/sorita-2.png",
+    ],
     previewFit: "contain",
     tone: "blue",
   },
@@ -834,20 +856,25 @@ export const projects: Project[] = [
     id: "universe-poster",
     category: "design",
     tags: ["Canva", "UniVerse"],
-    title: "Universe Uygulama Tanıtımı",
-    hook: "\"Mobile Apps by MeMoDe\" serisinden, UniVerse'ü gerçek uygulama ekranlarıyla tanıtan bir Canva görseli.",
+    title: "Universe Yatırımcı Sunumu",
+    hook: "UniVerse için hazırlanmış 28 sayfalık bir girişim sunumu: problem, çözüm, rakip analizi ve iş modeli.",
     description:
-      "UniVerse mobil uygulamasının kulüp keşfi, etkinlik takibi ve sosyal akış özelliklerini gerçek uygulama ekranlarıyla tanıtan Canva tasarımı; SoRita ve WMatch ile birlikte sunulan bir mobil uygulama portföyünün parçası.",
-    platform: "Canva tanıtım görseli",
+      "\"Mobile Apps by MeMoDe\" markasıyla hazırlanan, UniVerse'ün öğrenci/kulüp problemini, çözümünü, gerçek uygulama ekranlarını, rakip analizini (UniClubs, Kampüslü) ve iş modelini kapsayan 28 sayfalık bir Canva girişim sunumu; SoRita ve WMatch ile birlikte sunulan bir mobil uygulama portföyünün parçası.",
+    platform: "Canva sunumu · 28 sayfa",
     status: "Tamamlandı",
-    role: "Görsel tasarım",
+    role: "Görsel tasarım · Sunum içeriği",
     tools: ["Canva"],
     highlights: [
       "Kulüpler, etkinlikler ve takip akışını gösteren gerçek uygulama ekran görüntüleri",
-      "SoRita ve WMatch ile birlikte sunulan mobil uygulama portföyü",
+      "Rakip analizi (UniClubs, Kampüslü) ve iş modeli sayfalarını içeren tam kapsamlı deste",
     ],
     href: "https://canva.link/2v5p2m45n4c8nda",
     preview: "/project-previews/universe-app-promo.jpg",
+    previews: [
+      "/project-previews/universe-app-promo.jpg",
+      "/project-previews/universe-app-promo-problems.jpg",
+      "/project-previews/universe-app-promo-competitors.jpg",
+    ],
     tone: "ink",
   },
   {
@@ -868,6 +895,11 @@ export const projects: Project[] = [
     ],
     href: "https://canva.link/vvz204q9oy7b53y",
     preview: "/project-previews/audioroom-info-poster.jpg",
+    previews: [
+      "/project-previews/audioroom-info-poster.jpg",
+      "/project-previews/audioroom-info-poster-page2.jpg",
+    ],
+    previewFit: "contain",
     tone: "green",
   },
 ];

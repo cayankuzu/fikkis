@@ -23,21 +23,34 @@
   `general-relativity-gravitational-lensing.jpg`: real images extracted directly from the
   `GENERAL_RELATIVITY.pptx` slides (light-bending diagram, spacetime curvature grid, and
   gravitational lensing/twin quasar diagram)
-- `dyson-ring-tubitak-logo.jpg`: real TÜBİTAK letterhead image extracted directly from the
-  `SCIENNNNNTIFIC.docx` (Dyson Ring) research proposal
-- `jump-height-ml-presentation.jpg`: real headless-browser screenshot of the Canva presentation
-  at `canva.link/9uou0pjp4wumn1g` (the "Presentation Overview" slide)
-- `uniforumhub-flyer.jpg`: real headless-browser screenshot of the Canva flyer at
-  `canva.link/qx0tf07ri8ul5t1` (page 1 hero art)
+- `dyson-ring-cover.jpg`, `dyson-ring-aims.jpg`, `dyson-ring-risk-table.jpg`: real screenshots of
+  three different pages (cover, Aims and Objectives, Risk Management/Research Opportunities
+  tables) of `SCIENNNNNTIFIC.docx` (Dyson Ring), rendered via Microsoft's Office Online viewer
+- `jump-height-ml-presentation.jpg`, `jump-height-correlation-heatmap.jpg`,
+  `jump-height-feature-engineering.jpg`: real headless-browser screenshots of three different
+  slides (1, 5, 9 of 18) of the Canva presentation at `canva.link/9uou0pjp4wumn1g` — a real ML
+  coursework deck estimating jump height from a dataset (correlation heatmap, feature
+  engineering, Gradient Boosting/Random Forest/KNN comparison)
+- `uniforumhub-flyer.jpg`, `uniforumhub-flyer-page2.jpg`, `uniforumhub-flyer-page3.jpg`: real
+  headless-browser screenshots of the 3 pages of the Canva flyer at
+  `canva.link/qx0tf07ri8ul5t1` (front hero art, the UniForumHub QR/description panel, and the
+  AtKafası Fanzin cross-promo cover)
 - `sorita-promo.jpg`: real headless-browser screenshot of the Canva video design at
-  `canva.link/57hgko0vw2x3g0r`
-- `universe-app-promo.jpg`: real headless-browser screenshot of the Canva design at
-  `canva.link/2v5p2m45n4c8nda`
-- `audioroom-info-poster.jpg`: real headless-browser screenshot of the Canva design at
-  `canva.link/vvz204q9oy7b53y`
+  `canva.link/57hgko0vw2x3g0r` (a single still composition — the "video" has no content change
+  over its 5s runtime), paired in the gallery with the existing real `sorita-1.png`/`sorita-2.png`
+  demo captures for variety
+- `universe-app-promo.jpg`, `universe-app-promo-problems.jpg`,
+  `universe-app-promo-competitors.jpg`: real headless-browser screenshots of 3 of the 28 pages
+  (cover, Problems, Rakip Analizi) of the Canva pitch deck at `canva.link/2v5p2m45n4c8nda` — a
+  full investor-style deck for UniVerse, not just a single promo image
+- `audioroom-info-poster.jpg`, `audioroom-info-poster-page2.jpg`: real headless-browser
+  screenshots of 2 of the 3 pages of the Canva design at `canva.link/vvz204q9oy7b53y` (the
+  controls/QR poster and the "Yayındakiler & Yakındakiler" album showcase; the 3rd page is blank
+  in the source file)
 
 These files are captures or original assets from the projects themselves, not generated mockups.
-The five Canva screenshots were captured by loading each design's public `/view` URL in headless
+The Canva screenshots were captured by loading each design's public `/view` URL in headless
 Chrome (the JS-rendered page can't be read via a plain HTTP fetch, but a real browser renders it
-normally) and cropping to the relevant frame with Pillow — same idea as the other live captures
-in this file, just automated instead of done by hand.
+normally), navigating between pages/slides with real mouse and keyboard input, and cropping to
+the relevant frame with Pillow. The Word document pages were captured the same way, but via
+Microsoft's Office Online embed viewer instead of Canva.
