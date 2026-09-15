@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Genel Görelilik kapak görseli">
+  <rect width="800" height="450" fill="#0c2a49"/>
+  <defs>
+    <radialGradient id="star" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe9a8"/>
+      <stop offset="100%" stop-color="#ffb545"/>
+    </radialGradient>
+  </defs>
+  <g stroke="#5c9fe0" stroke-width="1.6" fill="none" opacity="0.6">
+    <path d="M -20 240 C 200 190, 300 190, 400 240 S 620 300, 840 230"/>
+    <path d="M -20 280 C 200 235, 300 235, 400 280 S 620 335, 840 270"/>
+    <path d="M -20 320 C 200 280, 300 280, 400 320 S 620 370, 840 310"/>
+  </g>
+  <circle cx="430" cy="255" r="46" fill="url(#star)"/>
+  <circle cx="640" cy="150" r="5" fill="#fff"/>
+  <circle cx="680" cy="160" r="5" fill="#fff"/>
+  <path d="M 640 150 Q 560 235 470 255" stroke="#fff" stroke-width="1.6" fill="none" stroke-dasharray="4 5" opacity="0.8"/>
+  <path d="M 680 160 Q 590 240 470 258" stroke="#fff" stroke-width="1.6" fill="none" stroke-dasharray="4 5" opacity="0.8"/>
+  <text x="56" y="120" fill="#eaf4ff" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="900" letter-spacing="-2">GENEL</text>
+  <text x="56" y="172" fill="#eaf4ff" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="900" letter-spacing="-2">GÖRELİLİK</text>
+  <text x="58" y="400" fill="#9cc4ea" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2">FİZİK SUNUMU · IŞIĞIN BÜKÜLMESİ</text>
+</svg>

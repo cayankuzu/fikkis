@@ -23,7 +23,15 @@ export type Project = {
     | "burger-dog"
     | "feed-the-dragon"
     | "atkafasi"
-    | "cayan-kuzu-cv";
+    | "cayan-kuzu-cv"
+    | "quantum-entanglement"
+    | "general-relativity"
+    | "dyson-ring"
+    | "jump-analysis"
+    | "broshur"
+    | "mobile-launch-poster"
+    | "universe-poster"
+    | "audio-room-poster";
   title: string;
   hook: string;
   description: string;
@@ -37,7 +45,7 @@ export type Project = {
   storeLinks?: { label: string; href: string }[];
   downloadStatus?: string;
   secondaryHref?: string;
-  category: "web" | "game" | "mobile" | "content";
+  category: "web" | "game" | "mobile" | "content" | "design" | "science";
   tags?: string[];
   desktopOnly?: boolean;
   preview: string;
@@ -688,5 +696,161 @@ export const projects: Project[] = [
     secondaryHref: "https://atkafasifanzin.gumroad.com/",
     preview: "/project-previews/atkafasi.png",
     tone: "orange",
+  },
+  {
+    id: "quantum-entanglement",
+    category: "science",
+    tags: ["Fizik"],
+    title: "Kuantum Dolanıklık",
+    hook: "Einstein'ın \"ürkütücü\" dediği fenomen: dolanık parçacıklar gerçekten birbirini anında mı etkiliyor?",
+    description:
+      "2022 Nobel Fizik Ödülü'nü kazanan deneylerden yola çıkarak kuantum dolanıklığı, Bell eşitsizliği ve gizli değişkenler tartışmasını ele alan bir fizik araştırma yazısı. EPR paradoksundan Alain Aspect'in deneylerine uzanan çizgiyi özetler.",
+    platform: "PDF · Kişisel araştırma yazısı",
+    status: "Tamamlandı",
+    role: "Araştırma · Yazım",
+    tools: ["Fizik araştırması", "Akademik yazım"],
+    highlights: [
+      "Bell eşitsizliği ve gizli değişken teorilerinin deneysel çürütülmesi",
+      "EPR paradoksundan 2022 Nobel Fizik Ödülü deneylerine kronolojik anlatım",
+    ],
+    href: "/documents/kuantum-dolaniklik.pdf",
+    preview: "/project-previews/kuantum.svg",
+    tone: "violet",
+  },
+  {
+    id: "general-relativity",
+    category: "science",
+    tags: ["Fizik"],
+    title: "Genel Görelilik",
+    hook: "Kütleçekiminin ışığı büktüğü fikrini Merkür'ün yörüngesinden ikiz kuasara uzanan kanıtlarla anlatan sunum.",
+    description:
+      "Genel görelilik teorisinin temel fikrini, kütleçekimi ile ivmenin denkliğini ve ışığın büküldüğünü gösteren gerçek gözlemleri (Merkür'ün yörünge sapması, ikiz kuasar) bir araya getiren fizik sunumu.",
+    platform: "PowerPoint sunumu",
+    status: "Tamamlandı",
+    role: "Araştırma · Sunum tasarımı",
+    tools: ["PowerPoint", "Fizik araştırması"],
+    highlights: [
+      "Kütleçekimi-ivme denkliğinden ışığın bükülmesine uzanan mantık kurgusu",
+      "Merkür yörünge sapması ve ikiz kuasar gibi gözlemsel kanıtlar",
+    ],
+    href: "/documents/genel-gorelilik.pptx",
+    preview: "/project-previews/genel-gorelilik.svg",
+    tone: "navy",
+  },
+  {
+    id: "dyson-ring",
+    category: "science",
+    tags: ["Fizik", "Astrofizik"],
+    title: "Dyson Ring",
+    hook: "Bir yıldızın etrafına kurulacak dev bir enerji halkası mümkün mü? TÜBİTAK'a sunulan bir araştırma önerisi.",
+    description:
+      "TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destek Programı kapsamında Marmara Üniversitesi'nde hazırlanan, Dyson halkası kavramının teknik ve ekonomik fizibilitesini literatür taraması, simülasyon ve prototip çalışmasıyla değerlendiren resmi araştırma önerisi.",
+    platform: "Word belgesi · Resmi araştırma önerisi",
+    status: "TÜBİTAK 2209-A başvurusu",
+    role: "Araştırmacı · Öneri yazarı",
+    tools: ["Bilimsel yazım", "Proje yönetimi", "Fizibilite analizi"],
+    highlights: [
+      "Literatür taraması, simülasyon modeli ve prototip üretimini kapsayan dört iş paketi",
+      "Danışman: Caner Değer · Marmara Üniversitesi",
+    ],
+    href: "/documents/dyson-ring-tubitak.docx",
+    preview: "/project-previews/dyson-ring.svg",
+    tone: "amber",
+  },
+  {
+    id: "jump-analysis",
+    category: "science",
+    tags: ["Veri analizi"],
+    title: "Sıçrama Yüksekliği Analizi",
+    hook: "Dikey sıçrama yüksekliğini veri analiziyle ölçmenin yollarını konu alan bir spor bilimi infografiği.",
+    description:
+      "Dikey sıçrama yüksekliğinin farklı yöntemlerle nasıl ölçülüp analiz edilebileceğini ele alan, Canva'da hazırlanmış bir veri analizi infografiği.",
+    platform: "Canva infografik",
+    status: "Tamamlandı",
+    role: "Araştırma · Görsel tasarım",
+    tools: ["Canva", "Veri analizi"],
+    highlights: [
+      "Sıçrama yüksekliği ölçüm yöntemlerinin karşılaştırılması",
+      "Spor performansı verisini görselleştiren infografik anlatım",
+    ],
+    href: "https://canva.link/9uou0pjp4wumn1g",
+    preview: "/project-previews/sicrama-analizi.svg",
+    tone: "lime",
+  },
+  {
+    id: "broshur",
+    category: "design",
+    tags: ["Canva"],
+    title: "Broşür Tasarımı",
+    hook: "Canva'da hazırlanmış, katlanır düzenle kurgulanmış kişisel bir broşür çalışması.",
+    description:
+      "Basılı bir broşür formatında hazırlanmış, düzen ve tipografi denemesi içeren kişisel bir Canva tasarım çalışması.",
+    platform: "Canva tasarımı",
+    status: "Tamamlandı",
+    role: "Görsel tasarım",
+    tools: ["Canva"],
+    highlights: [
+      "Katlanır broşür düzeninde tipografi ve kompozisyon denemesi",
+    ],
+    href: "https://canva.link/qx0tf07ri8ul5t1",
+    preview: "/project-previews/broshur.svg",
+    tone: "coral",
+  },
+  {
+    id: "mobile-launch-poster",
+    category: "design",
+    tags: ["Canva"],
+    title: "Mobil Uygulama Lansman Videosu",
+    hook: "Bir mobil uygulama lansmanı için hazırlanmış, hareketli tanıtım videosu tasarımı.",
+    description:
+      "Bir mobil uygulamanın lansmanını duyurmak için Canva'da hazırlanmış tanıtım videosu tasarımı.",
+    platform: "Canva video şablonu",
+    status: "Tamamlandı",
+    role: "Görsel tasarım",
+    tools: ["Canva"],
+    highlights: [
+      "Mobil uygulama lansmanına özel hareketli tanıtım kurgusu",
+    ],
+    href: "https://canva.link/57hgko0vw2x3g0r",
+    preview: "/project-previews/mobil-lansman.svg",
+    tone: "blue",
+  },
+  {
+    id: "universe-poster",
+    category: "design",
+    tags: ["Canva"],
+    title: "Universe (Poster)",
+    hook: "Uzayı ve evreni konu alan bir Canva poster tasarımı.",
+    description:
+      "Evren ve uzay temasını işleyen, Canva'da hazırlanmış bağımsız bir poster tasarım çalışması.",
+    platform: "Canva poster",
+    status: "Tamamlandı",
+    role: "Görsel tasarım",
+    tools: ["Canva"],
+    highlights: [
+      "Uzay temalı kompozisyon ve tipografi denemesi",
+    ],
+    href: "https://canva.link/2v5p2m45n4c8nda",
+    preview: "/project-previews/universe-poster.svg",
+    tone: "ink",
+  },
+  {
+    id: "audio-room-poster",
+    category: "design",
+    tags: ["Canva"],
+    title: "Audio Room (Poster)",
+    hook: "Ses ve mekân deneyimini konu alan bir Canva poster tasarımı.",
+    description:
+      "Ses ve mekân ilişkisini işleyen, Canva'da hazırlanmış bağımsız bir poster tasarım çalışması.",
+    platform: "Canva poster",
+    status: "Tamamlandı",
+    role: "Görsel tasarım",
+    tools: ["Canva"],
+    highlights: [
+      "Ses ve mekân temalı kompozisyon denemesi",
+    ],
+    href: "https://canva.link/vvz204q9oy7b53y",
+    preview: "/project-previews/audio-room-poster.svg",
+    tone: "green",
   },
 ];

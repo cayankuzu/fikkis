@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-label="Broşür tasarımı kapak görseli">
+  <rect width="800" height="450" fill="#7a1f2b"/>
+  <g transform="translate(520 60)">
+    <rect x="0" y="0" width="170" height="330" rx="6" fill="#fff8e9" stroke="#17140f" stroke-width="4" transform="rotate(8 85 165)"/>
+    <rect x="-40" y="20" width="170" height="330" rx="6" fill="#ffd7dd" stroke="#17140f" stroke-width="4" transform="rotate(-6 45 185)"/>
+  </g>
+  <text x="56" y="140" fill="#fff0e4" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-2">BROŞÜR</text>
+  <text x="56" y="190" fill="#fff0e4" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="900" letter-spacing="-2">TASARIMI</text>
+  <text x="58" y="360" fill="#ffc8ce" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" letter-spacing="2">CANVA · BASILI TASARIM ÇALIŞMASI</text>
+</svg>

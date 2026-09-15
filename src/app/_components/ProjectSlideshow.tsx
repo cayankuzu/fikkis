@@ -14,6 +14,8 @@ const categoryLabels: Record<Project["category"], string> = {
   game: "Oyun",
   mobile: "Mobil ürün",
   content: "Bağımsız yayın",
+  design: "Tasarım",
+  science: "Bilim çalışması",
 };
 
 function subscribeToReducedMotion(onStoreChange: () => void) {

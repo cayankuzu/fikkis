@@ -18,3 +18,18 @@
 - `atkafasi.png`: live capture from `atkafasifanzin.gumroad.com`
 
 These files are captures or original assets from the projects themselves, not generated mockups.
+
+## Custom cover graphics (not screenshots)
+
+The following are hand-authored SVG cover cards, not real captures — the underlying Canva
+share links only render via client-side JS (no headless browser available to capture them),
+and the PDF/PPTX/DOCX documents had no local renderer available to generate a page preview:
+
+- `kuantum.svg`, `genel-gorelilik.svg`, `dyson-ring.svg`: cover cards for the science documents
+  (`quantum-entanglement`, `general-relativity`, `dyson-ring` projects)
+- `sicrama-analizi.svg`, `broshur.svg`, `mobil-lansman.svg`, `universe-poster.svg`,
+  `audio-room-poster.svg`: cover cards for the linked Canva designs, styled from each design's
+  own title since the artwork itself couldn't be fetched
+
+If real exports/screenshots of these designs become available, swap these files for the real
+captures and update this list.

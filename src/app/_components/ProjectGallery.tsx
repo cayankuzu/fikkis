@@ -14,6 +14,8 @@ const filters: { value: FilterValue; label: string }[] = [
   { value: "game", label: "Oyunlar" },
   { value: "mobile", label: "Mobil" },
   { value: "content", label: "Yayın" },
+  { value: "design", label: "Tasarım" },
+  { value: "science", label: "Bilim" },
 ];
 
 function getLimitedDeviceSnapshot() {
@@ -603,7 +605,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       counts[project.category] += 1;
       return counts;
     },
-    { all: 0, web: 0, game: 0, mobile: 0, content: 0 },
+    { all: 0, web: 0, game: 0, mobile: 0, content: 0, design: 0, science: 0 },
   );
 
   const visibleProjects =
