@@ -89,17 +89,31 @@ img { display: block; }
   line-height: 1.55;
 }
 
-.utilityBar {
+.taglineRow {
+  position: relative;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
+.taglineRow .fikkisTagline {
+  margin-top: 0;
+}
+
+.taglineRow .utilityPanel {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  transform: translateY(-50%);
+}
+
+.taglineRow .utilityPanelSupport { left: 0; }
+.taglineRow .utilityPanelContact { right: 0; }
+
 .utilityPanel {
-  width: min(310px, 100%);
+  width: min(300px, 100%);
   overflow: hidden;
   border: 1.5px solid var(--ink);
   border-radius: 18px;
@@ -170,10 +184,19 @@ img { display: block; }
   padding: 14px 16px 16px;
 }
 
-.utilityPanelBody > p {
-  margin: 0 0 12px;
-  color: #4f4f4f;
-  font-size: .74rem;
+.utilityPanelBody > strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: .8rem;
+  line-height: 1.4;
+}
+
+.utilityPanelBody > span {
+  display: block;
+  margin-bottom: 12px;
+  color: #6a6a6a;
+  font-size: .68rem;
   line-height: 1.5;
 }
 
@@ -212,13 +235,30 @@ img { display: block; }
   border-color: #1769ff;
 }
 
-.utilityContactList {
-  display: grid;
-  gap: 2px;
-  padding: 8px;
+.contactLinkLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink);
+  font-size: .76rem;
+  font-weight: 650;
 }
 
-.utilityContactList a {
+.contactLinkLabel svg {
+  flex: none;
+  color: #bb5c13;
+}
+
+.utilityContactList,
+.footerContactList {
+  display: grid;
+  gap: 2px;
+}
+
+.utilityContactList { padding: 8px; }
+
+.utilityContactList a,
+.footerContactList a {
   display: flex;
   min-height: 40px;
   align-items: center;
@@ -229,21 +269,8 @@ img { display: block; }
   transition: background 150ms ease, color 150ms ease;
 }
 
-.utilityContactLabel {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--ink);
-  font-size: .76rem;
-  font-weight: 650;
-}
-
-.utilityContactLabel svg {
-  flex: none;
-  color: #bb5c13;
-}
-
-.utilityContactList a small {
+.utilityContactList a small,
+.footerContactList a small {
   overflow: hidden;
   color: #777;
   font-family: var(--font-mono), monospace;
@@ -257,8 +284,15 @@ img { display: block; }
   background: #f5f5f2;
 }
 
+.footerContactList a:hover,
+.footerContactList a:focus-visible {
+  background: #fff;
+}
+
 .utilityContactList a:hover small,
-.utilityContactList a:focus-visible small {
+.utilityContactList a:focus-visible small,
+.footerContactList a:hover small,
+.footerContactList a:focus-visible small {
   color: #1769ff;
 }
 
@@ -833,6 +867,27 @@ img { display: block; }
   color: #fff;
   background: #1769ff;
   border-color: #1769ff;
+}
+
+.footerContactCard {
+  padding: 20px;
+  border: 1px solid #c9c9c9;
+  border-radius: 16px;
+  background: #f5f5f2;
+}
+
+.footerContactCard > p {
+  margin: 0 0 4px;
+  color: #6a6a6a;
+  font-family: var(--font-mono), monospace;
+  font-size: .58rem;
+  font-weight: 760;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.footerContactList {
+  padding: 4px 0 0;
 }
 
 .fikkisFooter nav {
@@ -1516,17 +1571,23 @@ img { display: block; }
   .projectCard { height: auto; }
 }
 
+@media (max-width: 999px) {
+  .taglineRow {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .taglineRow .utilityPanel {
+    position: static;
+    transform: none;
+    width: 100%;
+  }
+}
+
 @media (max-width: 650px) {
   .fikkisPage { width: calc(100% - 34px); }
   .fikkisHeader { min-height: 245px; padding-top: 43px; }
   .fikkisMark { font-size: 4.5rem; }
   .fikkisIntro { max-width: 470px; font-size: .8rem; }
-  .utilityBar {
-    flex-direction: column;
-    align-items: stretch;
-    margin-top: 22px;
-  }
-  .utilityPanel { width: 100%; }
   .filterBar {
     top: 8px;
     width: 100%;

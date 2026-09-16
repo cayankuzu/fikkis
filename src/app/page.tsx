@@ -1,4 +1,5 @@
 import packageJson from "../../package.json";
+import { ContactLinks } from "./_components/ContactLinks";
 import { ProjectGallery } from "./_components/ProjectGallery";
 import { TopUtilityBar } from "./_components/TopUtilityBar";
 import { projects } from "./projects";
@@ -13,14 +14,15 @@ export default function Home() {
         <a className="fikkisMark" href="#top" aria-label="Fikkis ana sayfa">
           fikkis<span>●</span>
         </a>
-        <p className="fikkisTagline">bir şeyler deniyorum</p>
+        <div className="taglineRow">
+          <TopUtilityBar />
+          <p className="fikkisTagline">bir şeyler deniyorum</p>
+        </div>
         <p className="fikkisIntro">
           Mobil ürünleri, oyunları, web deneyimlerini ve bağımsız yayınları;
           doğrulanmış bağlantılar ve kısa üretim notlarıyla bir araya getiren
           kişisel proje arşivi.
         </p>
-
-        <TopUtilityBar />
       </header>
 
       <ProjectGallery projects={projects} />
@@ -56,6 +58,14 @@ export default function Home() {
                 Gumroad
               </a>
             </div>
+          </section>
+
+          <section
+            className="footerContactCard"
+            aria-labelledby="footer-contact-title"
+          >
+            <p id="footer-contact-title">İletişim</p>
+            <ContactLinks className="footerContactList" />
           </section>
         </div>
       </footer>
