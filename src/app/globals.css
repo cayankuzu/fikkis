@@ -104,13 +104,12 @@ img { display: block; }
 
 .taglineRow .utilityPanel {
   position: absolute;
-  top: 50%;
+  top: 8px;
   z-index: 5;
-  transform: translateY(-50%);
 }
 
-.taglineRow .utilityPanelSupport { left: 0; }
-.taglineRow .utilityPanelContact { right: 0; }
+.taglineRow .utilityPanelSupport { left: calc(-50vw + 50% + 28px); }
+.taglineRow .utilityPanelContact { right: calc(-50vw + 50% + 28px); }
 
 .utilityPanel {
   width: min(300px, 100%);
@@ -1571,7 +1570,7 @@ img { display: block; }
   .projectCard { height: auto; }
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1449px) {
   .taglineRow {
     flex-direction: column;
     gap: 16px;
@@ -1580,6 +1579,14 @@ img { display: block; }
     position: static;
     transform: none;
     width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1450px) {
+  .fikkisHeader {
+    padding-bottom: 85px;
   }
 }
 
