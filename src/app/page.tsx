@@ -4,6 +4,8 @@ import { projects } from "./projects";
 
 const instagramUrl =
   "https://www.instagram.com/memode333?igsh=aWZkZDM3dXR1azBk";
+const githubUrl = "https://github.com/cayankuzu";
+const kaggleUrl = "https://www.kaggle.com/ayankuzu";
 const contactEmail = "memodee333@gmail.com";
 const shopierUrl = "https://www.shopier.com/atkafasifanzin";
 const gumroadUrl = "https://atkafasifanzin.gumroad.com/";
@@ -62,6 +64,14 @@ export default function Home() {
             <a href={instagramUrl} target="_blank" rel="noreferrer">
               <span>Instagram</span>
               <small>@memode333</small>
+            </a>
+            <a href={githubUrl} target="_blank" rel="noreferrer">
+              <span>GitHub</span>
+              <small>@cayankuzu</small>
+            </a>
+            <a href={kaggleUrl} target="_blank" rel="noreferrer">
+              <span>Kaggle</span>
+              <small>@ayankuzu</small>
             </a>
             <a href={`mailto:${contactEmail}`}>
               <span>E-posta</span>
