@@ -76,14 +76,53 @@ production build:
 - `bibish-gameplay.mp4`: real capture of joining a live match and the spawn-point selection map
   (automated input couldn't reliably click a specific spawn to get further into open movement)
 - `merbut-gameplay.mp4`: real capture of an actual Hz. Ali vs. Samuray Jack battle in progress
-- `remember-gameplay.mp4`: real capture of the Ouroboros 3D scene being rotated via drag,
-  re-recorded 2026-09-16 after fixing a bug on that site where the skull inside the ring failed
-  to render in time (see that project's own repo history)
-- `audioroom-gameplay.mp4`: real capture of entering the "Mükemmel Boşluk" 3D world itself (not
-  just the album library) — this one needed a ~35s wait for the WebGL scene to finish loading
-  before the "Evrene Gir" button was clickable
+- `remember-gameplay.mp4`: real capture of the Ouroboros 3D scene being rotated via drag.
+  Re-recorded twice on 2026-09-16: first after fixing a bug on that site where the skull inside
+  the ring failed to render in time (see that project's own repo history), then again after
+  noticing the drag direction left the camera looking at the back of the skull's head — dragging
+  the opposite way brings the skull's face toward the camera instead.
+- `burger-dog-gameplay.mp4`: real gameplay clip. The `#startButton` didn't respond to coordinate
+  clicks or text-locator clicks (see below), but did respond to a direct
+  `page.locator("#startButton").click()` — worth remembering for any future automation on this
+  game.
 
-Two games — `card-race` and `burger-dog` — kept their existing static screenshots only. Their
-"Oyuna başla" / "Kart çek" buttons did not respond to automated clicks after multiple attempts
-(coordinate clicks, Playwright text-locator clicks, longer waits), so no real gameplay footage
-could be captured for them; no video was fabricated as a substitute.
+`card-race` kept its existing static screenshot only. Its "Kart çek" button did not respond to
+automated clicks after several different approaches (coordinate clicks, text-locator clicks,
+longer waits), so no real gameplay footage could be captured for it; no video was fabricated as
+a substitute.
+
+AudioRoom no longer uses a video (`audioroom-gameplay.mp4` removed) — see below, it now shows a
+real photo per completed album instead.
+
+## AudioRoom album photos
+
+`audioroom-mukemmel-bosluk.png` (existing, unchanged) plus three more real captures, one per
+other completed ("YAYINDA") album confirmed by paging through the live library carousel:
+
+- `audioroom-hayko-cepkin.png`: owner-supplied capture of the "Beni Büyüten Şarkılar Vol.1" world
+- `audioroom-klostrofobik-kaplumbaga.png`: owner-supplied capture of Henry the Lee's
+  "Klostrofobik Kaplumbağa" world
+- `audioroom-kuantum-dolaniklik.png`: real capture of Henry the Lee's "Kuantum Dolanıklık" world
+  (the site's own "4 yayında" claim didn't line up with only 3 known worlds until this one — a
+  single track, easy to miss in the carousel — was found and confirmed YAYINDA)
+
+The two still-YAKINDA worlds (Redd — 21, Pink Floyd — The Dark Side of the Moon) are correctly
+left out.
+
+## desAIn room photos
+
+`desain.png` (existing) plus three more real captures showing genuinely different configurations,
+not just camera angles on the same room — changing the "Oda Türü" and "Oda Tipi" dropdowns
+produces a different parametric furniture layout each time:
+
+- `desain-salon.jpg`: default rectangular "Salon" (living room) layout
+- `desain-yatak-odasi.jpg`: rectangular "Yatak Odası" (bedroom) layout
+- `desain-l-tipi.jpg`: "L Tipi" (L-shaped) room, still "Yatak Odası"
+
+## mrap.vercel.app — not touched
+
+`mrap.vercel.app` currently serves an unrelated site ("MRA — Moroccan Rap Archive"), not the
+street-painting map game described in the `mrap` project card. This was already flagged once
+before and is still true as of this update — no screenshots were taken from it, since that would
+mean showing the wrong project's content as if it were MRAP. The card's existing preview image
+was left alone. This needs the actual deployment fixed before any new screenshots make sense.

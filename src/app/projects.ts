@@ -235,6 +235,12 @@ export const projects: Project[] = [
     ],
     href: "https://des-ai-n.vercel.app/",
     preview: "/project-previews/desain.png",
+    previews: [
+      "/project-previews/desain.png",
+      "/project-previews/desain-salon.jpg",
+      "/project-previews/desain-yatak-odasi.jpg",
+      "/project-previews/desain-l-tipi.jpg",
+    ],
     previewPosition: "35% center",
     tone: "blue",
   },
@@ -262,7 +268,12 @@ export const projects: Project[] = [
     ],
     href: "https://audio-room-ecru.vercel.app/",
     preview: "/project-previews/audioroom-mukemmel-bosluk.png",
-    previewVideo: "/project-previews/videos/audioroom-gameplay.mp4",
+    previews: [
+      "/project-previews/audioroom-mukemmel-bosluk.png",
+      "/project-previews/audioroom-hayko-cepkin.png",
+      "/project-previews/audioroom-klostrofobik-kaplumbaga.png",
+      "/project-previews/audioroom-kuantum-dolaniklik.png",
+    ],
     tone: "red",
   },
   {
@@ -672,6 +683,7 @@ export const projects: Project[] = [
     ],
     href: "https://burger-dog.vercel.app/",
     preview: "/project-previews/burger-dog-gameplay.png",
+    previewVideo: "/project-previews/videos/burger-dog-gameplay.mp4",
     tone: "orange",
   },
   {
