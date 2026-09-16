@@ -48,9 +48,40 @@
   controls/QR poster and the "Yayındakiler & Yakındakiler" album showcase; the 3rd page is blank
   in the source file)
 
+- `cayankuzu-cv-projects.png`: live capture of `cayankuzucv.vercel.app` with the "Projeler"
+  accordion section expanded (the default screenshot only shows the "Profil" section)
+
 These files are captures or original assets from the projects themselves, not generated mockups.
 The Canva screenshots were captured by loading each design's public `/view` URL in headless
 Chrome (the JS-rendered page can't be read via a plain HTTP fetch, but a real browser renders it
 normally), navigating between pages/slides with real mouse and keyboard input, and cropping to
 the relevant frame with Pillow. The Word document pages were captured the same way, but via
 Microsoft's Office Online embed viewer instead of Canva.
+
+## Gameplay/experience videos (`videos/`)
+
+All of the following are real screen recordings, captured the same way as the screenshots above
+(headless Chrome via Playwright, connected over CDP) but recording video while real keyboard/mouse
+input was sent to the live, deployed game — not scripted/staged footage, not screen-captured from
+a human play session, and not AI-generated video. Each is a genuine session against the actual
+production build:
+
+- `snake-gameplay.mp4`, `tictactoe-gameplay.mp4`, `monster-wrangler-gameplay.mp4`,
+  `feed-the-dragon-gameplay.mp4`, `catch-the-clown-gameplay.mp4`, `battleship-gameplay.mp4`,
+  `old-maid-gameplay.mp4`: real gameplay clips from each game's live Vercel deployment
+- `son-40-saniye-gameplay.mp4`: real capture of the game's opening cinematic (phone lock screen →
+  fingerprint unlock); the automated input couldn't reliably reach the later list-editing mechanic
+- `asmaca-gameplay.mp4`: real capture through character select → mode select → an actual trivia
+  question inside the 3D hangman scene
+- `bibish-gameplay.mp4`: real capture of joining a live match and the spawn-point selection map
+  (automated input couldn't reliably click a specific spawn to get further into open movement)
+- `merbut-gameplay.mp4`: real capture of an actual Hz. Ali vs. Samuray Jack battle in progress
+- `remember-gameplay.mp4`: real capture of the Ouroboros 3D scene being rotated via drag
+- `audioroom-gameplay.mp4`: real capture of entering the "Mükemmel Boşluk" 3D world itself (not
+  just the album library) — this one needed a ~35s wait for the WebGL scene to finish loading
+  before the "Evrene Gir" button was clickable
+
+Two games — `card-race` and `burger-dog` — kept their existing static screenshots only. Their
+"Oyuna başla" / "Kart çek" buttons did not respond to automated clicks after multiple attempts
+(coordinate clicks, Playwright text-locator clicks, longer waits), so no real gameplay footage
+could be captured for them; no video was fabricated as a substitute.

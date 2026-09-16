@@ -79,6 +79,11 @@ export function ProjectSlideshow({
           {tag}
         </span>
       ))}
+      {project.previewVideo ? (
+        <span className="projectBadge projectBadgeSecondary">
+          ▶ Oynanış videosu
+        </span>
+      ) : null}
       {project.previewFit === "contain" ? (
         <span
           className="projectCoverBackdrop"
@@ -86,17 +91,38 @@ export function ProjectSlideshow({
           aria-hidden="true"
         />
       ) : null}
-      <Image
-        key={activeSource}
-        className="projectCoverImage"
-        src={activeSource}
-        alt={`${project.title} proje önizlemesi`}
-        fill
-        priority={priority}
-        sizes="(max-width: 680px) calc(100vw - 34px), (max-width: 980px) 47vw, 400px"
-        style={{ objectPosition: project.previewPosition ?? "center" }}
-      />
-      {sources.length > 1 ? (
+      {project.previewVideo ? (
+        <video
+          className="projectCoverImage"
+          poster={project.preview}
+          autoPlay={!prefersReducedMotion}
+          loop={!prefersReducedMotion}
+          muted
+          playsInline
+          preload={priority ? "auto" : "metadata"}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectPosition: project.previewPosition ?? "center",
+          }}
+        >
+          <source src={project.previewVideo} type="video/mp4" />
+        </video>
+      ) : (
+        <Image
+          key={activeSource}
+          className="projectCoverImage"
+          src={activeSource}
+          alt={`${project.title} proje önizlemesi`}
+          fill
+          priority={priority}
+          sizes="(max-width: 680px) calc(100vw - 34px), (max-width: 980px) 47vw, 400px"
+          style={{ objectPosition: project.previewPosition ?? "center" }}
+        />
+      )}
+      {!project.previewVideo && sources.length > 1 ? (
         <>
           {!prefersReducedMotion ? (
             <button

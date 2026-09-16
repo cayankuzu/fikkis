@@ -50,6 +50,7 @@ export type Project = {
   desktopOnly?: boolean;
   preview: string;
   previews?: string[];
+  previewVideo?: string;
   previewFit?: "cover" | "contain";
   previewPosition?: string;
   tone:
@@ -152,6 +153,7 @@ export const projects: Project[] = [
     ],
     href: "https://bibish-iota.vercel.app/",
     preview: "/project-previews/bibish.png",
+    previewVideo: "/project-previews/videos/bibish-gameplay.mp4",
     tone: "lime",
   },
   {
@@ -181,6 +183,7 @@ export const projects: Project[] = [
     ],
     href: "https://merbut.vercel.app/",
     preview: "/project-previews/merbut.png",
+    previewVideo: "/project-previews/videos/merbut-gameplay.mp4",
     tone: "red",
   },
   {
@@ -201,6 +204,7 @@ export const projects: Project[] = [
     ],
     href: "https://remember-you-must-die-web.vercel.app/",
     preview: "/project-previews/remember-ouroboros.png",
+    previewVideo: "/project-previews/videos/remember-gameplay.mp4",
     tone: "amber",
   },
   {
@@ -258,6 +262,7 @@ export const projects: Project[] = [
     ],
     href: "https://audio-room-ecru.vercel.app/",
     preview: "/project-previews/audioroom-mukemmel-bosluk.png",
+    previewVideo: "/project-previews/videos/audioroom-gameplay.mp4",
     tone: "red",
   },
   {
@@ -278,6 +283,10 @@ export const projects: Project[] = [
     ],
     href: "https://cayankuzucv.vercel.app/",
     preview: "/project-previews/cayankuzu-cv.png",
+    previews: [
+      "/project-previews/cayankuzu-cv.png",
+      "/project-previews/cayankuzu-cv-projects.png",
+    ],
     tone: "ink",
   },
   {
@@ -485,6 +494,7 @@ export const projects: Project[] = [
     ],
     href: "https://battleship-pygame.vercel.app/",
     preview: "/project-previews/battleship.png",
+    previewVideo: "/project-previews/videos/battleship-gameplay.mp4",
     previewFit: "contain",
     tone: "navy",
   },
@@ -505,6 +515,7 @@ export const projects: Project[] = [
     ],
     href: "https://old-maid-card-game.vercel.app/",
     preview: "/project-previews/old-maid.png",
+    previewVideo: "/project-previews/videos/old-maid-gameplay.mp4",
     tone: "cream",
   },
   {
@@ -524,6 +535,7 @@ export const projects: Project[] = [
     ],
     href: "https://tic-tac-toe-game-delta-jade.vercel.app/",
     preview: "/project-previews/tictactoe.png",
+    previewVideo: "/project-previews/videos/tictactoe-gameplay.mp4",
     tone: "coral",
   },
   {
@@ -550,6 +562,7 @@ export const projects: Project[] = [
     ],
     href: "https://google-history-clear-game.vercel.app/",
     preview: "/project-previews/son-40-saniye.png",
+    previewVideo: "/project-previews/videos/son-40-saniye-gameplay.mp4",
     tone: "red",
   },
   {
@@ -579,6 +592,7 @@ export const projects: Project[] = [
     ],
     href: "https://hangman.vercel.app/",
     preview: "/project-previews/asmaca-idle.png",
+    previewVideo: "/project-previews/videos/asmaca-gameplay.mp4",
     tone: "amber",
   },
   {
@@ -598,6 +612,7 @@ export const projects: Project[] = [
     ],
     href: "https://monster-wrangler.vercel.app/",
     preview: "/project-previews/monster-wrangler.png",
+    previewVideo: "/project-previews/videos/monster-wrangler-gameplay.mp4",
     tone: "violet",
   },
   {
@@ -617,6 +632,7 @@ export const projects: Project[] = [
     ],
     href: "https://catch-the-clown.vercel.app/",
     preview: "/project-previews/catch-the-clown-gameplay.png",
+    previewVideo: "/project-previews/videos/catch-the-clown-gameplay.mp4",
     tone: "blue",
   },
   {
@@ -636,6 +652,7 @@ export const projects: Project[] = [
     ],
     href: "https://snake-game-seven-gray.vercel.app/",
     preview: "/project-previews/snake-gameplay.png",
+    previewVideo: "/project-previews/videos/snake-gameplay.mp4",
     tone: "green",
   },
   {
@@ -674,6 +691,7 @@ export const projects: Project[] = [
     ],
     href: "https://feed-the-dragon.vercel.app/",
     preview: "/project-previews/feed-the-dragon-gameplay.png",
+    previewVideo: "/project-previews/videos/feed-the-dragon-gameplay.mp4",
     previewPosition: "left center",
     tone: "green",
   },
