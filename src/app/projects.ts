@@ -902,11 +902,6 @@ export const projects: Project[] = [
     ],
     href: "https://canva.link/57hgko0vw2x3g0r",
     preview: "/project-previews/sorita-promo.jpg",
-    previews: [
-      "/project-previews/sorita-promo.jpg",
-      "/project-previews/sorita-1.png",
-      "/project-previews/sorita-2.png",
-    ],
     previewFit: "contain",
     tone: "blue",
   },
