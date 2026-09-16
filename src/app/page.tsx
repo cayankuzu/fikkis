@@ -1,12 +1,8 @@
 import packageJson from "../../package.json";
 import { ProjectGallery } from "./_components/ProjectGallery";
+import { TopUtilityBar } from "./_components/TopUtilityBar";
 import { projects } from "./projects";
 
-const instagramUrl =
-  "https://www.instagram.com/memode333?igsh=aWZkZDM3dXR1azBk";
-const githubUrl = "https://github.com/cayankuzu";
-const kaggleUrl = "https://www.kaggle.com/ayankuzu";
-const contactEmail = "memodee333@gmail.com";
 const shopierUrl = "https://www.shopier.com/atkafasifanzin";
 const gumroadUrl = "https://atkafasifanzin.gumroad.com/";
 
@@ -24,32 +20,7 @@ export default function Home() {
           kişisel proje arşivi.
         </p>
 
-        <div className="topBar">
-          <section className="topBarSupport" aria-labelledby="top-support-title">
-            <span id="top-support-title">Bana destek ol</span>
-            <div>
-              <a href={shopierUrl} target="_blank" rel="noreferrer">
-                Shopier&apos;den al
-              </a>
-              <a href={gumroadUrl} target="_blank" rel="noreferrer">
-                Gumroad
-              </a>
-            </div>
-          </section>
-
-          <nav className="topBarLinks" aria-label="Bağlantılar ve iletişim">
-            <a href={instagramUrl} target="_blank" rel="noreferrer">
-              Instagram
-            </a>
-            <a href={githubUrl} target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-            <a href={kaggleUrl} target="_blank" rel="noreferrer">
-              Kaggle
-            </a>
-            <a href={`mailto:${contactEmail}`}>E-posta</a>
-          </nav>
-        </div>
+        <TopUtilityBar />
       </header>
 
       <ProjectGallery projects={projects} />
