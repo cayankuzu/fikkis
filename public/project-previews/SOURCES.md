@@ -50,6 +50,9 @@
 
 - `cayankuzu-cv-projects.png`: live capture of `cayankuzucv.vercel.app` with the "Projeler"
   accordion section expanded (the default screenshot only shows the "Profil" section)
+- `kepce-operatoru.jpg`: real frame extracted and cropped from the owner-supplied 2020 physics
+  project video (`InShot_20200118_212358091.mp4`), showing the full desk setup — the popsicle-stick
+  arm tower, the Nokia 5110 LCD, and the 4-potentiometer breadboard control panel
 
 These files are captures or original assets from the projects themselves, not generated mockups.
 The Canva screenshots were captured by loading each design's public `/view` URL in headless
@@ -93,6 +96,13 @@ a substitute.
 
 AudioRoom no longer uses a video (`audioroom-gameplay.mp4` removed) — see below, it now shows a
 real photo per completed album instead.
+
+- `kepce-operatoru-demo.mp4`: real 8-second clip trimmed from the same owner-supplied physics
+  project video as `kepce-operatoru.jpg` above, showing the servo/popsicle-stick arm assembly and
+  the breadboard control panel up close. Cropped to remove the source video's blurred vertical
+  padding bars, then re-encoded to H.264/mp4 (OpenCV + OpenH264, since the local ffmpeg.exe binary
+  was blocked from reading files mid-session — see project notes) — not AI-generated, a direct
+  re-encode of real footage.
 
 ## AudioRoom album photos
 

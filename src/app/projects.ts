@@ -31,7 +31,8 @@ export type Project = {
     | "uniforumhub-flyer"
     | "sorita-promo"
     | "universe-poster"
-    | "audio-room-poster";
+    | "audio-room-poster"
+    | "kepce-operatoru";
   title: string;
   hook: string;
   description: string;
@@ -829,6 +830,32 @@ export const projects: Project[] = [
       "/project-previews/jump-height-feature-engineering.jpg",
     ],
     tone: "lime",
+  },
+  {
+    id: "kepce-operatoru",
+    category: "science",
+    tags: ["Fizik", "Elektronik"],
+    title: "Kepçe Operatörü Maketi",
+    hook: "Dondurma çubuklarından inşa edilen bir kepçe kolu; 4 servo motor, 4 potansiyometreyle her ekseni ayrı ayrı kontrol ediyor.",
+    description:
+      "Lise son sınıf fizik projesi kapsamında Arduino Uno ile geliştirilen, gerçek bir kepçenin (ekskavatör) hareket eksenlerini küçük ölçekte simüle eden bir maket. Kol ve şasi dondurma çubuklarından inşa edildi; her biri bir potansiyometreye bağlı 4 servo motor kolun dönüş, kol, kepçe kolu ve kova eksenlerini ayrı ayrı sürüyor, Nokia 5110 LCD ekran ise anlık durumu gösteriyor.",
+    platform: "Arduino Uno · Fiziksel maket",
+    status: "Tamamlandı",
+    role: "Elektronik tasarım · Arduino programlama · Maket yapımı",
+    tools: [
+      "Arduino Uno",
+      "Servo motor (SG90)",
+      "Potansiyometre",
+      "Nokia 5110 LCD",
+      "Dondurma çubuğu",
+    ],
+    highlights: [
+      "4 servo motor ve 4 potansiyometreyle bağımsız kontrol edilen 4 eksenli kepçe kolu",
+      "Dondurma çubuklarından inşa edilen şasi ve Nokia 5110 ekranla anlık geri bildirim",
+    ],
+    preview: "/project-previews/kepce-operatoru.jpg",
+    previewVideo: "/project-previews/videos/kepce-operatoru-demo.mp4",
+    tone: "coral",
   },
   {
     id: "uniforumhub-flyer",
