@@ -76,7 +76,9 @@ production build:
 - `bibish-gameplay.mp4`: real capture of joining a live match and the spawn-point selection map
   (automated input couldn't reliably click a specific spawn to get further into open movement)
 - `merbut-gameplay.mp4`: real capture of an actual Hz. Ali vs. Samuray Jack battle in progress
-- `remember-gameplay.mp4`: real capture of the Ouroboros 3D scene being rotated via drag
+- `remember-gameplay.mp4`: real capture of the Ouroboros 3D scene being rotated via drag,
+  re-recorded 2026-09-16 after fixing a bug on that site where the skull inside the ring failed
+  to render in time (see that project's own repo history)
 - `audioroom-gameplay.mp4`: real capture of entering the "Mükemmel Boşluk" 3D world itself (not
   just the album library) — this one needed a ~35s wait for the WebGL scene to finish loading
   before the "Evrene Gir" button was clickable
