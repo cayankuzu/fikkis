@@ -89,6 +89,94 @@ img { display: block; }
   line-height: 1.55;
 }
 
+.topBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+  padding: 12px 18px;
+  border: 1px solid #d5d5d5;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, .82);
+  box-shadow: 0 7px 24px rgba(0, 0, 0, .06);
+  backdrop-filter: blur(12px);
+}
+
+.topBarSupport {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding-right: 14px;
+  border-right: 1px solid #d9d9d9;
+}
+
+.topBarSupport span {
+  color: #444;
+  font-family: var(--font-mono), monospace;
+  font-size: .6rem;
+  font-weight: 760;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.topBarSupport div {
+  display: flex;
+  gap: 8px;
+}
+
+.topBarSupport a,
+.topBarLinks a {
+  display: inline-flex;
+  min-height: 34px;
+  padding: 0 13px;
+  align-items: center;
+  border-radius: 999px;
+  font-size: .68rem;
+  font-weight: 720;
+  white-space: nowrap;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.topBarSupport a:first-child {
+  color: #fff;
+  background: #111;
+}
+
+.topBarSupport a:last-child {
+  border: 1px solid #bfbfbf;
+  color: #333;
+}
+
+.topBarSupport a:hover,
+.topBarSupport a:focus-visible {
+  color: #fff;
+  background: #1769ff;
+  border-color: #1769ff;
+}
+
+.topBarLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.topBarLinks a {
+  border: 1px solid transparent;
+  color: #444;
+  background: transparent;
+}
+
+.topBarLinks a:hover,
+.topBarLinks a:focus-visible {
+  color: #1769ff;
+  background: #ededed;
+}
+
 .projectSection {
   min-width: 0;
 }
@@ -272,24 +360,46 @@ img { display: block; }
 
 .slideshowProgress {
   position: absolute;
-  z-index: 2;
+  z-index: 6;
   right: 12px;
-  bottom: 10px;
+  bottom: 6px;
   left: 12px;
   display: flex;
   gap: 5px;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
-.slideshowProgress span {
-  height: 3px;
+.slideshowProgress button {
+  position: relative;
   flex: 1;
-  border-radius: 999px;
-  background: rgba(255,255,255,.3);
-  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  height: 16px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
-.slideshowProgress .is-active {
+.slideshowProgress button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  height: 3px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .35);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .25);
+  transition: background 150ms ease, transform 150ms ease;
+}
+
+.slideshowProgress button:hover::after,
+.slideshowProgress button:focus-visible::after {
+  background: rgba(255, 255, 255, .75);
+  transform: translateY(-50%) scaleY(1.6);
+}
+
+.slideshowProgress .is-active::after {
   background: #fff;
 }
 
@@ -1326,6 +1436,21 @@ img { display: block; }
   .fikkisHeader { min-height: 245px; padding-top: 43px; }
   .fikkisMark { font-size: 4.5rem; }
   .fikkisIntro { max-width: 470px; font-size: .8rem; }
+  .topBar {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 18px;
+  }
+  .topBarSupport {
+    justify-content: center;
+    padding-right: 0;
+    padding-bottom: 12px;
+    border-right: 0;
+    border-bottom: 1px solid #d9d9d9;
+  }
+  .topBarLinks { justify-content: center; }
   .filterBar {
     top: 8px;
     width: 100%;

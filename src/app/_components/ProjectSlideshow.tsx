@@ -41,6 +41,7 @@ export function ProjectSlideshow({
   const [activeIndex, setActiveIndex] = useState(0);
   const [isInteractionPaused, setIsInteractionPaused] = useState(false);
   const [isUserPaused, setIsUserPaused] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const prefersReducedMotion = useSyncExternalStore(
     subscribeToReducedMotion,
     getReducedMotionSnapshot,
@@ -64,6 +65,14 @@ export function ProjectSlideshow({
 
     return () => window.clearInterval(interval);
   }, [isInteractionPaused, isUserPaused, prefersReducedMotion, sources.length]);
+
+  // Show the still preview first, then switch to the gameplay/experience video.
+  useEffect(() => {
+    if (!project.previewVideo || prefersReducedMotion) return;
+
+    const timer = window.setTimeout(() => setShowVideo(true), 3000);
+    return () => window.clearTimeout(timer);
+  }, [project.previewVideo, prefersReducedMotion]);
 
   return (
     <span
@@ -91,7 +100,7 @@ export function ProjectSlideshow({
           aria-hidden="true"
         />
       ) : null}
-      {project.previewVideo ? (
+      {project.previewVideo && showVideo ? (
         <video
           className="projectCoverImage"
           poster={project.preview}
@@ -122,7 +131,7 @@ export function ProjectSlideshow({
           style={{ objectPosition: project.previewPosition ?? "center" }}
         />
       )}
-      {!project.previewVideo && sources.length > 1 ? (
+      {!(project.previewVideo && showVideo) && sources.length > 1 ? (
         <>
           {!prefersReducedMotion ? (
             <button
@@ -139,11 +148,19 @@ export function ProjectSlideshow({
               {isUserPaused ? "Oynat" : "Durdur"}
             </button>
           ) : null}
-          <span className="slideshowProgress" aria-hidden="true">
+          <span className="slideshowProgress">
             {sources.map((source, index) => (
-              <span
-                className={index === activeIndex ? "is-active" : ""}
+              <button
                 key={source}
+                type="button"
+                className={index === activeIndex ? "is-active" : ""}
+                aria-label={`${project.title} görsel ${index + 1}/${sources.length}`}
+                aria-current={index === activeIndex}
+                onClick={(event) => {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  setActiveIndex(index);
+                }}
               />
             ))}
           </span>

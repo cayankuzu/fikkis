@@ -23,6 +23,33 @@ export default function Home() {
           doğrulanmış bağlantılar ve kısa üretim notlarıyla bir araya getiren
           kişisel proje arşivi.
         </p>
+
+        <div className="topBar">
+          <section className="topBarSupport" aria-labelledby="top-support-title">
+            <span id="top-support-title">Bana destek ol</span>
+            <div>
+              <a href={shopierUrl} target="_blank" rel="noreferrer">
+                Shopier&apos;den al
+              </a>
+              <a href={gumroadUrl} target="_blank" rel="noreferrer">
+                Gumroad
+              </a>
+            </div>
+          </section>
+
+          <nav className="topBarLinks" aria-label="Bağlantılar ve iletişim">
+            <a href={instagramUrl} target="_blank" rel="noreferrer">
+              Instagram
+            </a>
+            <a href={githubUrl} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a href={kaggleUrl} target="_blank" rel="noreferrer">
+              Kaggle
+            </a>
+            <a href={`mailto:${contactEmail}`}>E-posta</a>
+          </nav>
+        </div>
       </header>
 
       <ProjectGallery projects={projects} />
@@ -59,25 +86,6 @@ export default function Home() {
               </a>
             </div>
           </section>
-
-          <nav aria-label="Bağlantılar ve iletişim">
-            <a href={instagramUrl} target="_blank" rel="noreferrer">
-              <span>Instagram</span>
-              <small>@memode333</small>
-            </a>
-            <a href={githubUrl} target="_blank" rel="noreferrer">
-              <span>GitHub</span>
-              <small>@cayankuzu</small>
-            </a>
-            <a href={kaggleUrl} target="_blank" rel="noreferrer">
-              <span>Kaggle</span>
-              <small>@ayankuzu</small>
-            </a>
-            <a href={`mailto:${contactEmail}`}>
-              <span>E-posta</span>
-              <small>{contactEmail}</small>
-            </a>
-          </nav>
         </div>
       </footer>
     </main>
