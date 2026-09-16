@@ -104,8 +104,11 @@ real photo per completed album instead.
   was blocked from reading files mid-session — see project notes) — not AI-generated, a direct
   re-encode of real footage.
 - `kepce-operatoru-full.mp4`: the full ~2:16 source video (same crop applied, downscaled to
-  480x275/15fps to keep the file small), used as the card's click-through target since this project
-  has no live site to link to.
+  480x274/15fps, original audio track re-encoded to AAC and kept), used as the card's click-through
+  target since this project has no live site to link to. Muxed with PyAV (in-process libx264/libavcodec
+  bindings) since the local ffmpeg.exe binary stayed blocked; the first version of this file was
+  silent because the initial OpenCV-based encode only wrote a video stream — this version restores
+  the original audio.
 
 ## AudioRoom album photos
 
