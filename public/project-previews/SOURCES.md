@@ -103,6 +103,9 @@ real photo per completed album instead.
   padding bars, then re-encoded to H.264/mp4 (OpenCV + OpenH264, since the local ffmpeg.exe binary
   was blocked from reading files mid-session — see project notes) — not AI-generated, a direct
   re-encode of real footage.
+- `kepce-operatoru-full.mp4`: the full ~2:16 source video (same crop applied, downscaled to
+  480x275/15fps to keep the file small), used as the card's click-through target since this project
+  has no live site to link to.
 
 ## AudioRoom album photos
 

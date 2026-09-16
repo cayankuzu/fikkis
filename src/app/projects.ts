@@ -853,6 +853,7 @@ export const projects: Project[] = [
       "4 servo motor ve 4 potansiyometreyle bağımsız kontrol edilen 4 eksenli kepçe kolu",
       "Dondurma çubuklarından inşa edilen şasi ve Nokia 5110 ekranla anlık geri bildirim",
     ],
+    href: "/project-previews/videos/kepce-operatoru-full.mp4",
     preview: "/project-previews/kepce-operatoru.jpg",
     previewVideo: "/project-previews/videos/kepce-operatoru-demo.mp4",
     tone: "coral",
