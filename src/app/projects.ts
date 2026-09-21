@@ -123,7 +123,7 @@ export const projects: Project[] = [
       "Rota segmentleriyle alan kapatma, tekil sahiplik skoru ve tekrar boyamayı ayıran oyun kuralı",
       "Demo sanal konum sağlayıcısı, sosyal keşif akışı ve Supabase/PostGIS üretim mimarisi hazırlığı",
     ],
-    href: "https://mrap.vercel.app/",
+    href: "https://mrap-eta.vercel.app/",
     preview: "/project-previews/mrap.png",
     previewPosition: "center top",
     tone: "green",
