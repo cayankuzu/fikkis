@@ -1,71 +1,62 @@
+export type ProjectCategory =
+  | "web"
+  | "mobile"
+  | "game"
+  | "science"
+  | "design"
+  | "content";
+
+export type ProjectTone =
+  | "amber"
+  | "blue"
+  | "red"
+  | "green"
+  | "violet"
+  | "ink"
+  | "lime"
+  | "navy"
+  | "cream"
+  | "coral"
+  | "orange";
+
+/** Detay galerisindeki her görsel kısa bir açıklamayla birlikte gösterilir. */
+export type ProjectImage = { src: string; caption: string };
+
 export type Project = {
-  id:
-    | "trai"
-    | "mrap"
-    | "bibish"
-    | "merbut"
-    | "remember"
-    | "desain"
-    | "audioroom"
-    | "etkinlink"
-    | "universe"
-    | "sorita"
-    | "wmatch"
-    | "card-race"
-    | "battleship"
-    | "old-maid"
-    | "tictactoe"
-    | "son-40-saniye"
-    | "asmaca"
-    | "monster-wrangler"
-    | "catch-the-clown"
-    | "snake"
-    | "burger-dog"
-    | "feed-the-dragon"
-    | "atkafasi"
-    | "cayan-kuzu-cv"
-    | "quantum-entanglement"
-    | "general-relativity"
-    | "dyson-ring"
-    | "jump-analysis"
-    | "uniforumhub-flyer"
-    | "sorita-promo"
-    | "universe-poster"
-    | "audio-room-poster"
-    | "kepce-operatoru";
+  id: string;
+  category: ProjectCategory;
+  tags?: string[];
   title: string;
+  /** Kartta görünen tek cümlelik vaat. */
   hook: string;
+  /** Detay panelindeki ürün özeti. */
   description: string;
   platform: string;
   status: string;
   role: string;
   tools: string[];
   highlights: string[];
+  /** Ana hedef bağlantı (canlı sürüm, doküman, mağaza vb.). */
   href?: string;
+  /** Ana bağlantının buton metni; boşsa kategoriye göre seçilir. */
+  ctaLabel?: string;
   websiteUrl?: string;
   storeLinks?: { label: string; href: string }[];
   downloadStatus?: string;
   secondaryHref?: string;
-  category: "web" | "game" | "mobile" | "content" | "design" | "science";
-  tags?: string[];
+  secondaryLabel?: string;
+  /** Klavye, fare ve geniş ekran gerektiren deneyimler. */
   desktopOnly?: boolean;
-  preview: string;
-  previews?: string[];
-  previewVideo?: string;
-  previewFit?: "cover" | "contain";
-  previewPosition?: string;
-  tone:
-    | "amber"
-    | "blue"
-    | "red"
-    | "green"
-    | "violet"
-    | "ink"
-    | "lime"
-    | "navy"
-    | "cream"
-    | "coral"
-    | "orange";
+  /** İlk görsel kart kapağıdır. */
+  images: ProjectImage[];
+  /** Kartta üzerine gelince oynayan sessiz önizleme videosu. */
+  video?: string;
+  /** Detay panelinde sesli oynatılan tam video. */
+  fullVideo?: string;
+  /** Kart kapağının yerleşimi: tam kadraj, ortalanmış ya da yan yana ekranlar. */
+  cardLayout?: "cover" | "contain" | "stack";
+  coverPosition?: string;
+  tone: ProjectTone;
 };
 
 export const projects: Project[] = [
@@ -94,7 +85,13 @@ export const projects: Project[] = [
       "Ürün sadakati modu, çoklu beden Beta ve deterministik beden önerisi",
     ],
     href: "https://trai-theta.vercel.app/",
-    preview: "/project-previews/trai.png",
+    ctaLabel: "Demoyu dene",
+    images: [
+      {
+        src: "/project-previews/trai.png",
+        caption: "Açılış ekranı: ürünü kendi fotoğrafında dene",
+      },
+    ],
     tone: "red",
   },
   {
@@ -124,8 +121,14 @@ export const projects: Project[] = [
       "Demo sanal konum sağlayıcısı, sosyal keşif akışı ve Supabase/PostGIS üretim mimarisi hazırlığı",
     ],
     href: "https://mrap-eta.vercel.app/",
-    preview: "/project-previews/mrap.png",
-    previewPosition: "center top",
+    ctaLabel: "Demoyu dene",
+    images: [
+      {
+        src: "/project-previews/mrap.png",
+        caption: "Keşfet akışı: toplulukta boyanan alan kartları",
+      },
+    ],
+    coverPosition: "center top",
     tone: "green",
   },
   {
@@ -153,8 +156,13 @@ export const projects: Project[] = [
       "Mekânsal ilgi yönetimi ve 2.000 bağlantı senaryosu için yük testi altyapısı",
     ],
     href: "https://bibish-iota.vercel.app/",
-    preview: "/project-previews/bibish.png",
-    previewVideo: "/project-previews/videos/bibish-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/bibish.png",
+        caption: "Karakol çatışması ve canlı liderlik tablosu",
+      },
+    ],
+    video: "/project-previews/videos/bibish-gameplay.mp4",
     tone: "lime",
   },
   {
@@ -183,8 +191,13 @@ export const projects: Project[] = [
       "Aku boss aşamaları, 360° karakter arşivi ve zaman portalıyla tamamlanan final",
     ],
     href: "https://merbut.vercel.app/",
-    preview: "/project-previews/merbut.png",
-    previewVideo: "/project-previews/videos/merbut-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/merbut.png",
+        caption: "Başlangıç ekranı ve iki kahraman",
+      },
+    ],
+    video: "/project-previews/videos/merbut-gameplay.mp4",
     tone: "red",
   },
   {
@@ -198,14 +211,29 @@ export const projects: Project[] = [
     platform: "Web · Masaüstü öncelikli",
     status: "Canlı · Deneysel",
     role: "Bağımsız konsept · 3B deneyim/UI tasarımı · Frontend",
-    tools: ["HTML", "CSS", "JavaScript", "Three.js", "GSAP", "GLTF/OrbitControls", "Canvas", "Vercel"],
+    tools: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Three.js",
+      "GSAP",
+      "GLTF/OrbitControls",
+      "Canvas",
+      "Vercel",
+    ],
     highlights: [
       "Sinematik kamera, OrbitControls ve nesne/genel ışık ayarları",
       "TR/EN içerik, müzik ve şarkı sözü arayüzü; sürüklenebilir pencereler",
     ],
     href: "https://remember-you-must-die-web.vercel.app/",
-    preview: "/project-previews/remember-ouroboros.png",
-    previewVideo: "/project-previews/videos/remember-gameplay.mp4",
+    ctaLabel: "Deneyime gir",
+    images: [
+      {
+        src: "/project-previews/remember-ouroboros.png",
+        caption: "Ouroboros ve kurukafa sahnesi, ışık kontrolleri",
+      },
+    ],
+    video: "/project-previews/videos/remember-gameplay.mp4",
     tone: "amber",
   },
   {
@@ -235,14 +263,20 @@ export const projects: Project[] = [
       "Çakışma/geçiş doğrulaması, rastgele düzenler ve hesap bazlı proje kaydı",
     ],
     href: "https://des-ai-n.vercel.app/",
-    preview: "/project-previews/desain.png",
-    previews: [
-      "/project-previews/desain.png",
-      "/project-previews/desain-salon.jpg",
-      "/project-previews/desain-yatak-odasi.jpg",
-      "/project-previews/desain-l-tipi.jpg",
+    ctaLabel: "Editörü aç",
+    images: [
+      {
+        src: "/project-previews/desain.png",
+        caption: "3B editör ve oda ayarları paneli",
+      },
+      { src: "/project-previews/desain-salon.jpg", caption: "Salon düzeni" },
+      {
+        src: "/project-previews/desain-yatak-odasi.jpg",
+        caption: "Yatak odası düzeni",
+      },
+      { src: "/project-previews/desain-l-tipi.jpg", caption: "L tipi oda biçimi" },
     ],
-    previewPosition: "35% center",
+    coverPosition: "35% center",
     tone: "blue",
   },
   {
@@ -268,12 +302,24 @@ export const projects: Project[] = [
       "Redd 21 ve Pink Floyd / The Dark Side of the Moon dünyaları yakında",
     ],
     href: "https://audio-room-ecru.vercel.app/",
-    preview: "/project-previews/audioroom-mukemmel-bosluk.png",
-    previews: [
-      "/project-previews/audioroom-mukemmel-bosluk.png",
-      "/project-previews/audioroom-hayko-cepkin.png",
-      "/project-previews/audioroom-klostrofobik-kaplumbaga.png",
-      "/project-previews/audioroom-kuantum-dolaniklik.png",
+    ctaLabel: "Dünyaları keşfet",
+    images: [
+      {
+        src: "/project-previews/audioroom-mukemmel-bosluk.png",
+        caption: "Redd — Mükemmel Boşluk dünyası",
+      },
+      {
+        src: "/project-previews/audioroom-hayko-cepkin.png",
+        caption: "Hayko Cepkin — Beni Büyüten Şarkılar dünyası",
+      },
+      {
+        src: "/project-previews/audioroom-klostrofobik-kaplumbaga.png",
+        caption: "Klostrofobik Kaplumbağa dünyası",
+      },
+      {
+        src: "/project-previews/audioroom-kuantum-dolaniklik.png",
+        caption: "Kuantum Dolanıklık dünyası",
+      },
     ],
     tone: "red",
   },
@@ -282,23 +328,37 @@ export const projects: Project[] = [
     category: "web",
     tags: ["CV"],
     title: "Çayan Kuzu CV",
-    hook: "Ürün tasarımı, UI/UX, oyun tasarımı ve fiziği tek bir etkileşimli CV deneyiminde buluşturur.",
+    hook: "Ürün tasarımı, UI/UX, oyun tasarımı ve fizik; tek bir etkileşimli CV'de.",
     description:
       "Çayan Kuzu'nun ürün/UI-UX, oyun ve etkileşimli web çalışmalarını tek sayfalı editorial CV'de birleştiren iki dilli kişisel portfolyo. Responsive web deneyimi ve bağlantıları çalışan TR/EN PDF sürümleri sunar.",
     platform: "Responsive web · Print/PDF",
     status: "Canlı · Güncel tutuluyor",
     role: "Bilgi mimarisi · İçerik · UI/UX · Frontend geliştirme",
-    tools: ["Next.js 16", "React 19", "TypeScript", "Lucide", "CSS print styles", "Vercel"],
+    tools: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Lucide",
+      "CSS print styles",
+      "Vercel",
+    ],
     highlights: [
       "TR/EN içerik, kompakt mobil sidebar ve erişilebilir accordion sistemi",
       "Editorial A4 görünüm ile yazdırmada eksiksiz açılan indirilebilir PDF'ler",
     ],
     href: "https://cayankuzucv.vercel.app/",
-    preview: "/project-previews/cayankuzu-cv.png",
-    previews: [
-      "/project-previews/cayankuzu-cv.png",
-      "/project-previews/cayankuzu-cv-projects.png",
+    ctaLabel: "CV'yi görüntüle",
+    images: [
+      {
+        src: "/project-previews/cayankuzu-cv.png",
+        caption: "Profil bölümü ve iletişim kenar çubuğu",
+      },
+      {
+        src: "/project-previews/cayankuzu-cv-projects.png",
+        caption: "Projeler bölümü",
+      },
     ],
+    coverPosition: "center top",
     tone: "ink",
   },
   {
@@ -328,14 +388,21 @@ export const projects: Project[] = [
     href: "https://www.figma.com/proto/RLPPToWydcFxLtnlvTr0mi/EtkinLink?node-id=32-1772&viewport=-607%2C-758%2C0.69&t=BmlrdaiaacIsarlK-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=97%3A386&show-proto-sidebar=1&page-id=12%3A8",
     websiteUrl: "https://cayankuzu.github.io/EtkinLink_web/",
     downloadStatus: "İndirme bağlantısı çok yakında",
-    preview: "/project-previews/etkinlink-1.png",
-    previews: [
-      "/project-previews/etkinlink-1.png",
-      "/project-previews/etkinlink-2.png",
-      "/project-previews/etkinlink-3.png",
-      "/project-previews/etkinlink-4.png",
+    images: [
+      {
+        src: "/project-previews/etkinlink-1.png",
+        caption: "Keşfet: yaklaşan etkinlikler",
+      },
+      { src: "/project-previews/etkinlink-2.png", caption: "Etkinlik odaları" },
+      {
+        src: "/project-previews/etkinlink-3.png",
+        caption: "Aynı etkinliğe katılanlarla eşleşme",
+      },
+      {
+        src: "/project-previews/etkinlink-4.png",
+        caption: "Eşleşme sonrası sohbet",
+      },
     ],
-    previewFit: "contain",
     tone: "blue",
   },
   {
@@ -366,21 +433,28 @@ export const projects: Project[] = [
     websiteUrl: "https://cayankuzu.github.io/uniVerse_web/",
     storeLinks: [
       {
-        label: "App Store'dan indir",
+        label: "App Store",
         href: "https://apps.apple.com/tr/app/universe-app/id6761912452",
       },
       {
-        label: "Google Play'den indir",
+        label: "Google Play",
         href: "https://play.google.com/store/apps/details?id=com.ogrencisosyalagi.app",
       },
     ],
-    preview: "/project-previews/universe-1.png",
-    previews: [
-      "/project-previews/universe-1.png",
-      "/project-previews/universe-2.png",
-      "/project-previews/universe-3.png",
+    images: [
+      {
+        src: "/project-previews/universe-1.png",
+        caption: "Ana akış: kulüp etkinlikleri",
+      },
+      {
+        src: "/project-previews/universe-2.png",
+        caption: "Arama: etkinlikler ve kulüpler",
+      },
+      {
+        src: "/project-previews/universe-3.png",
+        caption: "Öğrenci profili ve albümler",
+      },
     ],
-    previewFit: "contain",
     tone: "green",
   },
   {
@@ -411,21 +485,25 @@ export const projects: Project[] = [
     websiteUrl: "https://cayankuzu.github.io/SoRita_web/",
     storeLinks: [
       {
-        label: "App Store'dan indir",
+        label: "App Store",
         href: "https://apps.apple.com/tr/app/sorita-app/id6762198781",
       },
       {
-        label: "Google Play'den indir",
+        label: "Google Play",
         href: "https://play.google.com/store/apps/details?id=com.cayan.sorita.socialmap",
       },
     ],
-    preview: "/project-previews/sorita-1.png",
-    previews: [
-      "/project-previews/sorita-1.png",
-      "/project-previews/sorita-2.png",
-      "/project-previews/sorita-3.png",
+    images: [
+      {
+        src: "/project-previews/sorita-1.png",
+        caption: "Akış: haritada paylaşılan mekân listeleri",
+      },
+      {
+        src: "/project-previews/sorita-2.png",
+        caption: "Keşfet: listeler ve mekânlar",
+      },
+      { src: "/project-previews/sorita-3.png", caption: "Profil ve listeler" },
     ],
-    previewFit: "contain",
     tone: "violet",
   },
   {
@@ -456,18 +534,22 @@ export const projects: Project[] = [
     websiteUrl: "https://cayankuzu.github.io/WMatch_web/",
     storeLinks: [
       {
-        label: "App Store'dan indir",
+        label: "App Store",
         href: "https://apps.apple.com/tr/app/wmatch/id6779453259",
       },
     ],
-    preview: "/project-previews/wmatch-1.png",
-    previews: [
-      "/project-previews/wmatch-1.png",
-      "/project-previews/wmatch-2.png",
-      "/project-previews/wmatch-3.png",
-      "/project-previews/wmatch-4.png",
+    images: [
+      {
+        src: "/project-previews/wmatch-1.png",
+        caption: "Keşfet: şu anda izlenenler ve popüler filmler",
+      },
+      { src: "/project-previews/wmatch-2.png", caption: "Uyum puanı ekranı" },
+      { src: "/project-previews/wmatch-3.png", caption: "Mesajlar" },
+      {
+        src: "/project-previews/wmatch-4.png",
+        caption: "Profil ve izleme zevki",
+      },
     ],
-    previewFit: "contain",
     tone: "ink",
   },
   {
@@ -486,7 +568,12 @@ export const projects: Project[] = [
       "Deste bittiğinde en öndeki asın kazandığı responsive ve dokunmatik oyun",
     ],
     href: "https://card-race-game.vercel.app/",
-    preview: "/project-previews/card-race.png",
+    images: [
+      {
+        src: "/project-previews/card-race.png",
+        caption: "Asların Yarışı: şeritler ve kart destesi",
+      },
+    ],
     tone: "lime",
   },
   {
@@ -505,9 +592,13 @@ export const projects: Project[] = [
       "İsabet istatistikleri ile birbirinden bağımsız müzik ve SFX kontrolleri",
     ],
     href: "https://battleship-pygame.vercel.app/",
-    preview: "/project-previews/battleship.png",
-    previewVideo: "/project-previews/videos/battleship-gameplay.mp4",
-    previewFit: "contain",
+    images: [
+      {
+        src: "/project-previews/battleship.png",
+        caption: "Gemi yerleşimi ve radar tahtası",
+      },
+    ],
+    video: "/project-previews/videos/battleship-gameplay.mp4",
     tone: "navy",
   },
   {
@@ -526,8 +617,13 @@ export const projects: Project[] = [
       "Seçilen kartı iki saniye gösteren, mobilde de oynanabilen etkileşim",
     ],
     href: "https://old-maid-card-game.vercel.app/",
-    preview: "/project-previews/old-maid.png",
-    previewVideo: "/project-previews/videos/old-maid-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/old-maid.png",
+        caption: "Dört oyunculu kart masası",
+      },
+    ],
+    video: "/project-previews/videos/old-maid-gameplay.mp4",
     tone: "cream",
   },
   {
@@ -540,14 +636,27 @@ export const projects: Project[] = [
     platform: "Responsive web · Masaüstü ve mobil tarayıcı",
     status: "Canlı",
     role: "Oyun mantığı · Python/NumPy prototipi · Web arayüzü",
-    tools: ["Python", "NumPy", "Jupyter/Colab", "HTML", "CSS", "JavaScript", "Vercel"],
+    tools: [
+      "Python",
+      "NumPy",
+      "Jupyter/Colab",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vercel",
+    ],
     highlights: [
       "Tahta boyutuna göre üçlü, dörtlü veya beşli kazanma koşulu",
       "Kazanan hücre vurgusu ve oturumluk X/O/beraberlik skoru",
     ],
     href: "https://tic-tac-toe-game-delta-jade.vercel.app/",
-    preview: "/project-previews/tictactoe.png",
-    previewVideo: "/project-previews/videos/tictactoe-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/tictactoe.png",
+        caption: "Tahta seçimi ve oyun alanı",
+      },
+    ],
+    video: "/project-previews/videos/tictactoe-gameplay.mp4",
     tone: "coral",
   },
   {
@@ -573,8 +682,13 @@ export const projects: Project[] = [
       "İçerik/skor yönetimi, IP-cihaz engelleme ve audit kayıtları",
     ],
     href: "https://google-history-clear-game.vercel.app/",
-    preview: "/project-previews/son-40-saniye.png",
-    previewVideo: "/project-previews/videos/son-40-saniye-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/son-40-saniye.png",
+        caption: "Açılış ekranı ve arama kayıtları",
+      },
+    ],
+    video: "/project-previews/videos/son-40-saniye-gameplay.mp4",
     tone: "red",
   },
   {
@@ -603,8 +717,13 @@ export const projects: Project[] = [
       "Altı karakter; her zorluk düzeyinde 99'ar soru ve tıklanabilir kaynaklar",
     ],
     href: "https://hangman.vercel.app/",
-    preview: "/project-previews/asmaca-idle.png",
-    previewVideo: "/project-previews/videos/asmaca-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/asmaca-idle.png",
+        caption: "Sinematik 3B darağacı sahnesi",
+      },
+    ],
+    video: "/project-previews/videos/asmaca-gameplay.mp4",
     tone: "amber",
   },
   {
@@ -623,8 +742,13 @@ export const projects: Project[] = [
       "Tur ilerledikçe büyüyen canavar kalabalığı ve dokunmatik kontrol",
     ],
     href: "https://monster-wrangler.vercel.app/",
-    preview: "/project-previews/monster-wrangler.png",
-    previewVideo: "/project-previews/videos/monster-wrangler-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/monster-wrangler.png",
+        caption: "Hedef renk ve hareketli canavarlar",
+      },
+    ],
+    video: "/project-previews/videos/monster-wrangler-gameplay.mp4",
     tone: "violet",
   },
   {
@@ -643,8 +767,13 @@ export const projects: Project[] = [
       "Pointer/touch kontrolü ile özgün ses ve müzik",
     ],
     href: "https://catch-the-clown.vercel.app/",
-    preview: "/project-previews/catch-the-clown-gameplay.png",
-    previewVideo: "/project-previews/videos/catch-the-clown-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/catch-the-clown-gameplay.png",
+        caption: "Oyun ekranı: skor ve kalan canlar",
+      },
+    ],
+    video: "/project-previews/videos/catch-the-clown-gameplay.mp4",
     tone: "blue",
   },
   {
@@ -663,8 +792,14 @@ export const projects: Project[] = [
       "Boş hücreye güvenli elma üretimi ve bağımsız ses kontrolü",
     ],
     href: "https://snake-game-seven-gray.vercel.app/",
-    preview: "/project-previews/snake-gameplay.png",
-    previewVideo: "/project-previews/videos/snake-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/snake-gameplay.png",
+        caption: "Oyun ekranı ve skor",
+      },
+    ],
+    video: "/project-previews/videos/snake-gameplay.mp4",
+    cardLayout: "contain",
     tone: "green",
   },
   {
@@ -683,8 +818,13 @@ export const projects: Project[] = [
       "Hız ile yakalama mesafesine göre hesaplanan dinamik puan",
     ],
     href: "https://burger-dog.vercel.app/",
-    preview: "/project-previews/burger-dog-gameplay.png",
-    previewVideo: "/project-previews/videos/burger-dog-gameplay.mp4",
+    images: [
+      {
+        src: "/project-previews/burger-dog-gameplay.png",
+        caption: "Oyun ekranı: skor, can ve hız desteği",
+      },
+    ],
+    video: "/project-previews/videos/burger-dog-gameplay.mp4",
     tone: "orange",
   },
   {
@@ -703,9 +843,14 @@ export const projects: Project[] = [
       "Klavye, ekran tuşları ve sürükleme kontrolü",
     ],
     href: "https://feed-the-dragon.vercel.app/",
-    preview: "/project-previews/feed-the-dragon-gameplay.png",
-    previewVideo: "/project-previews/videos/feed-the-dragon-gameplay.mp4",
-    previewPosition: "left center",
+    images: [
+      {
+        src: "/project-previews/feed-the-dragon-gameplay.png",
+        caption: "Oyun ekranı: ejderha ve altın",
+      },
+    ],
+    video: "/project-previews/videos/feed-the-dragon-gameplay.mp4",
+    coverPosition: "left center",
     tone: "green",
   },
   {
@@ -724,8 +869,18 @@ export const projects: Project[] = [
       "Shopier mağazası ile Gumroad'da dijital ürün ve destek akışı",
     ],
     href: "https://www.shopier.com/atkafasifanzin",
+    ctaLabel: "Shopier'den satın al",
     secondaryHref: "https://atkafasifanzin.gumroad.com/",
-    preview: "/project-previews/atkafasi.png",
+    secondaryLabel: "Gumroad'da incele",
+    images: [
+      { src: "/atkafasi-sayi-1.webp", caption: "1. sayı kapağı" },
+      { src: "/atkafasi-sayi-2.png", caption: "2. sayı kapağı" },
+      {
+        src: "/project-previews/atkafasi.png",
+        caption: "Gumroad dijital mağazası",
+      },
+    ],
+    cardLayout: "stack",
     tone: "orange",
   },
   {
@@ -733,7 +888,7 @@ export const projects: Project[] = [
     category: "science",
     tags: ["Fizik"],
     title: "Kuantum Dolanıklık",
-    hook: "Einstein'ın \"ürkütücü\" dediği fenomen: dolanık parçacıklar gerçekten birbirini anında mı etkiliyor?",
+    hook: "Einstein'ın “ürkütücü” dediği etki: dolanık parçacıklar birbirini gerçekten anında mı etkiler?",
     description:
       "2022 Nobel Fizik Ödülü'nü kazanan deneylerden yola çıkarak kuantum dolanıklığı, Bell eşitsizliği ve gizli değişkenler tartışmasını ele alan bir fizik araştırma yazısı. EPR paradoksundan Alain Aspect'in deneylerine uzanan çizgiyi özetler.",
     platform: "PDF · Kişisel araştırma yazısı",
@@ -745,13 +900,21 @@ export const projects: Project[] = [
       "EPR paradoksundan 2022 Nobel Fizik Ödülü deneylerine kronolojik anlatım",
     ],
     href: "/dokuman/kuantum-dolaniklik",
-    preview: "/project-previews/quantum-nobel-2022.jpg",
-    previews: [
-      "/project-previews/quantum-nobel-2022.jpg",
-      "/project-previews/quantum-schrodingers-cat.jpg",
-      "/project-previews/quantum-einstein-bohr.jpg",
+    images: [
+      {
+        src: "/project-previews/quantum-nobel-2022.jpg",
+        caption: "2022 Nobel Fizik Ödülü: Aspect, Clauser ve Zeilinger",
+      },
+      {
+        src: "/project-previews/quantum-schrodingers-cat.jpg",
+        caption: "Schrödinger'in kedisi düşünce deneyi",
+      },
+      {
+        src: "/project-previews/quantum-einstein-bohr.jpg",
+        caption: "Einstein ile Bohr arasındaki tartışma",
+      },
     ],
-    previewFit: "contain",
+    cardLayout: "contain",
     tone: "violet",
   },
   {
@@ -759,7 +922,7 @@ export const projects: Project[] = [
     category: "science",
     tags: ["Fizik"],
     title: "Genel Görelilik",
-    hook: "Kütleçekiminin ışığı büktüğü fikrini Merkür'ün yörüngesinden ikiz kuasara uzanan kanıtlarla anlatan sunum.",
+    hook: "Kütleçekimi ışığı nasıl büker? Merkür'ün yörüngesinden ikiz kuasara uzanan kanıtlar.",
     description:
       "Genel görelilik teorisinin temel fikrini, kütleçekimi ile ivmenin denkliğini ve ışığın büküldüğünü gösteren gerçek gözlemleri (Merkür'ün yörünge sapması, ikiz kuasar) bir araya getiren fizik sunumu.",
     platform: "PowerPoint sunumu",
@@ -771,21 +934,29 @@ export const projects: Project[] = [
       "Merkür yörünge sapması ve ikiz kuasar gibi gözlemsel kanıtlar",
     ],
     href: "/dokuman/genel-gorelilik",
-    preview: "/project-previews/general-relativity-light-bending.jpg",
-    previews: [
-      "/project-previews/general-relativity-light-bending.jpg",
-      "/project-previews/general-relativity-spacetime-grid.jpg",
-      "/project-previews/general-relativity-gravitational-lensing.jpg",
+    images: [
+      {
+        src: "/project-previews/general-relativity-light-bending.jpg",
+        caption: "Güneş'in yakınından geçerken bükülen yıldız ışığı",
+      },
+      {
+        src: "/project-previews/general-relativity-spacetime-grid.jpg",
+        caption: "Kütlenin büktüğü uzay-zaman",
+      },
+      {
+        src: "/project-previews/general-relativity-gravitational-lensing.jpg",
+        caption: "Kütleçekimsel merceklenme ve ikiz kuasar",
+      },
     ],
-    previewFit: "contain",
+    cardLayout: "contain",
     tone: "navy",
   },
   {
     id: "dyson-ring",
     category: "science",
-    tags: ["Fizik", "Astrofizik"],
+    tags: ["Astrofizik"],
     title: "Dyson Ring",
-    hook: "Bir yıldızın etrafına kurulacak dev bir enerji halkası mümkün mü? TÜBİTAK'a sunulan bir araştırma önerisi.",
+    hook: "Bir yıldızın çevresine dev bir enerji halkası kurmak mümkün mü? TÜBİTAK'a sunulan araştırma önerisi.",
     description:
       "TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destek Programı kapsamında Marmara Üniversitesi'nde hazırlanan, Dyson halkası kavramının teknik ve ekonomik fizibilitesini literatür taraması, simülasyon ve prototip çalışmasıyla değerlendiren resmi araştırma önerisi.",
     platform: "Word belgesi · Resmi araştırma önerisi",
@@ -797,21 +968,29 @@ export const projects: Project[] = [
       "Danışman: Caner Değer · Marmara Üniversitesi",
     ],
     href: "/dokuman/dyson-ring",
-    preview: "/project-previews/dyson-ring-cover.jpg",
-    previews: [
-      "/project-previews/dyson-ring-cover.jpg",
-      "/project-previews/dyson-ring-aims.jpg",
-      "/project-previews/dyson-ring-risk-table.jpg",
+    images: [
+      {
+        src: "/project-previews/dyson-ring-cover.jpg",
+        caption: "TÜBİTAK 2209-A başvuru formu kapağı",
+      },
+      {
+        src: "/project-previews/dyson-ring-aims.jpg",
+        caption: "Amaç ve hedefler",
+      },
+      {
+        src: "/project-previews/dyson-ring-risk-table.jpg",
+        caption: "Risk yönetimi ve araştırma olanakları tabloları",
+      },
     ],
-    previewFit: "contain",
+    cardLayout: "contain",
     tone: "amber",
   },
   {
     id: "jump-analysis",
     category: "science",
-    tags: ["Veri analizi", "Makine öğrenmesi"],
-    title: "Sıçrama Yüksekliği: Veri Analizi Sunumu",
-    hook: "Bir veri setinden sıçrama yüksekliğini tahminlemek için kurulmuş uçtan uca bir makine öğrenmesi sunumu.",
+    tags: ["Makine öğrenmesi"],
+    title: "Sıçrama Yüksekliği Analizi",
+    hook: "Bir veri setinden sıçrama yüksekliğini tahmin eden uçtan uca makine öğrenmesi çalışması.",
     description:
       "Veri setinin oluşturulmasından korelasyon ısı haritasına, öznitelik mühendisliğinden Gradient Boosting/Random Forest/KNN modellerinin karşılaştırılmasına uzanan uçtan uca bir veri analizi ve makine öğrenmesi sunumu.",
     platform: "Canva sunumu",
@@ -823,20 +1002,29 @@ export const projects: Project[] = [
       "Gradient Boosting, Random Forest ve KNN modellerinin karşılaştırmalı değerlendirmesi",
     ],
     href: "https://canva.link/9uou0pjp4wumn1g",
-    preview: "/project-previews/jump-height-ml-presentation.jpg",
-    previews: [
-      "/project-previews/jump-height-ml-presentation.jpg",
-      "/project-previews/jump-height-correlation-heatmap.jpg",
-      "/project-previews/jump-height-feature-engineering.jpg",
+    ctaLabel: "Sunumu Canva'da aç",
+    images: [
+      {
+        src: "/project-previews/jump-height-ml-presentation.jpg",
+        caption: "Sunum akışı",
+      },
+      {
+        src: "/project-previews/jump-height-correlation-heatmap.jpg",
+        caption: "Korelasyon ısı haritası",
+      },
+      {
+        src: "/project-previews/jump-height-feature-engineering.jpg",
+        caption: "Öznitelik mühendisliği",
+      },
     ],
     tone: "lime",
   },
   {
     id: "kepce-operatoru",
     category: "science",
-    tags: ["Fizik", "Elektronik"],
+    tags: ["Elektronik"],
     title: "Kepçe Operatörü Maketi",
-    hook: "Dondurma çubuklarından inşa edilen bir kepçe kolu; 4 servo motor, 4 potansiyometreyle her ekseni ayrı ayrı kontrol ediyor.",
+    hook: "Dondurma çubuklarından bir kepçe kolu: dört servo, dört potansiyometre, dört bağımsız eksen.",
     description:
       "Lise son sınıf fizik projesi kapsamında Arduino Uno ile geliştirilen, gerçek bir kepçenin (ekskavatör) hareket eksenlerini küçük ölçekte simüle eden bir maket. Kol ve şasi dondurma çubuklarından inşa edildi; her biri bir potansiyometreye bağlı 4 servo motor kolun dönüş, kol, kepçe kolu ve kova eksenlerini ayrı ayrı sürüyor, Nokia 5110 LCD ekran ise anlık durumu gösteriyor.",
     platform: "Arduino Uno · Fiziksel maket",
@@ -853,9 +1041,14 @@ export const projects: Project[] = [
       "4 servo motor ve 4 potansiyometreyle bağımsız kontrol edilen 4 eksenli kepçe kolu",
       "Dondurma çubuklarından inşa edilen şasi ve Nokia 5110 ekranla anlık geri bildirim",
     ],
-    href: "/project-previews/videos/kepce-operatoru-full.mp4",
-    preview: "/project-previews/kepce-operatoru.jpg",
-    previewVideo: "/project-previews/videos/kepce-operatoru-demo.mp4",
+    images: [
+      {
+        src: "/project-previews/kepce-operatoru.jpg",
+        caption: "Maket, LCD ekran ve potansiyometre kontrol paneli",
+      },
+    ],
+    video: "/project-previews/videos/kepce-operatoru-demo.mp4",
+    fullVideo: "/project-previews/videos/kepce-operatoru-full.mp4",
     tone: "coral",
   },
   {
@@ -863,7 +1056,7 @@ export const projects: Project[] = [
     category: "design",
     tags: ["Canva"],
     title: "UniForumHub Broşürü",
-    hook: "Üniversitelilerin ders notundan ikinci el eşyaya kadar her şeyi paylaştığı bir forum konseptinin tanıtım broşürü.",
+    hook: "Ders notundan ikinci el eşyaya, üniversitelilerin her şeyi paylaştığı bir forumun broşürü.",
     description:
       "UniForumHub adlı üniversite forumu konseptini tanıtan bir Canva broşür tasarımı. Forum; ders notu paylaşımı, etkinlik fikirleri, kitap/film/müzik sohbetleri, ev/iş arkadaşı bulma ve ikinci el eşya ilanı gibi başlıkları bir araya getiriyor; öne çıkan içerikler AtKafası Fanzin'de de yer alabiliyor.",
     platform: "Canva broşür tasarımı",
@@ -875,13 +1068,20 @@ export const projects: Project[] = [
       "AtKafası Fanzin ile çapraz içerik tanıtımı",
     ],
     href: "https://canva.link/qx0tf07ri8ul5t1",
-    preview: "/project-previews/uniforumhub-flyer.jpg",
-    previews: [
-      "/project-previews/uniforumhub-flyer.jpg",
-      "/project-previews/uniforumhub-flyer-page2.jpg",
-      "/project-previews/uniforumhub-flyer-page3.jpg",
+    images: [
+      {
+        src: "/project-previews/uniforumhub-flyer.jpg",
+        caption: "Kapak görseli",
+      },
+      {
+        src: "/project-previews/uniforumhub-flyer-page2.jpg",
+        caption: "QR kodlar ve forum açıklaması",
+      },
+      {
+        src: "/project-previews/uniforumhub-flyer-page3.jpg",
+        caption: "AtKafası Fanzin çapraz tanıtımı",
+      },
     ],
-    previewFit: "contain",
     tone: "orange",
   },
   {
@@ -889,7 +1089,7 @@ export const projects: Project[] = [
     category: "design",
     tags: ["Canva", "SoRita"],
     title: "SoRita Tanıtım Videosu",
-    hook: "SoRita'nın \"arkadaşlarını takip et, kaydettikleri mekânları gör\" vaadini anlatan kısa tanıtım videosu tasarımı.",
+    hook: "SoRita'nın “arkadaşlarını takip et, kaydettikleri mekânları gör” vaadini anlatan tanıtım tasarımı.",
     description:
       "SoRita mobil uygulamasının sosyal harita deneyimini duyurmak için Canva'da hazırlanmış kısa tanıtım videosu tasarımı.",
     platform: "Canva video şablonu",
@@ -901,18 +1101,23 @@ export const projects: Project[] = [
       "Gerçek SoRita uygulama ekranlarıyla desteklenen tanıtım görselleri",
     ],
     href: "https://canva.link/57hgko0vw2x3g0r",
-    preview: "/project-previews/sorita-promo.jpg",
-    previewFit: "contain",
+    images: [
+      {
+        src: "/project-previews/sorita-promo.jpg",
+        caption: "Tanıtım videosunun ana karesi",
+      },
+    ],
+    cardLayout: "contain",
     tone: "blue",
   },
   {
     id: "universe-poster",
     category: "design",
     tags: ["Canva", "UniVerse"],
-    title: "Universe Yatırımcı Sunumu",
-    hook: "UniVerse için hazırlanmış 28 sayfalık bir girişim sunumu: problem, çözüm, rakip analizi ve iş modeli.",
+    title: "UniVerse Yatırımcı Sunumu",
+    hook: "UniVerse için 28 sayfalık girişim sunumu: problem, çözüm, rakip analizi ve iş modeli.",
     description:
-      "\"Mobile Apps by MeMoDe\" markasıyla hazırlanan, UniVerse'ün öğrenci/kulüp problemini, çözümünü, gerçek uygulama ekranlarını, rakip analizini (UniClubs, Kampüslü) ve iş modelini kapsayan 28 sayfalık bir Canva girişim sunumu; SoRita ve WMatch ile birlikte sunulan bir mobil uygulama portföyünün parçası.",
+      "“Mobile Apps by MeMoDe” markasıyla hazırlanan, UniVerse'ün öğrenci/kulüp problemini, çözümünü, gerçek uygulama ekranlarını, rakip analizini (UniClubs, Kampüslü) ve iş modelini kapsayan 28 sayfalık bir Canva girişim sunumu; SoRita ve WMatch ile birlikte sunulan bir mobil uygulama portföyünün parçası.",
     platform: "Canva sunumu · 28 sayfa",
     status: "Tamamlandı",
     role: "Görsel tasarım · Sunum içeriği",
@@ -922,11 +1127,20 @@ export const projects: Project[] = [
       "Rakip analizi (UniClubs, Kampüslü) ve iş modeli sayfalarını içeren tam kapsamlı deste",
     ],
     href: "https://canva.link/2v5p2m45n4c8nda",
-    preview: "/project-previews/universe-app-promo.jpg",
-    previews: [
-      "/project-previews/universe-app-promo.jpg",
-      "/project-previews/universe-app-promo-problems.jpg",
-      "/project-previews/universe-app-promo-competitors.jpg",
+    ctaLabel: "Sunumu Canva'da aç",
+    images: [
+      {
+        src: "/project-previews/universe-app-promo.jpg",
+        caption: "Kapak: Mobile Apps by MeMoDe",
+      },
+      {
+        src: "/project-previews/universe-app-promo-problems.jpg",
+        caption: "Öğrenci ve kulüp problemleri",
+      },
+      {
+        src: "/project-previews/universe-app-promo-competitors.jpg",
+        caption: "Rakip analizi",
+      },
     ],
     tone: "ink",
   },
@@ -935,9 +1149,9 @@ export const projects: Project[] = [
     category: "design",
     tags: ["Canva", "AudioRoom"],
     title: "AudioRoom Tanıtım Görseli",
-    hook: "AudioRoom'un 3B \"Mükemmel Boşluk\" deneyimini kontrol şeması ve QR kodlarla anlatan bir tanıtım posteri.",
+    hook: "AudioRoom'un “Mükemmel Boşluk” dünyasını kontrol şeması ve QR kodlarla anlatan poster.",
     description:
-      "AudioRoom'un Redd'in \"Mükemmel Boşluk\" albüm dünyasını kontrol tuşları, harita ve oynatıcı arayüzüyle tanıtan; yayındaki ve yakında gelecek dünyaları (Hayko Cepkin, Pink Floyd, Kuantum Dolanıklık) listeleyen Canva tasarımı.",
+      "AudioRoom'un Redd'in “Mükemmel Boşluk” albüm dünyasını kontrol tuşları, harita ve oynatıcı arayüzüyle tanıtan; yayındaki ve yakında gelecek dünyaları (Hayko Cepkin, Pink Floyd, Kuantum Dolanıklık) listeleyen Canva tasarımı.",
     platform: "Canva tanıtım posteri",
     status: "Tamamlandı",
     role: "Görsel tasarım",
@@ -947,12 +1161,16 @@ export const projects: Project[] = [
       "Yayındaki ve yakında gelecek AudioRoom dünyalarının tanıtımı",
     ],
     href: "https://canva.link/vvz204q9oy7b53y",
-    preview: "/project-previews/audioroom-info-poster.jpg",
-    previews: [
-      "/project-previews/audioroom-info-poster.jpg",
-      "/project-previews/audioroom-info-poster-page2.jpg",
+    images: [
+      {
+        src: "/project-previews/audioroom-info-poster.jpg",
+        caption: "Kontroller ve QR kodlu poster",
+      },
+      {
+        src: "/project-previews/audioroom-info-poster-page2.jpg",
+        caption: "Yayındaki ve yakında gelecek dünyalar",
+      },
     ],
-    previewFit: "contain",
     tone: "green",
   },
 ];

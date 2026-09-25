@@ -1,16 +1,37 @@
 # fikkis
 
-Fikkis, Çayan Kuzu'nun 24 bağımsız üretimini tek yerde toplayan filtrelenebilir proje arşividir: 4 mobil ürün, 13 oyun, 6 web ürünü ve 1 bağımsız yayın.
+fikkis, Çayan Kuzu'nun kişisel proje arşividir: mobil uygulamalar, oyunlar, web deneyimleri, bilim çalışmaları, tasarım işleri ve bağımsız yayınlar tek bir sayfada.
 
-Her proje kartı kısa bir ürün özetiyle birlikte platform, güncel durum, üstlenilen rol, kullanılan araçlar ve doğrulanmış öne çıkan bilgileri gösterir. Slayt önizlemeleri, canlı/prototip/mağaza bağlantıları ve cihaz uygunluğu uyarıları ilgili çıktıya ulaşmayı kolaylaştırır.
+## Nasıl çalışır
 
-## Fikkis'in üretim kapsamı
+- **Kartlar** kısa ve taranabilir: kapak görseli, alan, durum, tek cümlelik vaat ve ilk araçlar. Üzerine gelince oynanış videosu oynar ya da görseller döner; mobil uygulamalar yan yana ekranlarla gösterilir.
+- **Detay paneli** bir karta tıklayınca açılır: açıklamalı görsel galerisi, proje özeti, öne çıkanlar, durum/platform/rol/araçlar ve bağlantılar. Her projenin paylaşılabilir bir adresi vardır (`/#proje-<id>`); tarayıcının geri tuşu paneli kapatır.
+- **Masaüstü deneyimleri** dar ekranlı ya da dokunmatik cihazlarda engellenmez; bağlantıyı kopyalama ve "yine de aç" seçenekleri sunulur.
+- **Filtreler**, hero istatistikleri, "Alanlar" sayıları ve "En sık kullandığım araçlar" listesi `src/app/projects.ts` verisinden otomatik hesaplanır.
+- Açık/koyu tema, azaltılmış hareket tercihi, klavye erişimi ve ekran okuyucu etiketleri desteklenir.
 
-- Platform: Responsive web vitrini
-- Durum: Canlı ve güncel tutuluyor
-- Rol: Ürün kürasyonu, bilgi mimarisi, içerik/UI-UX ve frontend geliştirme
-- Araçlar: Next.js 16, React 19, TypeScript, CSS, Next/Image ve Vercel
-- Öne çıkanlar: Dört kategori filtresi, proje slideshow'ları, masaüstü deneyimleri için cihaz kapısı ve AtKafası destek/satış akışı
+## Yeni proje eklemek
+
+`src/app/projects.ts` içindeki diziye bir nesne ekle. İlk görsel kart kapağıdır; her görselin bir açıklaması (`caption`) olmalıdır.
+
+```ts
+{
+  id: "yeni-proje",
+  category: "web", // web | mobile | game | science | design | content
+  title: "Yeni Proje",
+  hook: "Kartta görünen tek cümle.",
+  description: "Detay panelindeki özet.",
+  platform: "Responsive web",
+  status: "Canlı", // "Canlı", "yayında", "Satışta" → yeşil; "Geliştiriliyor" → turuncu
+  role: "Ürün tasarımı · Frontend",
+  tools: ["Next.js", "TypeScript"],
+  highlights: ["Birinci öne çıkan", "İkinci öne çıkan"],
+  href: "https://…",
+  images: [{ src: "/project-previews/yeni-proje.png", caption: "Ana ekran" }],
+  video: "/project-previews/videos/yeni-proje.mp4", // isteğe bağlı
+  tone: "blue",
+}
+```
 
 ## Yerel geliştirme
 

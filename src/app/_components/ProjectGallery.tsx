@@ -1,1070 +1,129 @@
 "use client";
 
-import Image from "next/image";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
-import type { Project } from "../projects";
-import { ProjectSlideshow } from "./ProjectSlideshow";
+import { replaceHash, useLocationHash } from "../_lib/browser";
+import { categoryLabels, categoryOrder } from "../_lib/project-meta";
+import type { Project, ProjectCategory } from "../projects";
+import { ProjectCard } from "./ProjectCard";
+import { ProjectSheet } from "./ProjectSheet";
 
-type FilterValue = "all" | Project["category"];
+type FilterValue = "all" | ProjectCategory;
 
-const filters: { value: FilterValue; label: string }[] = [
-  { value: "all", label: "Hepsi" },
-  { value: "web", label: "Web" },
-  { value: "game", label: "Oyunlar" },
-  { value: "mobile", label: "Mobil" },
-  { value: "content", label: "Yayın" },
-  { value: "design", label: "Tasarım" },
-  { value: "science", label: "Bilim" },
-];
-
-function getLimitedDeviceSnapshot() {
-  const hasMouseLikePointer = window.matchMedia(
-    "(any-pointer: fine) and (any-hover: hover)",
-  ).matches;
-
-  return window.innerWidth < 960 || !hasMouseLikePointer;
-}
-
-function subscribeToDeviceChanges(onStoreChange: () => void) {
-  const pointerQuery = window.matchMedia(
-    "(any-pointer: fine) and (any-hover: hover)",
-  );
-
-  window.addEventListener("resize", onStoreChange);
-  pointerQuery.addEventListener("change", onStoreChange);
-
-  return () => {
-    window.removeEventListener("resize", onStoreChange);
-    pointerQuery.removeEventListener("change", onStoreChange);
-  };
-}
-
-function getServerDeviceSnapshot() {
-  return false;
-}
-
-function openRedirectTab(projectTitle: string, destinationUrl: string) {
-  const redirectTab = window.open("", "_blank");
-
-  if (!redirectTab) return null;
-
-  const firstIssueUrl = new URL(
-    "/atkafasi-sayi-1.webp",
-    window.location.origin,
-  ).href;
-  const secondIssueUrl = new URL(
-    "/atkafasi-sayi-2.png",
-    window.location.origin,
-  ).href;
-
-  try {
-    redirectTab.opener = null;
-    redirectTab.document.open();
-    redirectTab.document.write(`<!doctype html>
-<html lang="tr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fikkis · Bağımsız üretime destek</title>
-    <style>
-      :root {
-        color-scheme: light;
-        --ink: #17140f;
-        --paper: #fff8e9;
-        --orange: #ff5c22;
-        --pink: #ff3f82;
-        --blue: #245dff;
-        --lime: #dfff45;
-      }
-      * { box-sizing: border-box; }
-      body {
-        min-height: 100vh;
-        margin: 0;
-        display: grid;
-        place-items: center;
-        overflow-x: hidden;
-        padding: clamp(18px, 4vw, 44px);
-        color: var(--ink);
-        background:
-          radial-gradient(circle at 9% 12%, rgba(223, 255, 69, .9) 0 8%, transparent 23%),
-          radial-gradient(circle at 91% 9%, rgba(255, 63, 130, .72) 0 9%, transparent 27%),
-          radial-gradient(circle at 87% 91%, rgba(36, 93, 255, .65) 0 8%, transparent 29%),
-          #ff7849;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        opacity: .14;
-        background-image: radial-gradient(#17140f 1px, transparent 1px);
-        background-size: 18px 18px;
-      }
-      main {
-        position: relative;
-        isolation: isolate;
-        width: min(100%, 690px);
-        overflow: hidden;
-        padding: clamp(24px, 5vw, 44px);
-        border: 3px solid var(--ink);
-        border-radius: clamp(24px, 5vw, 38px);
-        background: var(--paper);
-        box-shadow: 14px 14px 0 var(--ink), 0 30px 90px rgba(66, 19, 3, .28);
-      }
-      main::after {
-        content: "YENİ FİKİRLER • YENİ DÜNYALAR •";
-        position: absolute;
-        z-index: -1;
-        right: -72px;
-        top: 92px;
-        padding: 8px 90px;
-        color: #fff;
-        background: var(--blue);
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: .14em;
-        transform: rotate(37deg);
-      }
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        padding-bottom: 20px;
-        border-bottom: 2px solid var(--ink);
-      }
-      .brand {
-        font-size: clamp(25px, 6vw, 38px);
-        font-weight: 950;
-        letter-spacing: -.07em;
-      }
-      .brand small {
-        display: block;
-        margin-top: 2px;
-        font-size: 9px;
-        letter-spacing: .18em;
-        text-transform: uppercase;
-      }
-      .issue {
-        padding: 8px 12px;
-        border: 2px solid var(--ink);
-        border-radius: 999px;
-        background: var(--lime);
-        font-size: 10px;
-        font-weight: 900;
-        letter-spacing: .11em;
-        text-align: center;
-        transform: rotate(3deg);
-      }
-      .hero {
-        display: grid;
-        grid-template-columns: minmax(128px, .68fr) 1.5fr;
-        align-items: center;
-        gap: clamp(22px, 5vw, 42px);
-        padding: clamp(28px, 6vw, 48px) 0 28px;
-      }
-      .cover {
-        position: relative;
-        aspect-ratio: .72;
-        border: 3px solid var(--ink);
-        border-radius: 8px 18px 8px 8px;
-        background: var(--pink);
-        box-shadow: 8px 8px 0 var(--ink);
-        transform: rotate(-5deg);
-        animation: float 3.4s ease-in-out infinite;
-      }
-      .cover::before {
-        content: "AT\\A KAFASI";
-        position: absolute;
-        inset: 13px;
-        display: grid;
-        place-items: center;
-        white-space: pre;
-        border: 2px solid var(--ink);
-        color: var(--paper);
-        background:
-          radial-gradient(circle at 50% 46%, var(--orange) 0 13%, transparent 14%),
-          repeating-radial-gradient(circle at 50% 46%, transparent 0 12px, var(--ink) 13px 15px),
-          var(--blue);
-        font-size: clamp(19px, 4vw, 30px);
-        font-weight: 950;
-        line-height: .82;
-        letter-spacing: -.06em;
-        text-align: center;
-      }
-      .cover::after {
-        content: "BAĞIMSIZ FANZİN";
-        position: absolute;
-        right: -18px;
-        bottom: 20px;
-        padding: 6px 9px;
-        border: 2px solid var(--ink);
-        background: var(--lime);
-        font-size: 8px;
-        font-weight: 950;
-        letter-spacing: .09em;
-        transform: rotate(-7deg);
-      }
-      .eyebrow {
-        margin: 0 0 10px;
-        color: var(--orange);
-        font-size: 11px;
-        font-weight: 950;
-        letter-spacing: .16em;
-        text-transform: uppercase;
-      }
-      h1 {
-        max-width: 480px;
-        margin: 0;
-        font-size: clamp(32px, 7vw, 57px);
-        line-height: .9;
-        letter-spacing: -.065em;
-      }
-      h1 em {
-        display: inline;
-        color: var(--blue);
-        font-style: normal;
-      }
-      #destination {
-        display: inline-flex;
-        margin-top: 17px;
-        padding: 8px 12px;
-        border: 2px solid var(--ink);
-        border-radius: 999px;
-        background: #fff;
-        font-size: 12px;
-        letter-spacing: .04em;
-      }
-      .copy {
-        margin: 16px 0 0;
-        color: #52493d;
-        font-size: 14px;
-        line-height: 1.55;
-      }
-      .impact {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 7px;
-        margin-top: 18px;
-      }
-      .impact span {
-        padding: 7px 9px;
-        border: 1.5px solid var(--ink);
-        border-radius: 999px;
-        background: #fff;
-        font-size: 9px;
-        font-weight: 900;
-        letter-spacing: .08em;
-        text-transform: uppercase;
-      }
-      .impact span:nth-child(2) { background: var(--lime); }
-      .impact span:nth-child(3) { color: #fff; background: var(--pink); }
-      .support-note {
-        margin: 0;
-        padding: 15px 18px;
-        border: 2px solid var(--ink);
-        border-radius: 16px;
-        background: #fff;
-        font-size: 13px;
-        line-height: 1.5;
-        text-align: center;
-      }
-      nav {
-        display: grid;
-        grid-template-columns: 1.25fr 1fr;
-        gap: 10px;
-        margin-top: 14px;
-      }
-      a, #continue {
-        display: flex;
-        min-height: 52px;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid var(--ink);
-        border-radius: 15px;
-        color: inherit;
-        font-size: 13px;
-        font-weight: 900;
-        text-decoration: none;
-        transition: transform .18s ease, box-shadow .18s ease;
-      }
-      nav a:first-child { background: var(--lime); box-shadow: 4px 4px 0 var(--ink); }
-      nav a:last-child { color: #fff; background: var(--blue); }
-      a:hover, a:focus-visible, #continue:not(:disabled):hover, #continue:not(:disabled):focus-visible {
-        outline: none;
-        transform: translate(-2px, -2px);
-        box-shadow: 5px 5px 0 var(--ink);
-      }
-      #continue {
-        width: 100%;
-        margin-top: 12px;
-        color: #fff;
-        background: var(--ink);
-        font-family: inherit;
-        cursor: pointer;
-      }
-      #continue:disabled { color: #6d655c; background: #ddd4c7; cursor: wait; }
-      .progress {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 12px;
-        margin-top: 14px;
-        color: #756b60;
-        font-size: 9px;
-        font-weight: 900;
-        letter-spacing: .1em;
-        text-transform: uppercase;
-      }
-      .progress i {
-        height: 5px;
-        overflow: hidden;
-        border-radius: 999px;
-        background: #ded5c8;
-      }
-      .progress i::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, var(--orange), var(--pink), var(--blue));
-        transform-origin: left;
-        animation: progress 3s linear forwards;
-      }
-      @keyframes float { 50% { transform: rotate(-2deg) translateY(-7px); } }
-      @keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-      @media (max-width: 580px) {
-        main { padding: 22px; box-shadow: 8px 8px 0 var(--ink); }
-        main::after { display: none; }
-        .hero { display: block; padding: 25px 0 22px; }
-        .hero::after { content: ""; display: table; clear: both; }
-        .cover { float: left; width: 88px; margin: 0 20px 14px 0; }
-        .cover::after { display: none; }
-        .copy { clear: both; padding-top: 17px; }
-        .impact { clear: both; }
-        nav { grid-template-columns: 1fr; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
-      }
-
-      /* Sade destek ekranı */
-      :root {
-        --ink: #171512;
-        --paper: #fbf8f2;
-        --accent: #d85b36;
-        --muted: #6f675e;
-        --line: #d8d1c7;
-      }
-      body {
-        padding: clamp(14px, 4vw, 36px);
-        background: radial-gradient(circle at 50% 0, #f2d8cb 0, #e9e4dc 44%, #ddd8d0 100%);
-      }
-      body::before, main::after { display: none; }
-      main {
-        width: min(100%, 620px);
-        padding: clamp(22px, 5vw, 38px);
-        border: 1px solid rgba(23, 21, 18, .18);
-        border-radius: 28px;
-        background: var(--paper);
-        box-shadow: 0 24px 70px rgba(23, 21, 18, .17);
-      }
-      header { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-      .brand { font-size: clamp(25px, 5vw, 33px); letter-spacing: -.055em; }
-      .brand small {
-        display: block;
-        margin-top: 3px;
-        color: var(--muted);
-        font-size: 8px;
-        letter-spacing: .16em;
-      }
-      .issue {
-        padding: 7px 10px;
-        border: 1px solid var(--line);
-        color: var(--muted);
-        background: transparent;
-        font-size: 9px;
-        letter-spacing: .12em;
-        transform: none;
-      }
-      .hero {
-        grid-template-columns: minmax(148px, 174px) 1fr;
-        gap: clamp(20px, 5vw, 34px);
-        padding: clamp(24px, 5vw, 36px) 0 26px;
-      }
-      .covers {
-        display: flex;
-        min-width: 0;
-        align-items: center;
-        justify-content: center;
-        padding: 7px 2px;
-      }
-      .coverCard {
-        position: relative;
-        flex: 0 0 68%;
-        width: 68%;
-        margin: 0;
-        padding: 0 0 22px;
-        border: 0;
-        color: var(--ink);
-        background: transparent;
-        font-family: inherit;
-        cursor: zoom-in;
-        transition: transform .22s ease, filter .22s ease;
-      }
-      .coverCard:first-child {
-        z-index: 1;
-        margin-right: -30%;
-        transform: rotate(-5deg);
-      }
-      .coverCard:last-child { z-index: 2; transform: rotate(4deg); }
-      .coverCard:hover,
-      .coverCard:focus-visible {
-        z-index: 4;
-        outline: none;
-        filter: drop-shadow(0 16px 18px rgba(23, 21, 18, .22));
-        transform: rotate(0) translateY(-7px) scale(1.18);
-      }
-      .cover {
-        display: block;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border: 1px solid rgba(23, 21, 18, .35);
-        border-radius: 12px;
-        background: #d3d1d0;
-        box-shadow: 7px 8px 0 rgba(23, 21, 18, .92);
-        animation: none;
-      }
-      .coverCard:hover .cover,
-      .coverCard:focus-visible .cover { border-color: var(--accent); }
-      .coverLabel {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 62px;
-        padding: 5px 6px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: var(--paper);
-        font-size: 8px;
-        font-weight: 900;
-        letter-spacing: .1em;
-        text-align: center;
-        text-transform: uppercase;
-        transform: translateX(-50%);
-        transition: transform .22s ease;
-      }
-      .coverCard:hover .coverLabel,
-      .coverCard:focus-visible .coverLabel { transform: translateX(-50%) scale(.85); }
-      .coverCard:first-child .coverLabel { left: 40%; }
-      .coverCard:last-child .coverLabel { left: 60%; }
-      .eyebrow { margin-bottom: 9px; color: var(--accent); font-size: 10px; }
-      h1 {
-        font-size: clamp(28px, 5.2vw, 39px);
-        line-height: 1;
-        letter-spacing: -.055em;
-      }
-      h1 em { color: inherit; }
-      .copy { margin-top: 14px; color: var(--muted); font-size: 14px; line-height: 1.5; }
-      nav { margin-top: 0; }
-      a, #continue {
-        min-height: 49px;
-        border: 1px solid var(--ink);
-        border-radius: 12px;
-        font-size: 12px;
-        box-shadow: none;
-      }
-      nav a:first-child { color: #fff; background: var(--accent); box-shadow: none; }
-      nav a:last-child { color: var(--ink); background: transparent; }
-      a:hover, a:focus-visible, #continue:not(:disabled):hover, #continue:not(:disabled):focus-visible {
-        color: #fff;
-        background: var(--ink);
-        box-shadow: none;
-        transform: translateY(-2px);
-      }
-      #continue { margin-top: 10px; background: var(--ink); }
-      #continue:disabled { color: #746e66; background: #ded9d1; }
-      .progress { display: block; margin-top: 13px; }
-      .progress i { display: block; height: 3px; background: var(--line); }
-      .progress i::after { background: var(--accent); }
-      @media (max-width: 480px) {
-        main { padding: 20px; border-radius: 22px; box-shadow: 0 18px 50px rgba(23, 21, 18, .16); }
-        .hero {
-          display: grid;
-          grid-template-columns: 1fr;
-          gap: 16px;
-          padding: 22px 0;
-        }
-        .covers {
-          width: min(100%, 230px);
-          margin: 0 auto;
-          padding: 5px 0;
-          gap: 12px;
-        }
-        .coverCard,
-        .coverCard:first-child,
-        .coverCard:last-child {
-          flex: 1 1 0;
-          width: calc(50% - 6px);
-          margin: 0;
-          transform: none;
-        }
-        .coverCard:hover,
-        .coverCard:focus-visible { transform: translateY(-4px) scale(1.05); }
-        .coverCard:first-child .coverLabel,
-        .coverCard:last-child .coverLabel { left: 50%; }
-        .cover { float: none; width: 100%; box-shadow: 4px 5px 0 var(--ink); }
-        nav { grid-template-columns: 1fr 1fr; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .coverCard { transition: none; }
-      }
-    </style>
-  </head>
-  <body>
-    <main>
-      <header>
-        <div class="brand">fikkis<small>bir şeyler deniyorum</small></div>
-        <div class="issue">ATKAFASI FANZİN</div>
-      </header>
-      <section class="hero">
-        <div class="covers" aria-label="AtKafası Fanzin kapakları">
-          <button class="coverCard" type="button" aria-label="1. sayı kapağını büyüt">
-            <img class="cover" src="${firstIssueUrl}" alt="AtKafası Fanzin 1. sayı kapağı" width="725" height="1011" />
-            <span class="coverLabel">1. sayı</span>
-          </button>
-          <button class="coverCard" type="button" aria-label="2. sayı kapağını büyüt">
-            <img class="cover" src="${secondIssueUrl}" alt="AtKafası Fanzin 2. sayı kapağı" width="515" height="726" />
-            <span class="coverLabel">2. sayı</span>
-          </button>
-        </div>
-        <div>
-          <p class="eyebrow">Bağımsız üretime destek</p>
-          <h1>Bana destek olmak için AtKafası Fanzin’i satın alabilirsiniz.</h1>
-        </div>
-      </section>
-      <nav aria-label="Destek bağlantıları">
-        <a href="https://www.shopier.com/atkafasifanzin" target="_blank" rel="noreferrer">Shopier’den al</a>
-        <a href="https://atkafasifanzin.gumroad.com/" target="_blank" rel="noreferrer">Gumroad</a>
-      </nav>
-      <button id="continue" type="button" disabled>3 saniye · sonra devam</button>
-      <div class="progress" aria-hidden="true"><i></i></div>
-    </main>
-    <script>
-      (() => {
-        const continueButton = document.getElementById("continue");
-
-        window.setTimeout(() => {
-          continueButton.disabled = false;
-          const projectTitle = continueButton.dataset.projectTitle || "Projeye";
-          continueButton.textContent = projectTitle + " projesini aç";
-        }, 3000);
-
-        continueButton.addEventListener("click", () => {
-          const destination = continueButton.dataset.destination;
-          if (destination) window.location.replace(destination);
-        });
-      })();
-    </script>
-  </body>
-</html>`);
-    redirectTab.document.close();
-
-    const continueButton = redirectTab.document.getElementById("continue");
-    if (continueButton) {
-      continueButton.dataset.destination = destinationUrl;
-      continueButton.dataset.projectTitle = projectTitle;
-    }
-  } catch {
-    // Sekme ayrılmıştır; tarayıcı yine de kullanıcıya boş sekmeyi gösterebilir.
-  }
-
-  return redirectTab;
-}
+const HASH_PREFIX = "#proje-";
 
 export function ProjectGallery({ projects }: { projects: Project[] }) {
-  const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
-  const [blockedProject, setBlockedProject] = useState<Project | null>(null);
-  const [redirectProject, setRedirectProject] = useState<Project | null>(null);
-  const [redirectReady, setRedirectReady] = useState(false);
-  const [noticeVisible, setNoticeVisible] = useState(true);
-  const [noticeRestart, setNoticeRestart] = useState(0);
-  const modalRef = useRef<HTMLElement>(null);
-  const modalTriggerRef = useRef<HTMLAnchorElement | null>(null);
-  const isLimitedDevice = useSyncExternalStore(
-    subscribeToDeviceChanges,
-    getLimitedDeviceSnapshot,
-    getServerDeviceSnapshot,
-  );
-  const filterCounts = projects.reduce<Record<FilterValue, number>>(
-    (counts, project) => {
-      counts.all += 1;
-      counts[project.category] += 1;
-      return counts;
+  const [filter, setFilter] = useState<FilterValue>("all");
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const openedInApp = useRef(false);
+  const pendingScroll = useRef<string | null>(null);
+
+  const hash = useLocationHash();
+  const activeId = hash.startsWith(HASH_PREFIX)
+    ? decodeURIComponent(hash.slice(HASH_PREFIX.length))
+    : null;
+  const activeProject = projects.find((project) => project.id === activeId) ?? null;
+
+  const counts = projects.reduce<Record<FilterValue, number>>(
+    (result, project) => {
+      result.all += 1;
+      result[project.category] += 1;
+      return result;
     },
-    { all: 0, web: 0, game: 0, mobile: 0, content: 0, design: 0, science: 0 },
+    { all: 0, web: 0, mobile: 0, game: 0, science: 0, design: 0, content: 0 },
   );
+
+  const filters: { value: FilterValue; label: string }[] = [
+    { value: "all", label: "Tümü" },
+    ...categoryOrder.map((value) => ({ value, label: categoryLabels[value] })),
+  ];
 
   const visibleProjects =
-    activeFilter === "all"
+    filter === "all"
       ? projects
-      : projects.filter((project) => project.category === activeFilter);
+      : projects.filter((project) => project.category === filter);
 
-  const cancelRedirect = () => {
-    setRedirectReady(false);
-    setRedirectProject(null);
+  const navigationList =
+    activeProject && visibleProjects.includes(activeProject)
+      ? visibleProjects
+      : projects;
+
+  useEffect(() => {
+    if (activeProject || !pendingScroll.current) return;
+
+    const target = pendingScroll.current;
+    pendingScroll.current = null;
+    window.requestAnimationFrame(() => {
+      document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+    });
+  }, [activeProject]);
+
+  const handleOpen = (event: MouseEvent<HTMLAnchorElement>) => {
+    // Yeni sekmede açma gibi değiştirici tuşlu tıklamalara dokunma.
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    openedInApp.current = true;
   };
 
-  useEffect(() => {
-    if (!isLimitedDevice) return;
+  const handleClose = (scrollTarget?: string) => {
+    pendingScroll.current = scrollTarget ?? null;
 
-    let timer: number;
-
-    const hidePhase = () => {
-      setNoticeVisible(false);
-      timer = window.setTimeout(showPhase, 3000);
-    };
-
-    const showPhase = () => {
-      setNoticeVisible(true);
-      timer = window.setTimeout(hidePhase, 23000);
-    };
-
-    timer =
-      noticeRestart > 0
-        ? window.setTimeout(showPhase, 3000)
-        : window.setTimeout(hidePhase, 23000);
-
-    return () => window.clearTimeout(timer);
-  }, [isLimitedDevice, noticeRestart]);
-
-  useEffect(() => {
-    if (!blockedProject && !redirectProject) return;
-
-    const previousOverflow = document.body.style.overflow;
-    const backgroundElements = Array.from(
-      document.querySelectorAll<HTMLElement>(
-        ".fikkisHeader, .projectSection, .fikkisFooter, .mobileExperienceNotice",
-      ),
-    );
-    const previousBackgroundState = backgroundElements.map((element) => ({
-      element,
-      inert: element.inert,
-      ariaHidden: element.getAttribute("aria-hidden"),
-    }));
-    const focusDialog = window.requestAnimationFrame(() => {
-      const dialog = modalRef.current;
-      const firstFocusable = dialog?.querySelector<HTMLElement>(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      );
-
-      (firstFocusable ?? dialog)?.focus();
-    });
-    const handleDialogKeys = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        setBlockedProject(null);
-        setRedirectReady(false);
-        setRedirectProject(null);
-        return;
-      }
-
-      if (event.key !== "Tab" || !modalRef.current) return;
-
-      const focusableElements = Array.from(
-        modalRef.current.querySelectorAll<HTMLElement>(
-          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        ),
-      ).filter((element) => element.getClientRects().length > 0);
-
-      if (focusableElements.length === 0) {
-        event.preventDefault();
-        modalRef.current.focus();
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-      const activeElement = document.activeElement;
-
-      if (event.shiftKey && activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-      } else if (!event.shiftKey && activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
-      } else if (!modalRef.current.contains(activeElement)) {
-        event.preventDefault();
-        firstElement.focus();
-      }
-    };
-
-    document.body.style.overflow = "hidden";
-    previousBackgroundState.forEach(({ element }) => {
-      element.inert = true;
-      element.setAttribute("aria-hidden", "true");
-    });
-    document.addEventListener("keydown", handleDialogKeys);
-
-    return () => {
-      window.cancelAnimationFrame(focusDialog);
-      document.body.style.overflow = previousOverflow;
-      previousBackgroundState.forEach(({ element, inert, ariaHidden }) => {
-        element.inert = inert;
-        if (ariaHidden === null) element.removeAttribute("aria-hidden");
-        else element.setAttribute("aria-hidden", ariaHidden);
-      });
-      document.removeEventListener("keydown", handleDialogKeys);
-      modalTriggerRef.current?.focus();
-    };
-  }, [blockedProject, redirectProject]);
-
-  useEffect(() => {
-    if (!redirectProject?.href) return;
-
-    const timer = window.setTimeout(() => {
-      setRedirectReady(true);
-    }, 3000);
-
-    return () => window.clearTimeout(timer);
-  }, [redirectProject]);
-
-  const handleProjectClick = (
-    event: MouseEvent<HTMLAnchorElement>,
-    project: Project,
-    destination = project.href,
-  ) => {
-    modalTriggerRef.current = event.currentTarget;
-
-    if (project.desktopOnly && isLimitedDevice) {
-      event.preventDefault();
-      setBlockedProject(project);
-      return;
-    }
-
-    if (!destination) return;
-    event.preventDefault();
-
-    const redirectTab = openRedirectTab(project.title, destination);
-    if (!redirectTab) {
-      setRedirectReady(false);
-      setRedirectProject({ ...project, href: destination });
+    if (openedInApp.current) {
+      openedInApp.current = false;
+      window.history.back();
+    } else {
+      replaceHash("");
     }
   };
 
-  const dismissNotice = () => {
-    setNoticeVisible(false);
-    setNoticeRestart((current) => current + 1);
+  const handleFilter = (value: FilterValue) => {
+    setFilter(value);
+
+    const section = sectionRef.current;
+    if (section && section.getBoundingClientRect().top < 0) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <>
-      <section className="projectSection" aria-labelledby="gallery-title">
-        <h1 id="gallery-title" className="srOnly">
-          Fikkis projeleri
-        </h1>
-
-        <div
-          className="filterBar"
-          role="group"
-          aria-label="Projeleri kategoriye göre filtrele"
-        >
-          {filters.map((filter) => (
-            <button
-              className={activeFilter === filter.value ? "is-active" : ""}
-              key={filter.value}
-              type="button"
-              aria-pressed={activeFilter === filter.value}
-              aria-label={`${filter.label}, ${filterCounts[filter.value]} içerik`}
-              onClick={() => setActiveFilter(filter.value)}
-            >
-              {filter.label}
-              <span className="filterCount" aria-hidden="true">
-                {filterCounts[filter.value]}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        <p className="srOnly" aria-live="polite">
-          {visibleProjects.length} proje gösteriliyor.
-        </p>
-
-        <div className="projectGallery">
-          {visibleProjects.map((project, index) => (
-            <article
-              className={`projectCard tone-${project.tone}`}
-              key={project.id}
-            >
-              <div className="projectMedia">
-                <ProjectSlideshow project={project} priority={index < 6} />
-                {project.href ? (
-                  <a
-                    className="projectLink"
-                    href={project.href}
-                    target="_blank"
-                    rel="noreferrer"
-                    aria-label={`${project.title} projesini aç`}
-                    onClick={(event) => handleProjectClick(event, project)}
-                  >
-                    <span className="srOnly">{project.title} projesini aç</span>
-                  </a>
-                ) : null}
-
-                {project.category === "mobile" ? (
-                  <div className="mobileProjectActions">
-                    {project.storeLinks?.length ? (
-                      project.storeLinks.map((storeLink) => (
-                        <a
-                          href={storeLink.href}
-                          key={storeLink.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          onClick={(event) =>
-                            handleProjectClick(event, project, storeLink.href)
-                          }
-                        >
-                          {storeLink.label}
-                        </a>
-                      ))
-                    ) : (
-                      <span>{project.downloadStatus}</span>
-                    )}
-                    {project.href ? (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(event) =>
-                          handleProjectClick(event, project, project.href)
-                        }
-                      >
-                        Figma tasarımını aç
-                      </a>
-                    ) : null}
-                    {project.websiteUrl ? (
-                      <a
-                        href={project.websiteUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(event) =>
-                          handleProjectClick(event, project, project.websiteUrl)
-                        }
-                      >
-                        Web sitesine git
-                      </a>
-                    ) : null}
-                  </div>
-                ) : null}
-              </div>
-
-              <div className="projectCaption">
-                <div className="projectTitleRow">
-                  <h2>{project.title}</h2>
-                  <span className="projectStatus">{project.status}</span>
-                </div>
-                <p className="projectHook">{project.hook}</p>
-                <p className="projectDescription">{project.description}</p>
-                <dl className="projectMeta">
-                  <div>
-                    <dt>Platform</dt>
-                    <dd>{project.platform}</dd>
-                  </div>
-                  <div>
-                    <dt>Rol</dt>
-                    <dd>{project.role}</dd>
-                  </div>
-                  <div>
-                    <dt>Araçlar</dt>
-                    <dd>{project.tools.join(" · ")}</dd>
-                  </div>
-                </dl>
-                <div className="projectHighlights">
-                  <strong>Öne çıkanlar</strong>
-                  <ul>
-                    {project.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                </div>
-                {project.secondaryHref ? (
-                  <a
-                    className="projectSecondaryLink"
-                    href={project.secondaryHref}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Gumroad&apos;da incele
-                  </a>
-                ) : null}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {isLimitedDevice &&
-      noticeVisible &&
-      !blockedProject &&
-      !redirectProject ? (
-        <aside className="mobileExperienceNotice" role="status">
-          <div>
-            <strong>Daha iyi bir deneyim için bilgisayar kullan</strong>
-            <p>
-              Mobil ürünler, AtKafası Fanzin ve mobil uyumlu web/oyun
-              deneyimleri telefonda açılır. Masaüstü öncelikli projeler klavye,
-              fare ve geniş ekran gerektirir.
-            </p>
-          </div>
-          <button type="button" onClick={dismissNotice}>
-            Mobilde devam et
-          </button>
-          <span className="noticeTimer" aria-hidden="true" />
-        </aside>
-      ) : null}
-
-      {blockedProject ? (
-        <div
-          className="desktopGateBackdrop"
-          role="presentation"
-          onMouseDown={(event) => {
-            if (event.currentTarget === event.target) setBlockedProject(null);
-          }}
-        >
-          <section
-            className="desktopGate"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="desktop-gate-title"
-            aria-describedby="desktop-gate-description"
-            ref={modalRef}
-            tabIndex={-1}
+      <div className="gallery" ref={sectionRef}>
+        <div className="filterBar">
+          <div
+            className="filters"
+            role="group"
+            aria-label="Projeleri alana göre filtrele"
           >
-            <span>Masaüstü deneyimi</span>
-            <h2 id="desktop-gate-title">{blockedProject.title}</h2>
-            <p id="desktop-gate-description">
-              Bu proje klavye, fare ve geniş bir ekran için tasarlandı. Sorunsuz
-              kullanmak için en az 960 piksel genişliğinde bir bilgisayardan aç.
-            </p>
-            <button
-              type="button"
-              autoFocus
-              onClick={() => setBlockedProject(null)}
-            >
-              Fikkis&apos;te kal
-            </button>
-          </section>
-        </div>
-      ) : null}
-
-      {redirectProject ? (
-        <div
-          className="contentRedirectBackdrop"
-          role="presentation"
-          onMouseDown={(event) => {
-            if (event.currentTarget === event.target) cancelRedirect();
-          }}
-        >
-          <section
-            className="contentRedirect"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="content-redirect-title"
-            ref={modalRef}
-            tabIndex={-1}
-          >
-            <div className="redirectTopline">
-              <div className="redirectBrand">
-                <strong>fikkis</strong>
-                <small>bir şeyler deniyorum</small>
-              </div>
-              <span>AtKafası Fanzin</span>
-            </div>
-            <div className="redirectHero">
-              <div className="redirectCovers" aria-label="AtKafası Fanzin kapakları">
-                <button
-                  className="redirectCoverCard"
-                  type="button"
-                  aria-label="1. sayı kapağını büyüt"
-                >
-                  <Image
-                    className="redirectCover"
-                    src="/atkafasi-sayi-1.webp"
-                    alt="AtKafası Fanzin 1. sayı kapağı"
-                    width={725}
-                    height={1011}
-                    sizes="(max-width: 520px) 104px, 118px"
-                  />
-                  <span className="redirectCoverLabel">1. sayı</span>
-                </button>
-                <button
-                  className="redirectCoverCard"
-                  type="button"
-                  aria-label="2. sayı kapağını büyüt"
-                >
-                  <Image
-                    className="redirectCover"
-                    src="/atkafasi-sayi-2.png"
-                    alt="AtKafası Fanzin 2. sayı kapağı"
-                    width={515}
-                    height={726}
-                    sizes="(max-width: 520px) 104px, 118px"
-                  />
-                  <span className="redirectCoverLabel">2. sayı</span>
-                </button>
-              </div>
-              <div>
-                <p className="redirectEyebrow">Bağımsız üretime destek</p>
-                <h2 id="content-redirect-title">
-                  Bana destek olmak için AtKafası Fanzin’i satın alabilirsiniz.
-                </h2>
-              </div>
-            </div>
-            <div className="redirectChoices">
-              <a
-                href="https://www.shopier.com/atkafasifanzin"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Shopier&apos;den al
-              </a>
-              <a
-                href="https://atkafasifanzin.gumroad.com/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Gumroad
-              </a>
-            </div>
-            {redirectProject.href ? (
+            {filters.map((item) => (
               <button
-                className="redirectContinue"
+                key={item.value}
                 type="button"
-                disabled={!redirectReady}
-                onClick={() => {
-                  window.open(
-                    redirectProject.href,
-                    "_blank",
-                    "noopener,noreferrer",
-                  );
-                  cancelRedirect();
-                }}
+                className="filter"
+                aria-pressed={filter === item.value}
+                onClick={() => handleFilter(item.value)}
               >
-                {redirectReady
-                  ? `${redirectProject.title} projesini aç`
-                  : "3 saniye · sonra devam"}
+                {item.label}
+                <span className="filterCount">{counts[item.value]}</span>
               </button>
-            ) : null}
-            <button className="redirectStay" type="button" onClick={cancelRedirect}>
-              Fikkis&apos;te kal
-            </button>
-            <span className="redirectProgress" aria-hidden="true" />
-          </section>
+            ))}
+          </div>
+          <p className="srOnly" aria-live="polite">
+            {visibleProjects.length} proje gösteriliyor
+          </p>
         </div>
-      ) : null}
+
+        <div className="grid">
+          {visibleProjects.map((project) => (
+            <ProjectCard key={project.id} project={project} onOpen={handleOpen} />
+          ))}
+        </div>
+      </div>
+
+      <ProjectSheet
+        project={activeProject}
+        list={navigationList}
+        onClose={handleClose}
+        onNavigate={(project) => replaceHash(`${HASH_PREFIX}${project.id}`)}
+      />
     </>
   );
 }
