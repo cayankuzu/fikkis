@@ -2,6 +2,9 @@
 
 - `trai.png`: live capture from `trai-theta.vercel.app`
 - `mrap.png`: local verified demo capture from `mrap.vercel.app`
+- `merbut-menu.png`, `merbut-titlecard.png`, `merbut-combat.png`: live captures of v3.1.0 at
+  `merbut.vercel.app` (main menu duel, the Aku Metropolü album title card, and the first fight
+  with Jack's shield up), taken on 2026-09-26 with real keyboard input from a fresh save
 - `bibish.png`: owner-supplied local gameplay capture from Bibish
 - `remember-ouroboros.png`: owner-supplied capture from `remember-you-must-die-web.vercel.app`
 - `desain.png`: live project at `des-ai-n.vercel.app`
@@ -78,7 +81,9 @@ production build:
   question inside the 3D hangman scene
 - `bibish-gameplay.mp4`: real capture of joining a live match and the spawn-point selection map
   (automated input couldn't reliably click a specific spawn to get further into open movement)
-- `merbut-gameplay.mp4`: real capture of an actual Hz. Ali vs. Samuray Jack battle in progress
+- `merbut-gameplay.mp4`: real capture of the first fight in v3.1.0 (re-recorded 2026-09-26): Hz. Ali
+  and Samuray Jack played with real keyboard input through three-cut chains, Ali's fireball and
+  Jack's shield against the opening wave in Aku Metropolü
 - `remember-gameplay.mp4`: real capture of the Ouroboros 3D scene being rotated via drag.
   Re-recorded twice on 2026-09-16: first after fixing a bug on that site where the skull inside
   the ring failed to render in time (see that project's own repo history), then again after

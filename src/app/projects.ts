@@ -170,11 +170,11 @@ export const projects: Project[] = [
     category: "game",
     desktopOnly: true,
     title: "Merbut",
-    hook: "İki kahraman, yedi biyom ve Aku’ya uzanan tek bir karanlık kader.",
+    hook: "İki kahraman, on diyar ve Aku’ya uzanan tek bir kader.",
     description:
-      "Hz. Ali ve Samuray Jack'in aynı klavyede yönetildiği yerel iki oyunculu 2.5D aksiyon oyunu. Yedi biyom boyunca yaratık dalgaları, Aku'nun Gölgesi ve iki forma geçen Aku ile mücadele edilir.",
+      "Hz. Ali ve Samuray Jack'in aynı klavyede ya da iki gamepad ile yönetildiği yerel iki oyunculu 2.5D aksiyon oyunu. Her biri kendi mekaniğine sahip on diyar, Aku'nun Gölgesi ve üç evreli Aku; albüm kapağı estetiğinde özgün tablolar ve dövüşe göre değişen özgün müzikle.",
     platform: "Web · Masaüstü · Yerel iki oyunculu",
-    status: "Canlı · v1.2.7",
+    status: "Canlı · v3.1.0",
     role: "Bağımsız oyun tasarımı · Savaş, ilerleme ve boss sistemleri",
     tools: [
       "React",
@@ -187,14 +187,22 @@ export const projects: Project[] = [
       "Vercel",
     ],
     highlights: [
-      "Dört zorluk modu, yedi biyom ve 14 oynanabilir panel",
-      "Aku boss aşamaları, 360° karakter arşivi ve zaman portalıyla tamamlanan final",
+      "On diyar, on mekanik; dört zorluk, 19 başarım ve kayıttan devam",
+      "Üçlü saldırı zinciri, Çifte Hamle ve mermi savuşturma; zaman portalıyla biten final",
     ],
     href: "https://merbut.vercel.app/",
     images: [
       {
-        src: "/project-previews/merbut.png",
-        caption: "Başlangıç ekranı ve iki kahraman",
+        src: "/project-previews/merbut-menu.png",
+        caption: "Ana menü: kahraman ve Aku lejyonu karşı karşıya",
+      },
+      {
+        src: "/project-previews/merbut-titlecard.png",
+        caption: "Her diyar bir albüm parçası gibi açılır",
+      },
+      {
+        src: "/project-previews/merbut-combat.png",
+        caption: "Aku Metropolü'nde dövüş ve Jack'in kalkanı",
       },
     ],
     video: "/project-previews/videos/merbut-gameplay.mp4",
