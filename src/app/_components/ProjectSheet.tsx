@@ -285,14 +285,6 @@ export function ProjectSheet({
 
               <dl className="facts">
                 <div>
-                  <dt>Durum</dt>
-                  <dd>{shown.status}</dd>
-                </div>
-                <div>
-                  <dt>Platform</dt>
-                  <dd>{shown.platform}</dd>
-                </div>
-                <div>
                   <dt>Rol</dt>
                   <dd>
                     <ul className="factList">
@@ -301,6 +293,14 @@ export function ProjectSheet({
                       ))}
                     </ul>
                   </dd>
+                </div>
+                <div>
+                  <dt>Durum</dt>
+                  <dd>{shown.status}</dd>
+                </div>
+                <div>
+                  <dt>Platform</dt>
+                  <dd>{shown.platform}</dd>
                 </div>
                 <div>
                   <dt>Araçlar</dt>

@@ -11,11 +11,13 @@ import { IconArrowUpRight, IconMonitor, IconPlay } from "./icons";
 type ProjectCardProps = {
   project: Project;
   onOpen: (event: MouseEvent<HTMLAnchorElement>, project: Project) => void;
+  /** Kartlar bir grup başlığının altındaysa bir seviye aşağı iner. */
+  titleAs?: "h3" | "h4";
 };
 
 const CYCLE_INTERVAL = 1100;
 
-export function ProjectCard({ project, onOpen }: ProjectCardProps) {
+export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectCardProps) {
   const canHover = useCanHover();
   const reducedMotion = usePrefersReducedMotion();
   const [isActive, setIsActive] = useState(false);
@@ -32,8 +34,6 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
   const canCycle =
     layout !== "stack" && !project.video && project.images.length > 1;
   const cover = project.images[canCycle ? frame : 0] ?? project.images[0];
-  const toolPreview = project.tools.slice(0, 3);
-  const hiddenToolCount = project.tools.length - toolPreview.length;
 
   const activate = () => {
     if (reducedMotion) return;
@@ -176,7 +176,7 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
           </span>
           <span className={`status status-${status.tone}`}>{status.label}</span>
         </p>
-        <h3 className="cardTitle">
+        <Title className="cardTitle">
           <a
             className="cardLink"
             href={`#proje-${project.id}`}
@@ -186,14 +186,9 @@ export function ProjectCard({ project, onOpen }: ProjectCardProps) {
             {project.title}
           </a>
           <IconArrowUpRight size={18} className="cardTitleIcon" />
-        </h3>
+        </Title>
         <p className="cardHook">{project.hook}</p>
-        <p className="cardTools">
-          {toolPreview.join(" · ")}
-          {hiddenToolCount > 0 ? (
-            <span className="cardToolsMore">+{hiddenToolCount}</span>
-          ) : null}
-        </p>
+        <p className="cardPlatform">{project.platform}</p>
       </div>
 
       {quickLink ? (

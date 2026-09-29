@@ -169,6 +169,59 @@ export function getQuickLink(project: Project) {
   return primary;
 }
 
+/** Öne çıkan çalışmaların gösterim sırası: önce yayındaki ürünler, sonra etkileşimli işler. */
+const featuredOrder = [
+  "sorita",
+  "universe",
+  "audioroom",
+  "trai",
+  "etkinlink",
+  "wmatch",
+  "bibish",
+  "mrap",
+  "desain",
+];
+
+/** Arşivin başında gelen daha kapsamlı oyun ve deneysel işler. */
+const archiveLead = ["merbut", "asmaca", "son-40-saniye", "remember"];
+
+/** Arşivin kalanında alanların sırası; kişisel sistem (CV) en sonda. */
+const archiveCategoryOrder: ProjectCategory[] = [
+  "science",
+  "game",
+  "content",
+  "design",
+  "mobile",
+  "web",
+];
+
+/** Projeleri "öne çıkanlar" ve "arşiv" olarak ayırır; her grup kendi içinde sıralıdır. */
+export function arrangeProjects(projects: Project[]) {
+  const featured = projects
+    .filter((project) => project.featured)
+    .sort((a, b) => rank(featuredOrder, a.id) - rank(featuredOrder, b.id));
+
+  const archive = projects
+    .map((project, index) => ({ project, index }))
+    .filter(({ project }) => !project.featured)
+    .sort((a, b) => {
+      const lead = rank(archiveLead, a.project.id) - rank(archiveLead, b.project.id);
+      if (lead !== 0) return lead;
+      const category =
+        archiveCategoryOrder.indexOf(a.project.category) -
+        archiveCategoryOrder.indexOf(b.project.category);
+      return category || a.index - b.index;
+    })
+    .map(({ project }) => project);
+
+  return { featured, archive };
+}
+
+function rank(order: string[], id: string) {
+  const index = order.indexOf(id);
+  return index === -1 ? order.length : index;
+}
+
 export function getArchiveStats(projects: Project[]) {
   const categoryCounts = projects.reduce(
     (counts, project) => {
@@ -183,40 +236,8 @@ export function getArchiveStats(projects: Project[]) {
 
   return {
     total: projects.length,
-    live: projects.filter((project) => getStatus(project).tone === "live").length,
     storeApps: projects.filter((project) => project.storeLinks?.length).length,
+    areas: Object.values(categoryCounts).filter((count) => count > 0).length,
     categoryCounts,
   };
-}
-
-const toolAliases: [RegExp, string][] = [
-  [/^Next\.js/, "Next.js"],
-  [/^React 19$/, "React"],
-  [/^React Three Fiber/, "React Three Fiber"],
-  [/^Three\.js/, "Three.js"],
-  [/^Figma/, "Figma"],
-  [/^Vercel/, "Vercel"],
-];
-
-/** Projelerde en sık kullanılan araçlar (sürüm ekleri birleştirilmiş). */
-export function getTopTools(projects: Project[], limit = 20) {
-  const counts = new Map<string, number>();
-
-  for (const project of projects) {
-    const seen = new Set<string>();
-
-    for (const tool of project.tools) {
-      const name =
-        toolAliases.find(([pattern]) => pattern.test(tool))?.[1] ?? tool;
-      if (seen.has(name)) continue;
-      seen.add(name);
-      counts.set(name, (counts.get(name) ?? 0) + 1);
-    }
-  }
-
-  return [...counts.entries()]
-    .filter(([, count]) => count > 1)
-    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "tr"))
-    .slice(0, limit)
-    .map(([name, count]) => ({ name, count }));
 }

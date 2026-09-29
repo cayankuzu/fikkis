@@ -4,10 +4,12 @@ fikkis, Çayan Kuzu'nun kişisel proje arşividir: mobil uygulamalar, oyunlar, w
 
 ## Nasıl çalışır
 
-- **Kartlar** kısa ve taranabilir: kapak görseli, alan, durum, tek cümlelik vaat ve ilk araçlar. Üzerine gelince oynanış videosu oynar ya da görseller döner; mobil uygulamalar yan yana ekranlarla gösterilir.
-- **Detay paneli** bir karta tıklayınca açılır: açıklamalı görsel galerisi, proje özeti, öne çıkanlar, durum/platform/rol/araçlar ve bağlantılar. Her projenin paylaşılabilir bir adresi vardır (`/#proje-<id>`); tarayıcının geri tuşu paneli kapatır.
+- **Kartlar** kısa ve taranabilir: kapak görseli, alan, durum, tek cümlelik vaat ve platform. Üzerine gelince oynanış videosu oynar ya da görseller döner; mobil uygulamalar yan yana ekranlarla gösterilir.
+- **Detay paneli** bir karta tıklayınca açılır: açıklamalı görsel galerisi, proje özeti, öne çıkanlar, rol/durum/platform/araçlar ve bağlantılar. Her projenin paylaşılabilir bir adresi vardır (`/#proje-<id>`); tarayıcının geri tuşu paneli kapatır.
 - **Masaüstü deneyimleri** dar ekranlı ya da dokunmatik cihazlarda engellenmez; bağlantıyı kopyalama ve "yine de aç" seçenekleri sunulur.
-- **Filtreler**, hero istatistikleri, "Alanlar" sayıları ve "En sık kullandığım araçlar" listesi `src/app/projects.ts` verisinden otomatik hesaplanır.
+- **"Tümü" görünümü** iki gruptan oluşur: `featured: true` işaretli öne çıkan çalışmalar ve arşiv (oyunlar, deneyler, bilim, tasarım). Sıralama `src/app/_lib/project-meta.ts` içindeki `arrangeProjects` fonksiyonundadır.
+- **Filtreler**, hero istatistikleri ve "Alanlar" sayıları `src/app/projects.ts` verisinden otomatik hesaplanır.
+- **Dokümanlar** (`/dokuman/<slug>`) masaüstünde tarayıcının PDF görüntüleyicisiyle açılır; PDF'i sayfa içinde gösteremeyen mobil tarayıcılarda önizleme görseli ve "PDF'i aç" düğmesi görünür.
 - Açık/koyu tema, azaltılmış hareket tercihi, klavye erişimi ve ekran okuyucu etiketleri desteklenir.
 
 ## Yeni proje eklemek
@@ -18,6 +20,7 @@ fikkis, Çayan Kuzu'nun kişisel proje arşividir: mobil uygulamalar, oyunlar, w
 {
   id: "yeni-proje",
   category: "web", // web | mobile | game | science | design | content
+  featured: true, // isteğe bağlı: "Öne çıkan çalışmalar" grubunda gösterilir
   title: "Yeni Proje",
   hook: "Kartta görünen tek cümle.",
   description: "Detay panelindeki özet.",

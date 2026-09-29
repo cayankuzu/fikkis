@@ -1,6 +1,6 @@
 import Image from "next/image";
 import packageJson from "../../package.json";
-import { ContactLinks, contactEmail } from "./_components/ContactLinks";
+import { ContactLinks, contactEmail, linkedInUrl } from "./_components/ContactLinks";
 import { CopyButton } from "./_components/CopyButton";
 import {
   IconArrowDown,
@@ -13,7 +13,6 @@ import {
   categoryOrder,
   categoryPluralLabels,
   getArchiveStats,
-  getTopTools,
 } from "./_lib/project-meta";
 import { projects } from "./projects";
 
@@ -26,7 +25,6 @@ const pad = (value: number) => String(value).padStart(2, "0");
 
 export default function Home() {
   const stats = getArchiveStats(projects);
-  const topTools = getTopTools(projects);
 
   return (
     <>
@@ -55,7 +53,7 @@ export default function Home() {
         <section className="hero container" aria-labelledby="hero-title">
           <p className="eyebrow">
             <span className="liveDot" aria-hidden="true" />
-            Çayan Kuzu · Kişisel proje arşivi
+            Çayan Kuzu · Proje ve üretim arşivi
           </p>
 
           <div className="heroGrid">
@@ -70,8 +68,7 @@ export default function Home() {
             <div className="heroSide">
               <p className="heroLead">
                 Mobil uygulamalar, oyunlar, web deneyimleri, bilim çalışmaları
-                ve bağımsız yayınlar. Fikirden yayına kadar tasarlayıp
-                geliştirdiğim her şey tek bir arşivde.
+                ve bağımsız yayınlar. Ürettiğim farklı işler tek bir arşivde.
               </p>
               <div className="actions">
                 <a className="button button-primary" href="#projeler">
@@ -91,16 +88,16 @@ export default function Home() {
               <dd>{stats.total}</dd>
             </div>
             <div>
-              <dt>Canlı ya da yayında</dt>
-              <dd>{stats.live}</dd>
+              <dt>Oyun</dt>
+              <dd>{stats.categoryCounts.game}</dd>
             </div>
             <div>
-              <dt>Mağazadaki uygulama</dt>
+              <dt>Mağaza uygulaması</dt>
               <dd>{stats.storeApps}</dd>
             </div>
             <div>
-              <dt>Oynanabilir oyun</dt>
-              <dd>{stats.categoryCounts.game}</dd>
+              <dt>Üretim alanı</dt>
+              <dd>{stats.areas}</dd>
             </div>
           </dl>
         </section>
@@ -116,7 +113,8 @@ export default function Home() {
               Denediğim her şey, tek yerde.
             </h2>
             <p className="sectionLead">
-              Bir karta tıkla; açıklama, görseller, kullanılan araçlar ve
+              Önce öne çıkan ürünler, ardından oyunlar, deneyler, bilim ve
+              tasarım işleri. Bir karta tıkla; açıklama, görseller ve
               bağlantılar tek panelde açılır.
             </p>
           </div>
@@ -145,8 +143,8 @@ export default function Home() {
               </p>
               <p>
                 Fikirleri araştırma, tasarım ve hızlı prototipleme yoluyla
-                somut deneyimlere dönüştürmeye odaklanıyorum. fikkis bu
-                denemelerin arşivi: bazıları App Store ve Google Play&apos;de,
+                çalışan deneyimlere dönüştürmeye odaklanıyorum. fikkis bu
+                üretimlerin arşivi: bazıları App Store ve Google Play&apos;de,
                 bazıları tarayıcıda oynanabiliyor, bazıları bir araştırma
                 dokümanının içinde.
               </p>
@@ -158,6 +156,15 @@ export default function Home() {
                   rel="noreferrer"
                 >
                   CV&apos;yi görüntüle
+                  <IconArrowUpRight size={16} />
+                </a>
+                <a
+                  className="button button-secondary"
+                  href={linkedInUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
                   <IconArrowUpRight size={16} />
                 </a>
                 <a
@@ -183,14 +190,6 @@ export default function Home() {
                         {pad(stats.categoryCounts[category])}
                       </span>
                     </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="asideTitle">En sık kullandığım araçlar</h3>
-                <ul className="chips">
-                  {topTools.map((tool) => (
-                    <li key={tool.name}>{tool.name}</li>
                   ))}
                 </ul>
               </div>
@@ -270,8 +269,8 @@ export default function Home() {
               Bir fikrin mi var? Yaz, konuşalım.
             </h2>
             <p className="footerLead">
-              Soru, öneri ya da iş birliği için e-posta veya Instagram&apos;dan
-              ulaşabilirsin.
+              Bir proje, fikir ya da iş birliği için e-posta, LinkedIn veya
+              Instagram&apos;dan ulaşabilirsin.
             </p>
             <div className="emailRow">
               <a className="emailLink" href={`mailto:${contactEmail}`}>

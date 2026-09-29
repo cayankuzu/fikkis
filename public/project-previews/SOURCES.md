@@ -51,8 +51,8 @@
   controls/QR poster and the "Yayındakiler & Yakındakiler" album showcase; the 3rd page is blank
   in the source file)
 
-- `cayankuzu-cv-projects.png`: live capture of `cayankuzucv.vercel.app` with the "Projeler"
-  accordion section expanded (the default screenshot only shows the "Profil" section)
+- `cayankuzu-cv.png`, `cayankuzu-cv-projects.png`: captures of the two-column CV document
+  (`/tr`, header and "Seçili Projeler" section), taken from the local build on 2026-09-30
 - `kepce-operatoru.jpg`: real frame extracted and cropped from the owner-supplied 2020 physics
   project video (`InShot_20200118_212358091.mp4`), showing the full desk setup — the popsicle-stick
   arm tower, the Nokia 5110 LCD, and the 4-potentiometer breadboard control panel
@@ -147,3 +147,6 @@ street-painting map game described in the `mrap` project card. This was already 
 before and is still true as of this update — no screenshots were taken from it, since that would
 mean showing the wrong project's content as if it were MRAP. The card's existing preview image
 was left alone. This needs the actual deployment fixed before any new screenshots make sense.
+- `damped-oscillator-*.jpg`: rendered from the owner-supplied COMP2083 poster
+  (`public/documents/sonumlu-harmonik-osilator.pdf`); teammates' student numbers and e-mail
+  addresses were redacted before publishing, names are kept as credit

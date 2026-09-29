@@ -26,6 +26,8 @@ export type Project = {
   id: string;
   category: ProjectCategory;
   tags?: string[];
+  /** Arşivin başındaki "Öne çıkan çalışmalar" grubunda gösterilir. */
+  featured?: boolean;
   title: string;
   /** Kartta görünen tek cümlelik vaat. */
   hook: string;
@@ -62,6 +64,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     id: "trai",
+    featured: true,
     category: "web",
     tags: ["Yapay zekâ"],
     title: "trAI",
@@ -70,10 +73,10 @@ export const projects: Project[] = [
       "Kontrollü katalogdan seçilen kıyafeti kullanıcının ön/arka fotoğraflarında yapay zekâyla görselleştiren mobile-first sanal prova MVP'si. Beden önerisi karar desteği sunar; sonuçlar isimli ve gruplu kombinlere kaydedilebilir.",
     platform: "Mobil öncelikli responsive web",
     status: "Kontrollü MVP · Canlı demo",
-    role: "Ürün ve UI/UX tasarımı · Full-stack geliştirme · AI entegrasyonu",
+    role: "Ürün kurgusu ve UI/UX · Teknik geliştirme · AI entegrasyonu",
     tools: [
-      "Next.js 16",
-      "React 19",
+      "Next.js",
+      "React",
       "TypeScript",
       "Supabase",
       "fal.ai",
@@ -81,8 +84,8 @@ export const projects: Project[] = [
       "Vercel",
     ],
     highlights: [
-      "Kontrollü katalog, ön/arka referanslar ve private Storage'a imzalı yükleme",
-      "Ürün sadakati modu, çoklu beden Beta ve deterministik beden önerisi",
+      "Katalogdan seçilen kıyafetin kullanıcının ön ve arka fotoğrafında görselleştirilmesi",
+      "Beden önerisiyle karar desteği; sonuçları isimli kombinlere kaydetme",
     ],
     href: "https://trai-theta.vercel.app/",
     ctaLabel: "Demoyu dene",
@@ -96,6 +99,7 @@ export const projects: Project[] = [
   },
   {
     id: "mrap",
+    featured: true,
     category: "web",
     tags: ["Harita"],
     title: "MRAP",
@@ -104,10 +108,10 @@ export const projects: Project[] = [
       "Gerçek dünya haritasında rota kapatma, benzersiz alan sahipliği ve sosyal harita akışını birleştiren responsive web MVP'si. Demo modunda sanal konumla alan boyama, keşif akışı, sıralama ve profil deneyimleri denenebilir.",
     platform: "Responsive web · Harita tabanlı sosyal oyun",
     status: "MVP · Canlı demo",
-    role: "Ürün ve oyun tasarımı · Full-stack geliştirme · Harita/konum sistemi",
+    role: "Ürün ve oyun tasarımı · Harita deneyimi · Teknik geliştirme",
     tools: [
-      "Next.js 16",
-      "React 19",
+      "Next.js",
+      "React",
       "TypeScript",
       "Supabase",
       "MapLibre GL",
@@ -118,7 +122,7 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Rota segmentleriyle alan kapatma, tekil sahiplik skoru ve tekrar boyamayı ayıran oyun kuralı",
-      "Demo sanal konum sağlayıcısı, sosyal keşif akışı ve Supabase/PostGIS üretim mimarisi hazırlığı",
+      "Sanal konumla denenebilen demo modu; alan kartlarından oluşan keşif akışı ve sıralamalar",
     ],
     href: "https://mrap-eta.vercel.app/",
     ctaLabel: "Demoyu dene",
@@ -133,6 +137,7 @@ export const projects: Project[] = [
   },
   {
     id: "bibish",
+    featured: true,
     category: "game",
     desktopOnly: true,
     title: "Bibish",
@@ -153,7 +158,7 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Tek global odada 10 ele geçirilebilir karakol ve takım rengine boyanan arazi",
-      "Mekânsal ilgi yönetimi ve 2.000 bağlantı senaryosu için yük testi altyapısı",
+      "Savaş ve boyama modları: kale ele geçirmek yeni doğuş noktası açar, harita dolunca savaş biter",
     ],
     href: "https://bibish-iota.vercel.app/",
     images: [
@@ -172,7 +177,7 @@ export const projects: Project[] = [
     title: "Merbut",
     hook: "İki kahraman, on diyar ve Aku’ya uzanan tek bir kader.",
     description:
-      "Hz. Ali ve Samuray Jack'in aynı klavyede ya da iki gamepad ile yönetildiği yerel iki oyunculu 2.5D aksiyon oyunu. Her biri kendi mekaniğine sahip on diyar, Aku'nun Gölgesi ve üç evreli Aku; albüm kapağı estetiğinde özgün tablolar ve dövüşe göre değişen özgün müzikle.",
+      "Hz. Ali ve Samuray Jack'in aynı klavyede ya da iki gamepad ile yönetildiği yerel iki oyunculu 2.5D aksiyon oyunu. Her biri kendi mekaniğine sahip on diyar, Aku'nun Gölgesi ve üç evreli Aku; albüm kapağı estetiğinde özgün tablolar ve dövüşe göre değişen özgün müzikle. Resmi olmayan, bağımsız bir hayran oyunudur.",
     platform: "Web · Masaüstü · Yerel iki oyunculu",
     status: "Canlı · v3.1.0",
     role: "Bağımsız oyun tasarımı · Savaş, ilerleme ve boss sistemleri",
@@ -246,6 +251,7 @@ export const projects: Project[] = [
   },
   {
     id: "desain",
+    featured: true,
     category: "web",
     desktopOnly: true,
     title: "desAIn",
@@ -254,10 +260,10 @@ export const projects: Project[] = [
       "Kullanıcının oda biçimini ve gerçek ölçülerini tanımlayıp parametrik mobilyaları sürükleyerek yerleştirdiği masaüstü odaklı low-poly 3B iç mekân editörü.",
     platform: "Web · Masaüstü",
     status: "Canlı MVP",
-    role: "Bağımsız ürün/UI-UX · Full-stack · 3B editör geliştirme",
+    role: "Ürün kurgusu ve UI/UX · 3B editör deneyimi · Teknik geliştirme",
     tools: [
-      "Next.js 16",
-      "React 19",
+      "Next.js",
+      "React",
       "TypeScript",
       "React Three Fiber/Drei",
       "Three.js",
@@ -289,11 +295,12 @@ export const projects: Project[] = [
   },
   {
     id: "audioroom",
+    featured: true,
     category: "web",
     title: "AudioRoom",
     hook: "Bir albümü yalnızca dinleme; onun dünyasının içinde dolaş.",
     description:
-      "Albüm ve single'ları gezilebilir, oynanabilir 3B dünyalara dönüştüren müzik deneyimleri kütüphanesi. Dört dünya yayında; iki yeni albüm dünyası katalogda yakında olarak yer alıyor.",
+      "Albüm ve single'ları gezilebilir, oynanabilir 3B dünyalara dönüştüren müzik deneyimleri kütüphanesi. Dört dünya yayında; iki yeni albüm dünyası katalogda yakında olarak yer alıyor. Sanatçılarla resmi bir bağı olmayan bağımsız bir hayran çalışmasıdır.",
     platform: "Responsive web hub · 3B dünyalar",
     status: "Canlı · Gelişiyor · 4 yayında / 2 yakında",
     role: "Konsept ve deneyim tasarımı · Ürün/UI-UX · Yaratıcı frontend geliştirme",
@@ -334,36 +341,35 @@ export const projects: Project[] = [
   {
     id: "cayan-kuzu-cv",
     category: "web",
-    tags: ["CV"],
+    tags: ["Kişisel sistem"],
     title: "Çayan Kuzu CV",
-    hook: "Ürün tasarımı, UI/UX, oyun tasarımı ve fizik; tek bir etkileşimli CV'de.",
+    hook: "Ekranda ve baskıda aynı görünen, iki dilli bir özgeçmiş belgesi.",
     description:
-      "Çayan Kuzu'nun ürün/UI-UX, oyun ve etkileşimli web çalışmalarını tek sayfalı editorial CV'de birleştiren iki dilli kişisel portfolyo. Responsive web deneyimi ve bağlantıları çalışan TR/EN PDF sürümleri sunar.",
+      "İki sütunlu A4 belge düzeninde, tek veri kaynağından üretilen TR/EN özgeçmiş. Web sayfası, yazdırma çıktısı ve bağlantıları çalışan PDF'ler aynı içerikten oluşur; mobilde belge tek sütuna yeniden kurulur.",
     platform: "Responsive web · Print/PDF",
     status: "Canlı · Güncel tutuluyor",
     role: "Bilgi mimarisi · İçerik · UI/UX · Frontend geliştirme",
     tools: [
-      "Next.js 16",
-      "React 19",
+      "Next.js",
+      "React",
       "TypeScript",
-      "Lucide",
-      "CSS print styles",
+      "CSS print",
       "Vercel",
     ],
     highlights: [
-      "TR/EN içerik, kompakt mobil sidebar ve erişilebilir accordion sistemi",
-      "Editorial A4 görünüm ile yazdırmada eksiksiz açılan indirilebilir PDF'ler",
+      "Koyu kenar çubuklu iki sütunlu A4 düzeni; mobilde tek sütuna yeniden kurulan belge",
+      "İçerik değişince yeniden üretilen, bağlantıları çalışan TR/EN PDF'ler",
     ],
     href: "https://cayankuzucv.vercel.app/",
     ctaLabel: "CV'yi görüntüle",
     images: [
       {
         src: "/project-previews/cayankuzu-cv.png",
-        caption: "Profil bölümü ve iletişim kenar çubuğu",
+        caption: "Kenar çubuğu ve numaralı bölümlerle belge düzeni",
       },
       {
         src: "/project-previews/cayankuzu-cv-projects.png",
-        caption: "Projeler bölümü",
+        caption: "Seçili projeler ve akademik çalışmalar",
       },
     ],
     coverPosition: "center top",
@@ -371,6 +377,7 @@ export const projects: Project[] = [
   },
   {
     id: "etkinlink",
+    featured: true,
     category: "mobile",
     title: "EtkinLink",
     hook: "Bir etkinlik keşfet; aynı heyecanı paylaşacağın insanlarla tanış.",
@@ -415,6 +422,7 @@ export const projects: Project[] = [
   },
   {
     id: "universe",
+    featured: true,
     category: "mobile",
     title: "UniVerse",
     hook: "Üniversite hayatının tamamı tek bir dijital evrende.",
@@ -467,6 +475,7 @@ export const projects: Project[] = [
   },
   {
     id: "sorita",
+    featured: true,
     category: "mobile",
     title: "SoRita",
     hook: "Şehir artık yalnızca bir harita değil, birlikte yazılan sosyal bir hikâye.",
@@ -516,6 +525,7 @@ export const projects: Project[] = [
   },
   {
     id: "wmatch",
+    featured: true,
     category: "mobile",
     title: "WMatch",
     hook: "Ne izlediğin, kiminle eşleşeceğini söylesin.",
@@ -898,13 +908,13 @@ export const projects: Project[] = [
     title: "Kuantum Dolanıklık",
     hook: "Einstein'ın “ürkütücü” dediği etki: dolanık parçacıklar birbirini gerçekten anında mı etkiler?",
     description:
-      "2022 Nobel Fizik Ödülü'nü kazanan deneylerden yola çıkarak kuantum dolanıklığı, Bell eşitsizliği ve gizli değişkenler tartışmasını ele alan bir fizik araştırma yazısı. EPR paradoksundan Alain Aspect'in deneylerine uzanan çizgiyi özetler.",
+      "2022 Nobel Fizik Ödülü'nü kazanan deneylerden yola çıkarak kuantum dolanıklığı, Bell eşitsizliği ve yerel gizli değişkenler tartışmasını ele alan bir fizik araştırma yazısı. EPR paradoksundan Alain Aspect'in deneylerine uzanan çizgiyi özetler.",
     platform: "PDF · Kişisel araştırma yazısı",
     status: "Tamamlandı",
     role: "Araştırma · Yazım",
     tools: ["Fizik araştırması", "Akademik yazım"],
     highlights: [
-      "Bell eşitsizliği ve gizli değişken teorilerinin deneysel çürütülmesi",
+      "Bell eşitsizliği testleri ve yerel gizli değişkenli açıklamaların deneysel sınırları",
       "EPR paradoksundan 2022 Nobel Fizik Ödülü deneylerine kronolojik anlatım",
     ],
     href: "/dokuman/kuantum-dolaniklik",
@@ -964,7 +974,7 @@ export const projects: Project[] = [
     category: "science",
     tags: ["Astrofizik"],
     title: "Dyson Ring",
-    hook: "Bir yıldızın çevresine dev bir enerji halkası kurmak mümkün mü? TÜBİTAK'a sunulan araştırma önerisi.",
+    hook: "Bir yıldızın çevresine dev bir enerji halkası kurmak mümkün mü? TÜBİTAK 2209-A için hazırlanan araştırma önerisi.",
     description:
       "TÜBİTAK 2209-A Üniversite Öğrencileri Araştırma Projeleri Destek Programı kapsamında Marmara Üniversitesi'nde hazırlanan, Dyson halkası kavramının teknik ve ekonomik fizibilitesini literatür taraması, simülasyon ve prototip çalışmasıyla değerlendiren resmi araştırma önerisi.",
     platform: "Word belgesi · Resmi araştırma önerisi",
@@ -1026,6 +1036,51 @@ export const projects: Project[] = [
       },
     ],
     tone: "lime",
+  },
+  {
+    id: "damped-oscillator",
+    category: "science",
+    tags: ["Python", "Sayısal yöntemler"],
+    title: "Sönümlü Harmonik Osilatör",
+    hook: "Bir yayın salınımı nasıl söner? Python'da sayısal çözüm, enerji grafikleri ve etkileşimli simülasyon.",
+    description:
+      "Zorlanmış sönümlü harmonik osilatörün hareket denklemini Euler yöntemiyle Python'da sayısal olarak çözen; kütle, sönüm katsayısı, yay sabiti, zorlayıcı kuvvet ve başlangıç koşullarının konum, hız, faz uzayı ve enerji üzerindeki etkisini karşılaştıran çalışma. Marmara Üniversitesi COMP2083 Bilimsel Programlama dersi için dört kişilik ekiple hazırlandı; sonuçlar bir bilimsel posterde özetlendi.",
+    platform: "Python · Google Colab · Bilimsel poster",
+    status: "Tamamlandı · Ders projesi",
+    role: "Dört kişilik ekip · Sayısal modelleme, simülasyon ve analiz",
+    tools: ["Python", "Matplotlib", "Euler yöntemi", "Google Colab"],
+    highlights: [
+      "Hareket denkleminin Euler yöntemiyle adım adım (dt = 0,01 s) sayısal çözümü",
+      "Yedi parametrenin konum, hız ve enerji üzerindeki etkisini özetleyen karşılaştırma tablosu",
+    ],
+    href: "https://colab.research.google.com/drive/1a92EXyocbfkpLH3iyxbnAxZeQoYBid02?usp=sharing",
+    ctaLabel: "Kodu Colab'da aç",
+    secondaryHref: "/dokuman/sonumlu-harmonik-osilator",
+    secondaryLabel: "Posteri incele",
+    images: [
+      {
+        src: "/project-previews/damped-oscillator-animation.jpg",
+        caption: "Animasyondan kare: konum, hız, faz diyagramı ve enerji",
+      },
+      {
+        src: "/project-previews/damped-oscillator-poster.jpg",
+        caption: "COMP2083 bilimsel posteri",
+      },
+      {
+        src: "/project-previews/damped-oscillator-energy.jpg",
+        caption: "Farklı yay sabitleri ve kütleler için toplam enerji",
+      },
+      {
+        src: "/project-previews/damped-oscillator-simulation.jpg",
+        caption: "Farklı başlangıç konumlarında zorlanmış yay simülasyonu",
+      },
+      {
+        src: "/project-previews/damped-oscillator-effects.jpg",
+        caption: "Değişkenlerin birbirine etkisi tablosu",
+      },
+    ],
+    cardLayout: "contain",
+    tone: "cream",
   },
   {
     id: "kepce-operatoru",

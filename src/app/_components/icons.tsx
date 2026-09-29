@@ -44,6 +44,15 @@ export function IconInstagram(props: IconProps) {
   );
 }
 
+export function IconLinkedIn(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="3" />
+      <path d="M8 11v5M8 8v.01M12 16v-5M12 13.5a2.5 2.5 0 0 1 5 0V16" />
+    </Stroke>
+  );
+}
+
 export function IconGithub({ size = 16, className }: IconProps) {
   return (
     <svg

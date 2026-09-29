@@ -25,8 +25,6 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
 
   if (!document) notFound();
 
-  const viewerSrc =
-    document.kind === "pdf" ? document.file : officeViewerUrl(document.file);
 
   return (
     <main className="docPage">
@@ -49,7 +47,29 @@ export default async function DocumentPage({ params }: DocumentPageProps) {
         </a>
       </header>
       <div className="docFrame">
-        <iframe src={viewerSrc} title={document.title} allowFullScreen />
+        {document.kind === "pdf" ? (
+          // Masaüstünde tarayıcının PDF görüntüleyicisi açılır; desteklemeyen
+          // mobil tarayıcılarda <object> içindeki yedek içerik gösterilir.
+          <object data={document.file} type="application/pdf" aria-label={document.title}>
+            <div className="docFallback">
+              {document.preview ? (
+                // eslint-disable-next-line @next/next/no-img-element -- yakınlaştırılabilir tam çözünürlüklü önizleme
+                <img src={document.preview} alt={`${document.title} önizlemesi`} />
+              ) : null}
+              <p>Bu tarayıcı PDF&apos;i sayfa içinde gösteremiyor.</p>
+              <a
+                className="button button-primary"
+                href={document.file}
+                target="_blank"
+                rel="noreferrer"
+              >
+                PDF&apos;i aç
+              </a>
+            </div>
+          </object>
+        ) : (
+          <iframe src={officeViewerUrl(document.file)} title={document.title} allowFullScreen />
+        )}
       </div>
     </main>
   );

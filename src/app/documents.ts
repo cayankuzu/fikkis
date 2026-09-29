@@ -5,6 +5,8 @@ export type Document = {
   file: string;
   kind: "pdf" | "office";
   downloadName: string;
+  /** PDF'i sayfa içinde gösteremeyen tarayıcılarda (ör. Android Chrome) gösterilen görsel. */
+  preview?: string;
 };
 
 // The Office web viewer needs a real, internet-reachable URL to fetch the
@@ -35,6 +37,15 @@ export const documents: Document[] = [
     file: "/documents/dyson-ring-tubitak.docx",
     kind: "office",
     downloadName: "dyson-ring-tubitak.docx",
+  },
+  {
+    slug: "sonumlu-harmonik-osilator",
+    title: "Sönümlü Harmonik Osilatör",
+    subtitle: "PDF · COMP2083 Bilimsel Programlama posteri",
+    file: "/documents/sonumlu-harmonik-osilator.pdf",
+    kind: "pdf",
+    downloadName: "sonumlu-harmonik-osilator.pdf",
+    preview: "/documents/sonumlu-harmonik-osilator-onizleme.jpg",
   },
 ];
 

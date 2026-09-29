@@ -4,10 +4,12 @@ import {
   IconGithub,
   IconInstagram,
   IconKaggle,
+  IconLinkedIn,
   IconMail,
 } from "./icons";
 
-export const contactEmail = "memodee333@gmail.com";
+export const contactEmail = "cayankuzu.0@gmail.com";
+export const linkedInUrl = "https://www.linkedin.com/in/%C3%A7ayan-kuzu-b774532a9/";
 
 export const contactLinks: {
   label: string;
@@ -15,6 +17,12 @@ export const contactLinks: {
   href: string;
   icon: ReactNode;
 }[] = [
+  {
+    label: "LinkedIn",
+    handle: "Çayan Kuzu",
+    href: linkedInUrl,
+    icon: <IconLinkedIn size={18} />,
+  },
   {
     label: "Instagram",
     handle: "@memode333",

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 import { replaceHash, useLocationHash } from "../_lib/browser";
-import { categoryLabels, categoryOrder } from "../_lib/project-meta";
+import { arrangeProjects, categoryLabels, categoryOrder } from "../_lib/project-meta";
 import type { Project, ProjectCategory } from "../projects";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectSheet } from "./ProjectSheet";
@@ -14,7 +14,9 @@ const HASH_PREFIX = "#proje-";
 
 export function ProjectGallery({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<FilterValue>("all");
+  const [filtersAtEnd, setFiltersAtEnd] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const filtersRef = useRef<HTMLDivElement>(null);
   const openedInApp = useRef(false);
   const pendingScroll = useRef<string | null>(null);
 
@@ -38,15 +40,34 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     ...categoryOrder.map((value) => ({ value, label: categoryLabels[value] })),
   ];
 
+  const { featured, archive } = arrangeProjects(projects);
+  const ordered = [...featured, ...archive];
   const visibleProjects =
     filter === "all"
-      ? projects
-      : projects.filter((project) => project.category === filter);
+      ? ordered
+      : ordered.filter((project) => project.category === filter);
 
   const navigationList =
     activeProject && visibleProjects.includes(activeProject)
       ? visibleProjects
-      : projects;
+      : ordered;
+
+  // Filtre şeridi kaydırılabiliyorsa sağ kenarda bir solma gösterilir; sona gelince kalkar.
+  useEffect(() => {
+    const node = filtersRef.current;
+    if (!node) return;
+
+    const update = () =>
+      setFiltersAtEnd(node.scrollLeft + node.clientWidth >= node.scrollWidth - 4);
+    const observer = new ResizeObserver(update);
+
+    observer.observe(node);
+    node.addEventListener("scroll", update, { passive: true });
+    return () => {
+      observer.disconnect();
+      node.removeEventListener("scroll", update);
+    };
+  }, []);
 
   useEffect(() => {
     if (activeProject || !pendingScroll.current) return;
@@ -89,7 +110,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       <div className="gallery" ref={sectionRef}>
         <div className="filterBar">
           <div
-            className="filters"
+            ref={filtersRef}
+            className={`filters${filtersAtEnd ? " is-end" : ""}`}
             role="group"
             aria-label="Projeleri alana göre filtrele"
           >
@@ -111,11 +133,38 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
           </p>
         </div>
 
-        <div className="grid">
-          {visibleProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} onOpen={handleOpen} />
-          ))}
-        </div>
+        {filter === "all" ? (
+          <>
+            <section className="galleryGroup" aria-labelledby="group-featured">
+              <h3 className="galleryGroupTitle" id="group-featured">
+                Öne çıkan çalışmalar
+                <span className="filterCount">{featured.length}</span>
+              </h3>
+              <div className="grid">
+                {featured.map((project) => (
+                  <ProjectCard key={project.id} project={project} onOpen={handleOpen} titleAs="h4" />
+                ))}
+              </div>
+            </section>
+            <section className="galleryGroup" aria-labelledby="group-archive">
+              <h3 className="galleryGroupTitle" id="group-archive">
+                Arşiv: oyunlar, deneyler, bilim ve tasarım
+                <span className="filterCount">{archive.length}</span>
+              </h3>
+              <div className="grid">
+                {archive.map((project) => (
+                  <ProjectCard key={project.id} project={project} onOpen={handleOpen} titleAs="h4" />
+                ))}
+              </div>
+            </section>
+          </>
+        ) : (
+          <div className="grid">
+            {visibleProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} onOpen={handleOpen} />
+            ))}
+          </div>
+        )}
       </div>
 
       <ProjectSheet

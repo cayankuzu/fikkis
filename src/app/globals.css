@@ -612,6 +612,24 @@ ul {
   color: color-mix(in srgb, var(--bg) 60%, transparent);
 }
 
+/* "Tümü" görünümünde öne çıkan çalışmalar ve arşiv ayrı gruplar olarak listelenir. */
+.galleryGroup + .galleryGroup {
+  margin-top: clamp(56px, 7vw, 96px);
+}
+
+.galleryGroupTitle {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 clamp(20px, 2.5vw, 28px);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -922,21 +940,12 @@ ul {
   line-clamp: 2;
 }
 
-.cardTools {
+.cardPlatform {
   overflow: hidden;
   color: var(--muted);
   font-size: 0.8125rem;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.cardToolsMore {
-  margin-left: 8px;
-  padding: 1px 6px;
-  border-radius: 6px;
-  background: var(--surface-2);
-  font-family: var(--font-code);
-  font-size: 0.6875rem;
 }
 
 .cardQuick {
@@ -1829,11 +1838,37 @@ video.viewerMedia {
   background: var(--surface-2);
 }
 
-.docFrame iframe {
+.docFrame iframe,
+.docFrame object {
   display: block;
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+.docFallback {
+  display: grid;
+  height: 100%;
+  padding: 24px var(--gutter) 32px;
+  align-content: start;
+  justify-items: center;
+  gap: 16px;
+  overflow: auto;
+  text-align: center;
+}
+
+.docFallback img {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.docFallback p {
+  color: var(--muted);
+  font-size: 0.9375rem;
 }
 
 /* ------------------------------------------------------------- not found */
@@ -2069,6 +2104,14 @@ video.viewerMedia {
     padding: 0 12px 0 14px;
   }
 
+  .filters {
+    mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
+  }
+
+  .filters.is-end {
+    mask-image: none;
+  }
+
   .hero .actions .button,
   .aboutText .actions .button,
   .supportBody .actions .button {
@@ -2095,5 +2138,12 @@ video.viewerMedia {
 @media (hover: none) {
   .cardQuick {
     display: none;
+  }
+}
+
+/* Yatay telefonlarda yapışkan filtre çubuğu içeriğin üçte birini kaplamasın. */
+@media (max-height: 520px) and (orientation: landscape) {
+  .filterBar {
+    position: static;
   }
 }
