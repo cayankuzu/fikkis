@@ -5,7 +5,6 @@ import {
   IconInstagram,
   IconKaggle,
   IconLinkedIn,
-  IconMail,
 } from "./icons";
 
 export const contactEmail = "cayankuzu.0@gmail.com";
@@ -24,16 +23,16 @@ export const contactLinks: {
     icon: <IconLinkedIn size={18} />,
   },
   {
-    label: "Instagram",
-    handle: "@memode333",
-    href: "https://www.instagram.com/memode333?igsh=aWZkZDM3dXR1azBk",
-    icon: <IconInstagram size={18} />,
-  },
-  {
     label: "GitHub",
     handle: "@cayankuzu",
     href: "https://github.com/cayankuzu",
     icon: <IconGithub size={18} />,
+  },
+  {
+    label: "Instagram",
+    handle: "@memode333",
+    href: "https://www.instagram.com/memode333?igsh=aWZkZDM3dXR1azBk",
+    icon: <IconInstagram size={18} />,
   },
   {
     label: "Kaggle",
@@ -41,26 +40,15 @@ export const contactLinks: {
     href: "https://www.kaggle.com/ayankuzu",
     icon: <IconKaggle size={18} />,
   },
-  {
-    label: "E-posta",
-    handle: contactEmail,
-    href: `mailto:${contactEmail}`,
-    icon: <IconMail size={18} />,
-  },
 ];
 
 export function ContactLinks({ className }: { className?: string }) {
   return (
     <ul className={className}>
       {contactLinks.map((link) => {
-        const isMail = link.href.startsWith("mailto:");
-
         return (
           <li key={link.label}>
-            <a
-              href={link.href}
-              {...(isMail ? {} : { target: "_blank", rel: "noreferrer" })}
-            >
+            <a href={link.href} target="_blank" rel="noreferrer">
               <span className="contactIcon">{link.icon}</span>
               <span className="contactLabel">{link.label}</span>
               <span className="contactHandle">{link.handle}</span>

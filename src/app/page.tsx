@@ -1,6 +1,6 @@
 import Image from "next/image";
 import packageJson from "../../package.json";
-import { ContactLinks, contactEmail, linkedInUrl } from "./_components/ContactLinks";
+import { ContactLinks, contactEmail } from "./_components/ContactLinks";
 import { CopyButton } from "./_components/CopyButton";
 import {
   IconArrowDown,
@@ -9,19 +9,12 @@ import {
   IconHeart,
 } from "./_components/icons";
 import { ProjectGallery } from "./_components/ProjectGallery";
-import {
-  categoryOrder,
-  categoryPluralLabels,
-  getArchiveStats,
-} from "./_lib/project-meta";
+import { getArchiveStats } from "./_lib/project-meta";
 import { projects } from "./projects";
 
 const shopierUrl = "https://www.shopier.com/atkafasifanzin";
 const gumroadUrl = "https://atkafasifanzin.gumroad.com/";
 const cvUrl = "https://cayankuzucv.vercel.app/";
-const githubUrl = "https://github.com/cayankuzu";
-
-const pad = (value: number) => String(value).padStart(2, "0");
 
 export default function Home() {
   const stats = getArchiveStats(projects);
@@ -42,9 +35,9 @@ export default function Home() {
             <a href="#hakkinda">Hakkında</a>
             <a href="#iletisim">İletişim</a>
           </nav>
-          <a className="button button-secondary button-small" href="#destek">
+          <a className="button button-secondary button-small headerSupport" href="#destek">
             <IconHeart size={15} />
-            Destek ol
+            <span>Destek ol</span>
           </a>
         </div>
       </header>
@@ -95,10 +88,6 @@ export default function Home() {
               <dt>Mağaza uygulaması</dt>
               <dd>{stats.storeApps}</dd>
             </div>
-            <div>
-              <dt>Üretim alanı</dt>
-              <dd>{stats.areas}</dd>
-            </div>
           </dl>
         </section>
 
@@ -113,9 +102,8 @@ export default function Home() {
               Denediğim her şey, tek yerde.
             </h2>
             <p className="sectionLead">
-              Önce öne çıkan ürünler, ardından oyunlar, deneyler, bilim ve
-              tasarım işleri. Bir karta tıkla; açıklama, görseller ve
-              bağlantılar tek panelde açılır.
+              Bir karta tıkla; açıklama, görseller ve bağlantılar tek panelde
+              açılır.
             </p>
           </div>
 
@@ -158,40 +146,6 @@ export default function Home() {
                   CV&apos;yi görüntüle
                   <IconArrowUpRight size={16} />
                 </a>
-                <a
-                  className="button button-secondary"
-                  href={linkedInUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  LinkedIn
-                  <IconArrowUpRight size={16} />
-                </a>
-                <a
-                  className="button button-secondary"
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                  <IconArrowUpRight size={16} />
-                </a>
-              </div>
-            </div>
-
-            <div className="aboutAside">
-              <div>
-                <h3 className="asideTitle">Alanlar</h3>
-                <ul className="areaList">
-                  {categoryOrder.map((category) => (
-                    <li key={category}>
-                      <span>{categoryPluralLabels[category]}</span>
-                      <span className="areaCount">
-                        {pad(stats.categoryCounts[category])}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </div>
@@ -253,8 +207,8 @@ export default function Home() {
                 </a>
               </div>
               <p className="supportNote">
-                Shopier daha az komisyon keser; Gumroad ise alternatif satın
-                alma ve yorum alanı. Aldıktan sonra yorumunu bırakmayı unutma.
+                İki sayı da Shopier ve Gumroad&apos;da. Aldıktan sonra yorumunu
+                bırakmayı unutma.
               </p>
             </div>
           </div>
@@ -269,7 +223,7 @@ export default function Home() {
               Bir fikrin mi var? Yaz, konuşalım.
             </h2>
             <p className="footerLead">
-              Bir proje, fikir ya da iş birliği için e-posta, LinkedIn veya
+              Bir proje, fikir ya da iş birliği için LinkedIn, e‑posta veya
               Instagram&apos;dan ulaşabilirsin.
             </p>
             <div className="emailRow">

@@ -245,7 +245,6 @@ ul {
 
 .eyebrow,
 .sectionIndex,
-.asideTitle,
 .sheetHeading {
   color: var(--muted);
   font-family: var(--font-code);
@@ -468,7 +467,7 @@ ul {
 .stats {
   display: grid;
   margin-top: clamp(48px, 7vw, 96px);
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong);
 }
 
@@ -1457,8 +1456,6 @@ video.viewerMedia {
 
 .about {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-  gap: clamp(40px, 7vw, 112px);
 }
 
 .aboutText {
@@ -1482,35 +1479,6 @@ video.viewerMedia {
 
 .aboutText .actions {
   margin-top: 8px;
-}
-
-.aboutAside {
-  display: grid;
-  align-content: start;
-  gap: 40px;
-}
-
-.asideTitle {
-  margin-bottom: 14px;
-}
-
-.areaList {
-  border-top: 1px solid var(--line);
-}
-
-.areaList li {
-  display: flex;
-  padding: 13px 0;
-  justify-content: space-between;
-  gap: 16px;
-  border-bottom: 1px solid var(--line);
-  font-size: 1.0625rem;
-}
-
-.areaCount {
-  color: var(--muted);
-  font-family: var(--font-code);
-  font-size: 0.875rem;
 }
 
 /* --------------------------------------------------------------- support */
@@ -1966,7 +1934,6 @@ video.viewerMedia {
 
 @media (max-width: 860px) {
   .heroGrid,
-  .about,
   .support,
   .footerTop {
     grid-template-columns: minmax(0, 1fr);
@@ -1974,20 +1941,6 @@ video.viewerMedia {
 
   .heroGrid {
     align-items: start;
-  }
-
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .stats > div:nth-child(3) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .stats > div:nth-child(n + 3) {
-    margin-top: 22px;
-    border-top: 1px solid var(--line);
   }
 
   .supportCovers {
@@ -2104,13 +2057,6 @@ video.viewerMedia {
     padding: 0 12px 0 14px;
   }
 
-  .filters {
-    mask-image: linear-gradient(90deg, #000 calc(100% - 28px), transparent);
-  }
-
-  .filters.is-end {
-    mask-image: none;
-  }
 
   .hero .actions .button,
   .aboutText .actions .button,
@@ -2137,7 +2083,10 @@ video.viewerMedia {
 
 @media (hover: none) {
   .cardQuick {
-    display: none;
+    width: 40px;
+    height: 40px;
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -2145,5 +2094,116 @@ video.viewerMedia {
 @media (max-height: 520px) and (orientation: landscape) {
   .filterBar {
     position: static;
+  }
+}
+
+/* Masaüstü ile aynı yapı: gezinme menüsü telefonda da görünür. */
+@media (max-width: 720px) {
+  .siteNav {
+    display: flex;
+    gap: 0;
+  }
+
+  .siteNav a {
+    padding: 8px 10px;
+    font-size: 0.875rem;
+  }
+
+  .siteHeaderInner {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .siteNav a {
+    padding: 8px 7px;
+  }
+
+  /* Dar ekranda "Destek ol" yalnız kalp ikonuyla görünür; ekran okuyucu metni okur. */
+  .headerSupport {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .headerSupport span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  .stats > div {
+    padding: 18px 12px 0;
+  }
+
+  .stats > div:first-child {
+    padding-left: 0;
+  }
+
+  .stats dt {
+    font-size: 0.8125rem;
+    line-height: 1.35;
+  }
+}
+
+/* Dar ekranlarda filtreler kaydırma gerektirmeden iki satırlık ızgarada görünür. */
+@media (max-width: 560px) {
+  .filters {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    overflow: visible;
+    border-radius: 22px;
+  }
+
+  .filter {
+    min-width: 0;
+    padding: 0 6px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 340px) {
+  .filter {
+    font-size: 0.8125rem;
+  }
+}
+
+/* En dar telefonlarda (320–380 px) marka, menü ve destek ikonu tek satıra sığar. */
+@media (max-width: 380px) {
+  .brand {
+    font-size: 1.375rem;
+  }
+
+  .siteHeaderInner {
+    gap: 6px;
+  }
+
+  .siteNav a {
+    padding: 6px 5px;
+    font-size: 0.8125rem;
+  }
+
+  .headerSupport {
+    flex: none;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Hakkında, hero ile aynı dili kullanır: solda büyük cümle, sağda açıklama ve bağlantı. */
+@media (min-width: 861px) {
+  .aboutText {
+    max-width: none;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    column-gap: clamp(40px, 7vw, 112px);
+    align-items: start;
+  }
+
+  .aboutLead {
+    grid-row: span 2;
   }
 }

@@ -174,6 +174,8 @@ const featuredOrder = [
   "sorita",
   "universe",
   "audioroom",
+  "merbut",
+  "atkafasi",
   "trai",
   "etkinlink",
   "wmatch",
@@ -183,7 +185,7 @@ const featuredOrder = [
 ];
 
 /** Arşivin başında gelen daha kapsamlı oyun ve deneysel işler. */
-const archiveLead = ["merbut", "asmaca", "son-40-saniye", "remember"];
+const archiveLead = ["asmaca", "son-40-saniye", "remember"];
 
 /** Arşivin kalanında alanların sırası; kişisel sistem (CV) en sonda. */
 const archiveCategoryOrder: ProjectCategory[] = [
@@ -237,7 +239,6 @@ export function getArchiveStats(projects: Project[]) {
   return {
     total: projects.length,
     storeApps: projects.filter((project) => project.storeLinks?.length).length,
-    areas: Object.values(categoryCounts).filter((count) => count > 0).length,
     categoryCounts,
   };
 }

@@ -210,7 +210,7 @@ export function ProjectSheet({
 
             <div className="sheetIntro">
               <p className="sheetEyebrow">
-                <span className={`status status-${status.tone}`}>{status.label}</span>
+                <span className={`status status-${status.tone}`}>{shown.status}</span>
                 {shown.tags?.map((tag) => <span key={tag}>{tag}</span>)}
                 {shown.desktopOnly ? (
                   <span>
@@ -293,10 +293,6 @@ export function ProjectSheet({
                       ))}
                     </ul>
                   </dd>
-                </div>
-                <div>
-                  <dt>Durum</dt>
-                  <dd>{shown.status}</dd>
                 </div>
                 <div>
                   <dt>Platform</dt>

@@ -14,9 +14,7 @@ const HASH_PREFIX = "#proje-";
 
 export function ProjectGallery({ projects }: { projects: Project[] }) {
   const [filter, setFilter] = useState<FilterValue>("all");
-  const [filtersAtEnd, setFiltersAtEnd] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const filtersRef = useRef<HTMLDivElement>(null);
   const openedInApp = useRef(false);
   const pendingScroll = useRef<string | null>(null);
 
@@ -25,15 +23,6 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     ? decodeURIComponent(hash.slice(HASH_PREFIX.length))
     : null;
   const activeProject = projects.find((project) => project.id === activeId) ?? null;
-
-  const counts = projects.reduce<Record<FilterValue, number>>(
-    (result, project) => {
-      result.all += 1;
-      result[project.category] += 1;
-      return result;
-    },
-    { all: 0, web: 0, mobile: 0, game: 0, science: 0, design: 0, content: 0 },
-  );
 
   const filters: { value: FilterValue; label: string }[] = [
     { value: "all", label: "Tümü" },
@@ -51,23 +40,6 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     activeProject && visibleProjects.includes(activeProject)
       ? visibleProjects
       : ordered;
-
-  // Filtre şeridi kaydırılabiliyorsa sağ kenarda bir solma gösterilir; sona gelince kalkar.
-  useEffect(() => {
-    const node = filtersRef.current;
-    if (!node) return;
-
-    const update = () =>
-      setFiltersAtEnd(node.scrollLeft + node.clientWidth >= node.scrollWidth - 4);
-    const observer = new ResizeObserver(update);
-
-    observer.observe(node);
-    node.addEventListener("scroll", update, { passive: true });
-    return () => {
-      observer.disconnect();
-      node.removeEventListener("scroll", update);
-    };
-  }, []);
 
   useEffect(() => {
     if (activeProject || !pendingScroll.current) return;
@@ -110,8 +82,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       <div className="gallery" ref={sectionRef}>
         <div className="filterBar">
           <div
-            ref={filtersRef}
-            className={`filters${filtersAtEnd ? " is-end" : ""}`}
+            className="filters"
             role="group"
             aria-label="Projeleri alana göre filtrele"
           >
@@ -124,7 +95,6 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 onClick={() => handleFilter(item.value)}
               >
                 {item.label}
-                <span className="filterCount">{counts[item.value]}</span>
               </button>
             ))}
           </div>

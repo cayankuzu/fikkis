@@ -27,6 +27,17 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
   const mediaRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
+  // Platformdan, kartta zaten görünen alan adını ve "Masaüstü" rozetini ayıkla.
+  const platform = project.platform
+    .split(" · ")
+    .filter(
+      (part) =>
+        part.toLocaleLowerCase("tr") !==
+          categoryLabels[project.category].toLocaleLowerCase("tr") &&
+        !(project.desktopOnly && /^masaüstü$/i.test(part)),
+    )
+    .join(" · ");
+
   const layout =
     project.cardLayout ?? (project.category === "mobile" ? "stack" : "cover");
   const status = getStatus(project);
@@ -188,7 +199,7 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
           <IconArrowUpRight size={18} className="cardTitleIcon" />
         </Title>
         <p className="cardHook">{project.hook}</p>
-        <p className="cardPlatform">{project.platform}</p>
+        {platform ? <p className="cardPlatform">{platform}</p> : null}
       </div>
 
       {quickLink ? (
