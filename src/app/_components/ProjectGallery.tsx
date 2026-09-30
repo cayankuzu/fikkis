@@ -29,6 +29,15 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     ...categoryOrder.map((value) => ({ value, label: categoryLabels[value] })),
   ];
 
+  const counts = projects.reduce<Record<FilterValue, number>>(
+    (result, project) => {
+      result.all += 1;
+      result[project.category] += 1;
+      return result;
+    },
+    { all: 0, web: 0, mobile: 0, game: 0, science: 0, design: 0, content: 0 },
+  );
+
   const { featured, archive } = arrangeProjects(projects);
   const ordered = [...featured, ...archive];
   const visibleProjects =
@@ -95,6 +104,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 onClick={() => handleFilter(item.value)}
               >
                 {item.label}
+                <span className="filterCount">{counts[item.value]}</span>
               </button>
             ))}
           </div>

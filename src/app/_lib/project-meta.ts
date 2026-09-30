@@ -171,6 +171,7 @@ export function getQuickLink(project: Project) {
 
 /** Öne çıkan çalışmaların gösterim sırası: önce yayındaki ürünler, sonra etkileşimli işler. */
 const featuredOrder = [
+  "cayan-kuzu-cv",
   "sorita",
   "universe",
   "audioroom",
@@ -187,7 +188,7 @@ const featuredOrder = [
 /** Arşivin başında gelen daha kapsamlı oyun ve deneysel işler. */
 const archiveLead = ["asmaca", "son-40-saniye", "remember"];
 
-/** Arşivin kalanında alanların sırası; kişisel sistem (CV) en sonda. */
+/** Arşivin kalanında alanların sırası. */
 const archiveCategoryOrder: ProjectCategory[] = [
   "science",
   "game",

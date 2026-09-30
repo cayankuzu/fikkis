@@ -8,7 +8,7 @@ fikkis, Çayan Kuzu'nun kişisel proje arşividir: mobil uygulamalar, oyunlar, w
 - **Detay paneli** bir karta tıklayınca açılır: açıklamalı görsel galerisi, proje özeti, öne çıkanlar, rol/durum/platform/araçlar ve bağlantılar. Her projenin paylaşılabilir bir adresi vardır (`/#proje-<id>`); tarayıcının geri tuşu paneli kapatır.
 - **Masaüstü deneyimleri** dar ekranlı ya da dokunmatik cihazlarda engellenmez; bağlantıyı kopyalama ve "yine de aç" seçenekleri sunulur.
 - **"Tümü" görünümü** iki gruptan oluşur: `featured: true` işaretli öne çıkan çalışmalar ve arşiv (oyunlar, deneyler, bilim, tasarım). Sıralama `src/app/_lib/project-meta.ts` içindeki `arrangeProjects` fonksiyonundadır.
-- **Filtreler** masaüstünde tek satır, 560 px altındaki ekranlarda kaydırma gerektirmeyen iki satırlık ızgaradır. Hero istatistikleri (proje, oyun, mağaza uygulaması) `src/app/projects.ts` verisinden otomatik hesaplanır.
+- **Filtreler** her alandaki proje sayısını gösterir; masaüstünde tek satır, 720 px altındaki ekranlarda kaydırma gerektirmeyen iki satırlık ızgaradır. Hero istatistikleri (proje, oyun, mağaza uygulaması) `src/app/projects.ts` verisinden otomatik hesaplanır.
 - **Telefon ve masaüstü aynı yapıyı kullanır:** gezinme menüsü, kartlardaki hızlı bağlantı ve bölüm düzeni her ekranda bulunur; yalnızca yerleşim ekrana göre yeniden kurulur.
 - **Dokümanlar** (`/dokuman/<slug>`) masaüstünde tarayıcının PDF görüntüleyicisiyle açılır; PDF'i sayfa içinde gösteremeyen mobil tarayıcılarda önizleme görseli ve "PDF'i aç" düğmesi görünür.
 - Açık/koyu tema, azaltılmış hareket tercihi, klavye erişimi ve ekran okuyucu etiketleri desteklenir.

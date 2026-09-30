@@ -2150,7 +2150,7 @@ video.viewerMedia {
 }
 
 /* Dar ekranlarda filtreler kaydırma gerektirmeden iki satırlık ızgarada görünür. */
-@media (max-width: 560px) {
+@media (max-width: 720px) {
   .filters {
     display: grid;
     width: 100%;

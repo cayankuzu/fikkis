@@ -293,6 +293,7 @@ export const projects: Project[] = [
   },
   {
     id: "cayan-kuzu-cv",
+    featured: true,
     category: "web",
     tags: ["Kişisel sistem"],
     title: "Çayan Kuzu CV",
