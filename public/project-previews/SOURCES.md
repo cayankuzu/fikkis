@@ -10,6 +10,10 @@
   taken on 2026-10-01 with real swings, carries and physics (a sledgehammer hit on a vase, the
   room after a session, the street with the rage room and shops, carrying a piece to the street
   container)
+- `strolly-blackhole.jpg`, `strolly-tekerrur.jpg`, `strolly-emanet.jpg`, `strolly-ofke.jpg`,
+  `strolly-stories.jpg`: in-browser captures of STROLLY v1.0.0 (`strolly-seven.vercel.app`, same
+  build run locally), taken on 2026-10-01 at 1600×900 (YAŞAMAK's event horizon, TEKERRÜR's
+  observatory, an afternoon in EMANET, the street outside ÖFKE NÖBETİ, the story select screen)
 - `bibish.png`: owner-supplied local gameplay capture from Bibish
 - `remember-ouroboros.png`: owner-supplied capture from `remember-you-must-die-web.vercel.app`
 - `desain.png`: live project at `des-ai-n.vercel.app`

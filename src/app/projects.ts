@@ -226,6 +226,50 @@ export const projects: Project[] = [
     tone: "amber",
   },
   {
+    id: "strolly",
+    featured: true,
+    category: "game",
+    title: "STROLLY",
+    hook: "Kaydırdıkça zaman akar, baktıkça anlam değişir: içinde 360° dönebildiğin altı kısa hikâye.",
+    description:
+      "Kaydırma hareketiyle ilerleyen, sinematik ve etkileşimli altı bilimkurgu hikâyesi: TEKERRÜR, EMANET, ÖFKE NÖBETİ, YAŞAMAK, KALAN ve EŞİK. Kaydırmak zamandır; sürükleyerek sahnenin içinde 360° dönersin ve bazı ayrıntılar yalnızca arkanda durur. Okur yer yer bir sisteme soru sorar ya da karar verir; cevaplar sonraki satırları, sahneyi ve sesi değiştirir. Bütün modeller, dokular, ekranlar ve sesler kodla üretilir, hazır bir varlık kullanılmaz.",
+    platform: "Web · Masaüstü ve mobil",
+    status: "Canlı",
+    role: "Bağımsız anlatı oyunu · Yazım ve sahneleme · 3B istemci ve ses",
+    tools: ["Next.js", "TypeScript", "Three.js/WebGL", "Web Audio", "GSAP · Lenis"],
+    highlights: [
+      "Altı hikâye, her biri 8–10 bölüm; seçimler, günlük, keşifler ve bölüm kayıtları",
+      "Prosedürel PBR yüzeyler, iskeletli karakterler ve uzamsal ses; dışarıdan hiçbir görsel ya da ses yok",
+    ],
+    href: "https://strolly-seven.vercel.app/",
+    ctaLabel: "Hikâyeleri oku",
+    secondaryHref: "https://github.com/cayankuzu/strolly",
+    secondaryLabel: "Kaynak kodu incele",
+    images: [
+      {
+        src: "/project-previews/strolly-blackhole.jpg",
+        caption: "YAŞAMAK: kalan süreyle bir kara deliğin olay ufkuna",
+      },
+      {
+        src: "/project-previews/strolly-tekerrur.jpg",
+        caption: "TEKERRÜR: DURUM gözlemevinde gece, sunucu salonu camın ardında",
+      },
+      {
+        src: "/project-previews/strolly-emanet.jpg",
+        caption: "EMANET: Ege'nin son gününden bir ikindi, bellekten yeniden kurulmuş",
+      },
+      {
+        src: "/project-previews/strolly-ofke.jpg",
+        caption: "ÖFKE NÖBETİ: oturumdan sonra sokak; pano şiddetin azaldığını söylüyor",
+      },
+      {
+        src: "/project-previews/strolly-stories.jpg",
+        caption: "Altı hikâyenin seçim ekranı",
+      },
+    ],
+    tone: "navy",
+  },
+  {
     id: "remember",
     category: "web",
     desktopOnly: true,
