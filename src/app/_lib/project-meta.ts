@@ -176,6 +176,7 @@ const featuredOrder = [
   "universe",
   "audioroom",
   "merbut",
+  "stresst",
   "atkafasi",
   "trai",
   "etkinlink",

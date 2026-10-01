@@ -5,6 +5,11 @@
 - `merbut-menu.png`, `merbut-titlecard.png`, `merbut-combat.png`: live captures of v3.1.0 at
   `merbut.vercel.app` (main menu duel, the Aku Metropolü album title card, and the first fight
   with Jack's shield up), taken on 2026-09-26 with real keyboard input from a fresh save
+- `stresst-smash.jpg`, `stresst-aftermath.jpg`, `stresst-street.jpg`, `stresst-cleanup.jpg`:
+  in-game canvas captures of the sTressT demo (`stresst-tan.vercel.app`, same build run locally),
+  taken on 2026-10-01 with real swings, carries and physics (a sledgehammer hit on a vase, the
+  room after a session, the street with the rage room and shops, carrying a piece to the street
+  container)
 - `bibish.png`: owner-supplied local gameplay capture from Bibish
 - `remember-ouroboros.png`: owner-supplied capture from `remember-you-must-die-web.vercel.app`
 - `desain.png`: live project at `des-ai-n.vercel.app`

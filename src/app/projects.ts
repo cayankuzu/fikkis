@@ -187,6 +187,45 @@ export const projects: Project[] = [
     tone: "red",
   },
   {
+    id: "stresst",
+    featured: true,
+    category: "game",
+    desktopOnly: true,
+    title: "sTressT",
+    hook: "Stresini balyozla odaya bırak: kır, topla, yeni alet al, yeniden kır.",
+    description:
+      "Birinci şahıs, fizik tabanlı bir öfke odası demosu. Eşyalar vurulduğu yerden gerçek fizikle parçalanır; kırılan her şey sen temizleyene kadar odada kalır. Kazandığın krediyle sokaktaki dükkânlardan yeni eşya ve alet alırsın, siparişler kapıya teslim edilir. Yaklaşık 30 dakikalık bir web demosu.",
+    platform: "Web · Masaüstü · Klavye ve fare",
+    status: "Canlı · Demo",
+    role: "Bağımsız oyun tasarımı · Kırılma ve fizik sistemleri · 3B istemci",
+    tools: ["TypeScript", "Three.js/WebGL", "Rapier", "Vite"],
+    highlights: [
+      "40 kırılabilir eşya ve 7 alet; büyük parçalar yeniden kırılır, enkaz sokaktaki konteynere taşınır",
+      "Düzenle, kır ve temizle modları; kalıcı dünya, kayıt yuvaları ve ekonomi",
+    ],
+    href: "https://stresst-tan.vercel.app/",
+    ctaLabel: "Demoyu oyna",
+    images: [
+      {
+        src: "/project-previews/stresst-smash.jpg",
+        caption: "Balyoz darbesi: vazo dağılıyor, masa çoktan parçalandı",
+      },
+      {
+        src: "/project-previews/stresst-aftermath.jpg",
+        caption: "Kırılan her şey temizlenene kadar odada kalır",
+      },
+      {
+        src: "/project-previews/stresst-street.jpg",
+        caption: "Sokak: öfke odası ve iki dükkân",
+      },
+      {
+        src: "/project-previews/stresst-cleanup.jpg",
+        caption: "Enkazı sokaktaki konteynere taşı",
+      },
+    ],
+    tone: "amber",
+  },
+  {
     id: "remember",
     category: "web",
     desktopOnly: true,
