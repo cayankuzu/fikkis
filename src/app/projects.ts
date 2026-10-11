@@ -893,6 +893,57 @@ export const projects: Project[] = [
     tone: "orange",
   },
   {
+    id: "atkafasi-stickers",
+    category: "design",
+    tags: ["Canva", "AtKafası"],
+    title: "AtKafası Sticker Serisi",
+    hook: "AtKafası Fanzin'in 1. sayısı için 18 sticker: fanzinin atı, karakterler ve sloganlar.",
+    description:
+      "Canva'da hazırladığım bu seride her sticker @atkafasifanzin imzalı aynı yuvarlak çerçeveyi paylaşıyor; at figüründen karakterlere ve kısa sloganlara uzanan farklı görsel ve yazı stilleri bir arada. Seriden bir stickerdaki illüstrasyon Derin Su'ya (@theoryofapen) ait.",
+    platform: "Yuvarlak sticker seti",
+    status: "Tamamlandı",
+    role: "Sticker tasarımı · Görsel dil · Tipografi",
+    tools: ["Canva"],
+    highlights: [
+      "QR kodu fanzinin Linktree sayfasına açılan “1. sayı çıktı.” duyuru stickerı",
+      "Sisifos, Kül Üzerine, Homunculus, Kur-Tadam, Bet-Men, Gerçeğe Çağrı ve Ampulistan 4891 başlıklı stickerlar",
+    ],
+    href: "https://canva.link/8zsur9bik0dcatd",
+    ctaLabel: "Stickerları Canva'da incele",
+    images: [
+      {
+        src: "/project-previews/atkafasi-stickers.webp",
+        caption: "Seriden altı sticker",
+      },
+      {
+        src: "/project-previews/atkafasi-stickers-all.webp",
+        caption: "18 stickerın tamamı",
+      },
+      {
+        src: "/project-previews/atkafasi-sticker-launch.webp",
+        caption: "“1. sayı çıktı.”",
+      },
+      {
+        src: "/project-previews/atkafasi-sticker-horsing-around.webp",
+        caption: "“Just horsing around…”",
+      },
+      {
+        src: "/project-previews/atkafasi-sticker-sisifos.webp",
+        caption: "Sisifos",
+      },
+      {
+        src: "/project-previews/atkafasi-sticker-ampulistan.webp",
+        caption: "Ampulistan 4891",
+      },
+      {
+        src: "/project-previews/atkafasi-sticker-dusunmeyin.webp",
+        caption: "“Düşünmeyin. Hissetmeyin. Sadece kullanın.”",
+      },
+    ],
+    cardLayout: "contain",
+    tone: "orange",
+  },
+  {
     id: "quantum-entanglement",
     category: "science",
     tags: ["Fizik"],

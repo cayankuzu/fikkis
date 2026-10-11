@@ -56,8 +56,27 @@ export function MediaViewer({ project }: { project: Project }) {
   const items = buildItems(project);
   const [index, setIndex] = useState(0);
   const figureRef = useRef<HTMLElement>(null);
+  const thumbsRef = useRef<HTMLDivElement>(null);
   const item = items[index] ?? items[0];
   const hasMany = items.length > 1;
+
+  // Ok veya klavyeyle ilerleyince seçili küçük resim şeritte görünür kalsın.
+  // Yalnız şerit yatay kaydırılır; panel ve sayfa yerinden oynamaz.
+  useEffect(() => {
+    const strip = thumbsRef.current;
+    const thumb = strip?.children[index];
+    if (!strip || !(thumb instanceof HTMLElement)) return;
+
+    const stripBox = strip.getBoundingClientRect();
+    const thumbBox = thumb.getBoundingClientRect();
+    const behavior = reducedMotion ? "auto" : "smooth";
+
+    if (thumbBox.left < stripBox.left) {
+      strip.scrollBy({ left: thumbBox.left - stripBox.left - 8, behavior });
+    } else if (thumbBox.right > stripBox.right) {
+      strip.scrollBy({ left: thumbBox.right - stripBox.right + 8, behavior });
+    }
+  }, [index, reducedMotion]);
 
   const go = (step: number) => {
     setIndex((current) => (current + step + items.length) % items.length);
@@ -145,7 +164,7 @@ export function MediaViewer({ project }: { project: Project }) {
       </figcaption>
 
       {hasMany ? (
-        <div className="viewerThumbs" aria-label="Görseller">
+        <div ref={thumbsRef} className="viewerThumbs" aria-label="Görseller">
           {items.map((thumb, thumbIndex) => (
             <button
               key={thumb.src}

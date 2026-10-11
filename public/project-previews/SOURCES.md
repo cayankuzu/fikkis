@@ -59,7 +59,15 @@
   screenshots of 2 of the 3 pages of the Canva design at `canva.link/vvz204q9oy7b53y` (the
   controls/QR poster and the "Yayındakiler & Yakındakiler" album showcase; the 3rd page is blank
   in the source file)
-
+- `atkafasi-stickers.webp`, `atkafasi-stickers-all.webp`, `atkafasi-sticker-*.webp`: the 18 pages
+  of the Canva design at `canva.link/8zsur9bik0dcatd` (AtKafası Fanzin issue 1 stickers),
+  captured page by page from its public `/view` URL in headless Chrome. Each sticker was cut out
+  along its black ring (circle fitted to the ring's outer edge at 360 sampled angles) with a
+  transparent background. `atkafasi-sticker-{launch,horsing-around,sisifos,ampulistan,dusunmeyin}.webp`
+  are pages 1, 2, 3, 17 and 18; `atkafasi-stickers.webp` arranges pages 2, 3, 16, 13, 17 and 18,
+  and `atkafasi-stickers-all.webp` all 18 — arrangements of the real captures, not mockups. The
+  launch sticker's QR code decodes to `linktr.ee/Atkafasifanzin`. The illustration on page 8 is
+  signed by Derin Su (`@theoryofapen`), which the project description credits
 - `cayankuzu-cv.png`, `cayankuzu-cv-projects.png`: captures of the two-column CV document
   (`/tr`, header and "Seçili Projeler" section), taken from the local build on 2026-09-30
 - `kepce-operatoru.jpg`: real frame extracted and cropped from the owner-supplied 2020 physics
