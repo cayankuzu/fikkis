@@ -197,56 +197,15 @@ function getLinkActions(project: Project): ProjectAction[] {
 
 /** Karttaki hızlı bağlantı: yalnızca doğrudan açılabilir dış bağlantılar. */
 export function getQuickLink(project: Project) {
+  // Satın alınabilen projelerde seçenekler yalnızca detay panelinde sunulur.
+  if (project.purchase) return null;
+
   const primary = getProjectActions(project).find(
     (action) => action.variant === "primary",
   );
 
   if (!primary || !primary.external || primary.icon === "video") return null;
   return primary;
-}
-
-export type CardChoice = {
-  kind: "open" | "purchase";
-  label: string;
-  /** Kapaktaki ipucunda kullanılan kısa ad ("Oyna", "Satın al"). */
-  shortLabel: string;
-  /** Mağaza adı gibi küçük ek bilgi. */
-  note?: string;
-  href: string;
-  external: boolean;
-};
-
-/**
- * Kart kapağında açılan seçenekler: ana bağlantı ve satın alma sayfası.
- * Satın alma bağlantısı olmayan projelerde boş döner; kart eskisi gibi davranır.
- */
-export function getCardChoices(project: Project): CardChoice[] {
-  const purchase = project.purchase;
-  if (!purchase) return [];
-
-  const choices: CardChoice[] = [];
-
-  if (project.href) {
-    choices.push({
-      kind: "open",
-      label: project.ctaLabel ?? defaultCtaLabel(project),
-      shortLabel: project.category === "game" ? "Oyna" : "Aç",
-      href: project.href,
-      external: isExternal(project.href),
-    });
-  }
-
-  choices.push({
-    kind: "purchase",
-    label: purchaseLabel(purchase),
-    // Kapaktaki ipucu kısa kalsın: mağaza adı varsa "Oyna · itch.io" gibi okunur.
-    shortLabel: purchase.store ?? purchaseLabel(purchase),
-    note: purchase.store,
-    href: purchase.href,
-    external: isExternal(purchase.href),
-  });
-
-  return choices;
 }
 
 /** Öne çıkan çalışmaların gösterim sırası: önce yayındaki ürünler, sonra etkileşimli işler. */
