@@ -2207,3 +2207,227 @@ video.viewerMedia {
     grid-row: span 2;
   }
 }
+
+/* ---------------------------------------------------------------- search */
+
+/* Arama, filtrelerle aynı yapışkan çubukta: masaüstünde sağda hep açık,
+   dar ekranda filtre ızgarasındaki "Ara" düğmesiyle açılır. */
+.filterBar {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchToggle {
+  display: none;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  flex: 1 1 240px;
+  max-width: 360px;
+  min-height: 52px;
+  margin-left: auto;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: saturate(1.5) blur(16px);
+  -webkit-backdrop-filter: saturate(1.5) blur(16px);
+  pointer-events: auto;
+  transition: border-color 0.2s ease;
+}
+
+.search:focus-within {
+  border-color: var(--ink);
+}
+
+.searchIcon {
+  position: absolute;
+  left: 18px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  padding: 0 46px 0 46px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--ink);
+  background: transparent;
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--muted);
+}
+
+.searchInput::-webkit-search-cancel-button {
+  display: none;
+}
+
+.searchKey,
+.searchClear {
+  position: absolute;
+  right: 10px;
+  display: grid;
+  min-width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.searchKey {
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+}
+
+.searchClear {
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--muted);
+  background: var(--surface-2);
+  cursor: pointer;
+}
+
+.searchClear:hover {
+  color: var(--ink);
+}
+
+.searchSummary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin: 0 0 clamp(20px, 2.5vw, 28px);
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.searchSummary strong {
+  color: var(--ink);
+}
+
+.textButton {
+  padding: 4px 0;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+.textButton:hover {
+  text-decoration-color: currentColor;
+}
+
+.searchEmpty {
+  display: grid;
+  max-width: 560px;
+  margin: clamp(24px, 5vw, 56px) auto;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.searchEmpty strong {
+  font-size: 1.25rem;
+}
+
+.searchEmpty p {
+  color: var(--muted);
+}
+
+.searchEmpty .actions {
+  justify-content: center;
+  margin-top: 6px;
+}
+
+/* Yayımlanmamış mağaza sürümü: tıklanamaz, kesik çizgili rozet. */
+.buttonSoon {
+  border-style: dashed;
+  color: var(--muted);
+  background: transparent;
+  cursor: default;
+}
+
+.buttonSoon:hover {
+  border-color: var(--line-strong);
+  color: var(--muted);
+  background: transparent;
+}
+
+.buttonSoon:active {
+  transform: none;
+}
+
+.buttonSoon em {
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--surface-2);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* Tablet: filtreler ile arama tek satıra sığmaz; arama alt satırı tam kaplar. */
+@media (min-width: 721px) and (max-width: 980px) {
+  .search {
+    flex-basis: 100%;
+    max-width: none;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .filterBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .searchToggle {
+    display: inline-flex;
+    gap: 6px;
+  }
+
+  .searchToggle.is-active {
+    color: var(--ink);
+    background: var(--surface-2);
+  }
+
+  /* Sütun düzeninde flex-basis yükseklik olur; kutu kendi boyunda kalsın. */
+  .search {
+    display: none;
+    flex: none;
+    max-width: none;
+    margin-left: 0;
+  }
+
+  .search.is-open {
+    display: flex;
+  }
+
+  .searchKey {
+    display: none;
+  }
+}

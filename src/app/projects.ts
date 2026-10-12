@@ -51,6 +51,8 @@ export type Project = {
   desktopOnly?: boolean;
   /** Herkese açık GitHub deposu; detay panelinde "Kaynak kodu" butonu olur. */
   sourceUrl?: string;
+  /** Henüz yayımlanmamış mağaza sürümleri; detay panelinde "Çok yakında" olarak görünür. */
+  upcomingStores?: ("App Store" | "Google Play")[];
   /** İlk görsel kart kapağıdır. */
   images: ProjectImage[];
   /** Kartta üzerine gelince oynayan sessiz önizleme videosu. */
@@ -462,6 +464,7 @@ export const projects: Project[] = [
     id: "etkinlink",
     featured: true,
     category: "mobile",
+    upcomingStores: ["App Store", "Google Play"],
     title: "EtkinLink",
     hook: "Bir etkinlik keşfet; aynı heyecanı paylaşacağın insanlarla tanış.",
     description:
@@ -476,7 +479,6 @@ export const projects: Project[] = [
     ],
     href: "https://www.figma.com/proto/RLPPToWydcFxLtnlvTr0mi/EtkinLink?node-id=32-1772&viewport=-607%2C-758%2C0.69&t=BmlrdaiaacIsarlK-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=97%3A386&show-proto-sidebar=1&page-id=12%3A8",
     websiteUrl: "https://cayankuzu.github.io/EtkinLink_web/",
-    downloadStatus: "İndirme bağlantısı çok yakında",
     images: [
       {
         src: "/project-previews/etkinlink-1.png",
@@ -590,6 +592,7 @@ export const projects: Project[] = [
     id: "wmatch",
     featured: true,
     category: "mobile",
+    upcomingStores: ["Google Play"],
     title: "WMatch",
     hook: "Ne izlediğin, kiminle eşleşeceğini söylesin.",
     description:

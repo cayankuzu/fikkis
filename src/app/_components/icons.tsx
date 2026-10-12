@@ -264,3 +264,12 @@ export function IconCopy(props: IconProps) {
     </Stroke>
   );
 }
+
+export function IconSearch(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m20 20-4.4-4.4" />
+    </Stroke>
+  );
+}

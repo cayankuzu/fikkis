@@ -30,6 +30,7 @@ import {
 } from "./icons";
 import { MediaViewer } from "./MediaViewer";
 import { SourceLink } from "./SourceLink";
+import { ComingSoonStore, isStoreAction } from "./StoreSoon";
 
 type ProjectSheetProps = {
   project: Project | null;
@@ -256,11 +257,19 @@ export function ProjectSheet({
                     </div>
                   </div>
                 </div>
-              ) : actions.length || shown.sourceUrl ? (
+              ) : actions.length || shown.sourceUrl || shown.upcomingStores?.length ? (
                 <div className="actions">
-                  {actions.map((action) => (
+                  {actions.filter(isStoreAction).map((action) => (
                     <ActionLink key={action.href + action.label} action={action} />
                   ))}
+                  {shown.upcomingStores?.map((store) => (
+                    <ComingSoonStore key={store} store={store} />
+                  ))}
+                  {actions
+                    .filter((action) => !isStoreAction(action))
+                    .map((action) => (
+                      <ActionLink key={action.href + action.label} action={action} />
+                    ))}
                   <SourceLink href={shown.sourceUrl} />
                 </div>
               ) : null}

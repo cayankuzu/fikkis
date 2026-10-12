@@ -242,7 +242,6 @@ export function getArchiveStats(projects: Project[]) {
 
   return {
     total: projects.length,
-    storeApps: projects.filter((project) => project.storeLinks?.length).length,
     categoryCounts,
   };
 }

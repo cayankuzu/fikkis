@@ -85,8 +85,8 @@ export default function Home() {
               <dd>{stats.categoryCounts.game}</dd>
             </div>
             <div>
-              <dt>Mağaza uygulaması</dt>
-              <dd>{stats.storeApps}</dd>
+              <dt>Mobil uygulama</dt>
+              <dd>{stats.categoryCounts.mobile}</dd>
             </div>
           </dl>
         </section>
