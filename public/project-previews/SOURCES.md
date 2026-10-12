@@ -4,7 +4,10 @@
 - `mrap.png`: local verified demo capture from `mrap.vercel.app`
 - `merbut-menu.png`, `merbut-titlecard.png`, `merbut-combat.png`: live captures of v3.1.0 at
   `merbut.vercel.app` (main menu duel, the Aku Metropolü album title card, and the first fight
-  with Jack's shield up), taken on 2026-09-26 with real keyboard input from a fresh save
+  with Jack's shield up), taken on 2026-09-26 with real keyboard input from a fresh save.
+  `merbut-menu.png` was re-captured on 2026-10-12 from v3.2.0, the web demo build (DEMO badge,
+  "TAM SÜRÜM · itch.io" entry, EN button); the title card, the first fight and the gameplay clip
+  were re-checked against v3.2.0 and are unchanged
 - `stresst-smash.jpg`, `stresst-aftermath.jpg`, `stresst-street.jpg`, `stresst-cleanup.jpg`:
   in-game canvas captures of the sTressT demo (`stresst-tan.vercel.app`, same build run locally),
   taken on 2026-10-01 with real swings, carries and physics (a sledgehammer hit on a vase, the
@@ -20,19 +23,26 @@
   locally), taken on 2026-10-12 at 1600×900 (the frozen rain under the washing lines of photographs,
   walking under the giant chair, the giant print at the end of the alley, the mirror sea under the
   photograph moon, the print developing in the photographer's hand)
-- `bibish.png`: owner-supplied local gameplay capture from Bibish
+- `bibish.png`: live capture of v0.4.10 at `bibish-iota.vercel.app`, taken on 2026-10-12: joined a
+  match for Kırmızı Ordu, spawned at the K3 outpost and fired the rifle at it with real mouse and
+  keyboard input (quality set to Ultra in the game's own settings). Only one player was online,
+  so the leaderboard has a single row. Replaces the owner-supplied v0.3.2 capture
 - `remember-ouroboros.png`: owner-supplied capture from `remember-you-must-die-web.vercel.app`
 - `desain.png`: live project at `des-ai-n.vercel.app`
-- `audioroom-mukemmel-bosluk.png`: owner-supplied Mükemmel Boşluk capture from `audio-room-ecru.vercel.app`
 - `etkinlink-1.png` through `etkinlink-4.png`: exported from the owner-supplied EtkinLink Figma prototype (Discover, Rooms, Match, and Direct Chat frames)
 - `wmatch-1.png` through `wmatch-4.png`: owner-supplied WMatch demo-account captures
 - `sorita-1.png` through `sorita-3.png`: owner-supplied SoRita demo-account captures
 - `universe-1.png` through `universe-3.png`: owner-supplied UniVerse demo-account captures
-- `card-race.png`: live capture from `card-race-game.vercel.app`
-- `battleship.png`: live capture from `battleship-pygame.vercel.app`
-- `old-maid.png`: live capture from `old-maid-card-game.vercel.app`
+- `card-race.png`: live capture from `card-race-game.vercel.app`, re-captured on 2026-10-12 after
+  the help dialog was added (closed with "Oyuna başla", then nine real "Kart çek" clicks)
+- `battleship.png`: live capture from `battleship-pygame.vercel.app`, re-captured on 2026-10-12
+  with the "Yardım" button (rules closed, Randomize → Start, one shot on the radar). Playwright's
+  `page.screenshot` hangs on this page; CDP `Page.captureScreenshot` works
+- `old-maid.png`: live capture from `old-maid-card-game.vercel.app`, re-captured on 2026-10-12 after
+  the card-draw update (wider hands, the "SEÇTİĞİN KART" reveal), on the player's fourth pick
 - `tictactoe.png`: live capture from `tic-tac-toe-game-delta-jade.vercel.app`
-- `son-40-saniye.png`: live capture from `google-history-clear-game.vercel.app`
+- `son-40-saniye.png`: live capture from `google-history-clear-game.vercel.app`, re-captured on
+  2026-10-12 with the copyright footer
 - `atkafasi.png`: live capture from `atkafasifanzin.gumroad.com`
 - `quantum-nobel-2022.jpg`, `quantum-schrodingers-cat.jpg`, `quantum-einstein-bohr.jpg`: real
   images extracted directly from `quantuuuum.pdf` (the 2022 Nobel Prize laureates, the
@@ -74,8 +84,10 @@
   and `atkafasi-stickers-all.webp` all 18 — arrangements of the real captures, not mockups. The
   launch sticker's QR code decodes to `linktr.ee/Atkafasifanzin`. The illustration on page 8 is
   signed by Derin Su (`@theoryofapen`), which the project description credits
-- `cayankuzu-cv.png`, `cayankuzu-cv-projects.png`: captures of the two-column CV document
-  (`/tr`, header and "Seçili Projeler" section), taken from the local build on 2026-09-30
+- `cayankuzu-cv.png`, `cayankuzu-cv-projects.png`: 1040×650 captures of the two-column CV document
+  at `cayankuzucv.vercel.app/tr`, re-taken from the live site on 2026-10-12 (the top of the
+  document, and the selected projects from Merbut through AtKafası Fanzin into Akademik
+  Çalışmalar)
 - `kepce-operatoru.jpg`: real frame extracted and cropped from the owner-supplied 2020 physics
   project video (`InShot_20200118_212358091.mp4`), showing the full desk setup — the popsicle-stick
   arm tower, the Nokia 5110 LCD, and the 4-potentiometer breadboard control panel
@@ -120,7 +132,8 @@ production build:
 `card-race` kept its existing static screenshot only. Its "Kart çek" button did not respond to
 automated clicks after several different approaches (coordinate clicks, text-locator clicks,
 longer waits), so no real gameplay footage could be captured for it; no video was fabricated as
-a substitute.
+a substitute. As of 2026-10-12 the button does respond to `getByRole` clicks, so a real clip
+could be recorded later.
 
 AudioRoom no longer uses a video (`audioroom-gameplay.mp4` removed) — see below, it now shows a
 real photo per completed album instead.
@@ -140,15 +153,19 @@ real photo per completed album instead.
 
 ## AudioRoom album photos
 
-`audioroom-mukemmel-bosluk.png` (existing, unchanged) plus three more real captures, one per
-other completed ("YAYINDA") album confirmed by paging through the live library carousel:
+One real capture per completed ("YAYINDA") album, all re-taken from the live site on 2026-10-12.
+Every world now has two versions; "Evrene gir" asks which one to open. The captures show
+"Sürüm 2 · güncel" (September 2026, third-person avatar), about 8–9 seconds after entering. The
+earlier Sürüm 1 captures (side panels, map, "Şimdi Çalıyor" player) were replaced; that version
+still lives under `/depo/`.
 
-- `audioroom-hayko-cepkin.png`: owner-supplied capture of the "Beni Büyüten Şarkılar Vol.1" world
-- `audioroom-klostrofobik-kaplumbaga.png`: owner-supplied capture of Henry the Lee's
-  "Klostrofobik Kaplumbağa" world
-- `audioroom-kuantum-dolaniklik.png`: real capture of Henry the Lee's "Kuantum Dolanıklık" world
-  (the site's own "4 yayında" claim didn't line up with only 3 known worlds until this one — a
-  single track, easy to miss in the carousel — was found and confirmed YAYINDA)
+- `audioroom-mukemmel-bosluk.png`: Redd's "Mükemmel Boşluk" world, default spawn view
+- `audioroom-hayko-cepkin.png`: Hayko Cepkin's "Beni Büyüten Şarkılar Vol.1" world; the avatar was
+  strafed left for half a second with the A key so both titles are readable
+- `audioroom-klostrofobik-kaplumbaga.png`: Henry the Lee's "Klostrofobik Kaplumbağa" world, default
+  spawn view
+- `audioroom-kuantum-dolaniklik.png`: Henry the Lee's "Kuantum Dolanıklık" world (a single track,
+  easy to miss in the carousel), default spawn view
 
 The two still-YAKINDA worlds (Redd — 21, Pink Floyd — The Dark Side of the Moon) are correctly
 left out.
