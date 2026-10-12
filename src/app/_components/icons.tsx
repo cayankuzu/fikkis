@@ -230,6 +230,15 @@ export function IconDownload(props: IconProps) {
   );
 }
 
+export function IconBag(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M5.5 8h13l-1 12.2a1 1 0 0 1-1 .8H7.5a1 1 0 0 1-1-.8L5.5 8z" />
+      <path d="M9 10.5V7a3 3 0 0 1 6 0v3.5" />
+    </Stroke>
+  );
+}
+
 export function IconVideo(props: IconProps) {
   return (
     <Stroke {...props}>

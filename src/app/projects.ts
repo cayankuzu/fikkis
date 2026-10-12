@@ -44,6 +44,17 @@ export type Project = {
   ctaLabel?: string;
   websiteUrl?: string;
   storeLinks?: { label: string; href: string }[];
+  /**
+   * Satın alma / indirme sayfası (ör. itch.io). Varsa kartın kapağı ana bağlantı
+   * ve satın alma seçeneklerini açar; detay panelinde ikincil buton olur.
+   */
+  purchase?: {
+    href: string;
+    /** Buton metni; boşsa "Satın al". */
+    label?: string;
+    /** Mağaza adı, butonda etiketin yanında gösterilir (ör. "itch.io"). */
+    store?: string;
+  };
   downloadStatus?: string;
   secondaryHref?: string;
   secondaryLabel?: string;
@@ -64,6 +75,9 @@ export type Project = {
   coverPosition?: string;
   tone: ProjectTone;
 };
+
+/** Merbut'un itch.io sayfası; adres kesinleşince yalnızca burası değişir. */
+export const MERBUT_ITCH_URL = "https://memode.itch.io/merbut";
 
 export const projects: Project[] = [
   {
@@ -166,9 +180,9 @@ export const projects: Project[] = [
     title: "Merbut",
     hook: "İki kahraman, on diyar ve Aku’ya uzanan tek bir kader.",
     description:
-      "Hz. Ali ve Samuray Jack'in aynı klavyede ya da iki gamepad ile yönetildiği yerel iki oyunculu 2.5D aksiyon oyunu. Her biri kendi mekaniğine sahip on diyar, Aku'nun Gölgesi ve üç evreli Aku; albüm kapağı estetiğinde özgün tablolar ve dövüşe göre değişen özgün müzikle. Resmi olmayan, bağımsız bir hayran oyunudur.",
-    platform: "Web · Masaüstü · Yerel iki oyunculu",
-    status: "Canlı · v3.1.0",
+      "Hz. Ali ve Samuray Jack'in aynı klavyede ya da iki gamepad ile yönetildiği yerel iki oyunculu 2.5D aksiyon oyunu. Her biri kendi mekaniğine sahip on diyar, Aku'nun Gölgesi ve üç evreli Aku; albüm kapağı estetiğinde özgün tablolar ve dövüşe göre değişen özgün müzikle. Tarayıcıda ilk iki diyarı kapsayan demo oynanabilir; tam sürüm itch.io'dan Windows için indirilip bilgisayara kurulur. Resmi olmayan, bağımsız bir hayran oyunudur.",
+    platform: "Web · Windows · Yerel iki oyunculu",
+    status: "Canlı demo · v3.2.0",
     role: "Bağımsız oyun tasarımı · Savaş, ilerleme ve boss sistemleri",
     tools: ["React", "TypeScript", "React Three Fiber", "Three.js"],
     highlights: [
@@ -176,6 +190,8 @@ export const projects: Project[] = [
       "Üçlü saldırı zinciri, Çifte Hamle ve mermi savuşturma; zaman portalıyla biten final",
     ],
     href: "https://merbut.vercel.app/",
+    ctaLabel: "Demoyu web'de oyna",
+    purchase: { href: MERBUT_ITCH_URL, label: "Tam sürümü indir", store: "itch.io" },
     images: [
       {
         src: "/project-previews/merbut-menu.png",

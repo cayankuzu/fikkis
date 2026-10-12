@@ -16,6 +16,7 @@ import {
   IconArrowLeft,
   IconArrowRight,
   IconArrowUpRight,
+  IconBag,
   IconCheck,
   IconClose,
   IconDoc,
@@ -48,6 +49,7 @@ const actionIcons: Record<ProjectAction["icon"], ReactNode> = {
   doc: <IconDoc size={16} />,
   download: <IconDownload size={16} />,
   video: <IconVideo size={16} />,
+  bag: <IconBag size={16} />,
 };
 
 function ActionLink({ action }: { action: ProjectAction }) {
@@ -139,6 +141,10 @@ export function ProjectSheet({
   const actions = shown ? getProjectActions(shown) : [];
   const isGated = Boolean(shown?.desktopOnly && isLimitedDevice);
   const primaryHref = actions.find((action) => action.variant === "primary")?.href;
+  // Satın alma telefondan da yapılabilir; oyun sonra bilgisayara indirilir.
+  const gatePurchases = actions.filter(
+    (action) => action.purchase && action.variant === "secondary",
+  );
 
   const projectUrl = (item: Project) =>
     `${window.location.origin}${window.location.pathname}#proje-${item.id}`;
@@ -243,6 +249,9 @@ export function ProjectSheet({
                             {copied === "gate" ? <IconCheck size={16} /> : <IconLink size={16} />}
                             {copied === "gate" ? "Kopyalandı" : "Bağlantıyı kopyala"}
                           </button>
+                          {gatePurchases.map((action) => (
+                            <ActionLink key={action.href} action={action} />
+                          ))}
                           <a
                             className="button button-ghost"
                             href={primaryHref}
