@@ -10,10 +10,11 @@
   taken on 2026-10-01 with real swings, carries and physics (a sledgehammer hit on a vase, the
   room after a session, the street with the rage room and shops, carrying a piece to the street
   container)
-- `strolly-blackhole.jpg`, `strolly-tekerrur.jpg`, `strolly-emanet.jpg`, `strolly-ofke.jpg`,
-  `strolly-stories.jpg`: in-browser captures of STROLLY v1.0.0 (`strolly-seven.vercel.app`, same
-  build run locally), taken on 2026-10-01 at 1600×900 (YAŞAMAK's event horizon, TEKERRÜR's
-  observatory, an afternoon in EMANET, the street outside ÖFKE NÖBETİ, the story select screen)
+- `strolly-tekerrur.jpg`, `strolly-ote.jpg`, `strolly-paralel.jpg`, `strolly-durum.jpg`,
+  `strolly-yasamak.jpg`, `strolly-tekayak.jpg`, `strolly-takinti.jpg`, `strolly-stories.jpg`:
+  in-browser captures of STROLLY 2.0 beta (`strolly-seven.vercel.app`, same build run locally),
+  taken on 2026-10-13 at 1600×900 (TEKERRÜR's forest room, ÖTE's ship, PARALEL-LEŞ's swing,
+  DURUM's electron, YAŞAMAK's cafe, TEK AYAK's reveal, TAKINTI's shadow, the story select)
 - `dream-lines.jpg`, `dream-chair.jpg`, `dream-print.jpg`, `dream-moon.jpg`, `dream-photograph.jpg`:
   in-browser captures of The Dream of the Photo (`the-dream-of-the-photo.vercel.app`, same build run
   locally), taken on 2026-10-12 at 1600×900 (the frozen rain under the washing lines of photographs,

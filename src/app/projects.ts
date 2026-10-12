@@ -255,40 +255,53 @@ export const projects: Project[] = [
     featured: true,
     category: "game",
     title: "STROLLY",
-    hook: "Kaydırdıkça zaman akar, baktıkça anlam değişir: içinde 360° dönebildiğin altı kısa hikâye.",
+    hook: "Kaydırdıkça zaman akar, baktıkça anlam değişir: içinde 360° dönebildiğin dokuz kısa hikâye.",
     description:
-      "Kaydırma hareketiyle ilerleyen, sinematik ve etkileşimli altı bilimkurgu hikâyesi: TEKERRÜR, EMANET, ÖFKE NÖBETİ, YAŞAMAK, KALAN ve EŞİK. Kaydırmak zamandır; sürükleyerek sahnenin içinde 360° dönersin ve bazı ayrıntılar yalnızca arkanda durur. Okur yer yer bir sisteme soru sorar ya da karar verir; cevaplar sonraki satırları, sahneyi ve sesi değiştirir. Bütün modeller, dokular, ekranlar ve sesler kodla üretilir, hazır bir varlık kullanılmaz.",
+      "Kaydırma hareketiyle ilerleyen, sinematik ve etkileşimli dokuz kısa hikâye: YAŞAMAK, ÖTE, TEK AYAK, ÖFKESEL DENEYİM SİMÜLASYONU, TAKINTI, PARALEL-LEŞ, TEKERRÜR, BEYİN-KÖKÜ ve DURUM; hepsi yazarın kendi metinlerinden. Kaydırmak zamandır; sürükleyerek sahnenin içinde 360° dönersin ve bazı ayrıntılar yalnızca arkanda durur. Okur yer yer bir makineye soru sorar ya da karar verir; cevaplar sonraki satırları, sahneyi ve sesi değiştirir. Karakterler, ekranlar ve bütün sesler kodla üretilir; modeller, dokular ve ışık CC0 taramalardır (Poly Haven). Türkçe ve İngilizce.",
     platform: "Web · Masaüstü ve mobil",
     status: "Canlı",
     role: "Bağımsız anlatı oyunu · Yazım ve sahneleme · 3B istemci ve ses",
     tools: ["Next.js", "TypeScript", "Three.js/WebGL", "Web Audio", "GSAP · Lenis"],
     highlights: [
-      "Altı hikâye, her biri 8–10 bölüm; seçimler, günlük, keşifler ve bölüm kayıtları",
-      "Prosedürel PBR yüzeyler, iskeletli karakterler ve uzamsal ses; dışarıdan hiçbir görsel ya da ses yok",
+      "Dokuz hikâye, her biri satır satır sahneye bağlı bir senaryoyla; seçimler, günlük, keşifler ve bölüm kayıtları",
+      "Gerçek CC0 modeller ve taranmış yüzeyler, kodla üretilen karakterler ve uzamsal ses; kare kare doğrulanmış senkron",
+      "Türkçe ve İngilizce; erişilebilirlik ayarları ve WebGL'siz metin yolu",
     ],
     href: "https://strolly-seven.vercel.app/",
     ctaLabel: "Hikâyeleri oku",
     sourceUrl: "https://github.com/cayankuzu/strolly",
     images: [
       {
-        src: "/project-previews/strolly-blackhole.jpg",
-        caption: "YAŞAMAK: kalan süreyle bir kara deliğin olay ufkuna",
-      },
-      {
         src: "/project-previews/strolly-tekerrur.jpg",
-        caption: "TEKERRÜR: DURUM gözlemevinde gece, sunucu salonu camın ardında",
+        caption: "TEKERRÜR: duvarları ormana açılan oda; ekran duvarlarında gerçek bir 360° fotoğraf",
       },
       {
-        src: "/project-previews/strolly-emanet.jpg",
-        caption: "EMANET: Ege'nin son gününden bir ikindi, bellekten yeniden kurulmuş",
+        src: "/project-previews/strolly-ote.jpg",
+        caption: "ÖTE: galaksinin merkezine giden gemi, arkasında küçülen Dünya",
       },
       {
-        src: "/project-previews/strolly-ofke.jpg",
-        caption: "ÖFKE NÖBETİ: oturumdan sonra sokak; pano şiddetin azaldığını söylüyor",
+        src: "/project-previews/strolly-paralel.jpg",
+        caption: "PARALEL-LEŞ: uçurumun kenarına kurulmuş bir salıncak",
+      },
+      {
+        src: "/project-previews/strolly-durum.jpg",
+        caption: "DURUM: her şeyin durumunu bilen makineye tek bir elektron soruluyor",
+      },
+      {
+        src: "/project-previews/strolly-yasamak.jpg",
+        caption: "YAŞAMAK: internet kafede süresi dolmak üzere olan bir çocuk",
+      },
+      {
+        src: "/project-previews/strolly-tekayak.jpg",
+        caption: "TEK AYAK: çöp köşesindeki ceza; bütün sınıf Eren'e bakıyor",
+      },
+      {
+        src: "/project-previews/strolly-takinti.jpg",
+        caption: "TAKINTI: yarı açık kapıdan duvara vuran gölge",
       },
       {
         src: "/project-previews/strolly-stories.jpg",
-        caption: "Altı hikâyenin seçim ekranı",
+        caption: "Dokuz hikâyenin seçim ekranı",
       },
     ],
     tone: "navy",
