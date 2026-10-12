@@ -3,6 +3,7 @@ import {
   IconArrowUpRight,
   IconGithub,
   IconInstagram,
+  IconItch,
   IconKaggle,
   IconLinkedIn,
 } from "./icons";
@@ -27,6 +28,12 @@ export const contactLinks: {
     handle: "@cayankuzu",
     href: "https://github.com/cayankuzu",
     icon: <IconGithub size={18} />,
+  },
+  {
+    label: "itch.io",
+    handle: "@memode",
+    href: "https://memode.itch.io/",
+    icon: <IconItch size={18} />,
   },
   {
     label: "Instagram",

@@ -79,6 +79,18 @@ export function IconKaggle(props: IconProps) {
   );
 }
 
+/** itch.io: tenteli dükkân ve oyun kolu. */
+export function IconItch(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M5 4h14l2 4.5a2.25 2.25 0 0 1-4.5 0 2.25 2.25 0 0 1-4.5 0 2.25 2.25 0 0 1-4.5 0 2.25 2.25 0 0 1-4.5 0z" />
+      <path d="M4.5 12v6.5A1.5 1.5 0 0 0 6 20h12a1.5 1.5 0 0 0 1.5-1.5V12" />
+      <path d="M8 15.5h3M9.5 14v3" />
+      <circle cx="15.5" cy="15.5" r=".6" fill="currentColor" />
+    </Stroke>
+  );
+}
+
 export function IconMail(props: IconProps) {
   return (
     <Stroke {...props}>
