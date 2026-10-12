@@ -29,6 +29,7 @@ import {
   IconVideo,
 } from "./icons";
 import { MediaViewer } from "./MediaViewer";
+import { SourceLink } from "./SourceLink";
 
 type ProjectSheetProps = {
   project: Project | null;
@@ -251,14 +252,16 @@ export function ProjectSheet({
                           </a>
                         </>
                       ) : null}
+                      <SourceLink href={shown.sourceUrl} />
                     </div>
                   </div>
                 </div>
-              ) : actions.length ? (
+              ) : actions.length || shown.sourceUrl ? (
                 <div className="actions">
                   {actions.map((action) => (
                     <ActionLink key={action.href + action.label} action={action} />
                   ))}
+                  <SourceLink href={shown.sourceUrl} />
                 </div>
               ) : null}
 

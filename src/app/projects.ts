@@ -49,6 +49,8 @@ export type Project = {
   secondaryLabel?: string;
   /** Klavye, fare ve geniş ekran gerektiren deneyimler. */
   desktopOnly?: boolean;
+  /** Herkese açık GitHub deposu; detay panelinde "Kaynak kodu" butonu olur. */
+  sourceUrl?: string;
   /** İlk görsel kart kapağıdır. */
   images: ProjectImage[];
   /** Kartta üzerine gelince oynayan sessiz önizleme videosu. */
@@ -81,6 +83,7 @@ export const projects: Project[] = [
     ],
     href: "https://trai-theta.vercel.app/",
     ctaLabel: "Demoyu dene",
+    sourceUrl: "https://github.com/cayankuzu/trAI",
     images: [
       {
         src: "/project-previews/trai.png",
@@ -115,6 +118,7 @@ export const projects: Project[] = [
     ],
     href: "https://mrap-eta.vercel.app/",
     ctaLabel: "Demoyu dene",
+    sourceUrl: "https://github.com/cayankuzu/mrap",
     images: [
       {
         src: "/project-previews/mrap.png",
@@ -142,6 +146,7 @@ export const projects: Project[] = [
       "Savaş ve boyama modları: kale ele geçirmek yeni doğuş noktası açar, harita dolunca savaş biter",
     ],
     href: "https://bibish-iota.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/bibish",
     images: [
       {
         src: "/project-previews/bibish.png",
@@ -184,6 +189,7 @@ export const projects: Project[] = [
       },
     ],
     video: "/project-previews/videos/merbut-gameplay.mp4",
+    sourceUrl: "https://github.com/cayankuzu/merbut",
     tone: "red",
   },
   {
@@ -205,6 +211,7 @@ export const projects: Project[] = [
     ],
     href: "https://stresst-tan.vercel.app/",
     ctaLabel: "Demoyu oyna",
+    sourceUrl: "https://github.com/cayankuzu/sTressT",
     images: [
       {
         src: "/project-previews/stresst-smash.jpg",
@@ -243,8 +250,7 @@ export const projects: Project[] = [
     ],
     href: "https://strolly-seven.vercel.app/",
     ctaLabel: "Hikâyeleri oku",
-    secondaryHref: "https://github.com/cayankuzu/strolly",
-    secondaryLabel: "Kaynak kodu incele",
+    sourceUrl: "https://github.com/cayankuzu/strolly",
     images: [
       {
         src: "/project-previews/strolly-blackhole.jpg",
@@ -287,8 +293,7 @@ export const projects: Project[] = [
     ],
     href: "https://the-dream-of-the-photo.vercel.app/",
     ctaLabel: "Rüyaya gir",
-    secondaryHref: "https://github.com/cayankuzu/the-dream-of-the-photo",
-    secondaryLabel: "Kaynak kodu incele",
+    sourceUrl: "https://github.com/cayankuzu/the-dream-of-the-photo",
     images: [
       {
         src: "/project-previews/dream-lines.jpg",
@@ -331,6 +336,7 @@ export const projects: Project[] = [
     ],
     href: "https://remember-you-must-die-web.vercel.app/",
     ctaLabel: "Deneyime gir",
+    sourceUrl: "https://github.com/cayankuzu/remember_you_must_die_web",
     images: [
       {
         src: "/project-previews/remember-ouroboros.png",
@@ -398,6 +404,7 @@ export const projects: Project[] = [
     ],
     href: "https://audio-room-ecru.vercel.app/",
     ctaLabel: "Dünyaları keşfet",
+    sourceUrl: "https://github.com/cayankuzu/AudioRoom",
     images: [
       {
         src: "/project-previews/audioroom-mukemmel-bosluk.png",
@@ -437,6 +444,7 @@ export const projects: Project[] = [
     ],
     href: "https://cayankuzucv.vercel.app/",
     ctaLabel: "CV'yi görüntüle",
+    sourceUrl: "https://github.com/cayankuzu/cayankuzucv",
     images: [
       {
         src: "/project-previews/cayankuzu-cv.png",
@@ -639,6 +647,7 @@ export const projects: Project[] = [
       "Deste bittiğinde en öndeki asın kazandığı responsive ve dokunmatik oyun",
     ],
     href: "https://card-race-game.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Card-Race-Game",
     images: [
       {
         src: "/project-previews/card-race.png",
@@ -663,6 +672,7 @@ export const projects: Project[] = [
       "İsabet istatistikleri ile birbirinden bağımsız müzik ve SFX kontrolleri",
     ],
     href: "https://battleship-pygame.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Battleship-Pygame",
     images: [
       {
         src: "/project-previews/battleship.png",
@@ -688,6 +698,7 @@ export const projects: Project[] = [
       "Seçilen kartı iki saniye gösteren, mobilde de oynanabilen etkileşim",
     ],
     href: "https://old-maid-card-game.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Old-Maid-Card-Game",
     images: [
       {
         src: "/project-previews/old-maid.png",
@@ -713,6 +724,7 @@ export const projects: Project[] = [
       "Kazanan hücre vurgusu ve oturumluk X/O/beraberlik skoru",
     ],
     href: "https://tic-tac-toe-game-delta-jade.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/TicTacToe-Game",
     images: [
       {
         src: "/project-previews/tictactoe.png",
@@ -738,6 +750,7 @@ export const projects: Project[] = [
       "İçerik/skor yönetimi, IP-cihaz engelleme ve audit kayıtları",
     ],
     href: "https://google-history-clear-game.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Google-History-Clear-Game",
     images: [
       {
         src: "/project-previews/son-40-saniye.png",
@@ -770,6 +783,7 @@ export const projects: Project[] = [
       "Altı karakter; her zorluk düzeyinde 99'ar soru ve tıklanabilir kaynaklar",
     ],
     href: "https://hangman.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/hangman",
     images: [
       {
         src: "/project-previews/asmaca-idle.png",
@@ -795,6 +809,7 @@ export const projects: Project[] = [
       "Tur ilerledikçe büyüyen canavar kalabalığı ve dokunmatik kontrol",
     ],
     href: "https://monster-wrangler.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Monster-Wrangler",
     images: [
       {
         src: "/project-previews/monster-wrangler.png",
@@ -820,6 +835,7 @@ export const projects: Project[] = [
       "Pointer/touch kontrolü ile özgün ses ve müzik",
     ],
     href: "https://catch-the-clown.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Catch-the-Clown",
     images: [
       {
         src: "/project-previews/catch-the-clown-gameplay.png",
@@ -845,6 +861,7 @@ export const projects: Project[] = [
       "Boş hücreye güvenli elma üretimi ve bağımsız ses kontrolü",
     ],
     href: "https://snake-game-seven-gray.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Snake-Game",
     images: [
       {
         src: "/project-previews/snake-gameplay.png",
@@ -871,6 +888,7 @@ export const projects: Project[] = [
       "Hız ile yakalama mesafesine göre hesaplanan dinamik puan",
     ],
     href: "https://burger-dog.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Burger-Dog",
     images: [
       {
         src: "/project-previews/burger-dog-gameplay.png",
@@ -896,6 +914,7 @@ export const projects: Project[] = [
       "Klavye, ekran tuşları ve sürükleme kontrolü",
     ],
     href: "https://feed-the-dragon.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Feed-the-Dragon",
     images: [
       {
         src: "/project-previews/feed-the-dragon-gameplay.png",
