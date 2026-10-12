@@ -178,6 +178,7 @@ const featuredOrder = [
   "merbut",
   "stresst",
   "strolly",
+  "dream-of-the-photo",
   "atkafasi",
   "trai",
   "etkinlink",

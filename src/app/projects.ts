@@ -270,6 +270,50 @@ export const projects: Project[] = [
     tone: "navy",
   },
   {
+    id: "dream-of-the-photo",
+    featured: true,
+    category: "game",
+    title: "The Dream of the Photo",
+    hook: "Bir fotoğrafın içine gir; kaydırdıkça rüyasında yürü.",
+    description:
+      "Gece bir sokakta bir fotoğrafçı tek bir anlık fotoğraf çeker. Kaydırmak o anın zamanıdır: kamera göze kalkar, deklanşör iner, baskı elde banyo olur; sonra fotoğrafın içine girer ve rüyasında yürürsün. Havada donmuş yağmur, iplere asılı ileriden fotoğraflar, hatırladığın büyüklükte bir sandalye, yerçekimini unutan eşyalar ve sokağın sonunda, içinden ayna gibi bir denize geçtiğin dev bir fotoğraf; orada ay da bir fotoğraftır. Uzun bir bakışla bulunan sekiz anı, bölümler ve Türkçe ile İngilizce anlatım.",
+    platform: "Web · Masaüstü ve mobil",
+    status: "Canlı",
+    role: "Bağımsız sinematik deneyim · Yazım ve sahneleme · 3B istemci ve ses",
+    tools: ["TypeScript", "Three.js/WebGL", "Vite", "Web Audio"],
+    highlights: [
+      "Fotoğraf sahnenin gerçek bir render'ı: baskıdan dünyaya, dev fotoğraftan denize dikişsiz geçiş",
+      "CC0 ve MIT lisanslı gerçek 3B varlıklar, mocap fotoğrafçı, düzlemsel yansımalı ayna deniz",
+    ],
+    href: "https://the-dream-of-the-photo.vercel.app/",
+    ctaLabel: "Rüyaya gir",
+    secondaryHref: "https://github.com/cayankuzu/the-dream-of-the-photo",
+    secondaryLabel: "Kaynak kodu incele",
+    images: [
+      {
+        src: "/project-previews/dream-lines.jpg",
+        caption: "Donmuş yağmur ve iplerde birkaç adım ileriden çekilmiş fotoğraflar",
+      },
+      {
+        src: "/project-previews/dream-chair.jpg",
+        caption: "Hatırladığın büyüklükteki sandalyenin altından geçiş",
+      },
+      {
+        src: "/project-previews/dream-print.jpg",
+        caption: "Sokağın sonunda bekleyen dev fotoğraf ve geri giden saat",
+      },
+      {
+        src: "/project-previews/dream-moon.jpg",
+        caption: "Ayna deniz: ay, ayrıldığın anın bir fotoğrafı",
+      },
+      {
+        src: "/project-previews/dream-photograph.jpg",
+        caption: "Fotoğrafçının elinde banyo olan baskı",
+      },
+    ],
+    tone: "violet",
+  },
+  {
     id: "remember",
     category: "web",
     desktopOnly: true,

@@ -14,6 +14,11 @@
   `strolly-stories.jpg`: in-browser captures of STROLLY v1.0.0 (`strolly-seven.vercel.app`, same
   build run locally), taken on 2026-10-01 at 1600×900 (YAŞAMAK's event horizon, TEKERRÜR's
   observatory, an afternoon in EMANET, the street outside ÖFKE NÖBETİ, the story select screen)
+- `dream-lines.jpg`, `dream-chair.jpg`, `dream-print.jpg`, `dream-moon.jpg`, `dream-photograph.jpg`:
+  in-browser captures of The Dream of the Photo (`the-dream-of-the-photo.vercel.app`, same build run
+  locally), taken on 2026-10-12 at 1600×900 (the frozen rain under the washing lines of photographs,
+  walking under the giant chair, the giant print at the end of the alley, the mirror sea under the
+  photograph moon, the print developing in the photographer's hand)
 - `bibish.png`: owner-supplied local gameplay capture from Bibish
 - `remember-ouroboros.png`: owner-supplied capture from `remember-you-must-die-web.vercel.app`
 - `desain.png`: live project at `des-ai-n.vercel.app`
