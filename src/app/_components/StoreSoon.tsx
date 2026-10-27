@@ -3,9 +3,9 @@ import { IconApple, IconGooglePlay } from "./icons";
 
 export type StoreName = "App Store" | "Google Play";
 
-/** Mağaza bağlantıları detay panelinde her zaman önce gelir. */
+/** Mağaza bağlantıları ve doğrudan kurulan APK detay panelinde her zaman önce gelir. */
 export function isStoreAction(action: ProjectAction) {
-  return action.icon === "apple" || action.icon === "play";
+  return action.icon === "apple" || action.icon === "play" || action.href.endsWith(".apk");
 }
 
 /** Henüz yayımlanmamış mağaza sürümü için tıklanamaz "Çok yakında" rozeti. */

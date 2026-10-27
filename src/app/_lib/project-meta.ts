@@ -121,6 +121,17 @@ function getLinkActions(project: Project): ProjectAction[] {
       });
     });
 
+    // Mağaza sürümü yokken ana yol APK'dır; varsa mağazanın ardından ikincil seçenek olur.
+    if (project.apkUrl) {
+      actions.push({
+        label: "APK indir",
+        href: project.apkUrl,
+        variant: project.storeLinks?.length ? "secondary" : "primary",
+        icon: "download",
+        external: true,
+      });
+    }
+
     if (project.href) {
       actions.push({
         label: project.storeLinks?.length ? "Figma prototipi" : defaultCtaLabel(project),

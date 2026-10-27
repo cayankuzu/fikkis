@@ -44,6 +44,8 @@ export type Project = {
   ctaLabel?: string;
   websiteUrl?: string;
   storeLinks?: { label: string; href: string }[];
+  /** Mağaza dışında doğrudan kurulabilen Android paketi; detay panelinde "APK indir" butonu olur. */
+  apkUrl?: string;
   /**
    * Satın alma / indirme sayfası (ör. itch.io). Varsa kartın kapağı ana bağlantı
    * ve satın alma seçeneklerini açar; detay panelinde ikincil buton olur.
@@ -674,7 +676,7 @@ export const projects: Project[] = [
     description:
       "Fotoğraf, video, piksel çizim, kayan yazı, geri sayım ve QR kartlarını Galaxy Z Flip'in kapak ekranına taşıyan Android uygulaması. Telefon açıkken arka ekran içerik gösterir; Mini kapak penceresiyle başka uygulamalarda da açık kalır ve iç ekranı kapağa yansıtır. Katlıyken kilit ekranının önünde ekran koruyucu olur.",
     platform: "Android · Galaxy Z Flip",
-    status: "Geliştiriliyor · Google Play'de yakında",
+    status: "Canlı · APK ile indirilebilir · Google Play'de yakında",
     role: "Ürün ve UI/UX tasarımı · Android geliştirme",
     tools: [
       "Kotlin",
@@ -687,6 +689,7 @@ export const projects: Project[] = [
       "Açık telefonda arka ekran: Mini kapak ile diğer uygulamalarda da açık kalır; ekran yansıtmada kaydırarak gezinme ve yakınlaştırma",
       "Katlıyken kilit ekranının önünde ekran koruyucu; kapaktan menü, grup, kolaj, geri sayım, QR kartı ve oyuncaklar",
     ],
+    apkUrl: "https://github.com/cayankuzu/Zlip/releases/latest/download/Zlip.apk",
     websiteUrl: "https://zlip-web.vercel.app/",
     sourceUrl: "https://github.com/cayankuzu/Zlip",
     images: [
