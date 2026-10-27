@@ -688,6 +688,7 @@ export const projects: Project[] = [
       "Katlıyken kilit ekranının önünde ekran koruyucu; kapaktan menü, grup, kolaj, geri sayım, QR kartı ve oyuncaklar",
     ],
     websiteUrl: "https://zlip-web.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/Zlip",
     images: [
       {
         src: "/project-previews/zlip-1.png",
