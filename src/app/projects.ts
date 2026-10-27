@@ -664,6 +664,47 @@ export const projects: Project[] = [
     tone: "ink",
   },
   {
+    id: "zlip",
+    featured: true,
+    category: "mobile",
+    tags: ["Android"],
+    upcomingStores: ["Google Play"],
+    title: "Zlip",
+    hook: "Galaxy Z Flip'in kapak ekranını canlı bir vitrine dönüştür.",
+    description:
+      "Fotoğraf, video, piksel çizim, kayan yazı, geri sayım ve QR kartlarını Galaxy Z Flip'in kapak ekranına taşıyan Android uygulaması. Telefon açıkken arka ekran içerik gösterir; Mini kapak penceresiyle başka uygulamalarda da açık kalır ve iç ekranı kapağa yansıtır. Katlıyken kilit ekranının önünde ekran koruyucu olur.",
+    platform: "Android · Galaxy Z Flip",
+    status: "Geliştiriliyor · Google Play'de yakında",
+    role: "Ürün ve UI/UX tasarımı · Android geliştirme",
+    tools: [
+      "Kotlin",
+      "Jetpack Compose",
+      "Jetpack WindowManager",
+      "Media3",
+      "MediaProjection",
+    ],
+    highlights: [
+      "Açık telefonda arka ekran: Mini kapak ile diğer uygulamalarda da açık kalır; ekran yansıtmada kaydırarak gezinme ve yakınlaştırma",
+      "Katlıyken kilit ekranının önünde ekran koruyucu; kapaktan menü, grup, kolaj, geri sayım, QR kartı ve oyuncaklar",
+    ],
+    websiteUrl: "https://zlip-web.vercel.app/",
+    images: [
+      {
+        src: "/project-previews/zlip-1.png",
+        caption: "Ana ekran: kapakta gösterilen içerik ve kontroller",
+      },
+      {
+        src: "/project-previews/zlip-2.png",
+        caption: "Kapağa ekle: galeriden, çizim, yazı, kolaj, grup ve akıllı kartlar",
+      },
+      {
+        src: "/project-previews/zlip-3.png",
+        caption: "Ayarlar: kapak, katlıyken ve kontroller",
+      },
+    ],
+    tone: "blue",
+  },
+  {
     id: "card-race",
     category: "game",
     title: "Card Race Game",
