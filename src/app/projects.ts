@@ -688,6 +688,7 @@ export const projects: Project[] = [
     highlights: [
       "Açık telefonda arka ekran: Mini kapak ile diğer uygulamalarda da açık kalır; ekran yansıtmada kaydırarak gezinme ve yakınlaştırma",
       "Katlıyken kilit ekranının önünde ekran koruyucu; kapaktan menü, grup, kolaj, geri sayım, QR kartı ve oyuncaklar",
+      "Gruplarda adım adım gezinme ve tek dokunuşla gruptan çıkış; fotoğraf ve videoda kapakta yakınlaştırma, Sığdır/Doldur; uzun videolar baştan sona",
     ],
     apkUrl: "https://github.com/cayankuzu/Zlip/releases/latest/download/Zlip.apk",
     websiteUrl: "https://zlip-web.vercel.app/",
