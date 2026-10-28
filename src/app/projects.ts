@@ -83,6 +83,43 @@ export const MERBUT_ITCH_URL = "https://memode.itch.io/merbut";
 
 export const projects: Project[] = [
   {
+    id: "beatter",
+    featured: true,
+    category: "game",
+    tags: ["Yapay zekâ", "Bilgisayarlı Görü", "Oyun Teorisi"],
+    title: "beaTTer",
+    hook: "360° biyomekanik ve derin öğrenmeyle insanlara karşı asla kaybetmeyen Taş-Kağıt-Makas arenası.",
+    description:
+      "Tokyo Üniversitesi Janken Robotu ve Zhejiang Üniversitesi bilişsel oyun teorisi deneylerinden ilham alan; 360° koordinatsız 3D kinematik, tendon açılma ivmesi (-50ms erken tahmin) ve Win-Stay Lose-Shift Markov analitiğiyle donatılmış 5 turluk yapay zekâ arenası.",
+    platform: "Web (Tarayıcı & Mobil Kamera) + Donanım (Arduino Robot Kol)",
+    status: "Canlı Web Sürümü · v2.0",
+    role: "Biyomekanik modelleme · Computer Vision & ML · UI/UX & WebRTC",
+    tools: [
+      "MediaPipe",
+      "TensorFlow/Tasks Vision",
+      "Web Audio API",
+      "HTML5 Canvas",
+      "Python",
+      "Arduino",
+    ],
+    highlights: [
+      "360° koordinatsız 3D kiriş ve eklem açıları ile her el açısından kusursuz tanıma",
+      "3'ten 4'e inişte tendon açılma hızından 50ms önce erken hamle tahmini",
+      "Win-Stay Lose-Shift bilişsel Markov matrisi ve 5 turluk seri şampiyonluk sistemi",
+      "Canlı telemetri, parmak fleksiyon dökümü ve robot kol senkronizasyonu",
+    ],
+    href: "https://beatter.vercel.app/",
+    ctaLabel: "Arenada Oyna",
+    sourceUrl: "https://github.com/cayankuzu/beaTTer",
+    images: [
+      {
+        src: "/project-previews/beatter.png",
+        caption: "beaTTer canlı 5 turluk yapay zekâ arenası ve gerçek zamanlı analist paneli",
+      },
+    ],
+    tone: "amber",
+  },
+  {
     id: "trai",
     featured: true,
     category: "web",
