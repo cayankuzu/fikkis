@@ -687,7 +687,7 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Açık telefonda arka ekran: Mini kapak ile diğer uygulamalarda da açık kalır; ekran yansıtmada kaydırarak gezinme ve yakınlaştırma",
-      "Katlıyken kilit ekranının önünde ekran koruyucu; kapaktan Odak Sayacı (Pomodoro), Kronometre, Stüdyo Işığı (Ring Light / Softbox), grup, kolaj, geri sayım, QR kartı ve etkileşimli oyunlar",
+      "Açık telefon ve katlı kapak ekranında %100 birleşik UI/UX deneyimi, kilit ekranı önünde ekran koruyucu, sadeleştirilmiş üst ve alt kontroller, Odak Sayacı (Pomodoro), Kronometre, Çark, Zar, Yazı Tura ve Sayaç",
       "Gruplarda canlı video önizleme, dâhili galeri ve cihaza geri aktarma sistemi, arka ekranla eş zamanlı medya oynatıcı (`dk:sn` ilerleme çubuğu) ve veri kaybı olmadan uygulama içi tek tıkla OTA güncelleme",
     ],
     apkUrl: "https://github.com/cayankuzu/Zlip/releases/latest/download/Zlip.apk",
