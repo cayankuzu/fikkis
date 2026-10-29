@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent, MouseEvent } from "react";
 import { flushSync } from "react-dom";
 import { replaceHash, useLocationHash } from "../_lib/browser";
+import { useI18n } from "../_lib/i18n";
 import { arrangeProjects, categoryLabels, categoryOrder } from "../_lib/project-meta";
+import { getLocalizedProjects } from "../_lib/projects-en";
 import { scoreProjects } from "../_lib/search";
 import type { Project, ProjectCategory } from "../projects";
 import { IconClose, IconSearch } from "./icons";
@@ -22,7 +24,10 @@ function isTypingTarget(target: EventTarget | null) {
   );
 }
 
-export function ProjectGallery({ projects }: { projects: Project[] }) {
+export function ProjectGallery({ projects: rawProjects }: { projects: Project[] }) {
+  const { locale, t } = useI18n();
+  const projects = getLocalizedProjects(rawProjects, locale);
+
   const [filter, setFilter] = useState<FilterValue>("all");
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
@@ -39,8 +44,11 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
   const activeProject = projects.find((project) => project.id === activeId) ?? null;
 
   const filters: { value: FilterValue; label: string }[] = [
-    { value: "all", label: "Tümü" },
-    ...categoryOrder.map((value) => ({ value, label: categoryLabels[value] })),
+    { value: "all", label: t.projectsSection.allFilter },
+    ...categoryOrder.map((value) => ({
+      value,
+      label: t.projectsSection.categories[value] ?? categoryLabels[value],
+    })),
   ];
 
   const { featured, archive } = arrangeProjects(projects);
@@ -76,9 +84,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
       : ordered;
 
   // Ekran okuyucu her tuşta değil, yazma durunca sonucu duyar.
-  const liveText = isSearching
-    ? `“${searchText}” için ${visibleProjects.length} proje bulundu`
-    : `${visibleProjects.length} proje gösteriliyor`;
+  const liveText = t.projectsSection.search.announcement(searchText, visibleProjects.length);
   const [announcement, setAnnouncement] = useState(liveText);
 
   useEffect(() => {
@@ -218,7 +224,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               onClick={toggleSearch}
             >
               <IconSearch size={15} />
-              Ara
+              {t.projectsSection.search.btn}
             </button>
           </div>
 
@@ -227,7 +233,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             role="search"
           >
             <label className="srOnly" htmlFor="project-search">
-              Projelerde ara
+              {t.projectsSection.search.label}
             </label>
             <IconSearch size={17} className="searchIcon" />
             <input
@@ -238,7 +244,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               value={query}
               onChange={(event) => handleQuery(event.target.value)}
               onKeyDown={handleSearchKey}
-              placeholder="Proje, araç ya da alan ara"
+              placeholder={t.projectsSection.search.placeholder}
               autoComplete="off"
               spellCheck={false}
               enterKeyHint="search"
@@ -249,7 +255,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                 type="button"
                 className="searchClear"
                 onClick={() => clearSearch(true)}
-                aria-label="Aramayı temizle"
+                aria-label={t.projectsSection.search.clear}
               >
                 <IconClose size={14} />
               </button>
@@ -269,11 +275,16 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
           {isSearching ? (
             <p className="searchSummary">
               <span>
-                “{searchText}” için <strong>{visibleProjects.length}</strong> proje
-                {filter !== "all" ? ` · ${categoryLabels[filter]}` : ""}
+                {t.projectsSection.search.summary(
+                  searchText,
+                  visibleProjects.length,
+                  filter !== "all"
+                    ? t.projectsSection.categories[filter] ?? categoryLabels[filter]
+                    : undefined,
+                )}
               </span>
               <button type="button" className="textButton" onClick={() => clearSearch(false)}>
-                Aramayı temizle
+                {t.projectsSection.search.clear}
               </button>
             </p>
           ) : null}
@@ -282,7 +293,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             <>
               <section className="galleryGroup" aria-labelledby="group-featured">
                 <h3 className="galleryGroupTitle" id="group-featured">
-                  Seçili ürünler & interaktif deneyimler
+                  {t.projectsSection.groups.featured}
                   <span className="filterCount">{featured.length}</span>
                 </h3>
                 <div className="grid">
@@ -293,7 +304,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               </section>
               <section className="galleryGroup" aria-labelledby="group-archive">
                 <h3 className="galleryGroupTitle" id="group-archive">
-                  Laboratuvar: bilim, prototipler & mini oyunlar
+                  {t.projectsSection.groups.archive}
                   <span className="filterCount">{archive.length}</span>
                 </h3>
                 <div className="grid">
@@ -311,11 +322,11 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             </div>
           ) : (
             <div className="searchEmpty">
-              <strong>Sonuç bulunamadı</strong>
+              <strong>{t.projectsSection.search.emptyTitle}</strong>
               <p>
                 {otherCategoryMatches
-                  ? `Bu alanda “${searchText}” ile eşleşen proje yok, ama diğer alanlarda ${otherCategoryMatches} sonuç var.`
-                  : `“${searchText}” ile eşleşen proje yok. Başka bir kelime dene: oyun, Figma, harita…`}
+                  ? t.projectsSection.search.emptyOther(searchText, otherCategoryMatches)
+                  : t.projectsSection.search.emptyNone(searchText)}
               </p>
               <div className="actions">
                 {otherCategoryMatches ? (
@@ -324,7 +335,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                     className="button button-primary"
                     onClick={showAllCategories}
                   >
-                    Tüm alanlarda göster
+                    {t.projectsSection.search.showAllBtn}
                   </button>
                 ) : null}
                 <button
@@ -332,7 +343,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
                   className="button button-secondary"
                   onClick={() => clearSearch(true)}
                 >
-                  Aramayı temizle
+                  {t.projectsSection.search.clear}
                 </button>
               </div>
             </div>

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { copyText, useIsLimitedDevice } from "../_lib/browser";
+import { useI18n } from "../_lib/i18n";
+import { getLocalizedProject } from "../_lib/projects-en";
 import {
   categoryLabels,
   getProjectActions,
@@ -133,12 +135,15 @@ export function ProjectSheet({
     scrollRef.current?.scrollTo({ top: 0 });
   }, [project?.id]);
 
+  const { locale, t } = useI18n();
   const index = shown ? list.findIndex((item) => item.id === shown.id) : -1;
   const previous = index > 0 ? list[index - 1] : null;
   const next = index >= 0 && index < list.length - 1 ? list[index + 1] : null;
-  const status = shown ? getStatus(shown) : null;
-  const actions = shown ? getProjectActions(shown) : [];
-  const isGated = Boolean(shown?.desktopOnly && isLimitedDevice);
+
+  const localizedShown = shown ? getLocalizedProject(shown, locale) : null;
+  const status = localizedShown ? getStatus(localizedShown, locale) : null;
+  const actions = localizedShown ? getProjectActions(localizedShown, locale) : [];
+  const isGated = Boolean(localizedShown?.desktopOnly && isLimitedDevice);
   const primaryHref = actions.find((action) => action.variant === "primary")?.href;
   // Satın alma telefondan da yapılabilir; oyun sonra bilgisayara indirilir.
   const gatePurchases = actions.filter(
@@ -161,11 +166,11 @@ export function ProjectSheet({
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      {shown && status ? (
+      {localizedShown && status ? (
         <div className="sheetPanel">
           <header className="sheetBar">
             <p className="sheetBarLabel">
-              <span>{categoryLabels[shown.category]}</span>
+              <span>{t.projectsSection.categories[localizedShown.category] ?? categoryLabels[localizedShown.category]}</span>
               {index >= 0 ? (
                 <span className="sheetBarCount">
                   {String(index + 1).padStart(2, "0")} /{" "}
@@ -177,9 +182,9 @@ export function ProjectSheet({
               <button
                 type="button"
                 className="iconButton"
-                onClick={() => copy("page", projectUrl(shown))}
-                aria-label="Bu projenin bağlantısını kopyala"
-                title="Bağlantıyı kopyala"
+                onClick={() => copy("page", projectUrl(localizedShown))}
+                aria-label={t.sheet.copyProjectLink}
+                title={t.sheet.copyLink}
               >
                 {copied === "page" ? <IconCheck size={18} /> : <IconLink size={18} />}
               </button>
@@ -188,7 +193,7 @@ export function ProjectSheet({
                 className="iconButton"
                 disabled={!previous}
                 onClick={() => previous && onNavigate(previous)}
-                aria-label={previous ? `Önceki proje: ${previous.title}` : "Önceki proje yok"}
+                aria-label={previous ? `${t.sheet.prevProject}: ${previous.title}` : t.sheet.prevProject}
               >
                 <IconArrowLeft size={18} />
               </button>
@@ -197,7 +202,7 @@ export function ProjectSheet({
                 className="iconButton"
                 disabled={!next}
                 onClick={() => next && onNavigate(next)}
-                aria-label={next ? `Sonraki proje: ${next.title}` : "Sonraki proje yok"}
+                aria-label={next ? `${t.sheet.nextProject}: ${next.title}` : t.sheet.nextProject}
               >
                 <IconArrowRight size={18} />
               </button>
@@ -205,7 +210,7 @@ export function ProjectSheet({
                 type="button"
                 className="iconButton iconButton-close"
                 onClick={() => onClose()}
-                aria-label="Kapat"
+                aria-label={t.sheet.close}
               >
                 <IconClose size={18} />
               </button>
@@ -213,30 +218,27 @@ export function ProjectSheet({
           </header>
 
           <div className="sheetScroll" ref={scrollRef}>
-            <MediaViewer key={shown.id} project={shown} />
+            <MediaViewer key={localizedShown.id} project={localizedShown} />
 
             <div className="sheetIntro">
               <p className="sheetEyebrow">
-                <span className={`status status-${status.tone}`}>{shown.status}</span>
-                {shown.tags?.map((tag) => <span key={tag}>{tag}</span>)}
-                {shown.desktopOnly ? (
+                <span className={`status status-${status.tone}`}>{status.label}</span>
+                {localizedShown.tags?.map((tag) => <span key={tag}>{tag}</span>)}
+                {localizedShown.desktopOnly ? (
                   <span>
-                    <IconMonitor size={13} /> Masaüstü deneyimi
+                    <IconMonitor size={13} /> {t.sheet.desktopOnly}
                   </span>
                 ) : null}
               </p>
-              <h2 id="sheet-title">{shown.title}</h2>
-              <p className="sheetHook">{shown.hook}</p>
+              <h2 id="sheet-title">{localizedShown.title}</h2>
+              <p className="sheetHook">{localizedShown.hook}</p>
 
               {isGated ? (
                 <div className="gate">
                   <IconMonitor size={22} />
                   <div>
-                    <strong>Bu deneyim bilgisayar için tasarlandı</strong>
-                    <p>
-                      Klavye, fare ve geniş ekran gerektiriyor. Bağlantıyı
-                      kopyalayıp bilgisayarından açman en iyi sonucu verir.
-                    </p>
+                    <strong>{t.sheet.gateTitle}</strong>
+                    <p>{t.sheet.gateText}</p>
                     <div className="actions">
                       {primaryHref ? (
                         <>
@@ -246,7 +248,7 @@ export function ProjectSheet({
                             onClick={() => copy("gate", primaryHref)}
                           >
                             {copied === "gate" ? <IconCheck size={16} /> : <IconLink size={16} />}
-                            {copied === "gate" ? "Kopyalandı" : "Bağlantıyı kopyala"}
+                            {copied === "gate" ? t.sheet.copied : t.sheet.copyLink}
                           </button>
                           {gatePurchases.map((action) => (
                             <ActionLink key={action.href} action={action} />
@@ -257,20 +259,20 @@ export function ProjectSheet({
                             target="_blank"
                             rel="noreferrer"
                           >
-                            Yine de aç
+                            {t.sheet.openAnyway}
                           </a>
                         </>
                       ) : null}
-                      <SourceLink href={shown.sourceUrl} />
+                      <SourceLink href={localizedShown.sourceUrl} />
                     </div>
                   </div>
                 </div>
-              ) : actions.length || shown.sourceUrl || shown.upcomingStores?.length ? (
+              ) : actions.length || localizedShown.sourceUrl || localizedShown.upcomingStores?.length ? (
                 <div className="actions">
                   {actions.filter(isStoreAction).map((action) => (
                     <ActionLink key={action.href + action.label} action={action} />
                   ))}
-                  {shown.upcomingStores?.map((store) => (
+                  {localizedShown.upcomingStores?.map((store) => (
                     <ComingSoonStore key={store} store={store} />
                   ))}
                   {actions
@@ -278,25 +280,25 @@ export function ProjectSheet({
                     .map((action) => (
                       <ActionLink key={action.href + action.label} action={action} />
                     ))}
-                  <SourceLink href={shown.sourceUrl} />
+                  <SourceLink href={localizedShown.sourceUrl} />
                 </div>
               ) : null}
 
-              {shown.downloadStatus && !shown.storeLinks?.length ? (
-                <p className="sheetNote">{shown.downloadStatus}</p>
+              {localizedShown.downloadStatus && !localizedShown.storeLinks?.length ? (
+                <p className="sheetNote">{localizedShown.downloadStatus}</p>
               ) : null}
             </div>
 
             <div className="sheetGrid">
               <div className="sheetMain">
                 <section>
-                  <h3 className="sheetHeading">Proje hakkında</h3>
-                  <p className="sheetText">{shown.description}</p>
+                  <h3 className="sheetHeading">{t.sheet.aboutHeading}</h3>
+                  <p className="sheetText">{localizedShown.description}</p>
                 </section>
                 <section>
-                  <h3 className="sheetHeading">Öne çıkanlar</h3>
+                  <h3 className="sheetHeading">{t.sheet.highlightsHeading}</h3>
                   <ul className="sheetHighlights">
-                    {shown.highlights.map((highlight) => (
+                    {localizedShown.highlights.map((highlight) => (
                       <li key={highlight}>{highlight}</li>
                     ))}
                   </ul>
@@ -305,24 +307,24 @@ export function ProjectSheet({
 
               <dl className="facts">
                 <div>
-                  <dt>Rol</dt>
+                  <dt>{t.sheet.roleLabel}</dt>
                   <dd>
                     <ul className="factList">
-                      {shown.role.split(" · ").map((role) => (
+                      {localizedShown.role.split(" · ").map((role) => (
                         <li key={role}>{role}</li>
                       ))}
                     </ul>
                   </dd>
                 </div>
                 <div>
-                  <dt>Platform</dt>
-                  <dd>{shown.platform}</dd>
+                  <dt>{t.sheet.platformLabel}</dt>
+                  <dd>{localizedShown.platform}</dd>
                 </div>
                 <div>
-                  <dt>Araçlar</dt>
+                  <dt>{t.sheet.toolsLabel}</dt>
                   <dd>
                     <ul className="chips">
-                      {shown.tools.map((tool) => (
+                      {localizedShown.tools.map((tool) => (
                         <li key={tool}>{tool}</li>
                       ))}
                     </ul>
@@ -332,7 +334,7 @@ export function ProjectSheet({
             </div>
 
             {previous || next ? (
-              <nav className="pager" aria-label="Diğer projeler">
+              <nav className="pager" aria-label={locale === "en" ? "Other projects" : "Diğer projeler"}>
                 {previous ? (
                   <button
                     type="button"
@@ -340,7 +342,7 @@ export function ProjectSheet({
                     onClick={() => onNavigate(previous)}
                   >
                     <span className="pagerLabel">
-                      <IconArrowLeft size={14} /> Önceki
+                      <IconArrowLeft size={14} /> {t.sheet.prevProject}
                     </span>
                     <strong>{previous.title}</strong>
                   </button>
@@ -354,7 +356,7 @@ export function ProjectSheet({
                     onClick={() => onNavigate(next)}
                   >
                     <span className="pagerLabel">
-                      Sonraki <IconArrowRight size={14} />
+                      {t.sheet.nextProject} <IconArrowRight size={14} />
                     </span>
                     <strong>{next.title}</strong>
                   </button>
@@ -364,9 +366,8 @@ export function ProjectSheet({
 
             <div className="sheetContactHint">
               <p>
-                Bu çalışma hakkında fikir alışverişi yapmak ya da benzer bir
-                ürün tasarlamak istersen bana her zaman{" "}
-                <a href="mailto:cayankuzu.0@gmail.com">yazabilirsin</a>.
+                {t.sheet.contactHint}{" "}
+                <a href="mailto:cayankuzu.0@gmail.com">{t.sheet.writeMe}</a>.
               </p>
             </div>
           </div>

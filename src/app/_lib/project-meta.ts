@@ -30,14 +30,23 @@ export const categoryPluralLabels: Record<ProjectCategory, string> = {
 
 export type StatusTone = "live" | "progress" | "done";
 
-export function getStatus(project: Project): { tone: StatusTone; label: string } {
+export function getStatus(
+  project: Project,
+  locale: "tr" | "en" = "tr",
+): { tone: StatusTone; label: string } {
   const status = project.status;
 
-  if (project.storeLinks?.length) return { tone: "live", label: "Mağazada" };
-  if (/satışta/i.test(status)) return { tone: "live", label: "Satışta" };
-  if (/canlı/i.test(status)) return { tone: "live", label: "Canlı" };
-  if (/geliştiriliyor|hazırlanıyor/i.test(status)) {
-    return { tone: "progress", label: "Geliştiriliyor" };
+  if (project.storeLinks?.length)
+    return { tone: "live", label: locale === "en" ? "In Store" : "Mağazada" };
+  if (/satışta|on sale/i.test(status))
+    return { tone: "live", label: locale === "en" ? "On Sale" : "Satışta" };
+  if (/canlı|live/i.test(status))
+    return { tone: "live", label: locale === "en" ? "Live" : "Canlı" };
+  if (/geliştiriliyor|hazırlanıyor|in dev/i.test(status)) {
+    return {
+      tone: "progress",
+      label: locale === "en" ? "In Development" : "Geliştiriliyor",
+    };
   }
 
   return { tone: "done", label: status.split(" · ")[0] };
@@ -67,34 +76,48 @@ function isExternal(href: string) {
   return /^https?:\/\//.test(href);
 }
 
-function defaultCtaLabel(project: Project) {
-  if (project.href?.startsWith("/dokuman/")) return "Dokümanı oku";
-  if (project.href?.includes("canva.")) return "Canva'da incele";
+function defaultCtaLabel(project: Project, locale: "tr" | "en" = "tr") {
+  if (project.href?.startsWith("/dokuman/"))
+    return locale === "en" ? "Read document" : "Dokümanı oku";
+  if (project.href?.includes("canva."))
+    return locale === "en" ? "Explore on Canva" : "Canva'da incele";
 
   switch (project.category) {
     case "game":
       // İndirilebilir sürümü de olan oyunlarda tarayıcı sürümü ayrıca belirtilir.
-      return project.purchase ? "Web'de oyna" : "Oyunu oyna";
+      return project.purchase
+        ? locale === "en"
+          ? "Play in browser"
+          : "Web'de oyna"
+        : locale === "en"
+          ? "Play game"
+          : "Oyunu oyna";
     case "mobile":
-      return "Figma prototipini aç";
+      return locale === "en" ? "Open Figma prototype" : "Figma prototipini aç";
     default:
-      return "Siteyi aç";
+      return locale === "en" ? "Open site" : "Siteyi aç";
   }
 }
 
-function purchaseLabel(purchase: NonNullable<Project["purchase"]>) {
-  return purchase.label ?? "Satın al";
+function purchaseLabel(
+  purchase: NonNullable<Project["purchase"]>,
+  locale: "tr" | "en" = "tr",
+) {
+  return purchase.label ?? (locale === "en" ? "Purchase" : "Satın al");
 }
 
 /** Detay panelindeki buton dizisini proje verisinden üretir. */
-export function getProjectActions(project: Project): ProjectAction[] {
-  const actions = getLinkActions(project);
+export function getProjectActions(
+  project: Project,
+  locale: "tr" | "en" = "tr",
+): ProjectAction[] {
+  const actions = getLinkActions(project, locale);
   const purchase = project.purchase;
   if (!purchase) return actions;
 
   // Satın alma, ana bağlantının hemen ardından gelir; ana bağlantı yoksa kendisi ana olur.
   const primaryIndex = actions.findIndex((action) => action.variant === "primary");
-  const label = purchaseLabel(purchase);
+  const label = purchaseLabel(purchase, locale);
   actions.splice(primaryIndex + 1, 0, {
     label: purchase.store ? `${label} · ${purchase.store}` : label,
     href: purchase.href,
@@ -107,7 +130,10 @@ export function getProjectActions(project: Project): ProjectAction[] {
   return actions;
 }
 
-function getLinkActions(project: Project): ProjectAction[] {
+function getLinkActions(
+  project: Project,
+  locale: "tr" | "en" = "tr",
+): ProjectAction[] {
   const actions: ProjectAction[] = [];
 
   if (project.category === "mobile") {
@@ -124,7 +150,7 @@ function getLinkActions(project: Project): ProjectAction[] {
     // Mağaza sürümü yokken ana yol APK'dır; varsa mağazanın ardından ikincil seçenek olur.
     if (project.apkUrl) {
       actions.push({
-        label: "APK indir",
+        label: locale === "en" ? "Download APK" : "APK indir",
         href: project.apkUrl,
         variant: project.storeLinks?.length ? "secondary" : "primary",
         icon: "download",
@@ -134,7 +160,11 @@ function getLinkActions(project: Project): ProjectAction[] {
 
     if (project.href) {
       actions.push({
-        label: project.storeLinks?.length ? "Figma prototipi" : defaultCtaLabel(project),
+        label: project.storeLinks?.length
+          ? locale === "en"
+            ? "Figma prototype"
+            : "Figma prototipi"
+          : defaultCtaLabel(project, locale),
         href: project.href,
         variant: project.storeLinks?.length ? "secondary" : "primary",
         icon: "figma",
@@ -144,7 +174,7 @@ function getLinkActions(project: Project): ProjectAction[] {
 
     if (project.websiteUrl) {
       actions.push({
-        label: "Tanıtım sitesi",
+        label: locale === "en" ? "Landing page" : "Tanıtım sitesi",
         href: project.websiteUrl,
         variant: "secondary",
         icon: "globe",
@@ -158,7 +188,7 @@ function getLinkActions(project: Project): ProjectAction[] {
   if (project.href) {
     const isDocument = project.href.startsWith("/dokuman/");
     actions.push({
-      label: project.ctaLabel ?? defaultCtaLabel(project),
+      label: project.ctaLabel ?? defaultCtaLabel(project, locale),
       href: project.href,
       variant: "primary",
       icon: isDocument ? "doc" : "arrow",
@@ -171,8 +201,12 @@ function getLinkActions(project: Project): ProjectAction[] {
       );
 
       if (document) {
+        const ext =
+          document.kind === "pdf"
+            ? "PDF"
+            : document.file.split(".").pop()?.toUpperCase() ?? "DOC";
         actions.push({
-          label: `İndir (${document.kind === "pdf" ? "PDF" : document.file.split(".").pop()?.toUpperCase()})`,
+          label: locale === "en" ? `Download (${ext})` : `İndir (${ext})`,
           href: document.file,
           variant: "secondary",
           icon: "download",

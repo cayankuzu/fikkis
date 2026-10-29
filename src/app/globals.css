@@ -374,6 +374,72 @@ ul {
   background: var(--surface-2);
 }
 
+/* -------------------------------------------------------- language toggle */
+
+.langToggle {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  gap: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.langBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 28px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 180ms var(--ease);
+}
+
+.langBtn:hover {
+  color: var(--ink);
+}
+
+.langBtn.is-active,
+.langBtn[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.heroMottoBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #9ad6c9;
+  letter-spacing: 0.02em;
+}
+
+.heroMottoDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2dd4bf;
+  box-shadow: 0 0 8px #2dd4bf;
+}
+
 /* ------------------------------------------------------------------ hero */
 
 .hero {
@@ -2093,10 +2159,11 @@ video.viewerMedia {
     padding: 8px 7px;
   }
 
-  /* Dar ekranda CV butonu kompaktlaşır */
-  .headerCV {
-    padding: 0 10px;
-    font-size: 0.8125rem;
+  .langBtn {
+    min-width: 32px;
+    height: 26px;
+    padding: 0 8px;
+    font-size: 11px;
   }
 
   .stats > div {
@@ -2151,10 +2218,11 @@ video.viewerMedia {
     font-size: 0.8125rem;
   }
 
-  .headerCV {
-    flex: none;
-    padding: 0 8px;
-    font-size: 0.75rem;
+  .langBtn {
+    min-width: 28px;
+    height: 24px;
+    padding: 0 6px;
+    font-size: 10px;
   }
 }
 

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import type { MouseEvent } from "react";
 import { useCanHover, usePrefersReducedMotion } from "../_lib/browser";
+import { useI18n } from "../_lib/i18n";
 import { categoryLabels, getQuickLink, getStatus } from "../_lib/project-meta";
 import type { Project } from "../projects";
 import { IconArrowUpRight, IconMonitor, IconPlay } from "./icons";
@@ -38,9 +39,11 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
     )
     .join(" · ");
 
+  const { locale, t } = useI18n();
+
   const layout =
     project.cardLayout ?? (project.category === "mobile" ? "stack" : "cover");
-  const status = getStatus(project);
+  const status = getStatus(project, locale);
   const quickLink = getQuickLink(project);
   const canCycle =
     layout !== "stack" && !project.video && project.images.length > 1;
@@ -182,7 +185,7 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
       <div className="cardBody">
         <p className="cardMeta">
           <span>
-            {categoryLabels[project.category]}
+            {t.projectsSection.categories[project.category] ?? categoryLabels[project.category]}
             {project.tags?.[0] ? ` · ${project.tags[0]}` : ""}
           </span>
           <span className={`status status-${status.tone}`}>{status.label}</span>
@@ -208,7 +211,11 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
           href={quickLink.href}
           target="_blank"
           rel="noreferrer"
-          aria-label={`${project.title}: ${quickLink.label} (yeni sekmede açılır)`}
+          aria-label={
+            locale === "en"
+              ? `${project.title}: ${quickLink.label} (opens in new tab)`
+              : `${project.title}: ${quickLink.label} (yeni sekmede açılır)`
+          }
           title={quickLink.label}
         >
           <IconArrowUpRight size={16} />

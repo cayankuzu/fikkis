@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "../_lib/browser";
+import { useI18n, type Locale } from "../_lib/i18n";
 import type { Project } from "../projects";
 import { IconChevronLeft, IconChevronRight, IconPlay } from "./icons";
 
@@ -16,13 +17,13 @@ type MediaItem =
       withSound: boolean;
     };
 
-function videoCaption(project: Project) {
-  if (project.category === "game") return "Oynanış videosu";
-  if (project.category === "science") return "Çalışma videosu";
-  return "Deneyim videosu";
+function videoCaption(project: Project, locale: Locale) {
+  if (project.category === "game") return locale === "en" ? "Gameplay video" : "Oynanış videosu";
+  if (project.category === "science") return locale === "en" ? "Demo video" : "Çalışma videosu";
+  return locale === "en" ? "Experience video" : "Deneyim videosu";
 }
 
-function buildItems(project: Project): MediaItem[] {
+function buildItems(project: Project, locale: Locale): MediaItem[] {
   const items: MediaItem[] = [];
   const poster = project.images[0]?.src ?? "";
 
@@ -30,7 +31,7 @@ function buildItems(project: Project): MediaItem[] {
     items.push({
       kind: "video",
       src: project.fullVideo,
-      caption: "Tam video · sesli",
+      caption: locale === "en" ? "Full video · with sound" : "Tam video · sesli",
       poster,
       withSound: true,
     });
@@ -38,7 +39,7 @@ function buildItems(project: Project): MediaItem[] {
     items.push({
       kind: "video",
       src: project.video,
-      caption: videoCaption(project),
+      caption: videoCaption(project, locale),
       poster,
       withSound: false,
     });
@@ -52,8 +53,9 @@ function buildItems(project: Project): MediaItem[] {
 }
 
 export function MediaViewer({ project }: { project: Project }) {
+  const { locale } = useI18n();
   const reducedMotion = usePrefersReducedMotion();
-  const items = buildItems(project);
+  const items = buildItems(project, locale);
   const [index, setIndex] = useState(0);
   const figureRef = useRef<HTMLElement>(null);
   const thumbsRef = useRef<HTMLDivElement>(null);
@@ -137,7 +139,7 @@ export function MediaViewer({ project }: { project: Project }) {
             <button
               type="button"
               className="viewerArrow viewerArrow-prev"
-              aria-label="Önceki görsel"
+              aria-label={locale === "en" ? "Previous slide" : "Önceki görsel"}
               onClick={() => go(-1)}
             >
               <IconChevronLeft size={20} />
@@ -145,7 +147,7 @@ export function MediaViewer({ project }: { project: Project }) {
             <button
               type="button"
               className="viewerArrow viewerArrow-next"
-              aria-label="Sonraki görsel"
+              aria-label={locale === "en" ? "Next slide" : "Sonraki görsel"}
               onClick={() => go(1)}
             >
               <IconChevronRight size={20} />
@@ -164,13 +166,13 @@ export function MediaViewer({ project }: { project: Project }) {
       </figcaption>
 
       {hasMany ? (
-        <div ref={thumbsRef} className="viewerThumbs" aria-label="Görseller">
+        <div ref={thumbsRef} className="viewerThumbs" aria-label={locale === "en" ? "Media gallery" : "Görseller"}>
           {items.map((thumb, thumbIndex) => (
             <button
               key={thumb.src}
               type="button"
               className="viewerThumb"
-              aria-label={`${thumbIndex + 1}. görsel: ${thumb.caption}`}
+              aria-label={locale === "en" ? `Slide ${thumbIndex + 1}: ${thumb.caption}` : `${thumbIndex + 1}. görsel: ${thumb.caption}`}
               aria-current={thumbIndex === index ? "true" : undefined}
               onClick={() => setIndex(thumbIndex)}
             >

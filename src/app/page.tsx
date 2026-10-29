@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import packageJson from "../../package.json";
 import { ContactLinks, contactEmail } from "./_components/ContactLinks";
@@ -7,7 +9,9 @@ import {
   IconArrowUp,
   IconArrowUpRight,
 } from "./_components/icons";
+import { LanguageToggle } from "./_components/LanguageToggle";
 import { ProjectGallery } from "./_components/ProjectGallery";
+import { I18nProvider, useI18n } from "./_lib/i18n";
 import { getArchiveStats } from "./_lib/project-meta";
 import { projects } from "./projects";
 
@@ -15,13 +19,14 @@ const shopierUrl = "https://www.shopier.com/atkafasifanzin";
 const gumroadUrl = "https://atkafasifanzin.gumroad.com/";
 const cvUrl = "https://cayankuzucv.vercel.app/";
 
-export default function Home() {
+function HomeInner() {
+  const { t } = useI18n();
   const stats = getArchiveStats(projects);
 
   return (
     <>
       <a className="skipLink" href="#projeler">
-        Projelere geç
+        {t.nav.skip}
       </a>
 
       <header className="siteHeader">
@@ -30,20 +35,12 @@ export default function Home() {
             fikkis<span className="brandDot" aria-hidden="true" />
           </a>
           <nav className="siteNav" aria-label="Sayfa bölümleri">
-            <a href="#projeler">Projeler</a>
-            <a href="#hakkinda">Hakkında</a>
-            <a href="#fanzin">Fanzin</a>
-            <a href="#iletisim">İletişim</a>
+            <a href="#projeler">{t.nav.projects}</a>
+            <a href="#hakkinda">{t.nav.about}</a>
+            <a href="#fanzin">{t.nav.fanzin}</a>
+            <a href="#iletisim">{t.nav.contact}</a>
           </nav>
-          <a
-            className="button button-secondary button-small headerCV"
-            href={cvUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <span>Özgeçmiş (CV)</span>
-            <IconArrowUpRight size={14} />
-          </a>
+          <LanguageToggle />
         </div>
       </header>
 
@@ -51,33 +48,33 @@ export default function Home() {
         <section className="hero container" aria-labelledby="hero-title">
           <p className="eyebrow">
             <span className="liveDot" aria-hidden="true" />
-            Çayan Kuzu · Ürün Tasarımı & Yaratıcı Geliştirme
+            {t.hero.eyebrow}
           </p>
 
           <div className="heroGrid">
             <h1 id="hero-title" className="heroTitle">
-              Bir şeyler{" "}
+              {t.hero.motto1}{" "}
               <span className="heroTitleLine">
-                deniyorum
+                {t.hero.motto2}
                 <span className="heroDot" aria-hidden="true" />
               </span>
             </h1>
 
             <div className="heroSide">
-              <p className="heroLead">
-                Aklıma düşen bir fikri sadece hayal etmekle yetinmiyorum;
-                araştırıyor, arayüzünü çiziyor ve çalışan gerçek deneyimlere
-                dönüştürüyorum. App Store ve Google Play&apos;deki mobil
-                uygulamalardan biyomekanik yapay zekâya, 3B web dünyalarından
-                bağımsız yayına uzanan canlı bir üretim arşivi.
-              </p>
+              {t.hero.mottoSubtitle ? (
+                <p className="heroMottoBadge" aria-hidden="true">
+                  <span className="heroMottoDot" />
+                  {t.hero.mottoSubtitle}
+                </p>
+              ) : null}
+              <p className="heroLead">{t.hero.lead}</p>
               <div className="actions">
                 <a className="button button-primary" href="#projeler">
-                  Projeleri keşfet
+                  {t.hero.exploreBtn}
                   <IconArrowDown size={16} />
                 </a>
                 <a className="button button-secondary" href="#iletisim">
-                  İletişime geç
+                  {t.hero.contactBtn}
                 </a>
               </div>
             </div>
@@ -85,15 +82,15 @@ export default function Home() {
 
           <dl className="stats">
             <div>
-              <dt>Proje & Deneyim</dt>
+              <dt>{t.hero.stats.total}</dt>
               <dd>{stats.total}</dd>
             </div>
             <div>
-              <dt>Mobil Ürün</dt>
+              <dt>{t.hero.stats.mobile}</dt>
               <dd>{stats.categoryCounts.mobile}</dd>
             </div>
             <div>
-              <dt>3B & WebGL Oyun</dt>
+              <dt>{t.hero.stats.game}</dt>
               <dd>{stats.categoryCounts.game}</dd>
             </div>
           </dl>
@@ -105,15 +102,11 @@ export default function Home() {
           aria-labelledby="projects-title"
         >
           <div className="sectionHead">
-            <p className="sectionIndex">01 — Projeler & Deneyimler</p>
+            <p className="sectionIndex">{t.projectsSection.index}</p>
             <h2 id="projects-title" className="sectionTitle">
-              Fikirler, ekranlar ve yaşayan ürünler.
+              {t.projectsSection.title}
             </h2>
-            <p className="sectionLead">
-              Her çalışmanın arkasında çözülen bir problem, bir merak ve çalışan
-              bir prototip var. Detaylara, canlı demoya ve süreçlere kartlardan
-              göz atabilirsin.
-            </p>
+            <p className="sectionLead">{t.projectsSection.lead}</p>
           </div>
 
           <ProjectGallery projects={projects} />
@@ -125,26 +118,16 @@ export default function Home() {
           aria-labelledby="about-title"
         >
           <div className="sectionHead">
-            <p className="sectionIndex">02 — Hakkında</p>
+            <p className="sectionIndex">{t.aboutSection.index}</p>
             <h2 id="about-title" className="sectionTitle">
-              Fizikten ürüne, meraktan gerçeğe.
+              {t.aboutSection.title}
             </h2>
           </div>
 
           <div className="about">
             <div className="aboutText">
-              <p className="aboutLead">
-                Ben Çayan Kuzu. Marmara Üniversitesi Fizik Bölümü&apos;nde
-                okuyorum; fiziğin analitik modelleme ve sistem düşüncesini dijital
-                ürün tasarımı ve modern web teknolojileriyle buluşturuyorum.
-              </p>
-              <p>
-                Benim için bir şeyleri denemek; boşta duran fikirleri çalışan
-                prototiplere, kullanıcıların telefonunda yaşayan uygulamalara veya
-                tarayıcıda akıp giden üç boyutlu dünyalara dönüştürmek demek.
-                Fikrin ilk karalamasından UI/UX tasarımına, teknik mimarisinden
-                mağaza onayına kadar olan süreci uçtan uca yürütmeyi seviyorum.
-              </p>
+              <p className="aboutLead">{t.aboutSection.lead}</p>
+              <p>{t.aboutSection.body}</p>
               <div className="actions">
                 <a
                   className="button button-primary"
@@ -152,7 +135,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  CV&apos;yi görüntüle
+                  {t.aboutSection.viewCv}
                   <IconArrowUpRight size={16} />
                 </a>
                 <a
@@ -161,7 +144,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  GitHub profilim
+                  {t.aboutSection.github}
                   <IconArrowUpRight size={16} />
                 </a>
               </div>
@@ -195,16 +178,11 @@ export default function Home() {
             </div>
 
             <div className="supportBody">
-              <p className="sectionIndex">03 — Bağımsız Yayın</p>
+              <p className="sectionIndex">{t.zineSection.index}</p>
               <h2 id="fanzin-title" className="sectionTitle">
-                Ekranların ötesinde: AtKafası Fanzin.
+                {t.zineSection.title}
               </h2>
-              <p className="supportText">
-                Sadece dijital ürünler değil; kağıdın, tipografinin ve bağımsız
-                sözün gücünü de önemsiyorum. AtKafası; yazısından görsel diline,
-                18 parçalık sticker serisinden sayfa mizanpajına kadar bağımsız
-                hazırladığım bir kültür fanzini. İki sayısı da yayında.
-              </p>
+              <p className="supportText">{t.zineSection.body}</p>
               <div className="actions">
                 <a
                   className="button button-primary"
@@ -212,7 +190,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Shopier&apos;den edin
+                  {t.zineSection.shopier}
                   <IconArrowUpRight size={16} />
                 </a>
                 <a
@@ -221,14 +199,11 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Gumroad&apos;dan incele
+                  {t.zineSection.gumroad}
                   <IconArrowUpRight size={16} />
                 </a>
               </div>
-              <p className="supportNote">
-                Fiziksel basılı kopyalar veya anında indirilebilir dijital PDF
-                formatında inceleyebilirsin.
-              </p>
+              <p className="supportNote">{t.zineSection.note}</p>
             </div>
           </div>
         </section>
@@ -237,20 +212,20 @@ export default function Home() {
       <footer id="iletisim" className="footer" aria-labelledby="contact-title">
         <div className="container footerTop">
           <div className="footerIntro">
-            <p className="sectionIndex">04 — İletişim</p>
+            <p className="sectionIndex">{t.footerSection.index}</p>
             <h2 id="contact-title" className="footerTitle">
-              Birlikte bir şeyler deneyelim.
+              {t.footerSection.title}
             </h2>
-            <p className="footerLead">
-              Bir ürün fikrin mi var, portfolyodaki bir işle ilgili mi konuşmak
-              istersin, yoksa ekibine dinamik bir Product Designer / UI-UX
-              zihniyeti mi katmak istiyorsun? Çekinmeden yaz, konuşalım.
-            </p>
+            <p className="footerLead">{t.footerSection.lead}</p>
             <div className="emailRow">
               <a className="emailLink" href={`mailto:${contactEmail}`}>
                 {contactEmail}
               </a>
-              <CopyButton text={contactEmail} label="Kopyala" />
+              <CopyButton
+                text={contactEmail}
+                label={t.footerSection.copyBtn}
+                copiedLabel={t.footerSection.copied}
+              />
             </div>
           </div>
 
@@ -264,14 +239,24 @@ export default function Home() {
         </div>
 
         <div className="container footerBottom">
-          <p>© 2026 Çayan Kuzu · MeMoDe tarafından</p>
-          <p className="footerVersion">Versiyon {packageJson.version}</p>
+          <p>{t.footerSection.byMeMoDe}</p>
+          <p className="footerVersion">
+            {t.footerSection.version} {packageJson.version}
+          </p>
           <a href="#top" className="footerTop-link">
-            Başa dön
+            {t.footerSection.backToTop}
             <IconArrowUp size={14} />
           </a>
         </div>
       </footer>
     </>
+  );
+}
+
+export default function Home() {
+  return (
+    <I18nProvider>
+      <HomeInner />
+    </I18nProvider>
   );
 }
