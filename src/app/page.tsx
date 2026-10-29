@@ -6,7 +6,6 @@ import {
   IconArrowDown,
   IconArrowUp,
   IconArrowUpRight,
-  IconHeart,
 } from "./_components/icons";
 import { ProjectGallery } from "./_components/ProjectGallery";
 import { getArchiveStats } from "./_lib/project-meta";
@@ -33,11 +32,17 @@ export default function Home() {
           <nav className="siteNav" aria-label="Sayfa bölümleri">
             <a href="#projeler">Projeler</a>
             <a href="#hakkinda">Hakkında</a>
+            <a href="#fanzin">Fanzin</a>
             <a href="#iletisim">İletişim</a>
           </nav>
-          <a className="button button-secondary button-small headerSupport" href="#destek">
-            <IconHeart size={15} />
-            <span>Destek ol</span>
+          <a
+            className="button button-secondary button-small headerCV"
+            href={cvUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <span>Özgeçmiş (CV)</span>
+            <IconArrowUpRight size={14} />
           </a>
         </div>
       </header>
@@ -46,7 +51,7 @@ export default function Home() {
         <section className="hero container" aria-labelledby="hero-title">
           <p className="eyebrow">
             <span className="liveDot" aria-hidden="true" />
-            Çayan Kuzu · Proje ve üretim arşivi
+            Çayan Kuzu · Ürün Tasarımı & Yaratıcı Geliştirme
           </p>
 
           <div className="heroGrid">
@@ -60,8 +65,11 @@ export default function Home() {
 
             <div className="heroSide">
               <p className="heroLead">
-                Mobil uygulamalar, oyunlar, web deneyimleri, bilim çalışmaları
-                ve bağımsız yayınlar. Ürettiğim farklı işler tek bir arşivde.
+                Aklıma düşen bir fikri sadece hayal etmekle yetinmiyorum;
+                araştırıyor, arayüzünü çiziyor ve çalışan gerçek deneyimlere
+                dönüştürüyorum. App Store ve Google Play&apos;deki mobil
+                uygulamalardan biyomekanik yapay zekâya, 3B web dünyalarından
+                bağımsız yayına uzanan canlı bir üretim arşivi.
               </p>
               <div className="actions">
                 <a className="button button-primary" href="#projeler">
@@ -77,16 +85,16 @@ export default function Home() {
 
           <dl className="stats">
             <div>
-              <dt>Proje</dt>
+              <dt>Proje & Deneyim</dt>
               <dd>{stats.total}</dd>
             </div>
             <div>
-              <dt>Oyun</dt>
-              <dd>{stats.categoryCounts.game}</dd>
+              <dt>Mobil Ürün</dt>
+              <dd>{stats.categoryCounts.mobile}</dd>
             </div>
             <div>
-              <dt>Mobil uygulama</dt>
-              <dd>{stats.categoryCounts.mobile}</dd>
+              <dt>3B & WebGL Oyun</dt>
+              <dd>{stats.categoryCounts.game}</dd>
             </div>
           </dl>
         </section>
@@ -97,13 +105,14 @@ export default function Home() {
           aria-labelledby="projects-title"
         >
           <div className="sectionHead">
-            <p className="sectionIndex">01 — Projeler</p>
+            <p className="sectionIndex">01 — Projeler & Deneyimler</p>
             <h2 id="projects-title" className="sectionTitle">
-              Denediğim her şey, tek yerde.
+              Fikirler, ekranlar ve yaşayan ürünler.
             </h2>
             <p className="sectionLead">
-              Bir karta tıkla; açıklama, görseller ve bağlantılar tek panelde
-              açılır.
+              Her çalışmanın arkasında çözülen bir problem, bir merak ve çalışan
+              bir prototip var. Detaylara, canlı demoya ve süreçlere kartlardan
+              göz atabilirsin.
             </p>
           </div>
 
@@ -118,7 +127,7 @@ export default function Home() {
           <div className="sectionHead">
             <p className="sectionIndex">02 — Hakkında</p>
             <h2 id="about-title" className="sectionTitle">
-              Fizikten ürüne, fikirden prototipe.
+              Fizikten ürüne, meraktan gerçeğe.
             </h2>
           </div>
 
@@ -126,15 +135,15 @@ export default function Home() {
             <div className="aboutText">
               <p className="aboutLead">
                 Ben Çayan Kuzu. Marmara Üniversitesi Fizik Bölümü&apos;nde
-                okuyorum; dijital ürünler, kullanıcı deneyimi ve oyun tasarımı
-                üzerine çalışıyorum.
+                okuyorum; fiziğin analitik modelleme ve sistem düşüncesini dijital
+                ürün tasarımı ve modern web teknolojileriyle buluşturuyorum.
               </p>
               <p>
-                Fikirleri araştırma, tasarım ve hızlı prototipleme yoluyla
-                çalışan deneyimlere dönüştürmeye odaklanıyorum. fikkis bu
-                üretimlerin arşivi: bazıları App Store ve Google Play&apos;de,
-                bazıları tarayıcıda oynanabiliyor, bazıları bir araştırma
-                dokümanının içinde.
+                Benim için bir şeyleri denemek; boşta duran fikirleri çalışan
+                prototiplere, kullanıcıların telefonunda yaşayan uygulamalara veya
+                tarayıcıda akıp giden üç boyutlu dünyalara dönüştürmek demek.
+                Fikrin ilk karalamasından UI/UX tasarımına, teknik mimarisinden
+                mağaza onayına kadar olan süreci uçtan uca yürütmeyi seviyorum.
               </p>
               <div className="actions">
                 <a
@@ -146,15 +155,24 @@ export default function Home() {
                   CV&apos;yi görüntüle
                   <IconArrowUpRight size={16} />
                 </a>
+                <a
+                  className="button button-secondary"
+                  href="https://github.com/cayankuzu"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub profilim
+                  <IconArrowUpRight size={16} />
+                </a>
               </div>
             </div>
           </div>
         </section>
 
         <section
-          id="destek"
+          id="fanzin"
           className="section container"
-          aria-labelledby="support-title"
+          aria-labelledby="fanzin-title"
         >
           <div className="support">
             <div className="supportCovers" aria-hidden="true">
@@ -177,14 +195,15 @@ export default function Home() {
             </div>
 
             <div className="supportBody">
-              <p className="sectionIndex">03 — Destek</p>
-              <h2 id="support-title" className="sectionTitle">
-                Bu arşivin büyümesine destek ol.
+              <p className="sectionIndex">03 — Bağımsız Yayın</p>
+              <h2 id="fanzin-title" className="sectionTitle">
+                Ekranların ötesinde: AtKafası Fanzin.
               </h2>
               <p className="supportText">
-                Buradaki her şeyi bağımsız olarak üretiyorum. Desteklemenin en
-                güzel yolu, iki sayısı yayımlanan AtKafası Fanzin&apos;i
-                satın almak.
+                Sadece dijital ürünler değil; kağıdın, tipografinin ve bağımsız
+                sözün gücünü de önemsiyorum. AtKafası; yazısından görsel diline,
+                18 parçalık sticker serisinden sayfa mizanpajına kadar bağımsız
+                hazırladığım bir kültür fanzini. İki sayısı da yayında.
               </p>
               <div className="actions">
                 <a
@@ -193,7 +212,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Shopier&apos;den al
+                  Shopier&apos;den edin
                   <IconArrowUpRight size={16} />
                 </a>
                 <a
@@ -202,13 +221,13 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Gumroad&apos;dan al
+                  Gumroad&apos;dan incele
                   <IconArrowUpRight size={16} />
                 </a>
               </div>
               <p className="supportNote">
-                İki sayı da Shopier ve Gumroad&apos;da. Aldıktan sonra yorumunu
-                bırakmayı unutma.
+                Fiziksel basılı kopyalar veya anında indirilebilir dijital PDF
+                formatında inceleyebilirsin.
               </p>
             </div>
           </div>
@@ -220,11 +239,12 @@ export default function Home() {
           <div className="footerIntro">
             <p className="sectionIndex">04 — İletişim</p>
             <h2 id="contact-title" className="footerTitle">
-              Bir fikrin mi var? Yaz, konuşalım.
+              Birlikte bir şeyler deneyelim.
             </h2>
             <p className="footerLead">
-              Bir proje, fikir ya da iş birliği için LinkedIn, e‑posta veya
-              Instagram&apos;dan ulaşabilirsin.
+              Bir ürün fikrin mi var, portfolyodaki bir işle ilgili mi konuşmak
+              istersin, yoksa ekibine dinamik bir Product Designer / UI-UX
+              zihniyeti mi katmak istiyorsun? Çekinmeden yaz, konuşalım.
             </p>
             <div className="emailRow">
               <a className="emailLink" href={`mailto:${contactEmail}`}>

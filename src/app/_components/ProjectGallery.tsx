@@ -282,7 +282,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             <>
               <section className="galleryGroup" aria-labelledby="group-featured">
                 <h3 className="galleryGroupTitle" id="group-featured">
-                  Öne çıkan çalışmalar
+                  Seçili ürünler & interaktif deneyimler
                   <span className="filterCount">{featured.length}</span>
                 </h3>
                 <div className="grid">
@@ -293,7 +293,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               </section>
               <section className="galleryGroup" aria-labelledby="group-archive">
                 <h3 className="galleryGroupTitle" id="group-archive">
-                  Arşiv: oyunlar, deneyler, bilim ve tasarım
+                  Laboratuvar: bilim, prototipler & mini oyunlar
                   <span className="filterCount">{archive.length}</span>
                 </h3>
                 <div className="grid">

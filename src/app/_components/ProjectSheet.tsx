@@ -24,7 +24,6 @@ import {
   IconFigma,
   IconGlobe,
   IconGooglePlay,
-  IconHeart,
   IconLink,
   IconMonitor,
   IconVideo,
@@ -363,22 +362,13 @@ export function ProjectSheet({
               </nav>
             ) : null}
 
-            <p className="sheetSupport">
-              <IconHeart size={15} />
-              <span>
-                Bu projeleri bağımsız üretiyorum.{" "}
-                <a
-                  href="#destek"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    onClose("destek");
-                  }}
-                >
-                  AtKafası Fanzin&apos;i alarak destek olabilirsin
-                </a>
-                .
-              </span>
-            </p>
+            <div className="sheetContactHint">
+              <p>
+                Bu çalışma hakkında fikir alışverişi yapmak ya da benzer bir
+                ürün tasarlamak istersen bana her zaman{" "}
+                <a href="mailto:cayankuzu.0@gmail.com">yazabilirsin</a>.
+              </p>
+            </div>
           </div>
         </div>
       ) : null}

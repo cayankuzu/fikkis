@@ -219,24 +219,25 @@ export function getQuickLink(project: Project) {
   return primary;
 }
 
-/** Öne çıkan çalışmaların gösterim sırası: önce yayındaki ürünler, sonra etkileşimli işler. */
+/** Öne çıkan çalışmaların gösterim sırası: önce mağaza ve derin teknoloji ürünleri, sonra etkileşimli 3B deneyimler. */
 const featuredOrder = [
   "cayan-kuzu-cv",
-  "sorita",
   "universe",
-  "wmatch",
+  "beatter",
+  "sorita",
   "zlip",
+  "wmatch",
+  "trai",
+  "strolly",
   "audioroom",
   "merbut",
   "stresst",
-  "strolly",
-  "dream-of-the-photo",
-  "atkafasi",
-  "trai",
-  "etkinlink",
-  "bibish",
-  "mrap",
   "desain",
+  "etkinlink",
+  "mrap",
+  "atkafasi",
+  "dream-of-the-photo",
+  "bibish",
 ];
 
 /** Arşivin başında gelen daha kapsamlı oyun ve deneysel işler. */

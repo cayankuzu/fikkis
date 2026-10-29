@@ -1425,31 +1425,29 @@ video.viewerMedia {
   white-space: nowrap;
 }
 
-.sheetSupport {
+.sheetContactHint {
   display: flex;
-  margin-top: 24px;
-  padding: 16px 18px;
-  align-items: flex-start;
-  gap: 10px;
+  margin-top: 28px;
+  padding: 16px 20px;
+  align-items: center;
   border-radius: var(--radius);
-  color: var(--ink-2);
-  background: color-mix(in oklab, var(--accent) 8%, var(--surface-2));
+  color: var(--muted);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
   font-size: 0.9375rem;
   line-height: 1.5;
 }
 
-.sheetSupport svg {
-  flex: none;
-  margin-top: 3px;
-  color: var(--accent);
-}
-
-.sheetSupport a {
+.sheetContactHint a {
   color: var(--ink);
   font-weight: 600;
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  text-decoration-color: var(--accent);
   text-underline-offset: 3px;
+}
+
+.sheetContactHint a:hover {
+  color: var(--accent);
 }
 
 /* ----------------------------------------------------------------- about */
@@ -2119,20 +2117,10 @@ video.viewerMedia {
     padding: 8px 7px;
   }
 
-  /* Dar ekranda "Destek ol" yalnız kalp ikonuyla görünür; ekran okuyucu metni okur. */
-  .headerSupport {
-    width: 40px;
-    padding: 0;
-    justify-content: center;
-  }
-
-  .headerSupport span {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
+  /* Dar ekranda CV butonu kompaktlaşır */
+  .headerCV {
+    padding: 0 10px;
+    font-size: 0.8125rem;
   }
 
   .stats > div {
@@ -2187,10 +2175,10 @@ video.viewerMedia {
     font-size: 0.8125rem;
   }
 
-  .headerSupport {
+  .headerCV {
     flex: none;
-    width: 36px;
-    height: 36px;
+    padding: 0 8px;
+    font-size: 0.75rem;
   }
 }
 
