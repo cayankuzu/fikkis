@@ -106,6 +106,7 @@ export const projects: Project[] = [
       "Taş-Kağıt-Makas: 4. vuruş inişinde havada -140ms erken tendon tespiti ve geç hamle (anti-feint) koruması",
       "MINDTWIN: Kullanıcı hareketini bitirmeden 180ms önce simüle eden 60 FPS siber-mekanik dijital ikiz",
       "Bilişsel Markov analitiği, Shannon entropisi ve kriptografik mühür (#BEAT) ile hilesiz dürüstlük kanıtı",
+      "Tüm cihazlarla tam uyumlu ultra duyarlı (responsive) tasarım (mobil dikey/yatay, tablet ve masaüstü)",
       "Akıllı kamera kurtarma katmanı: Donanım kilitlenmelerinde anlık tek tıkla yeniden bağlanma",
     ],
     href: "https://beatter.vercel.app/",
