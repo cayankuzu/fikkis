@@ -41,17 +41,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f6f5f1" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0f0e" },
-  ],
+  themeColor: "#0f0f0e",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" className={`${display.variable} ${mono.variable}`}>
+    <html lang="tr" className={`dark ${display.variable} ${mono.variable}`} style={{ colorScheme: "dark" }}>
       <body>{children}</body>
     </html>
   );

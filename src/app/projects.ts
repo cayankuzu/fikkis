@@ -519,12 +519,16 @@ export const projects: Project[] = [
     sourceUrl: "https://github.com/cayankuzu/cayankuzucv",
     images: [
       {
-        src: "/project-previews/cayankuzu-cv-v3.png",
-        caption: "Arayüz: kenar çubuğu, profil, güncel deneyim ve projeler",
+        src: "/project-previews/cayankuzu-cv-v4.png",
+        caption: "Canlı web arayüzü: kenar çubuğu, profil ve güncel deneyim mimarisi",
       },
       {
-        src: "/project-previews/cayankuzu-cv-projects-v3.png",
-        caption: "Seçili projeler: UniVerse, beaTTer ve yetkinlikler",
+        src: "/project-previews/cayankuzu-cv-spread-v4.png",
+        caption: "2 sayfalık A4 baskı ve PDF mimarisi: seçili ürünler ve akademik çalışmalar",
+      },
+      {
+        src: "/project-previews/cayankuzu-cv-mobile-v4.png",
+        caption: "Responsive mobil deneyim: tek sütuna yeniden kurulan akış",
       },
     ],
     coverPosition: "center top",

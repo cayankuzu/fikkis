@@ -3,27 +3,27 @@
    ========================================================================== */
 
 :root {
-  color-scheme: light dark;
+  color-scheme: dark;
 
-  --bg: #f6f5f1;
-  --surface: #ffffff;
-  --surface-2: #eeece6;
-  --ink: #121211;
-  --ink-2: #3a3935;
-  --muted: #6a6862;
-  --faint: #9b988f;
-  --line: #e2dfd7;
-  --line-strong: #cbc7bc;
-  --accent: #ea3a22;
-  --live: #1c9a55;
-  --progress: #cf8700;
-  --done: #97948b;
+  --bg: #0f0f0e;
+  --surface: #181816;
+  --surface-2: #20201d;
+  --ink: #f3f1eb;
+  --ink-2: #d2cfc7;
+  --muted: #9c9990;
+  --faint: #6f6d67;
+  --line: #2a2a27;
+  --line-strong: #3d3c38;
+  --accent: #ff5a40;
+  --live: #3fcf80;
+  --progress: #f0b43c;
+  --done: #7d7a73;
 
-  --footer-bg: #121211;
-  --footer-ink: #f4f2ec;
+  --footer-bg: #181816;
+  --footer-ink: #f3f1eb;
 
-  --shadow-md: 0 12px 32px -14px rgb(24 20 12 / 0.28);
-  --shadow-lg: 0 40px 90px -30px rgb(24 20 12 / 0.45);
+  --shadow-md: 0 12px 32px -14px rgb(0 0 0 / 0.7);
+  --shadow-lg: 0 40px 90px -30px rgb(0 0 0 / 0.8);
 
   --radius-sm: 10px;
   --radius: 16px;
@@ -34,30 +34,6 @@
 
   --font-body: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-code: var(--font-mono), ui-monospace, monospace;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0f0f0e;
-    --surface: #181816;
-    --surface-2: #20201d;
-    --ink: #f3f1eb;
-    --ink-2: #d2cfc7;
-    --muted: #9c9990;
-    --faint: #6f6d67;
-    --line: #2a2a27;
-    --line-strong: #3d3c38;
-    --accent: #ff5a40;
-    --live: #3fcf80;
-    --progress: #f0b43c;
-    --done: #7d7a73;
-
-    --footer-bg: #181816;
-    --footer-ink: #f3f1eb;
-
-    --shadow-md: 0 12px 32px -14px rgb(0 0 0 / 0.7);
-    --shadow-lg: 0 40px 90px -30px rgb(0 0 0 / 0.8);
-  }
 }
 
 .tone-amber { --tone: #c98a2b; }
