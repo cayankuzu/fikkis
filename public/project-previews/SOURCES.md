@@ -18,11 +18,10 @@
   in-browser captures of STROLLY 2.0 beta (`strolly-seven.vercel.app`, same build run locally),
   taken on 2026-10-13 at 1600×900 (TEKERRÜR's forest room, ÖTE's ship, PARALEL-LEŞ's swing,
   DURUM's electron, YAŞAMAK's cafe, TEK AYAK's reveal, TAKINTI's shadow, the story select)
-- `dream-lines.jpg`, `dream-chair.jpg`, `dream-print.jpg`, `dream-moon.jpg`, `dream-photograph.jpg`:
+- `dream-hair.jpg`, `dream-street.jpg`, `dream-hall.jpg`, `dream-darkroom.jpg`, `dream-meat.jpg`, `dream-sun.jpg`, `dream-stare.jpg`:
   in-browser captures of The Dream of the Photo (`the-dream-of-the-photo.vercel.app`, same build run
-  locally), taken on 2026-10-12 at 1600×900 (the frozen rain under the washing lines of photographs,
-  walking under the giant chair, the giant print at the end of the alley, the mirror sea under the
-  photograph moon, the print developing in the photographer's hand)
+  locally), taken on 2026-11-05 at 1600×900 (hair instead of rain under the lines of scratched faces, the street of
+  half people, the concrete hall, the red darkroom, the tunnel of meat, the oil sea under the half sun, the waking)
 - `bibish.png`: live capture of v0.4.10 at `bibish-iota.vercel.app`, taken on 2026-10-12: joined a
   match for Kırmızı Ordu, spawned at the K3 outpost and fired the rifle at it with real mouse and
   keyboard input (quality set to Ultra in the game's own settings). Only one player was online,
