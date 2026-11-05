@@ -154,7 +154,11 @@ export const projects: Project[] = [
     images: [
       {
         src: "/project-previews/life-of-photon.png",
-        caption: "Fotonun referans çerçevesinde Terrell-Penrose optik sapması ve telemetri konsolu",
+        caption: "Fotonun referans çerçevesinde Terrell-Penrose optik sapması, Doppler gökkuşağı ve telemetri konsolu",
+      },
+      {
+        src: "/project-previews/life-of-photon-dossier.png",
+        caption: "Einstein düşünce deneyi, formüller ve akademik bilimsel analiz dosyası",
       },
     ],
     tone: "blue",
