@@ -83,6 +83,44 @@ export const MERBUT_ITCH_URL = "https://memode.itch.io/merbut";
 
 export const projects: Project[] = [
   {
+    id: "life-of-a-photon",
+    featured: true,
+    category: "science",
+    tags: ["Özel Görelilik", "Astrofizik", "WebGL", "Three.js"],
+    title: "Life of a Photon",
+    hook: "Işık hızına yaklaştıkça uzay ve zamanın nasıl büküldüğünü bir fotonun referans çerçevesinden deneyimleten 3B simülasyon.",
+    description:
+      "Einstein'ın 16 yaşındaki 'Bir ışık dalgasına binseydim evreni nasıl görürdüm?' düşünce deneyini Terrell-Penrose optik sapması (aberrasyon), Doppler frekans kayması, gökkuşağı irisi ve Lorentz zaman-uzay büzülmesi denklemleriyle WebGL üzerinde gerçek zamanlı canlandıran bilimsel gözlemevi.",
+    platform: "Web (Three.js & React Three Fiber)",
+    status: "Canlı Web Sürümü · v1.0",
+    role: "Astrofizik modelleme · GLSL Shaders · UI/UX Tasarım",
+    tools: [
+      "Three.js",
+      "WebGL / GLSL",
+      "React Three Fiber",
+      "Next.js",
+      "TypeScript",
+      "KaTeX",
+    ],
+    highlights: [
+      "Penrose konformal stereografik sapması: 360° evrenin ön koniye sıkışması",
+      "Doppler frekans kayması ve McKinley-Doherty Doppler gökkuşağı irisi",
+      "Lorentz boy büzülmesi ve foton için öz zamanın durması (Δτ = 0)",
+      "Dieter Rams & CERN laboratuvar standardında minimalist telemetri konsolu",
+    ],
+    href: "https://life-of-photon.vercel.app/",
+    ctaLabel: "Simülasyonu Başlat",
+    websiteUrl: "https://life-of-photon.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/LifeOfPhoton",
+    images: [
+      {
+        src: "/project-previews/life-of-photon.png",
+        caption: "Fotonun referans çerçevesinde Terrell-Penrose optik sapması ve telemetri konsolu",
+      },
+    ],
+    tone: "blue",
+  },
+  {
     id: "beatter",
     featured: true,
     category: "game",
