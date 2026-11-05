@@ -82,6 +82,45 @@ export type Project = {
 export const MERBUT_ITCH_URL = "https://memode.itch.io/merbut";
 
 export const projects: Project[] = [
+    {
+    id: "simulab",
+    featured: true,
+    category: "science",
+    tags: ["Hesaplamalı Fizik", "RK4 Çözücü", "Kaos Teorisi", "Sayısal Analiz"],
+    title: "SimuLab",
+    hook: "300 Hz mikro-adımlı Runge-Kutta 4 (RK4) sayısal diferansiyel çözücülü, çoklu sarkaç ve kaos teorisi laboratuvarı.",
+    description:
+      "Üniversite ve ileri düzey klasik mekanik, harmonik salınımlar, rezonans, 1'den 6'ya çoklu sarkaç zincirleri ve Kelebek Etkisi'ni (Lyapunov ayrışması) Figma / Linear estetiğinde anlık diferansiyel denklem çözümü, faz uzayı osiloskopu ve enerji korunumu analiziyle sunan interaktif fizik stüdyosu.",
+    platform: "Web (Next.js 15, React 19 & Canvas 2D)",
+    status: "Canlı Web Sürümü · v1.0",
+    role: "Hesaplamalı Fizik · Sayısal Entegrasyon · Ürün & UI/UX Tasarımı",
+    tools: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "HTML5 Canvas",
+      "KaTeX",
+      "RK4 Solver",
+    ],
+    highlights: [
+      "300 Hz mikro-adımlı 4. Dereceden Runge-Kutta (RK4) sayısal integrasyon",
+      "1'den 6'ya serbest bağlanabilir sarkaç zincirleri & Kelebek Etkisi / Gölge Sarkaç (Δθ = 0.001 rad)",
+      "Gerçek zamanlı Faz Uzayı Osiloskopu (Phase Space) ve kapalı limit/kaotik çekici analizi",
+      "Dinamik termal kayıp integrasyonu ile hassas mekanik enerji korunumu (Ek + Ep + Ethermal)",
+      "Doğrudan manipülasyon: kanvastaki kütleleri fareyle çekip serbest bırakma",
+    ],
+    href: "https://simulab-drab.vercel.app",
+    ctaLabel: "Laboratuvarı Aç",
+    websiteUrl: "https://simulab-drab.vercel.app",
+    sourceUrl: "https://github.com/cayankuzu/SimuLab",
+    images: [
+      {
+        src: "/project-previews/simulab.png",
+        caption: "SimuLab Hassas Fizik Stüdyosu — Yay osilatörü ve çoklu sarkaç zinciri telemetrisi",
+      },
+    ],
+    tone: "amber",
+  },
   {
     id: "life-of-a-photon",
     featured: true,
