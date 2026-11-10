@@ -22,6 +22,10 @@
   in-browser captures of The Dream of the Photo (`the-dream-of-the-photo.vercel.app`, same build run
   locally), taken on 2026-11-05 at 1600×900 (hair instead of rain under the lines of scratched faces, the street of
   half people, the concrete hall, the red darkroom, the tunnel of meat, the oil sea under the half sun, the waking)
+- `dream-elevator.jpg`, `dream-holes.jpg`, `dream-dentist.jpg`, `dream-flood.jpg`: renders of four rooms of the
+  33-minute version of The Dream of the Photo (commit 9ba706f, the build live at `the-dream-of-the-photo.vercel.app`),
+  made on 2026-11-10 at 1600×900 with the project's own headless review tool (the lift's door opening on a photo of
+  its crowd, the man whose face opens into holes, the dentist from inside the mouth, dinner below the waterline)
 - `bibish.png`: live capture of v0.4.10 at `bibish-iota.vercel.app`, taken on 2026-10-12: joined a
   match for Kırmızı Ordu, spawned at the K3 outpost and fired the rifle at it with real mouse and
   keyboard input (quality set to Ultra in the game's own settings). Only one player was online,

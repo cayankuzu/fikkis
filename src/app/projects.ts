@@ -434,19 +434,36 @@ export const projects: Project[] = [
     title: "The Dream of the Photo",
     hook: "Bir fotoğrafın rüyası saç beyazlatır, bir fotoğrafın rüyası her akşam yarım.",
     description:
-      "Gece bir sokakta bir fotoğrafçı tek bir anlık fotoğraf çeker. Baskının içine girersin ve rüya seni kendiliğinden taşır: yağmurun beyaz saça dönüştüğü sokak, yüzleri kazınmış fotoğraflar, yarım insanların durduğu cadde, dev beton salon, kırmızı karanlık oda, kalbiyle et tüneli, çengellerde asılı dev baskı, yarım güneşin altında petrol denizi. Bakmadığın anda değişen, uzayı bükülen, gerçek zamanlı grotesk bir kâbus.",
+      "Gece bir sokakta bir fotoğrafçı tek bir anlık fotoğraf çeker. Baskının içine girersin ve rüya seni yedi akşam boyunca, yaklaşık 33 dakika kendiliğinden taşır. Her akşam, rüyanın yürüyüşünden bir parça ve her biri yaygın bir korkunun üstüne kurulu küçük odalardır: örümcekler, böcekler, delik kümeleri, dişçinin iğnesi, geride kalan ayna, karabasan, daralan borular, diri diri gömülmek, yükseklik, derin su, yılanlar, karanlık, oyuncak bebekler, palyaçolar, kovalanmak, sahnede sınav, kendi cenazen. Saati hep yarımı gösteren koridor her akşam döner, her seferinde daha kötü; deklanşörün çektiği fotoğraflar sonunda tavanı olmayan bir salonda asılıdır. Bakmadığın anda değişen, uzayı bükülen, gerçek zamanlı bir kâbus.",
     platform: "Web · Masaüstü ve mobil",
     status: "Canlı",
     role: "Bağımsız sinematik deneyim · Yazım ve sahneleme · 3B istemci ve ses",
     tools: ["TypeScript", "Three.js/WebGL", "Vite", "Web Audio"],
     highlights: [
+      "Yedi akşam, 30 oda, yaklaşık 33 dakika: her oda tek bir bakış hattı için sahnelenmiş; odalar önceden yüklenip karartmanın altında kuruluyor, geride kalınca bellekten atılıyor",
       "Tüm uzayı büken gerçek zamanlı çarpıtma; her mekânın kendi havası, ışığı ve film hasarı",
-      "Müze taramaları, CC0 ve MIT lisanslı gerçek 3B varlıklar; gerçek kayıtlarla kurulu ses tasarımı ve kendi yazdığım yarım kalan melodi",
+      "Müze taramaları ve lisansı tek tek doğrulanmış 3B varlıklar; 600'ü aşkın gerçek kayıtla, oda oda seviyelenmiş ses tasarımı ve gerçek sessizlikler",
     ],
     href: "https://the-dream-of-the-photo.vercel.app/",
     ctaLabel: "Kâbusa gir",
     sourceUrl: "https://github.com/cayankuzu/the-dream-of-the-photo",
     images: [
+      {
+        src: "/project-previews/dream-elevator.jpg",
+        caption: "Asansör: kapı açılınca duvarda, içinde durduğun kalabalığın fotoğrafı",
+      },
+      {
+        src: "/project-previews/dream-holes.jpg",
+        caption: "Delikler: yüzü deliklere açılan adam",
+      },
+      {
+        src: "/project-previews/dream-dentist.jpg",
+        caption: "Dişçi, kendi ağzının içinden",
+      },
+      {
+        src: "/project-previews/dream-flood.jpg",
+        caption: "Sel: su çizgisinin altında akşam yemeği",
+      },
       {
         src: "/project-previews/dream-hair.jpg",
         caption: "Yağmur saça dönüşüyor; iplerde yüzleri kazınmış fotoğraflar",
