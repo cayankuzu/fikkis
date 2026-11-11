@@ -7,6 +7,37 @@ export type ProjectEnOverride = Partial<
 >;
 
 export const projectsEn: Record<string, ProjectEnOverride> = {
+  "life-of-a-photon": {
+    title: "Life of a Photon",
+    hook: "A first-person special-relativity simulation that shows in real time what a traveller sees while speeding up to 99.999% of the speed of light: the street crowding forward, Doppler colours and heat light becoming visible.",
+    description:
+      "Answers, as far as physics allows, the question Einstein asked at sixteen: 'What would I see if I chased a beam of light?' The view of an observer accelerating along a night-time avenue from rest to 0.99999 c is computed pixel by pixel with the exact law of relativistic aberration, the Doppler shift, the Lorentz transformation of radiance, the CIE 1931 colour-matching functions and Planck's law. Besides the 'seen' and 'measured' views there is a thesis-level bilingual scientific dossier and a live panel that explains what is on screen in words a child understands.",
+    platform: "Web (Next.js, React Three Fiber, WebGL 2)",
+    status: "Live web version · v1.0",
+    role: "Relativity and colour-science modelling · GLSL shaders · UI/UX design",
+    highlights: [
+      "Exact relativistic aberration: at 0.99999 c the whole forward hemisphere fits into a cone of 0.26°",
+      "Every light source's spectrum is integrated with the CIE 1931 observer after its Doppler shift: the Doppler rainbow ring of the LEDs, a red traffic light turning green at 0.2 c",
+      "The invisible heat light of the 15 °C street glows red ahead, then white, as the speed grows; above 0.995 c it outshines the surface of the Sun",
+      "A thesis-level bilingual scientific dossier with 77 references, and a live 'Why does it look like this?' panel that explains the picture in primary-school words",
+    ],
+    ctaLabel: "Launch the simulation",
+    tags: ["Special relativity", "Optics", "WebGL", "Three.js"],
+    images: [
+      {
+        caption:
+          "0.99 c: the whole forward hemisphere fits into a cone of 8.1°; the thermal glow of the surroundings in the middle, the Doppler rainbow ring of the LED light around it",
+      },
+      {
+        caption:
+          "0.866 c (γ = 2): the avenue crowding forward, heat light glowing red and the 'Why does it look like this?' panel explaining the picture in a child's words",
+      },
+      {
+        caption:
+          "Scientific dossier: Lorentz boost, proper time and rapidity; numbered equations, figures and a referenced bilingual text",
+      },
+    ],
+  },
   "cayan-kuzu-cv": {
     title: "Çayan Kuzu CV",
     hook: "Two-column bilingual live curriculum vitae system operating with identical fidelity on screen and print.",
