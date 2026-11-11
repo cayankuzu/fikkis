@@ -18,10 +18,13 @@
   in-browser captures of STROLLY 2.0 beta (`strolly-seven.vercel.app`, same build run locally),
   taken on 2026-10-13 at 1600×900 (TEKERRÜR's forest room, ÖTE's ship, PARALEL-LEŞ's swing,
   DURUM's electron, YAŞAMAK's cafe, TEK AYAK's reveal, TAKINTI's shadow, the story select)
-- `dream-hair.jpg`, `dream-street.jpg`, `dream-hall.jpg`, `dream-darkroom.jpg`, `dream-meat.jpg`, `dream-sun.jpg`, `dream-stare.jpg`:
-  in-browser captures of The Dream of the Photo (`the-dream-of-the-photo.vercel.app`, same build run
-  locally), taken on 2026-11-05 at 1600×900 (hair instead of rain under the lines of scratched faces, the street of
-  half people, the concrete hall, the red darkroom, the tunnel of meat, the oil sea under the half sun, the waking)
+- `dream-sun.jpg`: an in-browser capture of The Dream of the Photo (`the-dream-of-the-photo.vercel.app`, same build run
+  locally), taken on 2026-11-05 at 1600×900 (the oil sea under the half sun)
+- `dream-title.jpg`, `dream-unseen.jpg`, `dream-barber.jpg`, `dream-cellar.jpg`, `dream-studio.jpg`, `dream-plane.jpg`,
+  `dream-glimpse.jpg`: captures of the narrated cut of The Dream of the Photo (commit 620a648, the build live at
+  `the-dream-of-the-photo.vercel.app`), taken on 2026-11-11 at 1600×900 (the title screen with its buttons hidden;
+  the dinner table before your place is cleared; the barber in the mirror; the hand that sets your plate aside; the
+  family portrait; the kitchen window beside the wing; the white-haired man in the street, thirty-three years on)
 - `dream-elevator.jpg`, `dream-holes.jpg`, `dream-dentist.jpg`, `dream-flood.jpg`: renders of four rooms of the
   33-minute version of The Dream of the Photo (commit 9ba706f, the build live at `the-dream-of-the-photo.vercel.app`),
   made on 2026-11-10 at 1600×900 with the project's own headless review tool (the lift's door opening on a photo of

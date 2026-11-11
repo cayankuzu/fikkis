@@ -431,27 +431,47 @@ export const projects: Project[] = [
     title: "The Dream of the Photo",
     hook: "Bir fotoğrafın rüyası saç beyazlatır, bir fotoğrafın rüyası her akşam yarım.",
     description:
-      "Gece bir sokakta bir fotoğrafçı tek bir anlık fotoğraf çeker. Baskının içine girersin ve rüya seni yedi akşam boyunca, yaklaşık 33 dakika kendiliğinden taşır. Her akşam, rüyanın yürüyüşünden bir parça ve her biri yaygın bir korkunun üstüne kurulu küçük odalardır: örümcekler, böcekler, delik kümeleri, dişçinin iğnesi, geride kalan ayna, karabasan, daralan borular, diri diri gömülmek, yükseklik, derin su, yılanlar, karanlık, oyuncak bebekler, palyaçolar, kovalanmak, sahnede sınav, kendi cenazen. Saati hep yarımı gösteren koridor her akşam döner, her seferinde daha kötü; deklanşörün çektiği fotoğraflar sonunda tavanı olmayan bir salonda asılıdır. Bakmadığın anda değişen, uzayı bükülen, gerçek zamanlı bir kâbus.",
+      "Bir akşam altı buçukta sofradan kalkarsın, sokağa çıkar ve evin fotoğrafını çekersin. Anlatıcı o fotoğrafın kendisidir: görüntüsü elinde belirirken senin hiç geri dönmediğin otuz üç yılı rüyasında görür; yedi akşam, her yıl için bir dakika. Her akşam, yaygın bir korkunun üzerine kurulmuş kısa sahnelerden oluşur ve mottonun ortasında, her seferinde biraz daha ileride kesilir: sokağa dönersin, saçın biraz daha beyazdır, evin penceresi biraz daha boştur. Türkçe ve İngilizce seslendirilmiş, altyazılı, 33 dakikalık sinematik bir kâbus; kendiliğinden ilerler, kaydırınca hızlanır.",
     platform: "Web · Masaüstü ve mobil",
     status: "Canlı",
-    role: "Bağımsız sinematik deneyim · Yazım ve sahneleme · 3B istemci ve ses",
-    tools: ["TypeScript", "Three.js/WebGL", "Vite", "Web Audio"],
+    role: "Bağımsız kısa film deneyimi · Senaryo, kurgu ve sahneleme · 3B istemci, ses ve müzik",
+    tools: ["TypeScript", "Three.js/WebGL", "Vite", "Web Audio", "Python"],
     highlights: [
-      "Yedi akşam, 30 oda, yaklaşık 33 dakika: her oda tek bir bakış hattı için sahnelenmiş; odalar önceden yüklenip karartmanın altında kuruluyor, geride kalınca bellekten atılıyor",
-      "Tüm uzayı büken gerçek zamanlı çarpıtma; her mekânın kendi havası, ışığı ve film hasarı",
-      "Müze taramaları ve lisansı tek tek doğrulanmış 3B varlıklar; 600'ü aşkın gerçek kayıtla, oda oda seviyelenmiş ses tasarımı ve gerçek sessizlikler",
+      "Fotoğrafın anlattığı bir hikâye: 160'ı aşkın replik ve üç ses (anlatıcı, evdeki anne, rüyadakiler); yerelde üretilen, her kaydı konuşma tanımayla denetlenen sentetik seslerle iki dilde, altyazılar sesle eşzamanlı",
+      "Kısa film gibi kurgu: 39 sahne çekim gibi kesiliyor (geç girilip erken çıkılıyor); her akşam mottonun ortasında yarıda kalıyor, ninni her akşam bir ölçü ilerleyip yalnızca son sofrada tamamlanıyor",
+      "Gerçek zamanlı three.js: sahneler önceden derlenip karartmanın altında kuruluyor; tüm uzayı büken çarpıtma, lisansı tek tek doğrulanmış 3B varlıklar ve 600'ü aşkın gerçek kayıtla oda oda seviyelenmiş ses",
     ],
     href: "https://the-dream-of-the-photo.vercel.app/",
     ctaLabel: "Kâbusa gir",
     sourceUrl: "https://github.com/cayankuzu/the-dream-of-the-photo",
     images: [
       {
-        src: "/project-previews/dream-elevator.jpg",
-        caption: "Asansör: kapı açılınca duvarda, içinde durduğun kalabalığın fotoğrafı",
+        src: "/project-previews/dream-title.jpg",
+        caption: "Başlık ve her akşam yarıda kalan motto",
       },
       {
-        src: "/project-previews/dream-holes.jpg",
-        caption: "Delikler: yüzü deliklere açılan adam",
+        src: "/project-previews/dream-unseen.jpg",
+        caption: "Görünmeden dönüş: filmin ilk sıcak ışığı, sofra senin yerin silinmeden önce",
+      },
+      {
+        src: "/project-previews/dream-barber.jpg",
+        caption: "Berber: aynada saçını beyaza kesen başsız adam",
+      },
+      {
+        src: "/project-previews/dream-cellar.jpg",
+        caption: "Bodrum: yüzüklü bir el, her akşam tabağını ayırıyor",
+      },
+      {
+        src: "/project-previews/dream-studio.jpg",
+        caption: "Aile fotoğrafı: her flaşta yıllar geçiyor, senin yerin hep boş",
+      },
+      {
+        src: "/project-previews/dream-plane.jpg",
+        caption: "Uçak: evinizin mutfak penceresi kanadın yanında uçuyor",
+      },
+      {
+        src: "/project-previews/dream-elevator.jpg",
+        caption: "Asansör: kapı açılınca duvarda, içinde durduğun kalabalığın fotoğrafı",
       },
       {
         src: "/project-previews/dream-dentist.jpg",
@@ -462,32 +482,16 @@ export const projects: Project[] = [
         caption: "Sel: su çizgisinin altında akşam yemeği",
       },
       {
-        src: "/project-previews/dream-hair.jpg",
-        caption: "Yağmur saça dönüşüyor; iplerde yüzleri kazınmış fotoğraflar",
-      },
-      {
-        src: "/project-previews/dream-street.jpg",
-        caption: "Bitmesi gereken sokak ve yarım insanlar",
-      },
-      {
-        src: "/project-previews/dream-hall.jpg",
-        caption: "Beton salon: yataklar, saç şelalesi, bakmadığında dönen dev baş",
-      },
-      {
-        src: "/project-previews/dream-darkroom.jpg",
-        caption: "Karanlık oda: her kare bir adım daha yakın",
-      },
-      {
-        src: "/project-previews/dream-meat.jpg",
-        caption: "Et tüneli",
+        src: "/project-previews/dream-holes.jpg",
+        caption: "Delikler: yüzü deliklere açılan adam",
       },
       {
         src: "/project-previews/dream-sun.jpg",
         caption: "Petrol denizi, yarım güneş ve ev büyüklüğünde bir ördek",
       },
       {
-        src: "/project-previews/dream-stare.jpg",
-        caption: "Uyanış: başı boynunun üstünde dönen fotoğrafçı",
+        src: "/project-previews/dream-glimpse.jpg",
+        caption: "Otuz üç yıl sonra: sokakta hâlâ bekleyen beyaz saçlı adam",
       },
     ],
     tone: "violet",
