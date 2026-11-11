@@ -256,6 +256,27 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       { caption: "Atmospheric nocturnal urban exploration view" },
     ],
   },
+  simulab: {
+    hook: "A 3D oscillation and chaos laboratory with verified numerical solvers, in which every result is measured and compared with theory.",
+    description:
+      "Solves a damped, driven spring–mass oscillator and chaotic pendulum chains of one to six links in the browser with fixed-step Runge–Kutta (RK4 at 1 kHz by default) and the adaptive Dormand–Prince method. An energy ledger shows the numerical error live; virtual instruments put the period, amplitude, damping, resonance curve, spectrum, Lyapunov exponent and Poincaré section next to the theory. Fourteen verification experiments (67 criteria) can be rerun in the browser, and theory, methods and verification come with the app as a bilingual technical report with 147 references.",
+    platform: "Web (Next.js 15, React 19, Three.js & KaTeX)",
+    status: "Live web version · v2.1",
+    role: "Computational physics · Numerical methods · Verification · Product & UI/UX design",
+    highlights: [
+      "Five integrators (explicit Euler to Dormand–Prince 5(4)) and fixed steps from 60 to 2000 Hz; the energy-ledger residual measures the numerical error live",
+      "Pendulum of 1–6 links: twin trajectory, Lyapunov exponent by Benettin's method, Poincaré section and normal modes",
+      "Driven oscillator: comparison with the closed-form solution, frequency response, amplitude spectrum and stops with Newtonian restitution",
+      "14 verification experiments, 67 criteria and 154 automated tests; 9 task sheets in a predict–observe–explain format",
+      "Interface aimed at WCAG 2.2 AA: camera and mass selection from the keyboard, MathML formulas, Turkish and English",
+    ],
+    ctaLabel: "Open the laboratory",
+    tags: ["Computational Physics", "Chaos Theory", "Numerical Analysis", "Verification"],
+    images: [
+      { caption: "Chaotic double pendulum: twin separation, Lyapunov estimate, Poincaré section and normal modes" },
+      { caption: "Driven oscillator at resonance: theoretical and measured frequency response, amplitude spectrum and parameter panel" },
+    ],
+  },
   "dream-of-the-photo": {
     title: "The Dream of the Photo",
     hook: "The dream of a photograph turns hair white; the dream of a photograph, every evening, half.",
