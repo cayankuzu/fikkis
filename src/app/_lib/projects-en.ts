@@ -82,21 +82,34 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
   },
   beatter: {
     title: "beaTTer",
-    hook: "An unbeatable Rock-Paper-Scissors & MINDTWIN arena sensing finger tendon acceleration in mid-air (-140ms) with AI and robot arm integration.",
+    hook: "A Rock-Paper-Scissors opponent that seals its move with SHA-256 on a frame before your hand lands: it reads your fingers in mid-air and, under the tournament setting, cannot lose a valid round by rule.",
     description:
-      "Real-time biomechanical computer vision platform predicting human hand moves in mid-air 140ms before full extension. Features dual-engine AI (MediaPipe CV + Markov behavioral engine), real-time live analyst dashboard, game theory mind-reading, and Arduino robotic arm physical actuation.",
-    platform: "Web (Browser & Mobile Camera) + Hardware (Arduino Robot Arm)",
-    status: "Live Web Build · v2.5",
-    role: "Biomechanical modeling · Computer Vision & ML · UI/UX & WebRTC",
+      "A Rock-Paper-Scissors opponent that tracks the hand on camera with MediaPipe, reads the moment the fingers start to open in mid-air, and seals its decision with SHA-256 on a frame before the hand lands. The referee never looks at the AI's move; under the tournament setting a valid round cannot be lost by rule (Theorem 1 of the thesis), while throws that open late or cannot be read count as fouls or void rounds and are replayed. After each round every seal is opened and verified. The camera-free demo plays with a synthetic hand; all numbers are simulations, no data from real players has been collected yet. On camera only the hand is shown sharp, and the picture never leaves the device.",
+    platform: "Web (browser · camera or camera-free demo)",
+    status: "Live web version · v4",
+    role: "Algorithms & game theory · Computer vision · Cryptographic commitment · UI/UX · Thesis",
     highlights: [
-      "Early tendon impulse extraction (-140ms) via real-time wrist and metacarpal velocity vectors",
-      "MINDTWIN behavioral prediction engine with live confidence telemetry and probability breakdown",
-      "Adaptive responsive game UI with audio feedback and Arduino robotic arm servo sync",
+      "Decision before the landing: the move is sealed with SHA-256 on a frame before the hand lands; at the end of the round every seal is opened and verified",
+      "No loss in a valid round under the tournament setting (by rule); zero losses in 14,579 valid rounds of a 15,000-session adversarial fuzz test (simulation)",
+      "Against a synthetic player matched to the detector, 94.5% of attempts are won and 5.25% are fouls that are replayed (simulation; no real-player data)",
+      "Privacy: the whole camera picture is blurred and only the tracked hand stays sharp; hand tracking runs on the GPU, 2.5 to 2.9 times faster than on the CPU",
+      "113 automated tests, eight reproducible simulation experiments and a thesis in Turkish",
     ],
-    ctaLabel: "Try live demo",
+    ctaLabel: "Play in the arena",
     tags: ["AI", "Computer Vision", "Game Theory"],
     images: [
-      { caption: "beaTTer live 5-round AI arena and real-time analyst dashboard" },
+      {
+        caption:
+          "Camera-free demo (synthetic hand): the AI has sealed its move while the stroke is still in the air, ~365 ms before landing; live prediction and beat strip",
+      },
+      {
+        caption:
+          "Round report: decision 97 ms before landing, with 59% of the move formed; four SHA-256 seals opened and verified",
+      },
+      {
+        caption:
+          "Laboratory: score, decision-time distribution and prediction quality over 13 synthetic rounds, with Wilson intervals and a simulation label",
+      },
     ],
   },
   sorita: {
