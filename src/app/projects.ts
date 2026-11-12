@@ -361,6 +361,7 @@ export const projects: Project[] = [
     href: "https://memode.itch.io/haluk",
     ctaLabel: "Demoyu web'de oyna",
     purchase: { href: "https://memode.itch.io/haluk", label: "Windows demosunu indir", store: "itch.io" },
+    sourceUrl: "https://github.com/cayankuzu/haluk-7-gunu",
     images: [
       {
         src: "/project-previews/haluk-meeting.jpg",
