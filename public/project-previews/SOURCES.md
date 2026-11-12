@@ -8,11 +8,12 @@
   `merbut-menu.png` was re-captured on 2026-10-12 from v3.2.0, the web demo build (DEMO badge,
   "TAM SÜRÜM · itch.io" entry, EN button); the title card, the first fight and the gameplay clip
   were re-checked against v3.2.0 and are unchanged
-- `stresst-smash.jpg`, `stresst-aftermath.jpg`, `stresst-street.jpg`, `stresst-cleanup.jpg`:
-  in-game canvas captures of the sTressT demo (`stresst-tan.vercel.app`, same build run locally),
-  taken on 2026-10-01 with real swings, carries and physics (a sledgehammer hit on a vase, the
-  room after a session, the street with the rage room and shops, carrying a piece to the street
-  container)
+- `haluk-meeting.jpg`, `haluk-morning-after.jpg`, `haluk-stresst.jpg`, `haluk-demo-end.jpg`:
+  the owner's own screenshots of his game Haluk'un 7 Günü (Godot 4.7.2), made for its itch.io
+  page (`memode.itch.io/haluk`) and resized from 1920 x 1080 PNG to 1600 x 900 JPG on 2026-11-12
+  (the meeting where the A falls, the morning after at the office, the evening at sTressT, the
+  Turkish end card of the free demo). The card keeps the id `stresst`, which sTressT grew into,
+  so that old `#proje-stresst` links still open it
 - `strolly-tekerrur.jpg`, `strolly-ote.jpg`, `strolly-paralel.jpg`, `strolly-durum.jpg`,
   `strolly-yasamak.jpg`, `strolly-tekayak.jpg`, `strolly-takinti.jpg`, `strolly-stories.jpg`:
   in-browser captures of STROLLY 2.0 beta (`strolly-seven.vercel.app`, same build run locally),
