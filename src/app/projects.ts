@@ -829,9 +829,9 @@ export const projects: Project[] = [
     title: "Zlip",
     hook: "Galaxy Z Flip'in kapak ekranını canlı bir vitrine, ekran koruyucuya ve mini etkileşim merkezine dönüştür.",
     description:
-      "Katlanabilir akıllı telefonların donanım kısıtlarını yaratıcı bir UI/UX fırsatına dönüştüren Android uygulaması. Jetpack WindowManager ve Compose ile telefon kapalıyken veya yarı katlıyken çalışan akıllı kartlar, mini pencere yansıtma ve dinamik kapak deneyimi sunar.",
+      "Katlanabilir akıllı telefonların donanım kısıtlarını yaratıcı bir UI/UX fırsatına dönüştüren Android uygulaması. Jetpack WindowManager ve Compose ile telefon açıkken de katlıyken de çalışan akıllı kartlar, arka planda kesintisiz medya/bildirim kontrolleri, ekran yansıtma ve dinamik kapak deneyimi sunar.",
     platform: "Android · Galaxy Z Flip",
-    status: "Canlı · APK ile indirilebilir · Google Play'de yakında",
+    status: "Canlı · v1.2.7 APK · Google Play'de yakında",
     role: "Ürün ve UI/UX tasarımı · Android geliştirme",
     tools: [
       "Kotlin",
@@ -841,9 +841,9 @@ export const projects: Project[] = [
       "MediaProjection",
     ],
     highlights: [
-      "Açık telefonda arka ekran: Mini kapak ile diğer uygulamalarda da açık kalır; ekran yansıtmada kaydırarak gezinme ve yakınlaştırma",
-      "Açık telefon ve katlı kapak ekranında %100 birleşik UI/UX deneyimi, kilit ekranı önünde ekran koruyucu, sadeleştirilmiş üst ve alt kontroller, Odak Sayacı (Pomodoro), Kronometre, Çark, Zar, Yazı Tura ve Sayaç",
-      "Gruplarda canlı video önizleme, dâhili galeri ve cihaza geri aktarma sistemi, arka ekranla eş zamanlı medya oynatıcı (`dk:sn` ilerleme çubuğu) ve veri kaybı olmadan uygulama içi tek tıkla OTA güncelleme",
+      "Arka planda kesintisiz kapak deneyimi: uygulama kapatılsa veya arka plana alınsa bile arka kapak ekranı ve oynatma sürer; Spotify / YouTube Music tarzı bildirim panelinden oynat/duraklat, ses, geçiş ve kaydırarak kapatma kontrolleri",
+      "Açık ve katlı kapak ekranında birleşik UI/UX, kilit ekranı önünde ekran koruyucu, tarih-saat göstergesi, LED matris görünümü, Odak Sayacı (Pomodoro), Kronometre, Çark, 3D Zar, Yazı Tura ve Sayaç",
+      "Fotoğraf/GIF/video desteği, ekran yansıtmada kaydırma ve yakınlaştırma, gruplarda canlı video önizleme, dâhili galeri, medya oynatıcı (dk:sn ilerleme çubuğu) ve uygulama içi tek tıkla OTA güncelleme",
     ],
     apkUrl: "https://github.com/cayankuzu/Zlip/releases/latest/download/Zlip.apk",
     websiteUrl: "https://zlip-web.vercel.app/",

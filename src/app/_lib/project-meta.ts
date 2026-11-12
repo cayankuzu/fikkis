@@ -257,9 +257,9 @@ export function getQuickLink(project: Project) {
 const featuredOrder = [
   "cayan-kuzu-cv",
   "universe",
+  "zlip",
   "beatter",
   "sorita",
-  "zlip",
   "wmatch",
   "trai",
   "strolly",
