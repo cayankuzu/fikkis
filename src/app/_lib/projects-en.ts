@@ -114,14 +114,14 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
     description:
       "A Rock-Paper-Scissors opponent that tracks the hand on camera with MediaPipe, reads the moment the fingers start to open in mid-air, and seals its decision with SHA-256 on a frame before the hand lands. The referee never looks at the AI's move; under the tournament setting a valid round cannot be lost by rule (Theorem 1 of the thesis), while throws that open late or cannot be read count as fouls or void rounds and are replayed. After each round every seal is opened and verified. The camera-free demo plays with a synthetic hand; all numbers are simulations, no data from real players has been collected yet. On camera only the hand is shown sharp, and the picture never leaves the device.",
     platform: "Web (browser · camera or camera-free demo)",
-    status: "Live web version · v4",
+    status: "Live web version · v4.2.1",
     role: "Algorithms & game theory · Computer vision · Cryptographic commitment · UI/UX · Thesis",
     highlights: [
       "Decision before the landing: the move is sealed with SHA-256 on a frame before the hand lands; at the end of the round every seal is opened and verified",
       "No loss in a valid round under the tournament setting (by rule); zero losses in 14,579 valid rounds of a 15,000-session adversarial fuzz test (simulation)",
       "Against a synthetic player matched to the detector, 94.5% of attempts are won and 5.25% are fouls that are replayed (simulation; no real-player data)",
       "Privacy: the whole camera picture is blurred and only the tracked hand stays sharp; hand tracking runs on the GPU, 2.5 to 2.9 times faster than on the CPU",
-      "113 automated tests, eight reproducible simulation experiments and a thesis in Turkish",
+      "114 automated tests, self-learning biomechanical tendon calibration, plain-language round report, bidirectional cloud learning and a thesis in Turkish",
     ],
     ctaLabel: "Play in the arena",
     tags: ["AI", "Computer Vision", "Game Theory"],
