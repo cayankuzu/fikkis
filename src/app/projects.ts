@@ -175,7 +175,7 @@ export const projects: Project[] = [
     description:
       "Kamerada eli MediaPipe ile izleyip parmakların havada açılmaya başladığı anı okuyan ve kararını elin inişinden önceki bir karede SHA-256 ile mühürleyen Taş-Kağıt-Makas rakibi. Hakem yapay zekânın hamlesine bakmaz; Turnuva ayarında geçerli bir tur kural gereği kaybedilmez (tezdeki Teorem 1), geç açılan ya da okunamayan atışlar faul veya geçersiz sayılıp tekrarlanır. Tur bitince bütün mühürler açılır ve doğrulanır. Kamerasız demo sentetik bir elle oynar; sayıların tamamı simülasyondur, gerçek oyuncu verisi henüz toplanmamıştır. Kamerada yalnızca el net görünür ve görüntü cihazdan çıkmaz.",
     platform: "Web (tarayıcı · kamera ya da kamerasız demo)",
-    status: "Canlı Web Sürümü · v4.2",
+    status: "Canlı Web Sürümü · v4.2.1",
     role: "Algoritma ve oyun teorisi · Bilgisayarlı görü · Kriptografik taahhüt · UI/UX · Tez",
     tools: [
       "MediaPipe Tasks Vision",
