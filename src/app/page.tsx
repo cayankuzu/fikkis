@@ -90,6 +90,10 @@ function HomeInner() {
               <dd>{stats.categoryCounts.mobile}</dd>
             </div>
             <div>
+              <dt>{t.hero.stats.science}</dt>
+              <dd>{stats.categoryCounts.science}</dd>
+            </div>
+            <div>
               <dt>{t.hero.stats.game}</dt>
               <dd>{stats.categoryCounts.game}</dd>
             </div>
@@ -148,6 +152,16 @@ function HomeInner() {
                   <IconArrowUpRight size={16} />
                 </a>
               </div>
+            </div>
+
+            <div className="aboutPillars">
+              {t.aboutSection.pillars.map((pillar) => (
+                <div className="aboutPillar" key={pillar.index}>
+                  <span className="aboutPillarIndex">{pillar.index}</span>
+                  <h3 className="aboutPillarTitle">{pillar.title}</h3>
+                  <p className="aboutPillarDetail">{pillar.detail}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -28,23 +28,27 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
   const mediaRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // Platformdan, kartta zaten görünen alan adını ve "Masaüstü" rozetini ayıkla.
+  const { locale, t } = useI18n();
+
+  // Platformdan, kartta zaten görünen alan adını ve "Masaüstü / Desktop" rozetini ayıkla.
+  const catLabelTr = categoryLabels[project.category].toLocaleLowerCase("tr");
+  const catLabelLoc = (
+    t.projectsSection.categories[project.category] ?? categoryLabels[project.category]
+  ).toLocaleLowerCase("tr");
   const platform = project.platform
     .split(" · ")
-    .filter(
-      (part) =>
-        part.toLocaleLowerCase("tr") !==
-          categoryLabels[project.category].toLocaleLowerCase("tr") &&
-        !(project.desktopOnly && /^masaüstü$/i.test(part)),
-    )
+    .filter((part) => {
+      const lower = part.toLocaleLowerCase("tr");
+      if (lower === catLabelTr || lower === catLabelLoc) return false;
+      if (project.desktopOnly && /^(masaüstü|desktop)$/i.test(part)) return false;
+      return true;
+    })
     .join(" · ");
-
-  const { locale, t } = useI18n();
 
   const layout =
     project.cardLayout ?? (project.category === "mobile" ? "stack" : "cover");
   const status = getStatus(project, locale);
-  const quickLink = getQuickLink(project);
+  const quickLink = getQuickLink(project, locale);
   const canCycle =
     layout !== "stack" && !project.video && project.images.length > 1;
   const cover = project.images[canCycle ? frame : 0] ?? project.images[0];

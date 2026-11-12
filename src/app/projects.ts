@@ -633,7 +633,7 @@ export const projects: Project[] = [
     highlights: [
       "Koyu kenar çubuğu ve iki sütunlu A4 düzeni; mobilde tek sütuna yeniden kurulan responsive mimari",
       "Playwright ile doğrulanmış, içerik değiştikçe otomatik derlenen 2 sayfalık TR/EN PDF'ler",
-      "UniVerse, beaTTer, SoRita ve akademik araştırmaları kapsayan güncel portföy özeti",
+      "SimuLab, Life of a Photon, UniVerse, beaTTer, Zlip, SoRita ve akademik araştırmaları kapsayan güncel portföy özeti",
     ],
     href: "https://cayankuzucv.vercel.app/",
     ctaLabel: "CV'yi görüntüle",

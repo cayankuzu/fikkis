@@ -20,17 +20,18 @@ export const siteCopy = {
       contact: "İletişim",
     },
     hero: {
-      eyebrow: "Çayan Kuzu · Ürün Tasarımı & Yaratıcı Geliştirme",
+      eyebrow: "Çayan Kuzu · Ürün Tasarımı, UI/UX & Yaratıcı Mühendislik",
       motto1: "Bir şeyler",
       motto2: "deniyorum",
       mottoSubtitle: "",
-      lead: "Aklıma düşen bir fikri sadece hayal etmekle yetinmiyorum; araştırıyor, arayüzünü çiziyor ve çalışan gerçek deneyimlere dönüştürüyorum. App Store ve Google Play'deki mobil uygulamalardan biyomekanik yapay zekâya, 3B web dünyalarından bağımsız yayına uzanan canlı bir üretim arşivi.",
+      lead: "Aklıma düşen bir fikri sadece hayal etmekle yetinmiyorum; araştırıyor, arayüzünü çiziyor ve çalışan gerçek deneyimlere dönüştürüyorum. App Store ve Google Play'deki mobil ürünlerden doğrulanmış 3B fizik laboratuvarlarına, bilgisayarlı görü ve oyun teorisinden bağımsız yayına uzanan canlı bir üretim arşivi.",
       exploreBtn: "Projeleri keşfet",
       contactBtn: "İletişime geç",
       stats: {
         total: "Proje & Deneyim",
         mobile: "Mobil Ürün",
-        game: "3B & WebGL Oyun",
+        science: "Bilim & Simülasyon",
+        game: "Oyun & Etkileşim",
       },
     },
     projectsSection: {
@@ -78,12 +79,38 @@ export const siteCopy = {
       },
     },
     aboutSection: {
-      index: "02 — Hakkında",
+      index: "02 — Hakkında & Yaklaşım",
       title: "Fizikten ürüne, meraktan gerçeğe.",
-      lead: "Ben Çayan Kuzu. Marmara Üniversitesi Fizik Bölümü'nde okuyorum; fiziğin analitik modelleme ve sistem düşüncesini dijital ürün tasarımı ve modern web teknolojileriyle buluşturuyorum.",
-      body: "Benim için bir şeyleri denemek; boşta duran fikirleri çalışan prototiplere, kullanıcıların telefonunda yaşayan uygulamalara veya tarayıcıda akıp giden üç boyutlu dünyalara dönüştürmek demek. Fikrin ilk karalamasından UI/UX tasarımına, teknik mimarisinden mağaza onayına kadar olan süreci uçtan uca yürütmeyi seviyorum.",
+      lead: "Ben Çayan Kuzu. Marmara Üniversitesi Fizik Bölümü'nde okuyorum; fiziğin analitik modelleme, ölçüm ve sistem düşüncesini kullanıcı odaklı ürün tasarımı ve modern arayüz mimarisiyle buluşturuyorum.",
+      body: "Benim için bir şeyleri denemek; boşta duran fikirleri çalışan prototiplere, kullanıcıların telefonunda yaşayan uygulamalara veya tarayıcıda gerçek fizik denklemleriyle akan üç boyutlu laboratuvarlara dönüştürmek demek. Problem tanımından kullanıcı akışlarına, Figma tasarım sisteminden WCAG erişilebilirliğine, teknik mimariden App Store ve Google Play yayınına kadar tüm ürün döngüsünü uçtan uca yürütüyorum.",
       viewCv: "CV'yi görüntüle",
       github: "GitHub profilim",
+      pillars: [
+        {
+          index: "01",
+          title: "Ürün & UI/UX Tasarımı",
+          detail:
+            "Problem tanımı, kullanıcı akışları, bilgi mimarisi, Figma tasarım sistemleri (auto-layout, component, variant) ve WCAG 2.2 AA erişilebilirlik odaklı arayüzler.",
+        },
+        {
+          index: "02",
+          title: "Bilimsel Simülasyon & Veri UX",
+          detail:
+            "Doğrulanmış sayısal çözücüler (RK4, Dormand–Prince), özel görelilik, renk bilimi ve karmaşık fiziksel verileri herkesin anlayacağı görsel panellere dönüştürme.",
+        },
+        {
+          index: "03",
+          title: "Mobil Ürün & Mağaza Yayını",
+          detail:
+            "React Native (Expo), Kotlin/Jetpack Compose ve Supabase ile App Store ve Google Play'de yayına çıkmış uçtan uca mobil uygulamalar.",
+        },
+        {
+          index: "04",
+          title: "3B Deneyim, Oyun & Bağımsız Yayın",
+          detail:
+            "Three.js/WebGL, GLSL gölgelendiricileri, Godot 4, gerçek zamanlı çok oyunculu sistemler, bilgisayarlı görü ve basılı kültür fanzini.",
+        },
+      ],
     },
     zineSection: {
       index: "03 — Bağımsız Yayın",
@@ -160,17 +187,18 @@ export const siteCopy = {
       contact: "Contact",
     },
     hero: {
-      eyebrow: "Çayan Kuzu · Product Design & Creative Engineering",
+      eyebrow: "Çayan Kuzu · Product Design, UI/UX & Creative Engineering",
       motto1: "Bir şeyler",
       motto2: "deniyorum",
       mottoSubtitle: "Always trying things out.",
-      lead: "I don't just imagine ideas; I research them, design the interfaces, and build them into living, functional products. A hands-on archive ranging from published mobile apps on the App Store & Google Play to biomechanical AI, 3D web worlds, and an independent zine.",
+      lead: "I don't just imagine ideas; I research them, design the interfaces, and build them into living, functional products. A hands-on archive ranging from published mobile apps on the App Store & Google Play to verified 3D physics laboratories, computer vision & game theory, and an independent zine.",
       exploreBtn: "Explore projects",
       contactBtn: "Get in touch",
       stats: {
         total: "Projects & Work",
         mobile: "Mobile Products",
-        game: "3D & WebGL Games",
+        science: "Science & Simulation",
+        game: "Games & Interactive",
       },
     },
     projectsSection: {
@@ -218,12 +246,38 @@ export const siteCopy = {
       },
     },
     aboutSection: {
-      index: "02 — About",
+      index: "02 — About & Approach",
       title: "From physics to product, curiosity to reality.",
-      lead: "I'm Çayan Kuzu. Studying Physics at Marmara University; combining the analytical modeling and systems thinking of physics with digital product design and modern web technologies.",
-      body: "For me, trying things out means turning idle ideas into working prototypes, apps living in users' pockets, or 3D interactive worlds running in the browser. I love driving the entire lifecycle end-to-end: from initial sketch and UI/UX design to technical architecture and store release.",
+      lead: "I'm Çayan Kuzu. Studying Physics at Marmara University; combining the analytical modeling, measurement rigor, and systems thinking of physics with user-centered product design and modern interface architecture.",
+      body: "For me, trying things out means turning idle ideas into working prototypes, apps living in users' pockets, or 3D interactive laboratories running real physics equations in the browser. I love driving the entire product lifecycle end-to-end: from problem framing and user journeys to Figma design systems, WCAG accessibility, technical architecture, and App Store & Google Play release.",
       viewCv: "View CV",
       github: "GitHub profile",
+      pillars: [
+        {
+          index: "01",
+          title: "Product & UI/UX Design",
+          detail:
+            "Problem framing, user flows, information architecture, Figma design systems (auto-layout, components, variants), and WCAG 2.2 AA accessible interfaces.",
+        },
+        {
+          index: "02",
+          title: "Scientific Simulation & Data UX",
+          detail:
+            "Verified numerical solvers (RK4, Dormand–Prince), special relativity, color science, and turning complex physical telemetry into intuitive visual panels.",
+        },
+        {
+          index: "03",
+          title: "Mobile Products & Store Releases",
+          detail:
+            "End-to-end mobile applications shipped to the App Store and Google Play with React Native (Expo), Kotlin/Jetpack Compose, and Supabase.",
+        },
+        {
+          index: "04",
+          title: "3D Worlds, Games & Zine",
+          detail:
+            "Three.js/WebGL, custom GLSL shaders, Godot 4, real-time multiplayer systems, computer vision, and independent print publishing.",
+        },
+      ],
     },
     zineSection: {
       index: "03 — Independent Publication",

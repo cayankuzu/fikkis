@@ -219,7 +219,8 @@ function getLinkActions(
 
   if (project.secondaryHref) {
     actions.push({
-      label: project.secondaryLabel ?? "İncele",
+      label:
+        project.secondaryLabel ?? (locale === "en" ? "Explore" : "İncele"),
       href: project.secondaryHref,
       variant: "secondary",
       icon: "arrow",
@@ -229,7 +230,10 @@ function getLinkActions(
 
   if (project.fullVideo) {
     actions.push({
-      label: "Videoyu yeni sekmede aç",
+      label:
+        locale === "en"
+          ? "Open video in new tab"
+          : "Videoyu yeni sekmede aç",
       href: project.fullVideo,
       variant: actions.length ? "secondary" : "primary",
       icon: "video",
@@ -241,11 +245,11 @@ function getLinkActions(
 }
 
 /** Karttaki hızlı bağlantı: yalnızca doğrudan açılabilir dış bağlantılar. */
-export function getQuickLink(project: Project) {
+export function getQuickLink(project: Project, locale: "tr" | "en" = "tr") {
   // Satın alınabilen projelerde seçenekler yalnızca detay panelinde sunulur.
   if (project.purchase) return null;
 
-  const primary = getProjectActions(project).find(
+  const primary = getProjectActions(project, locale).find(
     (action) => action.variant === "primary",
   );
 
@@ -253,24 +257,26 @@ export function getQuickLink(project: Project) {
   return primary;
 }
 
-/** Öne çıkan çalışmaların gösterim sırası: önce mağaza ve derin teknoloji ürünleri, sonra etkileşimli 3B deneyimler. */
+/** Öne çıkan çalışmaların gösterim sırası: önce canlı sistemler, doğrulanmış bilimsel laboratuvarlar ve mağaza ürünleri, ardından etkileşimli 3B deneyimler. */
 const featuredOrder = [
   "cayan-kuzu-cv",
+  "simulab",
+  "life-of-a-photon",
+  "beatter",
   "universe",
   "zlip",
-  "beatter",
   "sorita",
-  "wmatch",
-  "trai",
   "strolly",
-  "audioroom",
-  "merbut",
-  "stresst",
+  "dream-of-the-photo",
+  "wmatch",
   "desain",
+  "audioroom",
+  "trai",
   "etkinlink",
   "mrap",
+  "stresst",
+  "merbut",
   "atkafasi",
-  "dream-of-the-photo",
   "bibish",
 ];
 
