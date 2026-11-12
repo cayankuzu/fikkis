@@ -175,7 +175,7 @@ export const projects: Project[] = [
     description:
       "Kamerada eli MediaPipe ile izleyip parmakların havada açılmaya başladığı anı okuyan ve kararını elin inişinden önceki bir karede SHA-256 ile mühürleyen Taş-Kağıt-Makas rakibi. Hakem yapay zekânın hamlesine bakmaz; Turnuva ayarında geçerli bir tur kural gereği kaybedilmez (tezdeki Teorem 1), geç açılan ya da okunamayan atışlar faul veya geçersiz sayılıp tekrarlanır. Tur bitince bütün mühürler açılır ve doğrulanır. Kamerasız demo sentetik bir elle oynar; sayıların tamamı simülasyondur, gerçek oyuncu verisi henüz toplanmamıştır. Kamerada yalnızca el net görünür ve görüntü cihazdan çıkmaz.",
     platform: "Web (tarayıcı · kamera ya da kamerasız demo)",
-    status: "Canlı Web Sürümü · v4",
+    status: "Canlı Web Sürümü · v4.2",
     role: "Algoritma ve oyun teorisi · Bilgisayarlı görü · Kriptografik taahhüt · UI/UX · Tez",
     tools: [
       "MediaPipe Tasks Vision",
@@ -190,7 +190,7 @@ export const projects: Project[] = [
       "Turnuva ayarında geçerli turda kayıp yok (kural gereği); 15 000 oturumluk saldırı bulanık sınamasında 14 579 geçerli turda sıfır kayıp (simülasyon)",
       "Dedektörle eşleşmiş sentetik oyuncuya karşı denemelerin %94,5'i kazanılır, %5,25'i faul sayılıp tekrarlanır (simülasyon; gerçek oyuncu verisi yok)",
       "Gizlilik: kamera görüntüsünün tamamı bulanık, yalnızca izlenen el net; el izleme ekran kartında (GPU) çalışır, işlemciden 2,5–2,9 kat hızlı",
-      "113 otomatik test, yinelenebilir sekiz simülasyon deneyi ve Türkçe tez",
+      "114 otomatik test, kendi kendine öğrenen biyomekanik tendon kalibrasyonu, adım adım anlaşılır tur raporu, çift yönlü bulut öğrenme ve Türkçe tez",
     ],
     href: "https://beatter.vercel.app/",
     ctaLabel: "Arenada Oyna",
