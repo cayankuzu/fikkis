@@ -276,7 +276,8 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       "Office by day, sTressT in the evening: break things with Jolt physics, then sort the pieces into the right bins",
       "Godot 4.7.2 and typed GDScript; a single-threaded web build under a 40 MB download budget, made to run smoothly on old hardware",
     ],
-    ctaLabel: "Play the demo on itch.io",
+    ctaLabel: "Play the demo on the web",
+    purchase: { href: "https://memode.itch.io/haluk", label: "Download the Windows demo", store: "itch.io" },
     tags: ["Comedy", "First-person", "Physics"],
     images: [
       { caption: "The meeting: the bar is full and the A falls" },

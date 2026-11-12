@@ -359,7 +359,8 @@ export const projects: Project[] = [
       "Godot 4.7.2 ve tipli GDScript; tek iş parçacıklı web sürümü 40 MB indirme bütçesinin altında, eski donanımda akıcı çalışacak şekilde yapıldı",
     ],
     href: "https://memode.itch.io/haluk",
-    ctaLabel: "Demoyu itch.io'da oyna",
+    ctaLabel: "Demoyu web'de oyna",
+    purchase: { href: "https://memode.itch.io/haluk", label: "Windows demosunu indir", store: "itch.io" },
     images: [
       {
         src: "/project-previews/haluk-meeting.jpg",
