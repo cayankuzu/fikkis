@@ -114,7 +114,7 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
     description:
       "A Rock-Paper-Scissors opponent that tracks the hand on camera with MediaPipe, reads the moment the fingers start to open in mid-air, and seals its decision with SHA-256 on a frame before the hand lands. The referee never looks at the AI's move; under the tournament setting a valid round cannot be lost by rule (Theorem 1 of the thesis), while throws that open late or cannot be read count as fouls or void rounds and are replayed. After each round every seal is opened and verified. The camera-free demo plays with a synthetic hand; all numbers are simulations, no data from real players has been collected yet. On camera only the hand is shown sharp, and the picture never leaves the device.",
     platform: "Web (browser · camera or camera-free demo)",
-    status: "Live web version · v4.2.1",
+    status: "Live web version · v4.2.2",
     role: "Algorithms & game theory · Computer vision · Cryptographic commitment · UI/UX · Thesis",
     highlights: [
       "Decision before the landing: the move is sealed with SHA-256 on a frame before the hand lands; at the end of the round every seal is opened and verified",
