@@ -126,7 +126,7 @@ export const projects: Project[] = [
     title: "Life of a Photon",
     hook: "Işık hızının %99,999'una kadar hızlanan bir yolcunun gördüğünü gerçek zamanlı gösteren birinci şahıs özel görelilik simülasyonu: öne toplanan cadde, Doppler renkleri ve görünür hâle gelen ısı ışığı.",
     description:
-      "Einstein'ın 16 yaşında sorduğu 'Bir ışık ışınını kovalasaydım ne görürdüm?' sorusunu fiziğin izin verdiği ölçüde yanıtlar. Gece caddesinde durgun hâlden 0,99999 c'ye kadar hızlanan bir gözlemcinin gördüğü görüntü; kesin relativistik ışık sapıncı, Doppler kayması, ışınım parlaklığının Lorentz dönüşümü, CIE 1931 renk eşleme fonksiyonları ve Planck yasasıyla piksel piksel hesaplanır. 'Görülen' ve 'ölçülen' görünümlerin yanında, tez düzeyinde iki dilli bir bilimsel analiz ve o an ekranda olanı çocuk diliyle anlatan canlı bir açıklama paneli vardır.",
+      "Einstein'ın 16 yaşında sorduğu 'Bir ışık ışınını kovalasaydım ne görürdüm?' sorusunu fiziğin izin verdiği ölçüde yanıtlar. Gece caddesinde durgun hâlden 0,99999 c'ye kadar hızlanan bir gözlemcinin gördüğü görüntü; kesin relativistik ışık sapıncı, Doppler kayması, ışınım parlaklığının Lorentz dönüşümü, CIE 1931 renk eşleme fonksiyonları ve Planck yasasıyla piksel piksel hesaplanır. 'Görülen' ve 'ölçülen' görünümlerin yanında, tez düzeyinde iki dilli bir bilimsel analiz ve ekrandaki her şeyi çocuk diliyle anlatan canlı bir açıklama paneli vardır: anlattığı şeyi görüntüde işaretler ve dokuz duraklı rehberli bir turla hız aralığını baştan sona gezdirir.",
     platform: "Web (Next.js, React Three Fiber, WebGL 2)",
     status: "Canlı Web Sürümü · v1.0",
     role: "Görelilik ve renk bilimi modellemesi · GLSL gölgelendiricileri · UI/UX tasarım",
@@ -143,7 +143,8 @@ export const projects: Project[] = [
       "Kesin relativistik ışık sapıncı: 0,99999 c'de bütün ön yarıküre 0,26°'lik bir koniye sığar",
       "Her ışık kaynağının tayfı Doppler kaymasından sonra CIE 1931 gözlemcisiyle tümlenir: LED'lerin Doppler gökkuşağı halkası, 0,2 c'de yeşile dönen kırmızı trafik ışığı",
       "15 °C'lik caddenin görünmez ısı ışığı hız arttıkça önde kızıl, sonra beyaz parlar; 0,995 c'nin üstünde Güneş yüzeyinden parlaktır",
-      "77 kaynaklı, tez düzeyinde iki dilli bilimsel analiz ve görüntüyü ilkokul diliyle anlatan canlı 'Neden böyle görünüyor?' paneli",
+      "77 kaynaklı, tez düzeyinde iki dilli bilimsel analiz",
+      "'Neden böyle görünüyor?' paneli: o an görüleni ilkokul diliyle anlatır, ekrandaki her nesneyi ve göstergeyi açıklar, anlattığını görüntüde işaretler; rehberli tur ve iki küçük çizim",
     ],
     href: "https://life-of-photon.vercel.app/",
     ctaLabel: "Simülasyonu Başlat",
@@ -151,12 +152,16 @@ export const projects: Project[] = [
     sourceUrl: "https://github.com/cayankuzu/LifeOfPhoton",
     images: [
       {
-        src: "/project-previews/life-of-photon-ring.png",
-        caption: "0,99 c: bütün ön yarıküre 8,1°'lik bir koniye sığar; ortada ortamın ısıl ışıması, çevresinde LED ışığının Doppler gökkuşağı halkası",
+        src: "/project-previews/life-of-photon-tour-ring.png",
+        caption: "Rehberli turun 5. durağı, 0,99 c: bütün ön yarıküre 8,1°'lik bir koniye sığar; işaretli Doppler gökkuşağı halkası, ortada ortamın ısıl ışıması",
       },
       {
-        src: "/project-previews/life-of-photon-glow.png",
-        caption: "0,866 c (γ = 2): öne toplanan cadde, kızıl parlayan ısı ışığı ve görüntüyü çocuk diliyle anlatan 'Neden böyle görünüyor?' paneli",
+        src: "/project-previews/life-of-photon-tour-signal.png",
+        caption: "Turun 2. durağı, 0,2 c: dalgalara doğru gidildiği için kırmızı trafik ışığı yeşil görünür; işaret ışığın kendisini gösterir",
+      },
+      {
+        src: "/project-previews/life-of-photon-inventory.png",
+        caption: "'Ekranda neler var?': sahnedeki her nesne ve her gösterge sade dille açıklanır; seçilen Ay görüntüde işaretlenir",
       },
       {
         src: "/project-previews/life-of-photon-analysis.png",

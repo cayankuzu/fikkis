@@ -39,7 +39,7 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
     title: "Life of a Photon",
     hook: "A first-person special-relativity simulation that shows in real time what a traveller sees while speeding up to 99.999% of the speed of light: the street crowding forward, Doppler colours and heat light becoming visible.",
     description:
-      "Answers, as far as physics allows, the question Einstein asked at sixteen: 'What would I see if I chased a beam of light?' The view of an observer accelerating along a night-time avenue from rest to 0.99999 c is computed pixel by pixel with the exact law of relativistic aberration, the Doppler shift, the Lorentz transformation of radiance, the CIE 1931 colour-matching functions and Planck's law. Besides the 'seen' and 'measured' views there is a thesis-level bilingual scientific dossier and a live panel that explains what is on screen in words a child understands.",
+      "Answers, as far as physics allows, the question Einstein asked at sixteen: 'What would I see if I chased a beam of light?' The view of an observer accelerating along a night-time avenue from rest to 0.99999 c is computed pixel by pixel with the exact law of relativistic aberration, the Doppler shift, the Lorentz transformation of radiance, the CIE 1931 colour-matching functions and Planck's law. Besides the 'seen' and 'measured' views there is a thesis-level bilingual scientific dossier and a live panel that explains everything on the screen in words a child understands: it marks on the picture what it talks about, and a guided tour of nine stops leads through the whole range of speeds.",
     platform: "Web (Next.js, React Three Fiber, WebGL 2)",
     status: "Live web version · v1.0",
     role: "Relativity and colour-science modelling · GLSL shaders · UI/UX design",
@@ -47,18 +47,23 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       "Exact relativistic aberration: at 0.99999 c the whole forward hemisphere fits into a cone of 0.26°",
       "Every light source's spectrum is integrated with the CIE 1931 observer after its Doppler shift: the Doppler rainbow ring of the LEDs, a red traffic light turning green at 0.2 c",
       "The invisible heat light of the 15 °C street glows red ahead, then white, as the speed grows; above 0.995 c it outshines the surface of the Sun",
-      "A thesis-level bilingual scientific dossier with 77 references, and a live 'Why does it look like this?' panel that explains the picture in primary-school words",
+      "A thesis-level bilingual scientific dossier with 77 references",
+      "The 'Why does it look like this?' panel: explains what is seen in primary-school words, explains every object and instrument on the screen, marks on the picture what it talks about; a guided tour and two small drawings",
     ],
     ctaLabel: "Launch the simulation",
     tags: ["Special relativity", "Optics", "WebGL", "Three.js"],
     images: [
       {
         caption:
-          "0.99 c: the whole forward hemisphere fits into a cone of 8.1°; the thermal glow of the surroundings in the middle, the Doppler rainbow ring of the LED light around it",
+          "Stop 5 of the guided tour, 0.99 c: the whole forward hemisphere fits into a cone of 8.1°; the Doppler rainbow ring marked, the thermal glow of the surroundings in the middle",
       },
       {
         caption:
-          "0.866 c (γ = 2): the avenue crowding forward, heat light glowing red and the 'Why does it look like this?' panel explaining the picture in a child's words",
+          "Stop 2 of the tour, 0.2 c: heading into its waves, the red traffic light looks green; the mark shows the light itself",
+      },
+      {
+        caption:
+          "'What is on the screen?': every object and instrument explained in plain words; the selected Moon is marked on the picture",
       },
       {
         caption:
