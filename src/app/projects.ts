@@ -178,9 +178,9 @@ export const projects: Project[] = [
     title: "beaTTer",
     hook: "Hamlesini elin inişinden önceki bir karede SHA-256 ile mühürleyen Taş-Kağıt-Makas rakibi: parmaklarını havada okur, Turnuva ayarında geçerli bir turu kural gereği kaybetmez.",
     description:
-      "Kamerada eli MediaPipe ile izleyip parmakların havada açılmaya başladığı anı okuyan ve kararını elin inişinden önceki bir karede SHA-256 ile mühürleyen Taş-Kağıt-Makas rakibi. Hakem yapay zekânın hamlesine bakmaz; Turnuva ayarında geçerli bir tur kural gereği kaybedilmez (tezdeki Teorem 1), geç açılan ya da okunamayan atışlar faul veya geçersiz sayılıp tekrarlanır. Tur bitince bütün mühürler açılır ve doğrulanır. Kamerasız demo sentetik bir elle oynar; sayıların tamamı simülasyondur, gerçek oyuncu verisi henüz toplanmamıştır. Kamerada yalnızca el net görünür ve görüntü cihazdan çıkmaz.",
+      "Kamerada eli MediaPipe ile izleyip parmakların havada açılmaya başladığı anı okuyan ve kararını elin inişinden önceki bir karede SHA-256 ile mühürleyen Taş-Kağıt-Makas rakibi. Hakem yapay zekânın hamlesine bakmaz; Turnuva ayarında geçerli bir tur kural gereği kaybedilmez (tezdeki Teorem 1), geç açılan ya da okunamayan atışlar faul veya geçersiz sayılıp tekrarlanır. Tur bitince bütün mühürler açılır ve doğrulanır. Kamerasız demo sentetik bir elle oynar; sayıların tamamı simülasyondur; tek oyunculu ilk kamera denemeleri dışında gerçek oyuncu verisi yoktur. Kamerada yalnızca el net görünür ve görüntü cihazdan çıkmaz.",
     platform: "Web (tarayıcı · kamera ya da kamerasız demo)",
-    status: "Canlı Web Sürümü · v4.2.2",
+    status: "Canlı Web Sürümü · v4.2.3",
     role: "Algoritma ve oyun teorisi · Bilgisayarlı görü · Kriptografik taahhüt · UI/UX · Tez",
     tools: [
       "MediaPipe Tasks Vision",
@@ -192,10 +192,10 @@ export const projects: Project[] = [
     ],
     highlights: [
       "Karar inişten önce: hamle, elin inişinden önceki bir karede SHA-256 ile mühürlenir; tur sonunda bütün mühürler açılır ve doğrulanır",
-      "Turnuva ayarında geçerli turda kayıp yok (kural gereği); 15 000 oturumluk saldırı bulanık sınamasında 14 579 geçerli turda sıfır kayıp (simülasyon)",
-      "Dedektörle eşleşmiş sentetik oyuncuya karşı denemelerin %94,5'i kazanılır, %5,25'i faul sayılıp tekrarlanır (simülasyon; gerçek oyuncu verisi yok)",
+      "Turnuva ayarında geçerli turda kayıp yok (kural gereği); 15 000 oturumluk saldırı bulanık sınamasında 17 404 geçerli turda sıfır kayıp (simülasyon)",
+      "Dedektörle eşleşmiş sentetik oyuncuya karşı denemelerin %94,75'i kazanılır, %5'i faul sayılıp tekrarlanır; zamanında atılan dürüst atışlarda faul %0,46 (simülasyon)",
       "Gizlilik: kamera görüntüsünün tamamı bulanık, yalnızca izlenen el net; el izleme ekran kartında (GPU) çalışır, işlemciden 2,5–2,9 kat hızlı",
-      "114 otomatik test, kendi kendine öğrenen biyomekanik tendon kalibrasyonu, adım adım anlaşılır tur raporu, çift yönlü bulut öğrenme ve Türkçe tez",
+      "126 otomatik test; v4.2 denetimi: bulanık sınamanın bulduğu güvence açığı kapatıldı, dürüst Kâğıt'a verilen haksız faul kaldırıldı; isteğe bağlı (varsayılan kapalı) bulut eşitleme, adım adım tur raporu ve Türkçe tez",
     ],
     href: "https://beatter.vercel.app/",
     ctaLabel: "Arenada Oyna",
