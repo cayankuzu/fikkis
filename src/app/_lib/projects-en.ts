@@ -281,21 +281,21 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       { caption: "Outpost skirmish and live leaderboard" },
     ],
   },
-  "cat-as-trophe": {
-    title: "Cat As Trophe",
-    hook: "A bald cat, a perfect porcelain city: nothing is off the table.",
+  "trophe-as-cat": {
+    title: "Trophe As Cat",
+    hook: "A bald cat, a perfect porcelain city: nothing is off the table. On screen the name glitches: CAT AS TROPHE.",
     description:
-      "A 3D chaos sandbox where you play Trophe, a Sphynx cat dropped onto the Owner's perfect Table. Everything man-made breaks, topples and collapses: buildings come down piece by piece and thousands of things scatter; the porcelain people film your chaos on their phones, call the police and chase you. Get into any car; chaos stars bring the police, the fire brigade and SWAT, while trees and animals stay cat-proof. A four-block browser demo is playable online, and the full Windows game is a download on itch.io.",
+      "A 3D chaos sandbox where you play Trophe, a Sphynx cat dropped onto the Owner's perfect Table. Everything man-made breaks, topples and collapses: buildings come down piece by piece and thousands of things scatter; the porcelain people film your chaos on their phones, call the police and chase you. Take any car off the road and its driver runs off shouting; chaos stars bring the police, the fire brigade and SWAT, while trees and animals stay cat-proof. The graphics tune themselves to the machine. A four-block browser demo is playable online, and the full Windows game is a download on itch.io.",
     platform: "Web · Windows · Single player",
-    status: "Live demo · v0.9.1",
+    status: "Live demo · v0.9.2",
     role: "Independent game design · Destruction, physics & city systems",
     highlights: [
-      "Buildings that collapse piece by piece, thousands of breakable things and drivable cars",
+      "Buildings that collapse piece by piece, thousands of breakable things and cars whose drivers run for it",
       "Porcelain people who film your chaos and call the police; fourteen jobs, a catnip shop and 18 achievements",
     ],
     ctaLabel: "Play demo in browser",
     purchase: {
-      href: "https://memode.itch.io/cat-as-trophe",
+      href: "https://memode.itch.io/trophe-as-cat",
       label: "Download full version",
       store: "itch.io",
     },
