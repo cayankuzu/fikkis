@@ -274,6 +274,7 @@ const featuredOrder = [
   "trai",
   "etkinlink",
   "mrap",
+  "cat-as-trophe",
   "stresst",
   "merbut",
   "atkafasi",

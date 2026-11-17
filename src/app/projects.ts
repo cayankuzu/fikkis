@@ -81,6 +81,9 @@ export type Project = {
 /** Merbut'un itch.io sayfası; adres kesinleşince yalnızca burası değişir. */
 export const MERBUT_ITCH_URL = "https://memode.itch.io/merbut";
 
+/** Cat As Trophe'nun itch.io sayfası: tarayıcı demosu sayfada oynar, tam sürüm aynı sayfadan indirilir. */
+export const CAT_AS_TROPHE_ITCH_URL = "https://memode.itch.io/cat-as-trophe";
+
 export const projects: Project[] = [
     {
     id: "simulab",
@@ -307,6 +310,43 @@ export const projects: Project[] = [
     ],
     video: "/project-previews/videos/bibish-gameplay.mp4",
     tone: "lime",
+  },
+  {
+    id: "cat-as-trophe",
+    featured: true,
+    category: "game",
+    desktopOnly: true,
+    title: "Cat As Trophe",
+    hook: "Kel bir kedi, kusursuz porselen bir şehir: masada olmayan hiçbir şey yok.",
+    description:
+      "Sahip'in kusursuz Masası'na bırakılmış Sfenks kedisi Trophe'u yönettiğin 3D kaos oyunu. İnsan yapımı her şey kırılır, devrilir, çöker: binalar parça parça yıkılır, binlerce eşya dağılır; porselen insanlar kaosu telefonla çeker, polisi arar, peşine düşer. Arabalara binilir; kaos yıldızları polisi, itfaiyeyi ve özel harekâtı getirir; ağaçlar ve hayvanlar ise kedi geçirmezdir. Tarayıcıda dört blokluk demo oynanır, tam sürüm itch.io'dan Windows için indirilir.",
+    platform: "Web · Windows · Tek oyunculu",
+    status: "Canlı demo · v0.9.0",
+    role: "Bağımsız oyun tasarımı · Yıkım, fizik ve şehir sistemleri",
+    tools: ["Godot 4.7", "GDScript", "Jolt Physics", "Voxel Tools"],
+    highlights: [
+      "Parça parça çöken binalar, binlerce kırılabilir eşya ve sürülebilir arabalar",
+      "Kaosu telefonla çeken, polisi arayan porselen insanlar; Türkçe ve İngilizce",
+    ],
+    href: CAT_AS_TROPHE_ITCH_URL,
+    ctaLabel: "Demoyu web'de oyna",
+    purchase: { href: CAT_AS_TROPHE_ITCH_URL, label: "Tam sürümü indir", store: "itch.io" },
+    images: [
+      {
+        src: "/project-previews/catastrophe-hat.png",
+        caption: "Büyücü şapkalı Trophe ve kusursuz şehir",
+      },
+      {
+        src: "/project-previews/catastrophe-dominoes.png",
+        caption: "Domino zincirinin sonu: yakıt varilleri ve bir kamyon",
+      },
+      {
+        src: "/project-previews/catastrophe-wheel.png",
+        caption: "Dönme dolap otoparkın içinden yuvarlanıyor",
+      },
+    ],
+    sourceUrl: "https://github.com/cayankuzu/CatAsTrophe",
+    tone: "amber",
   },
   {
     id: "merbut",

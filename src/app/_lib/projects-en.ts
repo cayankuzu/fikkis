@@ -281,6 +281,31 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       { caption: "Outpost skirmish and live leaderboard" },
     ],
   },
+  "cat-as-trophe": {
+    title: "Cat As Trophe",
+    hook: "A bald cat, a perfect porcelain city: nothing is off the table.",
+    description:
+      "A 3D chaos sandbox where you play Trophe, a Sphynx cat dropped onto the Owner's perfect Table. Everything man-made breaks, topples and collapses: buildings come down piece by piece and thousands of things scatter; the porcelain people film your chaos on their phones, call the police and chase you. Get into any car; chaos stars bring the police, the fire brigade and SWAT, while trees and animals stay cat-proof. A four-block browser demo is playable online, and the full Windows game is a download on itch.io.",
+    platform: "Web · Windows · Single player",
+    status: "Live demo · v0.9.0",
+    role: "Independent game design · Destruction, physics & city systems",
+    highlights: [
+      "Buildings that collapse piece by piece, thousands of breakable things and drivable cars",
+      "Porcelain people who film your chaos and call the police; English and Turkish",
+    ],
+    ctaLabel: "Play demo in browser",
+    purchase: {
+      href: "https://memode.itch.io/cat-as-trophe",
+      label: "Download full version",
+      store: "itch.io",
+    },
+    tags: ["Sandbox", "Destruction", "Indie game"],
+    images: [
+      { caption: "Trophe in a wizard hat and the perfect city" },
+      { caption: "The end of the domino run: fuel drums and a truck" },
+      { caption: "The Ferris wheel rolls through the car park" },
+    ],
+  },
   merbut: {
     title: "Merbut",
     hook: "Two heroes, ten realms, and a singular destiny leading to Aku.",
