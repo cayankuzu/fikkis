@@ -310,18 +310,18 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
     title: "Merbut",
     hook: "Two heroes, ten realms, and a singular destiny leading to Aku.",
     description:
-      "Local two-player 2.5D action game where Imam Ali and Samurai Jack are controlled on the same keyboard or with two gamepads. Ten realms each with its own mechanic, Aku's Shadow, and a three-phase Aku boss; original album-cover-style artwork and dynamic combat music. A browser demo covering the first two realms is playable online, while the full Windows installer is available on itch.io. An unofficial, independent fan game.",
+      "Local two-player 2.5D action game where Hazrat Ali and Samurai Jack are controlled on the same keyboard or with two gamepads. Ten realms each with its own mechanic, Aku's Shadow, and a three-phase Aku boss; original album-cover-style artwork and dynamic combat music. The full game is free on itch.io: play it in the browser, or download it for Windows and play offline. An unofficial, independent fan game.",
     platform: "Web · Windows · Local two-player",
-    status: "Live demo · v3.2.0",
+    status: "Live · Free · v3.2.0",
     role: "Independent game design · Combat, progression & boss systems",
     highlights: [
       "Ten realms, ten mechanics; four difficulty tiers, 19 achievements, and save-state continuation",
-      "Three-hit combo chains, Dual Strike, projectile deflection, and a time-portal finale",
+      "Three-hit combo chains, Twin Strike, projectile deflection, and a time-portal finale",
     ],
-    ctaLabel: "Play demo in browser",
+    ctaLabel: "Play in browser",
     purchase: {
       href: "https://memode.itch.io/merbut",
-      label: "Download full version",
+      label: "Download for Windows",
       store: "itch.io",
     },
     tags: ["Action", "Co-op", "Indie game"],

@@ -3,8 +3,7 @@
 import {
   createContext,
   useContext,
-  useEffect,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
@@ -143,7 +142,7 @@ export const siteCopy = {
       copyLink: "Bağlantıyı kopyala",
       copied: "Kopyalandı",
       openAnyway: "Yine de aç",
-      sourceCode: "Kaynak kod",
+      sourceCode: "Kaynak kodu",
       comingSoon: "Yakında",
       contactHint:
         "Bu çalışma hakkında fikir alışverişi yapmak ya da benzer bir ürün tasarlamak istersen bana her zaman",
@@ -361,27 +360,42 @@ const I18nContext = createContext<I18nContextType>({
 
 const STORAGE_KEY = "fikkis_lang";
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("tr");
+/** Bu sekmede seçilen dil; localStorage kapalıyken de seçim çalışsın diye bellekte tutulur. */
+let chosenLocale: Locale | null = null;
+const localeListeners = new Set<() => void>();
 
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem(STORAGE_KEY) as Locale | null;
-      if (saved === "tr" || saved === "en") {
-        setLocaleState(saved);
-      }
-    } catch {
-      // localStorage may be unavailable in incognito/iframe
-    }
-  }, []);
+function readLocale(): Locale {
+  if (chosenLocale) return chosenLocale;
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === "tr" || saved === "en") return saved;
+  } catch {
+    // localStorage may be unavailable in incognito/iframe
+  }
+  return "tr";
+}
+
+function subscribeToLocale(listener: () => void) {
+  localeListeners.add(listener);
+  return () => {
+    localeListeners.delete(listener);
+  };
+}
+
+// Sunucu her zaman Türkçe çizer; kayıtlı dil hidrasyondan sonra okunur.
+const serverLocale = (): Locale => "tr";
+
+export function I18nProvider({ children }: { children: ReactNode }) {
+  const locale = useSyncExternalStore(subscribeToLocale, readLocale, serverLocale);
 
   const setLocale = (next: Locale) => {
-    setLocaleState(next);
+    chosenLocale = next;
     try {
       localStorage.setItem(STORAGE_KEY, next);
     } catch {
       // Ignore storage errors
     }
+    localeListeners.forEach((listener) => listener());
   };
 
   const t = siteCopy[locale] ?? siteCopy.tr;
