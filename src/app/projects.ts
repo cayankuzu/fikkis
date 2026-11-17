@@ -321,12 +321,12 @@ export const projects: Project[] = [
     description:
       "Sahip'in kusursuz Masası'na bırakılmış Sfenks kedisi Trophe'u yönettiğin 3D kaos oyunu. İnsan yapımı her şey kırılır, devrilir, çöker: binalar parça parça yıkılır, binlerce eşya dağılır; porselen insanlar kaosu telefonla çeker, polisi arar, peşine düşer. Arabalara binilir; kaos yıldızları polisi, itfaiyeyi ve özel harekâtı getirir; ağaçlar ve hayvanlar ise kedi geçirmezdir. Tarayıcıda dört blokluk demo oynanır, tam sürüm itch.io'dan Windows için indirilir.",
     platform: "Web · Windows · Tek oyunculu",
-    status: "Canlı demo · v0.9.0",
+    status: "Canlı demo · v0.9.1",
     role: "Bağımsız oyun tasarımı · Yıkım, fizik ve şehir sistemleri",
     tools: ["Godot 4.7", "GDScript", "Jolt Physics", "Voxel Tools"],
     highlights: [
       "Parça parça çöken binalar, binlerce kırılabilir eşya ve sürülebilir arabalar",
-      "Kaosu telefonla çeken, polisi arayan porselen insanlar; Türkçe ve İngilizce",
+      "Kaosu telefonla çeken, polisi arayan porselen insanlar; on dört iş, kedi otu dükkânı ve 18 başarım",
     ],
     href: CAT_AS_TROPHE_ITCH_URL,
     ctaLabel: "Demoyu web'de oyna",
