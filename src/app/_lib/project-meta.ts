@@ -263,6 +263,7 @@ const featuredOrder = [
   "simulab",
   "life-of-a-photon",
   "beatter",
+  "battle-ground",
   "universe",
   "zlip",
   "sorita",

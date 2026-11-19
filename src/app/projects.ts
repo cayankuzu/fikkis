@@ -220,6 +220,46 @@ export const projects: Project[] = [
     tone: "amber",
   },
   {
+    id: "battle-ground",
+    featured: true,
+    category: "game",
+    desktopOnly: true,
+    tags: ["3B Simülasyon", "Three.js", "Taktik Sandbox", "WebGL"],
+    title: "Battle Ground",
+    hook: "117 gerçek 3B birimi sahneye boya, 6 görsel mod arasında canlı dönüştür ve gerçek fizik verileriyle hesaplanan orduları çarpıştır.",
+    description:
+      "Tarayıcıda çalışan gerçek zamanlı 3B taktik savaş simülatörü. Her birimin varsayılan can, hasar, hız, zırh ve itme değerleri gerçek kütle (kg), hız (km/sa) ve kinetik/ısırık enerjisi (J/N) verilerinden hesaplanır. Ultra Realistik, Stilize, Feodal Manga, Voksel 3B ve Mimari CAD modlarının her biri kendi 3B model kütüphanesini kullanır ve mod değiştiğinde sahnedeki ordular canlı dönüşür; Karma mod ise tüm evrenleri tek arenada birleştirir. 14 özerk özel güç (canlı 3B kurbağaya dönüştürme, ilahi yıldırım, ejderha nefesi, ölü diriltme vb.), 4 cephe, 4 yapay zekâ protokolü, canlı birim denetçisi ve 13 hazır senaryo içerir.",
+    platform: "Web · Masaüstü (Three.js, WebGL 2, TypeScript)",
+    status: "Canlı Web Sürümü · v1.0",
+    role: "Oyun tasarımı · 3B motor ve gölgelendiriciler · Bilimsel dengeleme · UI/UX",
+    tools: ["TypeScript", "Three.js", "WebGL / GLSL", "Vite", "Web Audio API"],
+    highlights: [
+      "117 birim ve yapı (101 doğrulanmış CC0 GLB modeli + 16 prosedürel 3B yapı), en güçlüden en zayıfa otomatik sıralı ve gerçek zamanlı 3B stüdyo portreli",
+      "6 oyun ve render modu (Karma, Ultra Realistik PBR, Stilize, Seinen Manga mürekkep/halftone, %100 Voksel 3B Bayer ve Mimari CAD) + sahnedeki orduların canlı mod dönüşümü",
+      "14 stokastik özel güç: düşmanı 5,5 saniyeliğine canlı 3B kurbağaya çevirme (Polymorph), Gök Yargısı, Ejderha Nefesi, EMP, Sismik Sıçrama, Koçbaşı ezmesi ve manuel tetikleme",
+      "Gerçek fizik verileriyle (65 ton / 12 MJ M1A2 Tank, 8,8 ton / 57 kN T-Rex, 18 mitolojik tanrı ve ejderha) karakter bazlı telemetri, 5 biyom, 13 senaryo ve iki dilli (TR/EN) arayüz",
+    ],
+    href: "https://battle-ground-xi.vercel.app",
+    ctaLabel: "Arenada Oyna",
+    websiteUrl: "https://battle-ground-xi.vercel.app",
+    sourceUrl: "https://github.com/cayankuzu/battle-ground",
+    images: [
+      {
+        src: "/project-previews/battle-ground-karma.png",
+        caption: "Karma / Tüm Evrenler modu: Başmelek Seraph, Voksel Zeus, Shogun, M1A2 Tank, T-Rex ve Ejderhalar aynı 3B arenada çarpışıyor",
+      },
+      {
+        src: "/project-previews/battle-ground-inspector.png",
+        caption: "Ultra Realistik mod ve canlı birim denetçisi: özel güç tetikleme, kurbağaya dönüşmüş düşmanlar ve 18 mitolojik varlık kataloğu",
+      },
+      {
+        src: "/project-previews/battle-ground-roster.png",
+        caption: "Komuta paneli, kapanabilir hızlı başlat çubuğu ve 117 birimin güç sırasına göre dizildiği 3B portreli alt envanter barı",
+      },
+    ],
+    tone: "red",
+  },
+  {
     id: "trai",
     featured: true,
     category: "web",

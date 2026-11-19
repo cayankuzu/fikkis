@@ -145,6 +145,37 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       },
     ],
   },
+  "battle-ground": {
+    title: "Battle Ground",
+    hook: "Paint 117 real 3D units onto an arena, live-convert armies across 6 visual modes, and clash forces balanced from real-world physics data.",
+    description:
+      "A real-time 3D tactical battle simulator running in the browser. Default HP, damage, speed, armor, and knockback are derived from real physical mass (kg), speed (km/h), and kinetic or bite energy (J/N). Ultra Realistic, Stylized, Feudal Manga, Voxel 3D, and Architectural CAD each use dedicated 3D asset libraries and live-convert active units on mode switch, while Hybrid mode merges all universes into one arena. Includes 14 autonomous special powers (live 3D frog polymorph, divine smite, dragon fire breath, necromancy, etc.), 4 factions, 4 AI protocols, a live unit inspector, and 13 preset scenarios.",
+    platform: "Web · Desktop (Three.js, WebGL 2, TypeScript)",
+    status: "Live web version · v1.0",
+    role: "Game design · 3D engine & shaders · Scientific balancing · UI/UX",
+    highlights: [
+      "117 playable units and structures (101 verified CC0 GLB models + 16 procedural 3D constructs), auto-ranked strongest to weakest with live 3D studio portraits",
+      "6 visual & game modes (Hybrid All-in-One, Ultra Realistic PBR, Stylized, Seinen Manga ink/halftone, 100% Voxel 3D Bayer, Architectural CAD) with live arena model conversion",
+      "14 stochastic special powers: 5.5s live 3D frog Polymorph, Divine Smite, Dragon Breath, EMP Overload, Seismic Leap, Stampede trample, and manual casting via inspector",
+      "Scientifically grounded defaults (65-ton / 12 MJ M1A2 Tank, 8.8-ton / 57 kN T-Rex, 18 mythological gods & dragons), per-unit telemetry drawer, 5 biomes, 13 scenarios, and bilingual TR/EN UI",
+    ],
+    ctaLabel: "Play in the arena",
+    tags: ["3D Simulation", "Three.js", "Tactical Sandbox", "WebGL"],
+    images: [
+      {
+        caption:
+          "Hybrid / All-Assets mode: Archangel Seraph, Voxel Zeus, Shogun, M1A2 Tank, T-Rex, and Dragons clashing in one 3D arena",
+      },
+      {
+        caption:
+          "Ultra Realistic mode & live unit inspector: manual special-power casting, polymorphed frogs, and the 18-unit mythological roster",
+      },
+      {
+        caption:
+          "Command panel, collapsible quick-start bar, and 117 units ranked strongest-to-weakest with live 3D studio portraits",
+      },
+    ],
+  },
   sorita: {
     title: "SoRita",
     hook: "Turn the city from an ordinary map into a social discovery story you write together with your friends.",
