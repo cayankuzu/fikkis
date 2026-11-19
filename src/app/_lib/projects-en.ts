@@ -71,6 +71,37 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       },
     ],
   },
+  "event-horizon": {
+    title: "Event Horizon",
+    hook: "A real-time general-relativity black hole simulator visualizing Kerr spacetime curvature, Stephen Hawking's horizon physics, and live non-linear spaghettification of a 3D NASA Space Shuttle.",
+    description:
+      "Integrates 3D Schwarzschild/Kerr null geodesics per pixel in WebGL 2, featuring a volumetric GRMHD accretion disk with Beer–Lambert dark dust lanes, HDR optical bloom with AgX filmic tonemapping, relativistic Doppler beaming (I ∝ g⁴), Bardeen's asymmetric D-shaped shadow, Blandford–Znajek polar jets, and a 3D Flamm's Paraboloid curvature funnel. As you scroll inward, the official 3D NASA Space Shuttle Orbiter undergoes non-linear GPU Weyl spaghettification (1/r³ axial nose stretching, lateral wing crushing, Kerr frame-drag twist, gravitational redshift, and a 460-particle tidal debris stream). Compare Cygnus X-1, Sagittarius A*, M87*, and TON 618 across Hawking External Observer, Proper Time (τ) interior plunge, and Cockpit views, backed by 5 graphics presets and a 10-chapter plain-language + KaTeX scientific guide with 14 clickable peer-reviewed citations.",
+    platform: "Web (React 19, Three.js, WebGL 2 / GLSL & KaTeX)",
+    status: "Live web version · v1.0",
+    role: "General relativity & astrophysics modelling · GLSL raytracer · 3D GPU deformation · UI/UX",
+    highlights: [
+      "Real-time 3D Schwarzschild/Kerr null geodesic raytracing: HDR volumetric GRMHD accretion disk, Beer–Lambert dust lanes, n=1/n=2 photon subring, AgX tonemapping, and Blandford–Znajek polar jets",
+      "Non-linear GPU Weyl spaghettification on the 3D NASA Space Shuttle (onBeforeCompile), 460-particle tidal disruption debris stream, gravitational redshift, and time-dilated freezing navigation strobes",
+      "4 peer-reviewed black holes (Cygnus X-1, Sagittarius A*, M87*, TON 618), 3 reference frames (Hawking Distant Observer, Proper Time τ plunge to r→0, Cockpit), 3D Flamm curvature grid, and 5 graphics quality presets",
+      "Plain-language 'In Simple Words' analogies paired with KaTeX equations, clear separation of proven observations vs. open hypotheses, 14 clickable academic citations, bilingual TR/EN UI, and 12 analytical unit tests",
+    ],
+    ctaLabel: "Launch the simulation",
+    tags: ["General Relativity", "Black Holes", "WebGL 2 / GLSL", "Astrophysics"],
+    images: [
+      {
+        caption:
+          "Cygnus X-1 (a* = 0.998): D-shaped Kerr shadow, blue-white approaching / crimson receding Doppler accretion disk, Blandford–Znajek polar jet, and 3D NASA Space Shuttle",
+      },
+      {
+        caption:
+          "Live non-linear GPU Weyl spaghettification: 1/r³ tidal gradient pulls the Shuttle nose into a glowing molten filament while crushing its delta wings inward and stripping superheated debris",
+      },
+      {
+        caption:
+          "3D Flamm's Paraboloid spacetime curvature funnel alongside the plain-language + KaTeX bilingual Science Guide with 14 clickable peer-reviewed references",
+      },
+    ],
+  },
   "cayan-kuzu-cv": {
     title: "Çayan Kuzu CV",
     hook: "Two-column bilingual live curriculum vitae system operating with identical fidelity on screen and print.",

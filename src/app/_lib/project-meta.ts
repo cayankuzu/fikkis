@@ -262,6 +262,7 @@ const featuredOrder = [
   "cayan-kuzu-cv",
   "simulab",
   "life-of-a-photon",
+  "event-horizon",
   "beatter",
   "battle-ground",
   "universe",

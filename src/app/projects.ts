@@ -174,6 +174,53 @@ export const projects: Project[] = [
     tone: "blue",
   },
   {
+    id: "event-horizon",
+    featured: true,
+    category: "science",
+    tags: ["Genel Görelilik", "Kara Delik", "WebGL 2 / GLSL", "Astrofizik"],
+    title: "Event Horizon",
+    hook: "Gerçek Kerr uzay-zaman bükülmesini, Stephen Hawking'in olay ufku fiziğini ve 3B NASA Uzay Mekiği'nin kara deliğe düşerken canlı spagettileşmesini gösteren genel görelilik simülatörü.",
+    description:
+      "Tarayıcıda piksel piksel 3B null jeodezik ışın izleme yapan gerçek zamanlı Genel Görelilik ve Kerr/Schwarzschild kara delik simülatörü. Hacimsel GRMHD birikim diski, karanlık soğurucu toz şeritleri, HDR optik bloom + AgX ton eşleme, göreli Doppler ışıması (I ∝ g⁴), Bardeen'in D-şekilli Kerr gölgesi, Blandford–Znajek kutup jetleri ve 3B Flamm Paraboloidi uzay-zaman hunisini canlı hesaplar. Aşağı kaydırdıkça gerçek 3B NASA Uzay Mekiği'nin (Space Shuttle Orbiter) burnu 1/r³ Weyl eğrilik tensörüyle GPU'da doğrusal olmayan biçimde spagettiye uzar, kanatları sıkışır ve kopan kızgın parçacıklar kara deliğe dökülür. Cygnus X-1, Sagittarius A*, M87* ve TON 618 arasında anlık kıyaslama, Hawking Dış Gözlemci / Öz Zaman (τ) / Kokpit modları, 5 kademeli görüntü kalitesi ve herkesin anlayacağı basit anlatımlı 10 bölümlü + 14 hakemli kaynaklı iki dilli rehber içerir.",
+    platform: "Web (React 19, Three.js, WebGL 2 / GLSL & KaTeX)",
+    status: "Canlı Web Sürümü · v1.0",
+    role: "Genel görelilik & astrofizik modellemesi · GLSL ışın izleyici · 3B deformasyon · UI/UX",
+    tools: [
+      "TypeScript",
+      "Three.js",
+      "WebGL 2 / GLSL",
+      "React 19",
+      "Vite",
+      "KaTeX",
+      "Vitest",
+    ],
+    highlights: [
+      "Gerçek zamanlı 3B Schwarzschild/Kerr jeodezik ışın izleme: HDR hacimsel GRMHD birikim diski, Beer–Lambert toz şeritleri, n=1/n=2 foton halkası, AgX ton eşleme ve Blandford–Znajek kutup jetleri",
+      "3B NASA Uzay Mekiği üzerinde doğrusal olmayan GPU Weyl spagettileşmesi (onBeforeCompile), 460 parçacıklı gelgit parçalanma enkaz akışı, kızıla kayma ve zaman genişlemesiyle yavaşlayıp donan kanat flaşörleri",
+      "4 gerçek kara delik (Cygnus X-1, Sagittarius A*, M87*, TON 618), 3 gözlem çerçevesi (Hawking Dış Gözlemci, Öz Zaman τ ile r→0 iç düşüş, Kokpit), 3B Flamm uzay-zaman hunisi ve 5 kademeli görüntü kalitesi",
+      "İlkokul düzeyinde anlaşılır 'Basitçe Anlatırsak' kutuları + KaTeX formülleri + kanıtlanmış veriler ile açık hipotezleri ayıran 10 bölümlü ve 14 tıklanabilir akademik kaynaklı iki dilli (TR/EN) rehber; 12 analitik birim testi",
+    ],
+    href: "https://event-horizon-rouge.vercel.app/",
+    ctaLabel: "Simülasyonu Başlat",
+    websiteUrl: "https://event-horizon-rouge.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/event-horizon",
+    images: [
+      {
+        src: "/project-previews/event-horizon-hero.png",
+        caption: "Cygnus X-1 (a* = 0,998): D-şekilli Kerr gölgesi, sol mavi-beyaz / sağ kızıl Doppler birikim diski, Blandford–Znajek kutup jeti ve 3B NASA Uzay Mekiği",
+      },
+      {
+        src: "/project-previews/event-horizon-spaghetti.png",
+        caption: "Canlı doğrusal olmayan GPU Weyl spagettileşmesi: mekiğin burnu 1/r³ çekim farkıyla ince parlayan bir filamente uzarken kanatlar içe sıkışıyor ve kızgın parçalar kopuyor",
+      },
+      {
+        src: "/project-previews/event-horizon-guide.png",
+        caption: "3B Flamm Paraboloidi uzay-zaman bükülme hunisi ve herkes için sade anlatımlı, KaTeX formüllü, 14 hakemli kaynaklı iki dilli Bilimsel Rehber",
+      },
+    ],
+    tone: "blue",
+  },
+  {
     id: "beatter",
     featured: true,
     category: "game",
