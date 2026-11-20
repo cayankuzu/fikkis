@@ -263,6 +263,7 @@ const featuredOrder = [
   "simulab",
   "life-of-a-photon",
   "event-horizon",
+  "pulse-plus",
   "beatter",
   "battle-ground",
   "universe",

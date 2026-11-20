@@ -102,6 +102,37 @@ export const projectsEn: Record<string, ProjectEnOverride> = {
       },
     ],
   },
+  "pulse-plus": {
+    title: "PULSE+",
+    hook: "An interactive acoustic physics digital twin and puzzle instrument that sculpts 45,000+ free ballistic sand grains into digits, words, and drawings on an uncut flat metal plate via Kirchhoff–Love wave interference.",
+    description:
+      "Solves the 4th-order Kirchhoff–Love free-edge thin elastic plate equation (ρh ∂²w/∂t² + D∇⁴w + c ∂w/∂t = F) across 266+ Euler–Bernoulli flexural modes on a 25×25 cm × 1.5 mm flat plate. With zero grooves, 7-segment bars, or reference lines, a 2-stage target-adaptive solver scans 16 natural modal bands to pick the optimal 8 (or 10) frequencies per shape and optimizes complex perimeter piezo amplitudes and phases via Minimax-Barrier Adam gradient descent — carving quiet nodal valleys (I ≈ 0) inside the glyph while enforcing I ≥ 0.48 outside to eliminate stray sand clumps. 45,000–85,000 3D ballistic sand grains respond strictly to local plate acceleration (Γ = a/g > 1) and intensity gradients (−∇I). Includes a non-blocking side-expanding Physics Lab with per-channel manual gain (0%–200%), real-time Kirchhoff–Love Hz retuning, and individual (↺) reset controls, an 8-level Lorentzian resonance cipher game, 35 contextual (?) help popovers, a 5-chapter kid-friendly + academic bilingual (TR/EN) guide with 8 clickable peer-reviewed papers, and real hardware Channel CSV export.",
+    platform: "Web (ES Modules, Web Worker, Web Audio API & Canvas 2D)",
+    status: "Live web version · v1.0",
+    role: "Acoustic plate physics & inverse wave solver · 3D granular sand simulation · Web Audio · UI/UX",
+    highlights: [
+      "Free-edge Kirchhoff–Love plate solver validated against NASA SP-160 (Leissa, 1969: λ₁,₁ = 13.89 vs. reference 13.49) across 4 materials (Aluminum 6061-T6, Brass C260, Steel 304, Acrylic PMMA)",
+      "2-stage target-adaptive frequency discovery + Minimax-Barrier Adam synthesis: ~89% avg IoU (14.3× contrast) on 8 Piezos, ~95% avg IoU (19.0× contrast) on 16 Piezos, ~98% avg IoU on 40 Piezos, plus 1-Speaker symmetry bound validation (~16% IoU)",
+      "Non-blocking side-expanding Physics Lab: independent per-channel gain (0%–200%) and live Hz tuning that recomputes exact Kirchhoff–Love Green's wavefields in the Web Worker, with individual (↺) and global reset controls",
+      "45,000–85,000 3D ballistic sand grains, real-time multi-channel Web Audio synthesizer, 8-level Lorentzian acoustic cipher game, 35 contextual (?) tooltips, bilingual (TR/EN) plain-language + academic guide with 8 peer-reviewed citations, and hardware Channel CSV/JSON export",
+    ],
+    ctaLabel: "Launch the simulation",
+    tags: ["Acoustic Physics", "Kirchhoff–Love PDE", "Chladni Plate", "Web Audio"],
+    images: [
+      {
+        caption:
+          "Studio view: digit '3' formed in loose golden silica sand on an uncut flat metal plate via 16 perimeter piezos and 8 simultaneous frequencies (1940 Hz peak · Mode 2,6 · 93.1% IoU · 15.4× contrast)",
+      },
+      {
+        caption:
+          "Non-blocking side-expanding Physics Laboratory: per-channel manual frequency console (F1–F8) with independent gain (0%–200%), live Kirchhoff–Love Hz retuning, and individual (↺) channel reset",
+      },
+      {
+        caption:
+          "'How It Works' bilingual (TR/EN) guide: kid-friendly trampoline and noise-cancelling analogies, standing-wave SVG diagram, simple/full-science reading toggle, and 8 peer-reviewed papers",
+      },
+    ],
+  },
   "cayan-kuzu-cv": {
     title: "Çayan Kuzu CV",
     hook: "Two-column bilingual live curriculum vitae system operating with identical fidelity on screen and print.",

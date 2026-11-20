@@ -41,7 +41,7 @@ type CollectionId =
 const HASH_PREFIX = "#proje-";
 
 const CURATED_COLLECTIONS: Record<CollectionId, string[]> = {
-  trilogy: ["event-horizon", "life-of-a-photon", "simulab"],
+  trilogy: ["event-horizon", "life-of-a-photon", "pulse-plus", "simulab"],
   webgl3d: [
     "event-horizon",
     "life-of-a-photon",
@@ -56,8 +56,9 @@ const CURATED_COLLECTIONS: Record<CollectionId, string[]> = {
   ],
   narrative: ["strolly", "dream-of-the-photo", "audioroom", "remember"],
   aiAndCv: ["beatter", "trai", "mrap", "jump-analysis"],
-  godotAndHardware: ["trophe-as-cat", "stresst", "kepce-operatoru"],
+  godotAndHardware: ["pulse-plus", "trophe-as-cat", "stresst", "kepce-operatoru"],
   openSource: [
+    "pulse-plus",
     "event-horizon",
     "life-of-a-photon",
     "simulab",

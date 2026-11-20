@@ -221,6 +221,52 @@ export const projects: Project[] = [
     tone: "blue",
   },
   {
+    id: "pulse-plus",
+    featured: true,
+    category: "science",
+    tags: ["Akustik Fizik", "Kirchhoff–Love PDE", "Chladni Plakası", "Web Audio"],
+    title: "PULSE+",
+    hook: "Dümdüz, kesiksiz bir metal plaka üzerinde gerçek Kirchhoff–Love eğilme dalgalarının girişimiyle 45.000+ serbest kum taneciğini rakamlara, kelimelere ve çizimlere dönüştüren akustik fizik laboratuvarı ve şifre oyunu.",
+    description:
+      "25×25 cm × 1,5 mm serbest kenarlı düz elastik plaka üzerinde 4. mertebe Kirchhoff–Love plaka denklemini (ρh ∂²w/∂t² + D∇⁴w + c ∂w/∂t = F) 266+ Euler–Bernoulli özmoduyla çözen gerçek zamanlı dijital ikiz. Plaka üzerinde hiçbir oluk, 7-segment çubuk veya referans çizgi yoktur: 16 doğal özmod bandından hedefe göre uyarlanan en iyi 8 (veya 10) frekans seçilir ve Minimax-Barrier Adam ters dalga optimizasyonuyla kenar piezolarının karmaşık genlik/faz matrisi hesaplanır. Rakamın içinde yıkıcı girişimle sessiz düğüm vadileri (I ≈ 0) kurulurken, dış alanda I ≥ 0,48 engeli korunarak başıboş kum lekeleri yok edilir. 45.000–85.000 3B balistik kum taneciği yalnızca yerel plaka ivmesini (Γ = a/g > 1) ve şiddet gradyanını (−∇I) hissederek şekli kendiliğinden oluşturur. Arka planı kapatmadan yan yana genişleyen Fizik Laboratuvarı'nda her frekans kanalının şiddeti (%0–%200) ve gerçek Hz değeri ayrı ayrı değiştirilip sıfırlanabilir; 8 seviyeli Akustik Şifre Kırıcı oyunu, 35 adet (?) bilgi balonu, ilkokul düzeyinden 8 hakemli makaleye uzanan iki dilli (TR/EN) rehber ve gerçek 6/8/16 kanallı USB ses kartı + amfi prototipi için Kanal CSV çıktısı içerir.",
+    platform: "Web (ES Modülleri, Web Worker, Web Audio API & Canvas 2D)",
+    status: "Canlı Web Sürümü · v1.0",
+    role: "Akustik plaka fiziği & ters dalga çözücüsü · 3B granüler kum simülasyonu · Web Audio · UI/UX",
+    tools: [
+      "JavaScript (ES Modules)",
+      "Web Workers",
+      "Web Audio API",
+      "Canvas 2D",
+      "Kirchhoff–Love PDE",
+      "Adam Optimizer",
+    ],
+    highlights: [
+      "NASA SP-160 (Leissa, 1969) ile doğrulanmış serbest kenarlı Kirchhoff–Love çözücüsü (λ₁,₁ = 13,89 vs. referans 13,49) ve 4 gerçek malzeme (Alüminyum 6061-T6, Pirinç C260, Çelik 304, Akrilik PMMA)",
+      "2 aşamalı hedefe uyarlanan frekans seçimi + Minimax-Barrier Adam ters dalga sentezi: 8 Piezo ev prototipinde ~%89 IoU (14,3× kontrast), 16 Piezo'da ~%95 IoU (19,0× kontrast), 40 Piezo'da ~%98 IoU ve 1 Hoparlör simetri sınırı kanıtı (~%16 IoU)",
+      "Arka planı karartmadan yan yana genişleyen Fizik Lab: her kanal için bağımsız şiddet (%0–%200) ve Web Worker'da gerçek Kirchhoff–Love Green alanını anında yeniden hesaplayan Hz ince ayarı, tekil (↺) ve toplu sıfırlama",
+      "45.000–85.000 3B balistik kum taneciği, canlı çok kanallı Web Audio ses sentezleyici, 8 seviyeli Lorentzian rezonans şifre oyunu, 35 adet (?) açıklama balonu, 8 hakemli kaynaklı iki dilli (TR/EN) basit + bilimsel rehber ve gerçek donanım Kanal CSV/JSON çıktısı",
+    ],
+    href: "https://pulse-plus-mu.vercel.app/",
+    ctaLabel: "Simülasyonu Başlat",
+    websiteUrl: "https://pulse-plus-mu.vercel.app/",
+    sourceUrl: "https://github.com/cayankuzu/pulse-plus",
+    images: [
+      {
+        src: "/project-previews/pulse-plus-hero.png",
+        caption: "Stüdyo görünümü: çizgisiz düz metal plaka üzerinde 16 kenar piezonun 8 eşzamanlı frekans girişimiyle (baskın 1940 Hz · Mod 2,6 · %93,1 IoU · 15,4× kontrast) serbest kumda oluşan '3' rakamı",
+      },
+      {
+        src: "/project-previews/pulse-plus-lab.png",
+        caption: "Arka planı kapatmadan yan yana genişleyen Fizik Laboratuvarı: her frekans kanalı (F1–F8) için bağımsız şiddet (%0–%200), gerçek zamanlı Kirchhoff–Love Hz ayarı ve tekil (↺) sıfırlama masası",
+      },
+      {
+        src: "/project-previews/pulse-plus-guide.png",
+        caption: "'Nasıl Çalışır?' iki dilli (TR/EN) rehber: ilkokul düzeyinde trambolin ve gürültü engelleyici kulaklık benzetmeleri, duran dalga SVG şeması, formülsüz/tam bilimsel okuma modu ve 8 hakemli makale",
+      },
+    ],
+    tone: "amber",
+  },
+  {
     id: "beatter",
     featured: true,
     category: "game",
