@@ -140,6 +140,30 @@ export function ProjectSheet({
   const previous = index > 0 ? list[index - 1] : null;
   const next = index >= 0 && index < list.length - 1 ? list[index + 1] : null;
 
+  // Klavyeden ← / → tuşlarıyla projeler arasında kesintisiz geçiş
+  useEffect(() => {
+    if (!project) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.metaKey || event.ctrlKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      if (target && (target.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))) {
+        return;
+      }
+      // Galeri küçük resimleri/okları odaktayken medya gezintisine karışma
+      if (target?.closest(".viewer")) return;
+      if (event.key === "ArrowLeft" && previous) {
+        event.preventDefault();
+        onNavigate(previous);
+      } else if (event.key === "ArrowRight" && next) {
+        event.preventDefault();
+        onNavigate(next);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [project, previous, next, onNavigate]);
+
   const localizedShown = shown ? getLocalizedProject(shown, locale) : null;
   const status = localizedShown ? getStatus(localizedShown, locale) : null;
   const actions = localizedShown ? getProjectActions(localizedShown, locale) : [];
@@ -218,157 +242,163 @@ export function ProjectSheet({
           </header>
 
           <div className="sheetScroll" ref={scrollRef}>
-            <MediaViewer key={localizedShown.id} project={localizedShown} />
-
-            <div className="sheetIntro">
-              <p className="sheetEyebrow">
-                <span className={`status status-${status.tone}`}>{status.label}</span>
-                {localizedShown.tags?.map((tag) => <span key={tag}>{tag}</span>)}
-                {localizedShown.desktopOnly ? (
-                  <span>
-                    <IconMonitor size={13} /> {t.sheet.desktopOnly}
-                  </span>
-                ) : null}
-              </p>
-              <h2 id="sheet-title">{localizedShown.title}</h2>
-              <p className="sheetHook">{localizedShown.hook}</p>
-
-              {isGated ? (
-                <div className="gate">
-                  <IconMonitor size={22} />
-                  <div>
-                    <strong>{t.sheet.gateTitle}</strong>
-                    <p>{t.sheet.gateText}</p>
-                    <div className="actions">
-                      {primaryHref ? (
-                        <>
-                          <button
-                            type="button"
-                            className="button button-primary"
-                            onClick={() => copy("gate", primaryHref)}
-                          >
-                            {copied === "gate" ? <IconCheck size={16} /> : <IconLink size={16} />}
-                            {copied === "gate" ? t.sheet.copied : t.sheet.copyLink}
-                          </button>
-                          {gatePurchases.map((action) => (
-                            <ActionLink key={action.href} action={action} />
-                          ))}
-                          <a
-                            className="button button-ghost"
-                            href={primaryHref}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {t.sheet.openAnyway}
-                          </a>
-                        </>
-                      ) : null}
-                      <SourceLink href={localizedShown.sourceUrl} />
-                    </div>
-                  </div>
-                </div>
-              ) : actions.length || localizedShown.sourceUrl || localizedShown.upcomingStores?.length ? (
-                <div className="actions">
-                  {actions.filter(isStoreAction).map((action) => (
-                    <ActionLink key={action.href + action.label} action={action} />
-                  ))}
-                  {localizedShown.upcomingStores?.map((store) => (
-                    <ComingSoonStore key={store} store={store} />
-                  ))}
-                  {actions
-                    .filter((action) => !isStoreAction(action))
-                    .map((action) => (
-                      <ActionLink key={action.href + action.label} action={action} />
-                    ))}
-                  <SourceLink href={localizedShown.sourceUrl} />
-                </div>
-              ) : null}
-
-              {localizedShown.downloadStatus && !localizedShown.storeLinks?.length ? (
-                <p className="sheetNote">{localizedShown.downloadStatus}</p>
-              ) : null}
-            </div>
-
-            <div className="sheetGrid">
-              <div className="sheetMain">
-                <section>
-                  <h3 className="sheetHeading">{t.sheet.aboutHeading}</h3>
-                  <p className="sheetText">{localizedShown.description}</p>
-                </section>
-                <section>
-                  <h3 className="sheetHeading">{t.sheet.highlightsHeading}</h3>
-                  <ul className="sheetHighlights">
-                    {localizedShown.highlights.map((highlight) => (
-                      <li key={highlight}>{highlight}</li>
-                    ))}
-                  </ul>
-                </section>
+            <div className="sheetSplit">
+              <div className="sheetMediaCol">
+                <MediaViewer key={localizedShown.id} project={localizedShown} />
               </div>
 
-              <dl className="facts">
-                <div>
-                  <dt>{t.sheet.roleLabel}</dt>
-                  <dd>
-                    <ul className="factList">
-                      {localizedShown.role.split(" · ").map((role) => (
-                        <li key={role}>{role}</li>
-                      ))}
-                    </ul>
-                  </dd>
-                </div>
-                <div>
-                  <dt>{t.sheet.platformLabel}</dt>
-                  <dd>{localizedShown.platform}</dd>
-                </div>
-                <div>
-                  <dt>{t.sheet.toolsLabel}</dt>
-                  <dd>
-                    <ul className="chips">
-                      {localizedShown.tools.map((tool) => (
-                        <li key={tool}>{tool}</li>
-                      ))}
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-            </div>
+              <div className="sheetContentCol">
+                <div className="sheetIntro">
+                  <p className="sheetEyebrow">
+                    <span className={`status status-${status.tone}`}>{status.label}</span>
+                    {localizedShown.tags?.map((tag) => <span key={tag}>{tag}</span>)}
+                    {localizedShown.desktopOnly ? (
+                      <span>
+                        <IconMonitor size={13} /> {t.sheet.desktopOnly}
+                      </span>
+                    ) : null}
+                  </p>
+                  <h2 id="sheet-title">{localizedShown.title}</h2>
+                  <p className="sheetHook">{localizedShown.hook}</p>
 
-            {previous || next ? (
-              <nav className="pager" aria-label={locale === "en" ? "Other projects" : "Diğer projeler"}>
-                {previous ? (
-                  <button
-                    type="button"
-                    className="pagerItem"
-                    onClick={() => onNavigate(previous)}
-                  >
-                    <span className="pagerLabel">
-                      <IconArrowLeft size={14} /> {t.sheet.prevProject}
-                    </span>
-                    <strong>{previous.title}</strong>
-                  </button>
-                ) : (
-                  <span />
-                )}
-                {next ? (
-                  <button
-                    type="button"
-                    className="pagerItem pagerItem-next"
-                    onClick={() => onNavigate(next)}
-                  >
-                    <span className="pagerLabel">
-                      {t.sheet.nextProject} <IconArrowRight size={14} />
-                    </span>
-                    <strong>{next.title}</strong>
-                  </button>
+                  {isGated ? (
+                    <div className="gate">
+                      <IconMonitor size={22} />
+                      <div>
+                        <strong>{t.sheet.gateTitle}</strong>
+                        <p>{t.sheet.gateText}</p>
+                        <div className="actions">
+                          {primaryHref ? (
+                            <>
+                              <button
+                                type="button"
+                                className="button button-primary"
+                                onClick={() => copy("gate", primaryHref)}
+                              >
+                                {copied === "gate" ? <IconCheck size={16} /> : <IconLink size={16} />}
+                                {copied === "gate" ? t.sheet.copied : t.sheet.copyLink}
+                              </button>
+                              {gatePurchases.map((action) => (
+                                <ActionLink key={action.href} action={action} />
+                              ))}
+                              <a
+                                className="button button-ghost"
+                                href={primaryHref}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {t.sheet.openAnyway}
+                              </a>
+                            </>
+                          ) : null}
+                          <SourceLink href={localizedShown.sourceUrl} />
+                        </div>
+                      </div>
+                    </div>
+                  ) : actions.length || localizedShown.sourceUrl || localizedShown.upcomingStores?.length ? (
+                    <div className="actions">
+                      {actions.filter(isStoreAction).map((action) => (
+                        <ActionLink key={action.href + action.label} action={action} />
+                      ))}
+                      {localizedShown.upcomingStores?.map((store) => (
+                        <ComingSoonStore key={store} store={store} />
+                      ))}
+                      {actions
+                        .filter((action) => !isStoreAction(action))
+                        .map((action) => (
+                          <ActionLink key={action.href + action.label} action={action} />
+                        ))}
+                      <SourceLink href={localizedShown.sourceUrl} />
+                    </div>
+                  ) : null}
+
+                  {localizedShown.downloadStatus && !localizedShown.storeLinks?.length ? (
+                    <p className="sheetNote">{localizedShown.downloadStatus}</p>
+                  ) : null}
+                </div>
+
+                <div className="sheetGrid">
+                  <div className="sheetMain">
+                    <section>
+                      <h3 className="sheetHeading">{t.sheet.aboutHeading}</h3>
+                      <p className="sheetText">{localizedShown.description}</p>
+                    </section>
+                    <section>
+                      <h3 className="sheetHeading">{t.sheet.highlightsHeading}</h3>
+                      <ul className="sheetHighlights">
+                        {localizedShown.highlights.map((highlight) => (
+                          <li key={highlight}>{highlight}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  </div>
+
+                  <dl className="facts">
+                    <div>
+                      <dt>{t.sheet.roleLabel}</dt>
+                      <dd>
+                        <ul className="factList">
+                          {localizedShown.role.split(" · ").map((role) => (
+                            <li key={role}>{role}</li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
+                    <div>
+                      <dt>{t.sheet.platformLabel}</dt>
+                      <dd>{localizedShown.platform}</dd>
+                    </div>
+                    <div>
+                      <dt>{t.sheet.toolsLabel}</dt>
+                      <dd>
+                        <ul className="chips">
+                          {localizedShown.tools.map((tool) => (
+                            <li key={tool}>{tool}</li>
+                          ))}
+                        </ul>
+                      </dd>
+                    </div>
+                  </dl>
+                </div>
+
+                {previous || next ? (
+                  <nav className="pager" aria-label={locale === "en" ? "Other projects" : "Diğer projeler"}>
+                    {previous ? (
+                      <button
+                        type="button"
+                        className="pagerItem"
+                        onClick={() => onNavigate(previous)}
+                      >
+                        <span className="pagerLabel">
+                          <IconArrowLeft size={14} /> {t.sheet.prevProject}
+                        </span>
+                        <strong>{previous.title}</strong>
+                      </button>
+                    ) : (
+                      <span />
+                    )}
+                    {next ? (
+                      <button
+                        type="button"
+                        className="pagerItem pagerItem-next"
+                        onClick={() => onNavigate(next)}
+                      >
+                        <span className="pagerLabel">
+                          {t.sheet.nextProject} <IconArrowRight size={14} />
+                        </span>
+                        <strong>{next.title}</strong>
+                      </button>
+                    ) : null}
+                  </nav>
                 ) : null}
-              </nav>
-            ) : null}
 
-            <div className="sheetContactHint">
-              <p>
-                {t.sheet.contactHint}{" "}
-                <a href="mailto:cayankuzu.0@gmail.com">{t.sheet.writeMe}</a>.
-              </p>
+                <div className="sheetContactHint">
+                  <p>
+                    {t.sheet.contactHint}{" "}
+                    <a href="mailto:cayankuzu.0@gmail.com">{t.sheet.writeMe}</a>.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

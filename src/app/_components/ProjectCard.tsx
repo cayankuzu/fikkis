@@ -16,9 +16,13 @@ type ProjectCardProps = {
   titleAs?: "h3" | "h4";
 };
 
-const CYCLE_INTERVAL = 1100;
+const CYCLE_INTERVAL = 1400;
 
-export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  onOpen,
+  titleAs: Title = "h3",
+}: ProjectCardProps) {
   const canHover = useCanHover();
   const reducedMotion = usePrefersReducedMotion();
   const [isActive, setIsActive] = useState(false);
@@ -30,7 +34,6 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
 
   const { locale, t } = useI18n();
 
-  // Platformdan, kartta zaten görünen alan adını ve "Masaüstü / Desktop" rozetini ayıkla.
   const catLabelTr = categoryLabels[project.category].toLocaleLowerCase("tr");
   const catLabelLoc = (
     t.projectsSection.categories[project.category] ?? categoryLabels[project.category]
@@ -51,7 +54,7 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
   const quickLink = getQuickLink(project, locale);
   const canCycle =
     layout !== "stack" && !project.video && project.images.length > 1;
-  const cover = project.images[canCycle ? frame : 0] ?? project.images[0];
+  const cycleFrames = canCycle ? project.images.slice(0, 4) : [project.images[0]];
 
   const activate = () => {
     if (reducedMotion) return;
@@ -64,7 +67,6 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
     setFrame(0);
   };
 
-  // Dokunmatik cihazlarda video, kart ekranın büyük kısmına girince oynar.
   useEffect(() => {
     if (canHover || reducedMotion || !project.video) return;
     const node = mediaRef.current;
@@ -87,11 +89,11 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
     if (!isActive || !canCycle) return;
 
     const interval = window.setInterval(() => {
-      setFrame((current) => (current + 1) % project.images.length);
+      setFrame((current) => (current + 1) % cycleFrames.length);
     }, CYCLE_INTERVAL);
 
     return () => window.clearInterval(interval);
-  }, [isActive, canCycle, project.images.length]);
+  }, [isActive, canCycle, cycleFrames.length]);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -131,15 +133,21 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
             ))}
           </div>
         ) : (
-          <Image
-            key={cover.src}
-            className="cardImage"
-            src={cover.src}
-            alt=""
-            fill
-            sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) 50vw, 400px"
-            style={{ objectPosition: project.coverPosition ?? "center" }}
-          />
+          cycleFrames.map((img, idx) => {
+            if (idx > 0 && !hasActivated) return null;
+            const visible = idx === (canCycle ? frame : 0);
+            return (
+              <Image
+                key={img.src}
+                className={`cardImage cardImageLayer${visible ? " is-shown" : ""}`}
+                src={img.src}
+                alt=""
+                fill
+                sizes="(max-width: 640px) calc(100vw - 32px), (max-width: 1024px) 50vw, 400px"
+                style={{ objectPosition: project.coverPosition ?? "center" }}
+              />
+            );
+          })
         )}
 
         {project.video && hasActivated ? (
@@ -169,14 +177,14 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
           {project.desktopOnly ? (
             <span className="badge">
               <IconMonitor size={12} />
-              Masaüstü
+              {t.projectsSection.desktopBadge}
             </span>
           ) : null}
         </div>
 
         {canCycle ? (
           <div className="cardDots" aria-hidden="true">
-            {project.images.map((image, index) => (
+            {cycleFrames.map((image, index) => (
               <span
                 key={image.src}
                 className={index === frame ? "is-current" : undefined}
@@ -222,7 +230,8 @@ export function ProjectCard({ project, onOpen, titleAs: Title = "h3" }: ProjectC
           }
           title={quickLink.label}
         >
-          <IconArrowUpRight size={16} />
+          <span className="cardQuickText">{t.projectsSection.palette.quickOpen}</span>
+          <IconArrowUpRight size={15} />
         </a>
       ) : null}
     </article>

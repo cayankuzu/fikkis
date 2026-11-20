@@ -1,16 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import packageJson from "../../package.json";
+import { CommandPalette } from "./_components/CommandPalette";
 import { ContactLinks, contactEmail } from "./_components/ContactLinks";
 import { CopyButton } from "./_components/CopyButton";
 import {
   IconArrowDown,
   IconArrowUp,
   IconArrowUpRight,
+  IconCommand,
 } from "./_components/icons";
 import { LanguageToggle } from "./_components/LanguageToggle";
-import { ProjectGallery } from "./_components/ProjectGallery";
+import { ProjectGallery, type FilterValue } from "./_components/ProjectGallery";
+import { ScrollProgress } from "./_components/ScrollProgress";
 import { I18nProvider, useI18n } from "./_lib/i18n";
 import { getArchiveStats } from "./_lib/project-meta";
 import { projects } from "./projects";
@@ -22,6 +26,29 @@ const cvUrl = "https://cayankuzucv.vercel.app/";
 function HomeInner() {
   const { t } = useI18n();
   const stats = getArchiveStats(projects);
+
+  const [paletteOpen, setPaletteOpen] = useState(false);
+  const [externalFilter, setExternalFilter] = useState<{
+    value: FilterValue;
+    nonce: number;
+  } | null>(null);
+
+  // Global ⌘K / Ctrl+K Komut Paleti kısayolu
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setPaletteOpen((open) => !open);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  const jumpToCategory = (value: FilterValue) => {
+    setExternalFilter((prev) => ({ value, nonce: (prev?.nonce ?? 0) + 1 }));
+    document.getElementById("projeler")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -40,8 +67,22 @@ function HomeInner() {
             <a href="#fanzin">{t.nav.fanzin}</a>
             <a href="#iletisim">{t.nav.contact}</a>
           </nav>
-          <LanguageToggle />
+          <div className="headerRight">
+            <button
+              type="button"
+              className="cmdTrigger"
+              onClick={() => setPaletteOpen(true)}
+              aria-label={t.projectsSection.palette.trigger}
+              title={`${t.projectsSection.palette.trigger} (⌘K)`}
+            >
+              <IconCommand size={13} />
+              <span className="cmdTriggerText">{t.projectsSection.palette.trigger}</span>
+              <kbd>⌘K</kbd>
+            </button>
+            <LanguageToggle />
+          </div>
         </div>
+        <ScrollProgress />
       </header>
 
       <main id="top">
@@ -80,24 +121,52 @@ function HomeInner() {
             </div>
           </div>
 
-          <dl className="stats">
-            <div>
-              <dt>{t.hero.stats.total}</dt>
-              <dd>{stats.total}</dd>
-            </div>
-            <div>
-              <dt>{t.hero.stats.mobile}</dt>
-              <dd>{stats.categoryCounts.mobile}</dd>
-            </div>
-            <div>
-              <dt>{t.hero.stats.science}</dt>
-              <dd>{stats.categoryCounts.science}</dd>
-            </div>
-            <div>
-              <dt>{t.hero.stats.game}</dt>
-              <dd>{stats.categoryCounts.game}</dd>
-            </div>
-          </dl>
+          <div className="stats" role="group" aria-label={t.projectsSection.index}>
+            <button
+              type="button"
+              className="statBtn"
+              onClick={() => jumpToCategory("all")}
+            >
+              <span className="statValue">{stats.total}</span>
+              <span className="statMeta">
+                <span>{t.hero.stats.total}</span>
+                <IconArrowUpRight size={14} className="statArrow" />
+              </span>
+            </button>
+            <button
+              type="button"
+              className="statBtn"
+              onClick={() => jumpToCategory("mobile")}
+            >
+              <span className="statValue">{stats.categoryCounts.mobile}</span>
+              <span className="statMeta">
+                <span>{t.hero.stats.mobile}</span>
+                <IconArrowUpRight size={14} className="statArrow" />
+              </span>
+            </button>
+            <button
+              type="button"
+              className="statBtn"
+              onClick={() => jumpToCategory("science")}
+            >
+              <span className="statValue">{stats.categoryCounts.science}</span>
+              <span className="statMeta">
+                <span>{t.hero.stats.science}</span>
+                <IconArrowUpRight size={14} className="statArrow" />
+              </span>
+            </button>
+            <button
+              type="button"
+              className="statBtn"
+              onClick={() => jumpToCategory("game")}
+            >
+              <span className="statValue">{stats.categoryCounts.game}</span>
+              <span className="statMeta">
+                <span>{t.hero.stats.game}</span>
+                <IconArrowUpRight size={14} className="statArrow" />
+              </span>
+            </button>
+          </div>
         </section>
 
         <section
@@ -113,7 +182,7 @@ function HomeInner() {
             <p className="sectionLead">{t.projectsSection.lead}</p>
           </div>
 
-          <ProjectGallery projects={projects} />
+          <ProjectGallery projects={projects} externalFilter={externalFilter} />
         </section>
 
         <section
@@ -263,6 +332,12 @@ function HomeInner() {
           </a>
         </div>
       </footer>
+
+      <CommandPalette
+        open={paletteOpen}
+        onClose={() => setPaletteOpen(false)}
+        projects={projects}
+      />
     </>
   );
 }

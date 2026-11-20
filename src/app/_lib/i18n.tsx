@@ -58,6 +58,50 @@ export const siteCopy = {
         featured: "Seçili ürünler & interaktif deneyimler",
         archive: "Laboratuvar: bilim, prototipler & mini oyunlar",
       },
+      viewMode: {
+        grid: "Izgara",
+        list: "Liste",
+        ariaLabel: "Görünüm modu",
+      },
+      collections: {
+        label: "Küratörlü seçkiler",
+        trilogy: {
+          title: "Görelilik & Kaos Üçlemesi",
+          note: "Klasik kaostan özel göreliliğe ve Kerr kara deliklerine uzanan doğrulanmış 3B fizik laboratuvarları serisi.",
+        },
+        webgl3d: {
+          title: "Gerçek Zamanlı 3B & GLSL",
+          note: "Bilim, oyun ve web alanlarını kesen; Three.js, WebGL 2 ve özel GLSL gölgelendiricileriyle kurulan 3B dünyalar.",
+        },
+        narrative: {
+          title: "Hikâye, Müzik & Kısa Film",
+          note: "Kaydırarak ya da yürüyerek keşfedilen etkileşimli kısa hikâyeler, 33 dakikalık gerçek zamanlı kısa film ve albüm evrenleri.",
+        },
+        aiAndCv: {
+          title: "Yapay Zekâ, Görü & Veri",
+          note: "MediaPipe gerçek zamanlı el izleme, üretken AI sanal prova, harita algoritmaları ve makine öğrenmesi çalışmaları.",
+        },
+        godotAndHardware: {
+          title: "Godot 4 & Fiziksel Donanım",
+          note: "Godot 4 + Jolt Physics ile geliştirilen yıkım/komedi oyunları ve 4 eksenli Arduino servo kepçe maketi.",
+        },
+        openSource: {
+          title: "Testli & Açık Kaynak Seçki",
+          note: "GitHub'da kaynak kodu açık, otomatik testlerle veya teknik/akademik raporla belgelenmiş başlıca mühendislik işleri.",
+        },
+      },
+      palette: {
+        trigger: "Hızlı geçiş",
+        placeholder: "Proje, teknoloji (WebGL, Godot, iOS, KaTeX) veya kategori ara…",
+        empty: "Eşleşen proje bulunamadı.",
+        hintNav: "Gezin",
+        hintOpen: "Detayı aç",
+        hintEsc: "Kapat",
+        projectsHeading: "Projeler",
+        quickOpen: "Aç",
+      },
+      desktopBadge: "Masaüstü",
+      heroStatHint: "Filtrele",
       search: {
         btn: "Ara",
         label: "Projelerde ara",
@@ -225,6 +269,50 @@ export const siteCopy = {
         featured: "Selected products & interactive experiences",
         archive: "Lab: science, prototypes & mini games",
       },
+      viewMode: {
+        grid: "Grid",
+        list: "List",
+        ariaLabel: "View mode",
+      },
+      collections: {
+        label: "Curated collections",
+        trilogy: {
+          title: "Relativity & Chaos Trilogy",
+          note: "Verified 3D physics laboratories spanning classical chaos, special relativity, and Kerr black holes.",
+        },
+        webgl3d: {
+          title: "Real-Time 3D & GLSL",
+          note: "Cross-category 3D worlds built with Three.js, WebGL 2, and custom GLSL shaders across science, games, and web.",
+        },
+        narrative: {
+          title: "Stories, Music & Short Film",
+          note: "Interactive 3D short stories, a 33-minute real-time cinematic short film, and walkable album worlds.",
+        },
+        aiAndCv: {
+          title: "AI, Vision & Data",
+          note: "Real-time MediaPipe hand tracking, generative AI virtual try-on, geospatial gameplay, and machine learning.",
+        },
+        godotAndHardware: {
+          title: "Godot 4 & Physical Hardware",
+          note: "Destruction & comedy games built in Godot 4 with Jolt Physics alongside a 4-axis Arduino servo scale model.",
+        },
+        openSource: {
+          title: "Tested & Open-Source Picks",
+          note: "Flagship engineering works with public GitHub source code, automated test suites, and technical dossiers.",
+        },
+      },
+      palette: {
+        trigger: "Quick jump",
+        placeholder: "Search projects, tech (WebGL, Godot, iOS, KaTeX) or category…",
+        empty: "No matching projects found.",
+        hintNav: "Navigate",
+        hintOpen: "Open details",
+        hintEsc: "Close",
+        projectsHeading: "Projects",
+        quickOpen: "Open",
+      },
+      desktopBadge: "Desktop",
+      heroStatHint: "Filter",
       search: {
         btn: "Search",
         label: "Search projects",

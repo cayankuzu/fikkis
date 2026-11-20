@@ -2546,3 +2546,801 @@ video.viewerMedia {
     display: none;
   }
 }
+
+
+/* ==========================================================================
+   fikkis — UI/UX v0.9.1 upgrades (Split-View, Bento Spotlight, ⌘K, List, Crossfade)
+   ========================================================================== */
+
+/* 1. Header Scroll Progress Line & ⌘K Trigger */
+.siteHeader {
+  position: sticky;
+}
+
+.scrollProgress {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 2px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scrollProgressFill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 55%, #fff));
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.headerRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cmdTrigger {
+  display: inline-flex;
+  height: 36px;
+  padding: 0 10px 0 12px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--surface);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.cmdTrigger:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: var(--surface-2);
+}
+
+.cmdTrigger kbd {
+  padding: 2px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  color: var(--ink-2);
+  background: var(--bg);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  line-height: 1.1;
+}
+
+@media (max-width: 780px) {
+  .cmdTriggerText {
+    display: none;
+  }
+  .cmdTrigger {
+    padding: 0 10px;
+  }
+}
+
+/* 2. Interactive Clickable Hero Stats */
+.statBtn {
+  display: flex;
+  padding: 22px 20px 6px;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.statBtn:first-child {
+  padding-left: 0;
+}
+
+.statBtn + .statBtn {
+  border-left: 1px solid var(--line);
+}
+
+.statValue {
+  font-size: clamp(2.25rem, 4.4vw, 3.75rem);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  color: var(--ink);
+  transition: color 0.22s ease, transform 0.3s var(--ease);
+}
+
+.statMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  transition: color 0.2s ease;
+}
+
+.statArrow {
+  opacity: 0;
+  color: var(--accent);
+  transform: translate(-4px, 3px);
+  transition: opacity 0.25s ease, transform 0.25s var(--ease);
+}
+
+.statBtn:hover .statValue,
+.statBtn:focus-visible .statValue {
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.statBtn:hover .statMeta,
+.statBtn:focus-visible .statMeta {
+  color: var(--ink);
+}
+
+.statBtn:hover .statArrow,
+.statBtn:focus-visible .statArrow {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 640px) {
+  .statBtn:nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+/* 3. FilterBar Right Cluster (Search + Grid/List View Toggle) */
+.filterBarRight {
+  display: flex;
+  flex: 1 1 280px;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+  pointer-events: none;
+}
+
+.filterBarRight .search {
+  margin-left: 0;
+  flex: 1 1 200px;
+  max-width: 300px;
+}
+
+.viewSwitch {
+  display: inline-flex;
+  padding: 5px;
+  gap: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow: var(--shadow-md);
+  backdrop-filter: saturate(1.5) blur(16px);
+  -webkit-backdrop-filter: saturate(1.5) blur(16px);
+  pointer-events: auto;
+  flex: none;
+}
+
+.viewSwitchBtn {
+  display: inline-flex;
+  min-height: 40px;
+  padding: 0 12px;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 550;
+  white-space: nowrap;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.viewSwitchBtn:hover {
+  color: var(--ink);
+  background: var(--surface-2);
+}
+
+.viewSwitchBtn[aria-pressed="true"] {
+  color: var(--bg);
+  background: var(--ink);
+}
+
+@media (max-width: 1120px) {
+  .viewSwitchBtn span {
+    display: none;
+  }
+  .viewSwitchBtn {
+    padding: 0 11px;
+  }
+}
+
+@media (max-width: 980px) {
+  .filterBarRight {
+    flex-basis: 100%;
+    justify-content: space-between;
+  }
+  .filterBarRight .search {
+    max-width: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .filterBarRight {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .filterBarRight .search.is-open {
+    flex: 1 1 auto;
+  }
+}
+
+/* 4. Curated Collections Strip */
+.collectionsBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  margin-bottom: clamp(24px, 3vw, 34px);
+}
+
+.collectionsLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--faint);
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.collectionsPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.collectionPill {
+  display: inline-flex;
+  height: 34px;
+  padding: 0 13px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-2);
+  background: var(--surface);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s var(--ease);
+}
+
+.collectionPill:hover {
+  color: var(--ink);
+  border-color: var(--line-strong);
+  background: var(--surface-2);
+}
+
+.collectionDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--faint);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.collectionPill[aria-pressed="true"] {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--accent) 65%, var(--line));
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+}
+
+.collectionPill[aria-pressed="true"] .collectionDot {
+  background: var(--accent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 80%, transparent);
+}
+
+.collectionBanner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-bottom: clamp(22px, 3vw, 32px);
+  padding: 14px 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--line));
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+/* 5. Card Micro-Interactions: Crossfade, Shimmer, Tone Rim Glow & Quick-Open Pill */
+@keyframes shimmerBg {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.cardMedia,
+.viewerStage {
+  background-image: linear-gradient(
+    110deg,
+    var(--tone-bg) 30%,
+    color-mix(in oklab, var(--tone) 24%, var(--surface-2)) 50%,
+    var(--tone-bg) 70%
+  );
+  background-size: 240% 100%;
+  animation: shimmerBg 2.4s ease-in-out infinite;
+}
+
+.cardImageLayer {
+  opacity: 0;
+  animation: none !important;
+  transition:
+    opacity 0.55s ease,
+    transform 0.85s var(--ease);
+}
+
+.cardImageLayer.is-shown {
+  opacity: 1;
+}
+
+.card:hover .cardMedia::after,
+.card:focus-within .cardMedia::after {
+  box-shadow:
+    inset 0 0 0 1px color-mix(in oklab, var(--tone) 58%, transparent),
+    inset 0 1px 0 0 color-mix(in oklab, var(--tone) 75%, #fff);
+}
+
+.card:hover .cardMedia,
+.card:focus-within .cardMedia {
+  box-shadow:
+    0 20px 44px -18px rgb(0 0 0 / 0.82),
+    0 0 28px -10px color-mix(in oklab, var(--tone) 42%, transparent);
+}
+
+.cardQuick {
+  width: auto;
+  min-width: 36px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+}
+
+.cardQuickText {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* 7. Compact Editorial List Mode */
+.projectList {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.listRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 12px;
+  border-bottom: 1px solid var(--line);
+  border-radius: 10px;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.listRow:hover {
+  background: color-mix(in oklab, var(--tone) 7%, var(--surface));
+}
+
+.listRowMain {
+  display: grid;
+  flex: 1;
+  min-width: 0;
+  grid-template-columns: 84px minmax(0, 1.5fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.listRowThumb {
+  position: relative;
+  width: 84px;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+}
+
+.listRowThumb img {
+  object-fit: cover;
+}
+
+.listRowInfo {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.listRowHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.listRowHead strong {
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.listRowCat {
+  color: var(--faint);
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+}
+
+.listRowHook {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.listRowTools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.listRowTools li {
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  white-space: nowrap;
+}
+
+.listRowActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+}
+
+.listActionBtn {
+  display: inline-flex;
+  height: 34px;
+  min-width: 34px;
+  padding: 0 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ink-2);
+  background: var(--surface);
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.18s ease, background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.listActionBtn:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.listActionBtn-primary {
+  color: var(--bg);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.listActionBtn-primary:hover {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+@media (max-width: 960px) {
+  .listRowMain {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+  .listRowTools {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .listRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .listRowActions {
+    justify-content: flex-end;
+  }
+}
+
+/* 8. Desktop Split-View ProjectSheet (>= 960px — covers 125% scaled laptops too!) */
+@media (min-width: 960px) {
+  .sheetPanel {
+    width: min(1280px, 96vw);
+  }
+
+  .sheetSplit {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 32px;
+  }
+
+  .sheetMediaCol {
+    position: sticky;
+    top: 0;
+  }
+
+  .sheetContentCol .sheetIntro {
+    padding-top: 2px;
+  }
+
+  .sheetContentCol .sheetIntro h2 {
+    font-size: clamp(1.75rem, 2.6vw, 2.5rem);
+  }
+
+  .sheetContentCol .sheetGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    padding-block: 24px;
+  }
+}
+
+/* 9. ⌘K Quick Command Palette Dialog */
+.cmdDialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: clamp(56px, 10vh, 110px) 16px 24px;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.cmdDialog::backdrop {
+  background: rgb(8 8 7 / 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cmdPanel {
+  display: flex;
+  flex-direction: column;
+  width: min(640px, 100%);
+  max-height: min(560px, 76vh);
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 32px 90px -24px rgb(0 0 0 / 0.9);
+}
+
+.cmdHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.cmdSearchIcon {
+  color: var(--muted);
+  flex: none;
+}
+
+.cmdInput {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.cmdInput::placeholder {
+  color: var(--faint);
+}
+
+.cmdCloseBtn {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--muted);
+}
+
+.cmdCloseBtn:hover {
+  color: var(--ink);
+  background: var(--surface-2);
+}
+
+.cmdBody {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px 10px 12px;
+}
+
+.cmdSectionLabel {
+  padding: 4px 10px 8px;
+  color: var(--faint);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cmdEmpty {
+  padding: 28px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.cmdList {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cmdItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  transition: background-color 0.14s ease, border-color 0.14s ease;
+}
+
+.cmdItem.is-selected {
+  background: color-mix(in oklab, var(--tone) 11%, var(--surface-2));
+  border-color: color-mix(in oklab, var(--tone) 40%, var(--line));
+}
+
+.cmdItemMain {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.cmdThumb {
+  position: relative;
+  width: 52px;
+  aspect-ratio: 16 / 10;
+  flex: none;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+}
+
+.cmdThumb img {
+  object-fit: cover;
+}
+
+.cmdText {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cmdTitleRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cmdTitleRow strong {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cmdSub {
+  color: var(--muted);
+  font-family: var(--font-code);
+  font-size: 0.72rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cmdQuickLink {
+  display: inline-flex;
+  height: 28px;
+  padding: 0 10px;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--ink-2);
+  background: var(--bg);
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  white-space: nowrap;
+  flex: none;
+}
+
+.cmdQuickLink:hover {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.cmdFoot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--faint);
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+}
+
+.cmdFoot kbd {
+  padding: 1px 5px;
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  color: var(--ink-2);
+  background: var(--surface);
+}
